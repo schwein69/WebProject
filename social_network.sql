@@ -31,8 +31,8 @@ CREATE TABLE `chat` (
   UNIQUE KEY `unique` (`usr1`,`usr2`) USING BTREE,
   KEY `usr2` (`usr2`),
   KEY `usr1` (`usr1`) USING BTREE,
-  CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`usr1`) REFERENCES `utente` (`idUtente`),
-  CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`usr2`) REFERENCES `utente` (`idUtente`)
+  CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`usr1`) REFERENCES `utenti` (`idUtente`),
+  CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`usr2`) REFERENCES `utenti` (`idUtente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,13 +46,13 @@ LOCK TABLES `chat` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `commento`
+-- Table structure for table `commenti`
 --
 
-DROP TABLE IF EXISTS `commento`;
+DROP TABLE IF EXISTS `commenti`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `commento` (
+CREATE TABLE `commenti` (
   `idCommento` int(11) NOT NULL AUTO_INCREMENT,
   `dataCommento` date NOT NULL,
   `testo` varchar(1000) NOT NULL,
@@ -61,86 +61,86 @@ CREATE TABLE `commento` (
   PRIMARY KEY (`idCommento`),
   KEY `idUtente` (`idUtente`),
   KEY `idPost` (`idPost`),
-  CONSTRAINT `commento_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `commento_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `post` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `commenti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `commenti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `commento`
+-- Dumping data for table `commenti`
 --
 
-LOCK TABLES `commento` WRITE;
-/*!40000 ALTER TABLE `commento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `commento` ENABLE KEYS */;
+LOCK TABLES `commenti` WRITE;
+/*!40000 ALTER TABLE `commenti` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commenti` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `contenutomultimediale`
+-- Table structure for table `contenutimultimediali`
 --
 
-DROP TABLE IF EXISTS `contenutomultimediale`;
+DROP TABLE IF EXISTS `contenutimultimediali`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contenutomultimediale` (
+CREATE TABLE `contenutimultimediali` (
   `idContenuto` int(11) NOT NULL AUTO_INCREMENT,
-  `formato` varchar(200) NOT NULL,
+  `formato` varchar(6) NOT NULL,
   `percorso` varchar(200) NOT NULL,
   `idPost` int(11) NOT NULL,
   `descrizione` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`idContenuto`),
   UNIQUE KEY `percorso` (`percorso`),
   KEY `idPost` (`idPost`),
-  CONSTRAINT `contenutomultimediale_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `post` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `contenutimultimediali_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contenutomultimediale`
+-- Dumping data for table `contenutimultimediali`
 --
 
-LOCK TABLES `contenutomultimediale` WRITE;
-/*!40000 ALTER TABLE `contenutomultimediale` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contenutomultimediale` ENABLE KEYS */;
+LOCK TABLES `contenutimultimediali` WRITE;
+/*!40000 ALTER TABLE `contenutimultimediali` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contenutimultimediali` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `messaggio`
+-- Table structure for table `messaggi`
 --
 
-DROP TABLE IF EXISTS `messaggio`;
+DROP TABLE IF EXISTS `messaggi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `messaggio` (
+CREATE TABLE `messaggi` (
   `idMessaggio` int(11) NOT NULL AUTO_INCREMENT,
-  `testoMsg` varchar(2000) NOT NULL,
+  `testoMsg` varchar(2712) NOT NULL,
   `oraMsg` time NOT NULL,
   `letto` tinyint(1) NOT NULL,
   `idMittente` int(11) NOT NULL,
   `idChat` int(11) NOT NULL,
   PRIMARY KEY (`idMessaggio`),
   KEY `idChat` (`idChat`),
-  CONSTRAINT `messaggio_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`)
+  CONSTRAINT `messaggi_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `messaggio`
+-- Dumping data for table `messaggi`
 --
 
-LOCK TABLES `messaggio` WRITE;
-/*!40000 ALTER TABLE `messaggio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messaggio` ENABLE KEYS */;
+LOCK TABLES `messaggi` WRITE;
+/*!40000 ALTER TABLE `messaggi` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messaggi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `notifica`
+-- Table structure for table `notifiche`
 --
 
-DROP TABLE IF EXISTS `notifica`;
+DROP TABLE IF EXISTS `notifiche`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `notifica` (
+CREATE TABLE `notifiche` (
   `idNotifica` int(11) NOT NULL AUTO_INCREMENT,
   `idUtenteNotificante` int(11) NOT NULL,
   `idPostRiferimento` int(11) DEFAULT NULL,
@@ -149,28 +149,57 @@ CREATE TABLE `notifica` (
   PRIMARY KEY (`idNotifica`),
   KEY `idTipo` (`idTipo`),
   KEY `idUtente` (`idUtente`),
-  CONSTRAINT `notifica_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`),
-  CONSTRAINT `notifica_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipo` (`idTipo`)
+  CONSTRAINT `notifiche_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipi` (`idTipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `notifica`
+-- Dumping data for table `notifiche`
 --
 
-LOCK TABLES `notifica` WRITE;
-/*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notifica` ENABLE KEYS */;
+LOCK TABLES `notifiche` WRITE;
+/*!40000 ALTER TABLE `notifiche` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notifiche` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `post`
+-- Table structure for table `postpaciuti`
 --
 
-DROP TABLE IF EXISTS `post`;
+DROP TABLE IF EXISTS `postpaciuti`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `post` (
+CREATE TABLE `postpaciuti` (
+  `idPostPiaciuto` int(11) NOT NULL AUTO_INCREMENT,
+  `idUtente` int(11) NOT NULL,
+  `idPost` int(11) NOT NULL,
+  PRIMARY KEY (`idPostPiaciuto`),
+  UNIQUE KEY `unique` (`idUtente`,`idPost`) USING BTREE,
+  KEY `idUtente` (`idUtente`),
+  KEY `idPost` (`idPost`),
+  CONSTRAINT `postpaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  CONSTRAINT `postpaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postpaciuti`
+--
+
+LOCK TABLES `postpaciuti` WRITE;
+/*!40000 ALTER TABLE `postpaciuti` DISABLE KEYS */;
+/*!40000 ALTER TABLE `postpaciuti` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts` (
   `idPost` int(11) NOT NULL AUTO_INCREMENT,
   `dataPost` date NOT NULL,
   `testo` varchar(2000) DEFAULT NULL,
@@ -179,56 +208,27 @@ CREATE TABLE `post` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`idPost`),
   KEY `idUser` (`idUser`),
-  CONSTRAINT `post_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `utente` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `post`
+-- Dumping data for table `posts`
 --
 
-LOCK TABLES `post` WRITE;
-/*!40000 ALTER TABLE `post` DISABLE KEYS */;
-/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `postpaciuto`
+-- Table structure for table `postsalvati`
 --
 
-DROP TABLE IF EXISTS `postpaciuto`;
+DROP TABLE IF EXISTS `postsalvati`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `postpaciuto` (
-  `idPostPiaciuto` int(11) NOT NULL AUTO_INCREMENT,
-  `idUtente` int(11) NOT NULL,
-  `idPost` int(11) NOT NULL,
-  PRIMARY KEY (`idPostPiaciuto`),
-  UNIQUE KEY `unique` (`idUtente`,`idPost`) USING BTREE,
-  KEY `idUtente` (`idUtente`),
-  KEY `idPost` (`idPost`),
-  CONSTRAINT `postpaciuto_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`),
-  CONSTRAINT `postpaciuto_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `post` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `postpaciuto`
---
-
-LOCK TABLES `postpaciuto` WRITE;
-/*!40000 ALTER TABLE `postpaciuto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `postpaciuto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `postsalvato`
---
-
-DROP TABLE IF EXISTS `postsalvato`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `postsalvato` (
+CREATE TABLE `postsalvati` (
   `idPostSalvato` int(11) NOT NULL AUTO_INCREMENT,
   `idUtente` int(11) NOT NULL,
   `idPost` int(11) NOT NULL,
@@ -236,28 +236,28 @@ CREATE TABLE `postsalvato` (
   UNIQUE KEY `unique` (`idUtente`,`idPost`) USING BTREE,
   KEY `idPost` (`idPost`),
   KEY `idUtente` (`idUtente`),
-  CONSTRAINT `postsalvato_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`),
-  CONSTRAINT `postsalvato_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `post` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `postsalvati_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  CONSTRAINT `postsalvati_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `postsalvato`
+-- Dumping data for table `postsalvati`
 --
 
-LOCK TABLES `postsalvato` WRITE;
-/*!40000 ALTER TABLE `postsalvato` DISABLE KEYS */;
-/*!40000 ALTER TABLE `postsalvato` ENABLE KEYS */;
+LOCK TABLES `postsalvati` WRITE;
+/*!40000 ALTER TABLE `postsalvati` DISABLE KEYS */;
+/*!40000 ALTER TABLE `postsalvati` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `posttag`
+-- Table structure for table `posttags`
 --
 
-DROP TABLE IF EXISTS `posttag`;
+DROP TABLE IF EXISTS `posttags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `posttag` (
+CREATE TABLE `posttags` (
   `idPostTag` int(11) NOT NULL AUTO_INCREMENT,
   `idPost` int(11) NOT NULL,
   `idTag` int(11) NOT NULL,
@@ -265,28 +265,28 @@ CREATE TABLE `posttag` (
   UNIQUE KEY `unique` (`idPost`,`idTag`) USING BTREE,
   KEY `idTag` (`idTag`),
   KEY `idPost` (`idPost`) USING BTREE,
-  CONSTRAINT `posttag_ibfk_1` FOREIGN KEY (`idTag`) REFERENCES `tag` (`idTag`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `posttag_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `post` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `posttags_ibfk_1` FOREIGN KEY (`idTag`) REFERENCES `tags` (`idTag`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `posttags_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `posttag`
+-- Dumping data for table `posttags`
 --
 
-LOCK TABLES `posttag` WRITE;
-/*!40000 ALTER TABLE `posttag` DISABLE KEYS */;
-/*!40000 ALTER TABLE `posttag` ENABLE KEYS */;
+LOCK TABLES `posttags` WRITE;
+/*!40000 ALTER TABLE `posttags` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posttags` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `relazioneutente`
+-- Table structure for table `relazioniutenti`
 --
 
-DROP TABLE IF EXISTS `relazioneutente`;
+DROP TABLE IF EXISTS `relazioniutenti`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `relazioneutente` (
+CREATE TABLE `relazioniutenti` (
   `idRelazioneUtente` int(11) NOT NULL AUTO_INCREMENT,
   `idFollower` int(11) NOT NULL,
   `idFollowed` int(11) NOT NULL,
@@ -294,28 +294,28 @@ CREATE TABLE `relazioneutente` (
   UNIQUE KEY `unique` (`idFollower`,`idFollowed`) USING BTREE,
   KEY `idFollower` (`idFollower`),
   KEY `idFollowed` (`idFollowed`),
-  CONSTRAINT `relazioneutente_ibfk_1` FOREIGN KEY (`idFollower`) REFERENCES `utente` (`idUtente`),
-  CONSTRAINT `relazioneutente_ibfk_2` FOREIGN KEY (`idFollowed`) REFERENCES `utente` (`idUtente`)
+  CONSTRAINT `relazioniutenti_ibfk_1` FOREIGN KEY (`idFollower`) REFERENCES `utenti` (`idUtente`),
+  CONSTRAINT `relazioniutenti_ibfk_2` FOREIGN KEY (`idFollowed`) REFERENCES `utenti` (`idUtente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `relazioneutente`
+-- Dumping data for table `relazioniutenti`
 --
 
-LOCK TABLES `relazioneutente` WRITE;
-/*!40000 ALTER TABLE `relazioneutente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `relazioneutente` ENABLE KEYS */;
+LOCK TABLES `relazioniutenti` WRITE;
+/*!40000 ALTER TABLE `relazioniutenti` DISABLE KEYS */;
+/*!40000 ALTER TABLE `relazioniutenti` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tag`
+-- Table structure for table `tags`
 --
 
-DROP TABLE IF EXISTS `tag`;
+DROP TABLE IF EXISTS `tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tag` (
+CREATE TABLE `tags` (
   `idTag` int(11) NOT NULL AUTO_INCREMENT,
   `nomeTag` varchar(100) NOT NULL,
   PRIMARY KEY (`idTag`),
@@ -324,50 +324,50 @@ CREATE TABLE `tag` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tag`
+-- Dumping data for table `tags`
 --
 
-LOCK TABLES `tag` WRITE;
-/*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tag` ENABLE KEYS */;
+LOCK TABLES `tags` WRITE;
+/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tipo`
+-- Table structure for table `tipi`
 --
 
-DROP TABLE IF EXISTS `tipo`;
+DROP TABLE IF EXISTS `tipi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tipo` (
+CREATE TABLE `tipi` (
   `idTipo` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeTipo` varchar(100) NOT NULL,
+  `nomeTipo` varchar(30) NOT NULL,
   PRIMARY KEY (`idTipo`),
   UNIQUE KEY `nomeTipo` (`nomeTipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipo`
+-- Dumping data for table `tipi`
 --
 
-LOCK TABLES `tipo` WRITE;
-/*!40000 ALTER TABLE `tipo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tipo` ENABLE KEYS */;
+LOCK TABLES `tipi` WRITE;
+/*!40000 ALTER TABLE `tipi` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tipi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `utente`
+-- Table structure for table `utenti`
 --
 
-DROP TABLE IF EXISTS `utente`;
+DROP TABLE IF EXISTS `utenti`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `utente` (
+CREATE TABLE `utenti` (
   `idUtente` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `password` varchar(512) NOT NULL,
+  `email` varchar(320) NOT NULL,
   `dataDiNascita` date NOT NULL,
   `fotoProfilo` varchar(100) NOT NULL,
   PRIMARY KEY (`idUtente`),
@@ -376,12 +376,12 @@ CREATE TABLE `utente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `utente`
+-- Dumping data for table `utenti`
 --
 
-LOCK TABLES `utente` WRITE;
-/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
+LOCK TABLES `utenti` WRITE;
+/*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
+/*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -393,4 +393,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-19 17:43:04
+-- Dump completed on 2022-11-19 21:59:19
