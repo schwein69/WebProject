@@ -1,4 +1,26 @@
-#bottomnav {
-    width: 100%;
-    margin: auto;
+button {
+  width:100%;
+  display:block;
+}
+span{
+  font-size: 40px;
+}
+.btn-light{
+  background-color: transparent;
+}
+.navbar-brand
+{
+  font-size: 40px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .fixed-bottom {
+    width:66.66%; /* same as width of col-md-8 */
+    margin:0 auto;
   }
+  .fixed-top {
+    width:66.66%; /* same as width of col-md-8 */
+    margin:0 auto;
+  }
+}
