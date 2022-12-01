@@ -11,11 +11,6 @@ footer nav ul li a div{
   font-size: large;
 }
 
-body > footer nav ul li a{
-  height: 100%;
-  display:block;
-  margin: 0 20px 0 20px;
-}
 
 body > main section ul li span  {
   font-size: 15px;

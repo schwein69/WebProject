@@ -34,7 +34,7 @@
         <main class="text-center mb-5">
             <?php
                 if(isset($templateParams["content"])){
-                    require($templateParams);
+                    require($templateParams["content"]);
                 }
              ?>
         </main>
@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="./profile.html" class="btn btn-primary"><span class="bi bi-person-fill"></span><br>
+                            <a href="../src/profile.php" class="btn btn-primary"><span class="bi bi-person-fill"></span><br>
                                 <div>Profile</div>
                             </a>
                         </li>
