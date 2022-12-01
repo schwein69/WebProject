@@ -47,20 +47,6 @@ span{
   font-size: 30px;
 }
 
-div.card-header > img{
-display: block;
-float: left;
-}
-
-div.card-header > h2{
-display: block;
-}
-
-div.card-header > a{
-display: block;
-float: right;
-}
-
 
 @media only screen and (min-width: 768px) {
   
