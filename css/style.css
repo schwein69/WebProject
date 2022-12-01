@@ -5,11 +5,6 @@ button {
   box-shadow: 0 0 5px 2px black;
 }
 
-main ul li figure img{
-  height: auto;
-  max-height:50px;
-}
-
 footer nav ul li a div{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:black;
@@ -26,14 +21,11 @@ body > main section ul li span  {
   font-size: 15px;
 }
 
-nav .btn{
+footer nav ul li a{
+  width: 100%;
 	border-radius: 50%;
   box-shadow: 0 0 5px 2px black;
 } 
-
-footer nav .btn{
-  width:25%;
-}
 
 span{
   font-size: 30px;
@@ -54,16 +46,9 @@ span{
     font-size: large;
   }
 
-  footer nav .btn{
-    width:40%;
-  }
-
   footer nav ul li a div{
    font-size: 25px; 
   }
-  main ul li figure img{
-    height: auto;
-    max-height:75px;
-  }
+
 
 }
