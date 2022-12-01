@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `social_network` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `social_network`;
 -- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: social_network
@@ -393,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-19 21:59:19
+-- Dump completed on 2022-12-01 17:46:46
