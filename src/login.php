@@ -10,19 +10,13 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
     }
 }
 if(isUserLoggedIn()){
-    $templateParams["titolo"] = "Blog TW - Admin";
-    $templateParams["nome"] = "login-home.php";
-    $templateParams["articoli"] = $dbh->getPostByAuthorId($_SESSION["idautore"]);
-    if(isset($_GET["formmsg"])){
-        $templateParams["formmsg"]=$_GET["formmsg"];
-    }
+    $templateParams["content"] = "index.php";
+    //$templateParams["articoliProfili"] = $dbh->getPostByAuthorId($_SESSION["idautore"]);
+    $templateParams["articoliseguiti"] = $dbh->getFollowedArticle();
+    $templateParams["articolicasuali"] = $dbh->getRandomPosts();
 }else{
-    $templateParams["titolo"] = "Blog TW - Login";
-    $templateParams["nome"] = "login-form.php";
+    require '../template/login-template.html';
 }
 
-$templateParams["categorie"] = $dbh->getCategories();
-$templateParams["articolicasuali"] = $dbh->getRandomPosts(2);
 
-require 'template/base.php';
 ?>
