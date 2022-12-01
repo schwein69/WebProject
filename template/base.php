@@ -34,7 +34,7 @@
         <main class="text-center mb-5">
             <?php
                 if(isset($templateParams["content"])){
-                    require($templateParams);
+                    require($templateParams["content"]);
                 }
              ?>
         </main>
