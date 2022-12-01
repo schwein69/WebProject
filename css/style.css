@@ -1,9 +1,16 @@
+html, body {
+  height:100%;
+}
 button {
   box-shadow: 0 0 5px 2px black;
 }
 
+main ul li figure img{
+  height: auto;
+  max-height:50px;
+}
 
-body > footer nav ul li a div{
+footer nav ul li a div{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:black;
   font-size: large;
@@ -15,7 +22,7 @@ body > footer nav ul li a{
   margin: 0 20px 0 20px;
 }
 
-body > main section ul li > span  {
+body > main section ul li span  {
   font-size: 15px;
 }
 
@@ -30,6 +37,7 @@ footer nav .btn{
 
 span{
   font-size: 30px;
+  color: black;
 }
 .btn-light{
   background-color: transparent;
@@ -38,12 +46,10 @@ span{
 {
   font-size: 30px;
 }
-#userIcon{
-  height: 50px;
-}
+
 @media only screen and (min-width: 768px) {
   
-  body > main section ul li span#profileinfo{
+  body > main section ul li span{
     font-size: large;
   }
 
@@ -51,11 +57,12 @@ span{
     width:40%;
   }
 
-  body > footer nav ul li a div{
+  footer nav ul li a div{
    font-size: 25px; 
   }
-  #userIcon{
+  main ul li figure img{
     height: auto;
     max-height:75px;
   }
+
 }
