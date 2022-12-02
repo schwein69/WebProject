@@ -16,36 +16,54 @@
         <header>
             <div class="row">
                 <div class="col-md-2"></div>
+                <?php if (isset($templateParams["loginTopNav"])): ?>
+                <div class="col-12 col-md-8 py-4" style="background-color: #49acf3;">
+                    <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
+                            href="./index.php">Lynkzone</a></h1>
+                </div>
+                <?php elseif (isset($templateParams["profileTopNav"])): ?>
                 <div class="col-12 col-md-8">
                     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #49acf3;">
                         <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
-                                href="#">Lynkzone</a></h1>
+                                href="./index.php">Lynkzone</a></h1>
+                        <ul class="nav nav-pills ms-auto">
+                            <li> <button type="button" class="btn btn-light"><span
+                                        class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
+                        </ul>
+                    </nav>
+                </div>
+                <?php else: ?>
+                <div class="col-12 col-md-8">
+                    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #49acf3;">
+                        <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
+                                href="./index.php">Lynkzone</a></h1>
                         <ul class="nav nav-pills ms-auto">
                             <li> <button type="button" class="btn btn-light"><span
                                         class="bi bi-plus-circle"></span></button></li>
                             <li> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
                             </li>
-                        </ul>
+                        </ul>   
                     </nav>
                 </div>
+                <?php endif; ?>
                 <div class="col-md-2"></div>
             </div>
         </header>
         <main class="text-center mb-5">
             <?php
-                if(isset($templateParams["content"])){
-                    require($templateParams["content"]);
-                }
-             ?>
+            if (isset($templateParams["content"])) {
+                require($templateParams["content"]);
+            }
+            ?>
         </main>
-
+        <?php if (!isset($templateParams["loginTopNav"])): ?>
         <footer class="pb-5">
             <div class="fixed-bottom row">
                 <div class="col-md-2"></div>
                 <nav class="col-12 col-md-8">
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
+                            <a href="../src/index.php" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
                                 <div>Home</div>
                             </a>
                         </li>
@@ -60,7 +78,8 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="../src/profile.php" class="btn btn-primary"><span class="bi bi-person-fill"></span><br>
+                            <a href="../src/profile.php" class="btn btn-primary"><span
+                                    class="bi bi-person-fill"></span><br>
                                 <div>Profile</div>
                             </a>
                         </li>
@@ -69,6 +88,7 @@
                 <div class="col-md-2"></div>
             </div>
         </footer>
+        <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

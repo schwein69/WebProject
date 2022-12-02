@@ -15,8 +15,11 @@ if(isUserLoggedIn()){
     $templateParams["articoliseguiti"] = $dbh->getFollowedArticle();
     $templateParams["articolicasuali"] = $dbh->getRandomPosts();
 }else{
-    require '../template/login-template.html';
+    $templateParams["content"] = "login-template.php";
+    $templateParams["loginTopNav"]=true;
+    $templateParams["loginBottomNav"]=true;
+   
 }
-
+require '../template/base.php';
 
 ?>

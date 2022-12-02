@@ -34,7 +34,11 @@ span{
   font-size: 30px;
 }
 
-
+.form-group>label {
+  text-align: center;
+  border-radius: 15px;
+  background: #fff;
+}
 @media only screen and (min-width: 768px) {
   
   body > main section ul li span{

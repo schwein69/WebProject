@@ -8,8 +8,9 @@ require_once 'bootstrap.php';
     </script>';
 }
 */
-$templateParams["content"] = "profilepage.php";
+$templateParams["content"] = "settings-template.php";
 $templateParams["profileTopNav"]=true;
 
 require '../template/base.php';
+
 ?>

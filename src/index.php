@@ -1,9 +1,12 @@
 <?php
 require_once 'bootstrap.php';
-
-if(!isUserLoggedIn() || !isset($_GET["action"])){
-    header("location: login.php");//header: interrompe e riesegue login
-}
+//check login
+/*if(!isUserLoggedIn() || !isset($_GET["action"])){
+    echo '<script>
+    alert("Devi essere loggato!");
+    window.location.href="login.php";
+    </script>';
+}*/
 
 $templateParams["content"] = "home.php";
 
