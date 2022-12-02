@@ -20,7 +20,14 @@ footer nav ul li a{
   width: 100%;
 	border-radius: 50%;
   box-shadow: 0 0 5px 2px black;
-} 
+}
+
+#settings-ul li h2{
+  color:black;
+}
+#settings-ul li:nth-child(odd){
+  background-color: #7c8286;
+}
 
 span{
   font-size: 30px;
