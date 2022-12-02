@@ -20,7 +20,7 @@ if(is_null($post_data)){
 
 $user = $dbh->getAuthorName($post_data['idUser']);
 $comments = $dbh->getPostComments($_GET['postid']);
-var_dump($post_data);
+
 $templateParams["content"] = 'full_post.php'; 
 require '../template/base.php';
 ?>

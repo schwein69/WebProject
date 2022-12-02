@@ -32,7 +32,7 @@
     <?php
     foreach($comments as $comment):
     ?>
-    <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$user['idUtente'].'/'.$comment['fotoProfilo']?>" alt="<?php echo "foto profilo di ".$comment['username'];?>" style="width: auto; max-width: 25%;"/>
+    <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/'.$comment['fotoProfilo']?>" alt="<?php echo "foto profilo di ".$comment['username'];?>" style="width: auto; max-width: 25%;"/>
     <h2><?php echo $comment['username'];?></h2>
     <p><?php echo $comment['testo'];?></p>
     <p><small><?php echo $comment['dataCommento'];?></small></p>
