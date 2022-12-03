@@ -34,9 +34,10 @@ span{
 .btn-light{
   background-color: transparent;
 }
-.navbar-brand
-{
-  font-size: 30px;
+h1 a{
+  font-size: 10 px;
+  text-decoration: none;
+  color: black;
 }
 
 
