@@ -28,28 +28,21 @@ footer nav ul li a{
 } 
 
 span{
-  font-size: 30px;
+  font-size: 150%;
   color: black;
 }
 .btn-light{
   background-color: transparent;
 }
 h1 a{
-  font-size: 10 px;
+  font-size: 120%;
   text-decoration: none;
   color: black;
 }
-
 
 @media only screen and (min-width: 768px) {
   
   body > main section ul li span{
     font-size: large;
   }
-
-  footer nav ul li a div{
-   font-size: 25px; 
-  }
-
-
 }
