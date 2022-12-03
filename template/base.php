@@ -36,7 +36,7 @@
                 </div>
             </div>
         </header>
-        <main class="text-center mb-5">
+        <main class="text-center mb-5 mt-2">
             <?php
                 if(isset($templateParams["content"])){
                     require($templateParams["content"]);
