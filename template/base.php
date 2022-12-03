@@ -49,22 +49,22 @@
                 <nav class="col-12 col-md-8 mx-auto">
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
+                            <a href="#" class="btn btn-primary"><span class="bi bi-house-fill"></span>
                                 <div>Home</div>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span><br>
+                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span>
                                 <div>Search</div>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span><br>
+                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
                                 <div>Chat</div>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="./profile.html" class="btn btn-primary"><span class="bi bi-person-fill"></span><br>
+                            <a href="./profile.html" class="btn btn-primary"><span class="bi bi-person-fill"></span>
                                 <div>Profile</div>
                             </a>
                         </li>
