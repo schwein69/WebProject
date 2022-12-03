@@ -20,9 +20,9 @@
                         <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
                                 href="#">Lynkzone</a></h1>
                         <ul class="nav nav-pills ms-auto">
-                            <li> <button type="button" class="btn btn-light"><span
+                            <li class="mx-1"> <button type="button" class="btn btn-light"><span
                                         class="bi bi-plus-circle"></span></button></li>
-                            <li> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
+                            <li class="mx-1"> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
                             </li>
                         </ul>
                     </nav>
