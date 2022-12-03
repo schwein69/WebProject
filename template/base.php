@@ -56,7 +56,7 @@
             }
             ?>
         </main>
-        <?php if (!isset($templateParams["loginTopNav"])): ?>
+        <?php if (!isset($templateParams["loginBottomNav"])): ?>
         <footer class="pb-5">
             <div class="fixed-bottom row">
                 <div class="col-md-2"></div>

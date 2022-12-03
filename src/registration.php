@@ -4,8 +4,8 @@ require_once 'bootstrap.php';
 
 
 $templateParams["content"] = "registration-template.php";
-$templateParams["profileNav"]=true;
-$templateParams["profileBottomNav"]=true;;
+$templateParams["loginTopNav"]=true;
+$templateParams["loginBottomNav"]=true;;
    
 
 require '../template/base.php';

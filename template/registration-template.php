@@ -5,7 +5,7 @@
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h1>Register</h1>
             <p>Compila i seguenti campi per creare un nuovo account</p>
-            <form  class="form-horizontal" name="myform" method="post" onsubmit="return validateform()">
+            <form  class="form-horizontal" name="myform" method="post" action="" onsubmit="return validateform()">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="name"><b>Name</b></label>
                     <input class="col-6" type="text" placeholder="Nome" name="name" required>

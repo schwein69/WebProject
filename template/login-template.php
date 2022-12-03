@@ -16,7 +16,7 @@
                     <button type="submit" class="btn col-6 mt-3" name="submit" value="Invia">Login</button>
                 </div>
                 <div class="btn-toolbar my-5" style="justify-content: center; display: flex;">
-                    <a class="btn btn-outline-primary mx-2" href="#">Forget password?</a>
+                    <a class="btn btn-outline-primary mx-2" href="./recoverypassword.php">Forget password?</a>
                     <a class="btn btn-outline-primary mx-2" href="./registration.php">Sign up</a>
                 </div>
             </form>
