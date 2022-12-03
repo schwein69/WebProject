@@ -15,8 +15,7 @@
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-8 mx-auto">
                     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #49acf3;">
                         <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
                                 href="#">Lynkzone</a></h1>
@@ -28,7 +27,6 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-md-2"></div>
             </div>
         </header>
         <main class="text-center mb-5">
@@ -41,8 +39,7 @@
 
         <footer class="pb-5">
             <div class="fixed-bottom row">
-                <div class="col-md-2"></div>
-                <nav class="col-12 col-md-8">
+                <nav class="col-12 col-md-8 mx-auto">
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
                             <a href="#" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
@@ -66,7 +63,6 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="col-md-2"></div>
             </div>
         </footer>
     </div>
