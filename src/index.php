@@ -1,14 +1,15 @@
 <?php
 require_once 'bootstrap.php';
 //check login
-/*if(!isUserLoggedIn() || !isset($_GET["action"])){
+if (!isUserLoggedIn()) {
     echo '<script>
     alert("Devi essere loggato!");
     window.location.href="login.php";
     </script>';
-}*/
+} else {
+    $templateParams["content"] = "home.php";
+}
 
-$templateParams["content"] = "home.php";
 
 require '../template/base.php';
 
