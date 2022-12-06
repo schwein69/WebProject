@@ -15,41 +15,36 @@
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
-                <div class="col-md-2"></div>
-                <?php if (isset($templateParams["loginTopNav"])): ?>
-                <div class="col-12 col-md-8 py-4" style="background-color: #49acf3;">
-                    <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
-                            href="./index.php">Lynkzone</a></h1>
+
+                <div class="col-12 col-md-8 mx-auto">
+                    <div class="container-fluid" style="background-color: #49acf3;">
+                    <div class="row">
+                        <div class="col-6 col-md-7 my-auto text-end">
+                        <h1><a href="./index.php">Lynkzone</a></h1>
+                        </div>
+                        <div class="col-6 col-md-5">
+                        <?php if (!isset($templateParams["loginTopNav"])): ?>
+                        <nav class="navbar navbar-expand-md navbar-light">
+                            <ul class="nav nav-pills ms-auto">
+                                <?php if (isset($templateParams["profileTopNav"])): ?>
+                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
+                                                           class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
+                                <?php else: ?>
+                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
+                                            class="bi bi-plus-circle"></span></button></li>
+                                <li class="mx-1"> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
+                                </li>
+                                <?php endif; ?>
+                            </ul>
+                        </nav>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                <?php elseif (isset($templateParams["profileTopNav"])): ?>
-                <div class="col-12 col-md-8">
-                    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #49acf3;">
-                        <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
-                                href="./index.php">Lynkzone</a></h1>
-                        <ul class="nav nav-pills ms-auto">
-                            <li> <button type="button" class="btn btn-light"><span
-                                        class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
-                        </ul>
-                    </nav>
-                </div>
-                <?php else: ?>
-                <div class="col-12 col-md-8">
-                    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #49acf3;">
-                        <h1><a class="navbar-brand position-absolute top-0 start-50 translate-middle-x"
-                                href="./index.php">Lynkzone</a></h1>
-                        <ul class="nav nav-pills ms-auto">
-                            <li> <button type="button" class="btn btn-light"><span
-                                        class="bi bi-plus-circle"></span></button></li>
-                            <li> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
-                            </li>
-                        </ul>   
-                    </nav>
-                </div>
-                <?php endif; ?>
-                <div class="col-md-2"></div>
             </div>
         </header>
-        <main class="text-center mb-5">
+        <main class="text-center mb-5 mt-2">
             <?php
             if (isset($templateParams["content"])) {
                 require($templateParams["content"]);
@@ -59,8 +54,7 @@
         <?php if (!isset($templateParams["loginBottomNav"])): ?>
         <footer class="pb-5">
             <div class="fixed-bottom row">
-                <div class="col-md-2"></div>
-                <nav class="col-12 col-md-8">
+                <nav class="col-12 col-md-8 mx-auto">
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
                             <a href="../src/index.php" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
@@ -68,12 +62,12 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span><br>
+                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span>
                                 <div>Search</div>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span><br>
+                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
                                 <div>Chat</div>
                             </a>
                         </li>
@@ -85,7 +79,6 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="col-md-2"></div>
             </div>
         </footer>
         <?php endif; ?>
