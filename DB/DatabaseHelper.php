@@ -87,5 +87,13 @@ class DatabaseHelper{
         
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function insertPost($user, $testo, $dataPost){
+        $stmt = "INSERT INTO posts(idUser,testo,dataPost) VALUES ()";
+    }
+
+    public function addTagsToPost($postId, $tags){
+
+    }
 }
 ?>

@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-<form action="" method="POST" class="col-12 col-md-8 mx-auto">
+<form action="post_creation.php" method="POST" class="col-12 col-md-8 mx-auto">
     <label for="testo" class="text-start col-12 fs-4">Testo</label>
     <textarea id="testo" name="testo" rows="4" class="text-start col-10 mx-auto" placeholder="Scrivi qui il testo..."></textarea>
     <fieldset>
@@ -15,7 +15,7 @@
         <input type="text" id="tag9" name="tag9" class="col-2 m-1"/>
         </div>
         <div class="row">
-        <button type="button" class="m-1" style="width:fit-content;">Aggiungi tag</button>
+        <button type="button" class="m-1">Aggiungi tag</button>
         </div> 
     </div>
     </fieldset>
@@ -28,7 +28,7 @@
         <input class="col-3" type="text" id="alt1" name="alt1"/>
         </div> 
         <div class="row">
-        <button class="mt-2 d-flex mx-auto" style="width:fit-content;">Aggiungi immagine/video</button>
+        <button class="mt-2 d-flex mx-auto">Aggiungi immagine/video</button>
         </div>
     </div>
     </fieldset>
