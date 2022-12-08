@@ -1,6 +1,6 @@
 //TODO try using classes for incapsulation
 let numTag=8;
-const tagSelector = document.querySelector("fieldset div.row:nth-child(2)");
+const tagSelector = document.querySelector("fieldset div.row");
 const tagButton = document.querySelector("fieldset div.row:last-child button");
 
 tagButton.addEventListener('click',event => {
