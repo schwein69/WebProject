@@ -36,11 +36,36 @@ imgButton.addEventListener('click',event => {
 
         newNode.innerHTML = elem;
         newNode.classList.add('row');
+        newNode.classList.add('my-1');
         
         imgSelector.parentNode.insertBefore(newNode, imgSelector);
         numImg++;
     } else {
-        console.log(imgButton);
         imgButton.setAttribute('style', 'display:none !important;');
+    }
+});
+
+
+function isTextEmpty() {
+    return document.getElementById('testo').value.length == 0;
+}
+
+function areThereImages() {
+    for(let i = 1; i<10; i++){
+        const imgTag = document.getElementById('f' + i);
+        if(imgTag != null && imgTag.value.length != 0){
+               return true;
+        }
+    }
+    return false;
+}
+
+const submitButton = document.querySelector('form input[type="submit"]');
+submitButton.addEventListener('click', event => {
+    event.preventDefault();
+    if(!isTextEmpty() || areThereImages()) {
+        document.querySelector('form').submit();
+    }else{
+        document.getElementById('errMsg').setAttribute('style','');
     }
 });
