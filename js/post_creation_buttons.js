@@ -28,7 +28,8 @@ imgButton.addEventListener('click',event => {
     if(numImg < 10) {
 
         const newNode = document.createElement('div');
-        const elem = '<input class="col-6" type="file" id="f' + numImg
+        const elem = '<label class="img-label" for="f' + numImg + '">Immagine ' + numImg + '</label>'
+                    + '<input class="col-6" type="file" id="f' + numImg
                     + '" name="f' + numImg + '" accept="video/*,image/*"/>'
                     + '<label class="col-3" for="alt1">Testo alternativo:</label>'
                     + '<input class="col-3" type="text" id="alt' + numImg

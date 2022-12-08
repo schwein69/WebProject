@@ -23,6 +23,7 @@
     <legend class="text-start">Immagini</legend>
     <div class="container-fluid p-0 overflow-hidden">
         <div class="row my-1">
+        <label class="img-label" for="f1">Immagine 1</label>
         <input class="col-6" type="file" id="f1" name="f1" accept="video/*,image/*"/> 
         <label class="col-3" for="alt1">Testo alternativo:</label>
         <input class="col-3" type="text" id="alt1" name="alt1"/>
