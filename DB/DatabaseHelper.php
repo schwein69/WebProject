@@ -89,7 +89,10 @@ class DatabaseHelper{
     }
 
     public function insertPost($user, $testo, $dataPost){
-        $stmt = "INSERT INTO posts(idUser,testo,dataPost) VALUES ()";
+        $stmt = $this->db->prepare("INSERT INTO posts(idUser,testo,dataPost) VALUES (?,?,?)");
+        $stmt->bind_param("iss",$user,$testo,$dataPost);
+        $stmt->execute();
+        return $this->db->insert_id;
     }
 
     public function addTagsToPost($postId, $tags){

@@ -1,6 +1,6 @@
 <?php
 //TODO check session
-
+include_once 'bootstrap.php';
 
 //taking info about files to upload 
 $files_to_upload = array();
@@ -14,12 +14,15 @@ if(!isset($_POST["testo"]) && count($files_to_upload) == 0){
    header('Location: new_post.php'); 
 }
 
+echo "inserting<br>";
 
 //TODO remove this, is just for testing
 $user["idUtente"] = 1;
-$postId = $dbh->insertPost($user["idUtente"], $_POST["testo"], getdate('Y-m-d'), $tags);
+$testo = isset($_POST["testo"]) ? $_POST["testo"] : "";
+$now = date('Y-m-d');
+$postId=$dbh->insertPost($user["idUtente"], $testo, $now);
 
-
+echo "IdPost ".$postId."<br>";
 //get tags
 $tags = array();
 for($i=1;$i<10;$i++){
