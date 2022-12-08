@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-<form action="post_creation.php" method="POST" class="col-12 col-md-8 mx-auto">
+<form action="post_creation.php" method="POST" enctype="multipart/form-data" class="col-12 col-md-8 mx-auto">
     <label for="testo" class="text-start col-12 fs-4">Testo</label>
     <textarea id="testo" name="testo" rows="4" class="text-start col-10 mx-auto" placeholder="Scrivi qui il testo..."></textarea>
     <fieldset>
