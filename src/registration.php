@@ -25,10 +25,7 @@ if(isset($_POST["submit"])){
             $msg = "Email esistente!";
         }
     }
-    echo '<script>
-    alert("${msg}");
-    window.location.href="login.php";
-    </script>';
+    echo "<script type='text/javascript'> alert('$msg'); window.location.href='login.php'; </script>";
 }
 
 $templateParams["content"] = "registration-template.php";
@@ -37,6 +34,7 @@ $templateParams["loginBottomNav"]=true;;
    
 
 require '../template/base.php';
-echo '<script src="../javascript/registrationchecker.js" type="text/javascript"></script>'
+$templateParams["js"] = array("https://unpkg.com/axios/dist/axios.min.js","../javascript/registrationchecker.js");
+
 
 ?>

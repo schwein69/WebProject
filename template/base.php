@@ -15,34 +15,40 @@
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
-
+                <?php if (!isset($templateParams["loginTopNav"])): ?>
                 <div class="col-12 col-md-8 mx-auto">
-                    <div class="container-fluid" style="background-color: #49acf3;">
-                    <div class="row">
-                        <div class="col-6 col-md-7 my-auto text-end">
-                        <h1><a href="./index.php">Lynkzone</a></h1>
-                        </div>
-                        <div class="col-6 col-md-5">
-                        <?php if (!isset($templateParams["loginTopNav"])): ?>
-                        <nav class="navbar navbar-expand-md navbar-light">
-                            <ul class="nav nav-pills ms-auto">
-                                <?php if (isset($templateParams["profileTopNav"])): ?>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
-                                                           class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
-                                <?php else: ?>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
-                                            class="bi bi-plus-circle"></span></button></li>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
-                                </li>
-                                <?php endif; ?>
-                            </ul>
-                        </nav>
+                    <?php else: ?>
+                    <div class="col-12 col-md-8 mx-auto p-0">
                         <?php endif; ?>
+                        <div class="container-fluid" style="background-color: #49acf3;">
+                            <div class="row">
+                                <div class="col-6 col-md-7 my-auto text-end">
+                                    <h1><a href="./index.php">Lynkzone</a></h1>
+                                </div>
+                                <div class="col-6 col-md-5">
+                                    <?php if (!isset($templateParams["loginTopNav"])): ?>
+                                    <nav class="navbar navbar-expand-md navbar-light">
+                                        <ul class="nav nav-pills ms-auto">
+                                            <?php if (isset($templateParams["profileTopNav"])): ?>
+                                            <li class="mx-1"> <button type="button" class="btn btn-light"><span
+                                                        class="bi bi-gear-fill"
+                                                        onClick="window.location.href='../src/settings.php'"></span></button>
+                                            </li>
+                                            <?php else: ?>
+                                            <li class="mx-1"> <button type="button" class="btn btn-light"><span
+                                                        class="bi bi-plus-circle"></span></button></li>
+                                            <li class="mx-1"> <button type="button" class="btn btn-light"><span
+                                                        class="bi bi-bell"></span></button>
+                                            </li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </nav>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
-            </div>
         </header>
         <main class="text-center mb-5 mt-2">
             <?php
@@ -57,12 +63,13 @@
                 <nav class="col-12 col-md-8 mx-auto">
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
-                            <a href="../src/index.php" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
+                            <a href="../src/index.php" class="btn btn-primary"><span
+                                    class="bi bi-house-fill"></span><br>
                                 <div>Home</div>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span>
+                            <a href="../src/search.php" class="btn btn-primary"><span class="bi bi-search"></span>
                                 <div>Search</div>
                             </a>
                         </li>
@@ -86,6 +93,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <?php
+        if (isset($templateParams["js"])):
+            foreach ($templateParams["js"] as $script):
+        ?>
+    <script src="<?php echo $script; ?>"></script>
+    <?php
+            endforeach;
+        endif;
+        ?>
 </body>
 
 </html>

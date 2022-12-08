@@ -87,5 +87,38 @@ class DatabaseHelper{
         
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
+    public function getRandomPosts($n){
+        $stmt = $this->db->prepare("
+                                    SELECT DISTINCT
+                                            P.*, U.username, U.fotoProfilo, U.idUtente
+                                        FROM
+                                            posts P,
+                                            utenti U,
+                                            posttags T,
+                                            contenutimultimediali C,
+                                            tags TA
+                                        WHERE
+                                            P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost
+                                            ORDER BY RAND() LIMIT ?");
+        $stmt->bind_param('i',$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function getPostContents($postId){
+        $stmt = $this->db->prepare("
+                                    SELECT C.*
+                                    FROM
+                                    posts P,
+                                    contenutimultimediali C
+                                    WHERE
+                                    C.idPost = P.idPost AND P.idPost=?");
+        $stmt->bind_param('i',$postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
