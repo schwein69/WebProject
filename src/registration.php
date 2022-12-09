@@ -34,7 +34,7 @@ $templateParams["loginBottomNav"]=true;;
    
 
 require '../template/base.php';
-$templateParams["js"] = array("https://unpkg.com/axios/dist/axios.min.js","../javascript/registrationchecker.js");
+$templateParams["js"] = array("https://unpkg.com/axios/dist/axios.min.js","../js/registrationchecker.js");
 
 
 ?>

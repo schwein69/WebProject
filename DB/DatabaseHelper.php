@@ -44,12 +44,12 @@ class DatabaseHelper{
     }
 
     public function getUserData($idUser){
-        $query = "SELECT * FROM utenti WHERE AND idAutore=?";
+        $query = "SELECT * FROM utenti WHERE idUtente=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idUser);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
    
     public function getPostData($id){
@@ -87,23 +87,68 @@ class DatabaseHelper{
         
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
-    public function getRandomPosts($n){
+    public function getRandomPosts($n,$idUser){
         $stmt = $this->db->prepare("
-                                    SELECT DISTINCT
-                                            P.*, U.username, U.fotoProfilo, U.idUtente
-                                        FROM
-                                            posts P,
-                                            utenti U,
-                                            posttags T,
-                                            contenutimultimediali C,
-                                            tags TA
-                                        WHERE
-                                            P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost
-                                            ORDER BY RAND() LIMIT ?");
-        $stmt->bind_param('i',$n);
+                                SELECT DISTINCT
+                                    P.*, U.username, U.fotoProfilo, U.idUtente
+                                FROM
+                                    posts P,
+                                    utenti U,
+                                    posttags T,
+                                    contenutimultimediali C,
+                                    tags TA
+                                WHERE
+                                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U.idUtente != ?
+                                    ORDER BY RAND() LIMIT ?;");
+        $stmt->bind_param('ii',$idUser,$n);
         $stmt->execute();
         $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProfilePosts($n,$idUser){
+        $stmt = $this->db->prepare("
+                                SELECT DISTINCT
+                                    P.*
+                                FROM
+                                    posts P,
+                                    utenti U
+                                WHERE
+                                    P.idUser = U.idUtente AND U.idUtente = ?
+                                ORDER BY
+                                    P.dataPost
+                                LIMIT ?;");
+        $stmt->bind_param('ii',$idUser,$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFollowedPosts($idUser){//id dell'utente loggato
+        $stmt = $this->db->prepare("
+                                SELECT DISTINCT
+                                    P.*,
+                                    U2.username,
+                                    U2.fotoProfilo,
+                                    U2.idUtente
+                                FROM
+                                    posts P,
+                                    utenti U1,
+                                    utenti U2,
+                                    posttags T,
+                                    relazioniutenti RE,
+                                    contenutimultimediali C,
+                                    tags TA
+                                WHERE
+                                    P.idUser = U2.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U2.idUtente != U1.idUtente AND U1.idUtente = RE.idFollower AND U2.idUtente = RE.idFollowed
+                                    AND U1.idUtente = ?
+                                ORDER BY
+                                    P.dataPost;");
+        $stmt->bind_param('i',$idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     

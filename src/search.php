@@ -7,7 +7,7 @@ if (!isUserLoggedIn()) {
     window.location.href="login.php";
     </script>';
 }
-$posts = $dbh->getRandomPosts(2);
+$posts = $dbh->getRandomPosts(5,$_SESSION["idUtente"]);
 $templateParams["content"] = "search-template.php";
 require '../template/base.php';
 

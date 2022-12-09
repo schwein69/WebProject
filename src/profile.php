@@ -7,7 +7,8 @@ if(!isUserLoggedIn()){
     window.location.href="login.php";
     </script>';
 } else {
-    
+    $userData = $dbh->getUserData($_SESSION["idUtente"]);
+    $posts = $dbh->getProfilePosts(5,$_SESSION["idUtente"]);
     $templateParams["content"] = "profilepage.php";
     $templateParams["profileTopNav"]=true;
 }

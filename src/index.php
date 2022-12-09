@@ -7,6 +7,7 @@ if (!isUserLoggedIn()) {
     window.location.href="login.php";
     </script>';
 } else {
+    $posts = $dbh->getFollowedPosts($_SESSION["idUtente"]);
     $templateParams["content"] = "home.php";
 }
 
