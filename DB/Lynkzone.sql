@@ -80,7 +80,7 @@ CREATE TABLE `contenutimultimediali` (
 CREATE TABLE `messaggi` (
   `idMessaggio` int(11) NOT NULL,
   `testoMsg` varchar(2712) NOT NULL,
-  `oraMsg` time NOT NULL,
+  `msgTimestamp` datetime NOT NULL,
   `letto` tinyint(1) NOT NULL,
   `idMittente` int(11) NOT NULL,
   `idChat` int(11) NOT NULL
