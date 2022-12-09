@@ -163,5 +163,29 @@ class DatabaseHelper{
         var_dump($chats);
         return $chats;
     }
+
+    function isPostLiked($user, $postId){
+        $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+    function likePost($user, $postId){
+        $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike+1 WHERE idPost=?');    
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+    }
+    function dislikePost($user, $postId){
+        $stmt = $this->db->prepare("DELETE FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike-1 WHERE idPost=?');    
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+    }
 }
 ?>

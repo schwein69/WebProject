@@ -103,10 +103,10 @@ CREATE TABLE `notifiche` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `postpaciuti`
+-- Table structure for table `postpiaciuti`
 --
 
-CREATE TABLE `postpaciuti` (
+CREATE TABLE `postpiaciuti` (
   `idPostPiaciuto` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idPost` int(11) NOT NULL

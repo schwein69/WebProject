@@ -27,15 +27,16 @@
                         <nav class="navbar navbar-expand-md navbar-light">
                             <ul class="nav nav-pills ms-auto">
                                 <?php if (isset($templateParams["profileTopNav"])): ?>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
-                                                           class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
+                                <li class="mx-1"> <button role="link" type="button" class="btn btn-light">
+                                    <img src="../imgs/icons/gear-fill.svg" alt="Impostazioni"/>
+                                    </button></li>
                                 <?php else: ?>
                                 <li class="mx-1">
-                                    <button type="button" class="btn btn-light">
+                                    <button role="link" type="button" class="btn btn-light">
                                     <img src="../imgs/icons/plus-circle.svg" alt="Crea post"/>
                                     </button></li>
                                 <li class="mx-1">
-                                    <button type="button" class="btn btn-light">
+                                    <button  role="link" type="button" class="btn btn-light">
                                     <img src="../imgs/icons/bell.svg" alt="Notifiche"/>
                                     </button>
                                 </li>
