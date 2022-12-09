@@ -5,5 +5,6 @@ require_once 'bootstrap.php';
 //TODO check session
 
 $templateParams["content"] = 'create_post.php'; 
+$templateParams["title"] = 'Lynkzone - nuovo post'; 
 require '../template/base.php';
 ?>

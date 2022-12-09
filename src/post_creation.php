@@ -50,5 +50,6 @@ foreach($files_to_upload as $file){
 }
 
 $templateParams["content"]="post_creation_result.php"; 
+$templateParams["title"]=count($errMsgs) == 0? "Lynkzone - post creato" : "Lynkzone - problema creazione post";
 require '../template/base.php';
 ?>

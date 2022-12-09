@@ -22,5 +22,6 @@ $user = $dbh->getAuthorName($post_data['idUser']);
 $comments = $dbh->getPostComments($_GET['postid']);
 
 $templateParams["content"] = 'full_post.php'; 
+$templateParams["title"] = 'Lynkzone - post'; 
 require '../template/base.php';
 ?>
