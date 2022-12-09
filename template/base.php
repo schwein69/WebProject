@@ -30,9 +30,14 @@
                                 <li class="mx-1"> <button type="button" class="btn btn-light"><span
                                                            class="bi bi-gear-fill" onClick="window.location.href='../src/settings.php'"></span></button></li>
                                 <?php else: ?>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span
-                                            class="bi bi-plus-circle"></span></button></li>
-                                <li class="mx-1"> <button type="button" class="btn btn-light"><span class="bi bi-bell"></span></button>
+                                <li class="mx-1">
+                                    <button type="button" class="btn btn-light">
+                                    <img src="../imgs/icons/plus-circle.svg" alt="Crea post"/>
+                                    </button></li>
+                                <li class="mx-1">
+                                    <button type="button" class="btn btn-light">
+                                    <img src="../imgs/icons/bell.svg" alt="Notifiche"/>
+                                    </button>
                                 </li>
                                 <?php endif; ?>
                             </ul>
@@ -58,23 +63,23 @@
                     <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
                         <li class="nav-item col-3">
                             <a href="../src/index.php" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
-                                <div>Home</div>
+                                <h2>Home</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
                             <a href="#" class="btn btn-primary"><span class="bi bi-search"></span>
-                                <div>Search</div>
+                                <h2>Search</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
                             <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
-                                <div>Chat</div>
+                                <h2>Chat</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
                             <a href="../src/profile.php" class="btn btn-primary"><span
                                     class="bi bi-person-fill"></span><br>
-                                <div>Profile</div>
+                                <h2>Profile</h2>
                             </a>
                         </li>
                     </ul>

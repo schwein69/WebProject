@@ -5,7 +5,7 @@ button {
   box-shadow: 0 0 5px 2px black;
 }
 
-footer nav ul li a div{
+footer nav ul li a h2{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:black;
   font-size: large;
