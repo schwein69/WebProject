@@ -160,7 +160,6 @@ class DatabaseHelper{
             $arrayElem["fotoProfilo"] = $result[0]['fotoProfilo'];
             array_push($chats,$arrayElem);      
         }
-        var_dump($chats);
         return $chats;
     }
 

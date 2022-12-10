@@ -16,8 +16,8 @@
         <header>
             <div class="row">
 
-                <div class="col-12 col-md-8 mx-auto">
-                    <div class="container-fluid" style="background-color: #49acf3;">
+                <div class="col-12 col-md-8 mx-auto" style="background-color: #49acf3;">
+                    <div class="container-fluid">
                     <div class="row">
                         <div class="col-6 col-md-7 my-auto text-end">
                         <h1><a href="./index.php">Lynkzone</a></h1>
@@ -60,8 +60,8 @@
         <?php if (!isset($templateParams["loginBottomNav"])): ?>
         <footer class="pb-5">
             <div class="fixed-bottom row">
-                <nav class="col-12 col-md-8 mx-auto">
-                    <ul class="nav nav-pills nav-justified" style="background-color: #49acf3;">
+                <nav class="col-12 col-md-8 mx-auto p-0" style="background-color: #49acf3;">
+                    <ul class="nav nav-pills nav-justified">
                         <li class="nav-item col-3">
                             <a href="../src/index.php" class="btn btn-primary"><span class="bi bi-house-fill"></span><br>
                                 <h2>Home</h2>
