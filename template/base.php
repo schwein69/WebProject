@@ -27,7 +27,7 @@
                         <nav class="navbar navbar-expand-md navbar-light">
                             <ul class="nav nav-pills ms-auto">
                                 <?php if (isset($templateParams["profileTopNav"])): ?>
-                                <li class="mx-1"> <button role="link" type="button" class="btn btn-light">
+                                <li class="mx-1"> <button role="link" type="button" class="btn btn-light"  onClick="window.location.href='../src/settings.php'">
                                     <img src="../imgs/icons/gear-fill.svg" alt="Impostazioni"/>
                                     </button></li>
                                 <?php else: ?>
@@ -66,7 +66,7 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-search"></span>
+                            <a href="../src/search.php" class="btn btn-primary"><span class="bi bi-search"></span>
                                 <h2>Search</h2>
                             </a>
                         </li>

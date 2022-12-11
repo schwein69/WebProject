@@ -1,6 +1,3 @@
-<script>
-    document.getElementById("search").addEventListener('click', search);
-</script>
 <script src="../js/search.js"></script>
 <div class="row" id="searchbar">
     <div class="col-md-2"></div>
