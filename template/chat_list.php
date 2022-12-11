@@ -1,3 +1,4 @@
+<!-- TODO search feature, limit number of chats, infinite scroll (?) -->
 <div class="row col-12 col-md-8 mx-auto">
 <input id="searchBox" type="text" placeholder="Cerca..."/>
 </div>

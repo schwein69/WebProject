@@ -186,5 +186,19 @@ class DatabaseHelper{
         $stmt->bind_param("i",$postId);
         $stmt->execute();
     }
+    //it fetches chat messages starting from the last and goint up to numMsgs messages
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10){
+        //retrieving chats
+        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente "
+                ."FROM messaggi WHERE idChat=? "
+                ."ORDER BY msgTimestamp DESC "
+                ."LIMIT ?,?";
+        $stmt = $this->db->prepare($query);    
+        $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
+        $stmt->execute();
+        $queryRes = $stmt->get_result(); 
+        return $queryRes->fetch_all(MYSQLI_ASSOC);;
+    }
+
 }
 ?>
