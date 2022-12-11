@@ -19,6 +19,8 @@ if(!isUserLoggedIn()){
     $numFollowed = count($dbh->getNumFollowed($userid));
     $templateParams["content"] = "profilepage.php";
     $templateParams["profileTopNav"]=true;
+    $templateParams["title"] = 'Lynkzone - profile'; 
 }
+
 require '../template/base.php';
 ?>

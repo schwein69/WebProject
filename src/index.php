@@ -7,11 +7,10 @@ if (!isUserLoggedIn()) {
     window.location.href="login.php";
     </script>';
 } else {
-    $posts = $dbh->getFollowedPosts($_SESSION["idUtente"]);
+    $posts = $dbh->getFollowedPosts($_SESSION["idUtente"]);//quelli se seguo io
     $templateParams["content"] = "home.php";
 }
-
-
+$templateParams["title"] = 'Lynkzone - home'; 
 require '../template/base.php';
 
 ?>

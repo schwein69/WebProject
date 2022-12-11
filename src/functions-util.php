@@ -49,7 +49,7 @@ function uploadFile($path, $image){
         $i = 1;
         do{
             $i++;
-            $imageName = pathinfo(basename($image["name"]), PATHINFO_FILENAME)."_$i.".$imageFileType;
+            $imageName = pathinfo(basename($image["name"]), PATHINFO_FILENAME)."_$i.".$fileType;
         }
         while(file_exists($path.$imageName));
         $fullPath = $path.$imageName;

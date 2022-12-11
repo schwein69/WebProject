@@ -6,7 +6,7 @@ function like(event){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         const response = JSON.parse(this.responseText);
-        const numLikePlace = likeButton.nextSibling;
+        const numLikePlace = likeButton.nextElementSibling;
         let likeImg = '';
         let numLike = '';
         if(response.liked){

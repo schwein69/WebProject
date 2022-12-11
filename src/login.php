@@ -19,6 +19,7 @@ if(isUserLoggedIn()){
     $templateParams["loginBottomNav"]=true;
    
 }
+$templateParams["title"] = 'Lynkzone - login'; 
 require '../template/base.php';
 
 ?>

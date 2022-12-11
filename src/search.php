@@ -22,6 +22,7 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
     $isPost = 1;
 }
 $templateParams["selector"] = $isPost;
+$templateParams["title"] = 'Lynkzone - search'; 
 $templateParams["content"] = "search-template.php";
 require '../template/base.php';
 

@@ -30,20 +30,21 @@
 
                     <?php $immaginiPost = $dbh->getPostContents($post["idPost"]) ?>
                     <?php $active = true; ?>
-                    
-                    <?php if (count($immaginiPost) != 1) : ?>
+
+                    <?php if (count($immaginiPost) != 1): ?>
 
                     <div id="carousel" class="carousel slide" data-bs-interval="false">
                         <div class="carousel-inner">
 
-                        <?php foreach ($immaginiPost as $immagine): ?>
-                        <?php if ($active) {
-                            echo "<div class='carousel-item active'>";
-                            $active = false;
-                        } else {
-                            echo "<div class='carousel-item'>";
-                        } ?>
-                            <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immagine["percorso"] ?>" alt="<?php echo $immagine["descrizione"] ?>" style="width: 50%; display: block;" />
+                            <?php foreach ($immaginiPost as $immagine): ?>
+                            <?php if ($active) {
+                        echo "<div class='carousel-item active'>";
+                        $active = false;
+                    } else {
+                        echo "<div class='carousel-item'>";
+                    } ?>
+                            <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                                alt="<?php echo $immagine["descrizione"] ?>" style="width: 50%; display: block;" />
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -54,22 +55,30 @@
                         <span>Next</span>
                     </a>
                 </div>
-                    <?php else: ?>
-                    
+                <?php else: ?>
+
                 <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" style="width: 50%; display: block;" />
                 <?php endif; ?>
 
 
-                <a href="#" value="<?php echo $post["idPost"]?>" class="btn btn-primary ms-auto" style="display:block ; width: fit-content;">Espandi</a>
+                <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
+                    style="display:block ; width: fit-content;">Espandi</a>
             </div>
+            <?php $post_data = $dbh->getPostData($post["idPost"]);
+                  $post_data["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);         
+            ?>
             <div class="card-footer">
                 <ul class="nav nav-pills">
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-heart"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
+                    <li class="nav-item mx-2"> 
+                        <button type="button" id="like<?php echo $post["idPost"] ?>" class="btn btn-light">
+                        <img src="<?php echo $post_data["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>" alt="Like post"/>
+                        </button>
+                        <span><?php if($post_data['numLike']>0){echo $post_data['numLike'];}?></span>
+                    </li>
+                    <li class="nav-item mx-2"> <button type="button" id="chat<?php echo $post["idPost"] ?>" class="btn btn-light"><span
                                 class="bi bi-chat"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
+                    <li class="nav-item mx-2"> <button type="button" id="save<?php echo $post["idPost"] ?>" class="btn btn-light"><span
                                 class="bi bi-star"></span></button></li>
                 </ul>
             </div>
@@ -79,3 +88,10 @@
 </div>
 <div class="col-md-2"></div>
 </div>
+
+<script>
+    const btns = document.querySelectorAll('button[id^=like]')
+    btns.forEach(btn => {
+        btn.addEventListener('click', like);
+    });
+</script>
