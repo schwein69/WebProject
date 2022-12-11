@@ -2,15 +2,17 @@
 require_once 'bootstrap.php';
 
 //check params and session
-//TODO check session
-
+redirectNotLoggedUser();
 if(!isset($_GET["chatId"])){
     header('Location: all_chats.php');
 }
-//TODO use $_SESSION
-$templateParams["currentUser"] = 1;
+
+
+$templateParams["currentUser"] = $_SESSION["idUtente"];
 $templateParams["messages"] = $dbh->getRecentMessagesFromChat($_GET["chatId"]);
 $templateParams["content"] = 'chat_content.php';
 $templateParams["title"] = 'Lynkzone - '; 
+$templateParams["js"] = array();
+array_push($templateParams["js"],'../js/chat.js');
 require '../template/base.php';
 ?>

@@ -2,13 +2,14 @@
 require_once 'bootstrap.php';
 
 //check params and session
-//TODO check session
-//TODO manage images and videos
-//TODO usernames must be links to profile?userid=xyz
-//TODO user must be $_SESSION
+redirectNotLoggedUser();
 if(!isset($_GET['postid'])){
     header("Location: index.php");
 }
+//TODO manage images and videos
+//TODO usernames must be links to profile?userid=xyz
+//TODO user must be $_SESSION
+
 
 
 //fetch post from db
@@ -18,8 +19,8 @@ $post_data = $dbh->getPostData($_GET['postid']);
 if(is_null($post_data)){
     header("Location: index.php");
 }
-$user=1;
-$post_data["liked"]=$dbh->isPostLiked($user,$_GET['postid']);
+
+$post_data["liked"]=$dbh->isPostLiked($_SESSION["idUtente"],$_GET['postid']);
 $user = $dbh->getAuthorName($post_data['idUser']);
 $comments = $dbh->getPostComments($_GET['postid']);
 

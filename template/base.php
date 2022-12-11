@@ -71,7 +71,7 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
+                            <a href="all_chats.php" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
                         </li>

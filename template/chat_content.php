@@ -1,15 +1,26 @@
 <div class="row">
-<div class="col-12 col-md-8 mx-auto">
+<div class="col-12 col-md-8 mx-auto p-0">
 <?php for ($i=count($templateParams["messages"])-1;  $i>=0; $i--):?>
-   <p class="<?php echo $templateParams["currentUser"] == $templateParams["messages"][$i]["idMittente"]? "text-start" : "text-end";?>">
+    <div style="background-color:green;max-width:50%;" class="my-1 <?php echo $templateParams["currentUser"] == $templateParams["messages"][$i]["idMittente"]? "text-start" : "text-end ms-auto";?>">
+    <p>
     <?php echo $templateParams["messages"][$i]["testoMsg"];?>
     </p>
+    <span class="text-end">
+    <?php echo date('d-m-Y H:i',strtotime($templateParams["messages"][$i]["msgTimestamp"]));?>
+    </span>
+    </div>
 <?php endfor;?>
 </div>
 </div>
-<div class="row sticky-top">
+<div class="row">
     <div class="col-12 col-md-8 mx-auto">
-    <input type="text" placeholder="Scrivi qui il tuo messaggio"/>
-    <input type="submit" value="Invia"/>
+    <p id="errMsg"></p>
     </div>
+</div>
+<div class="row sticky-top">
+    <form class="col-12 col-md-8 mx-auto">
+    <input type="hidden" name="chatid" value="<?php echo $_GET["chatId"];?>"/>
+    <input id="inputMsg" name="inputMsg" type="text" placeholder="Scrivi qui il tuo messaggio"/>
+    <input type="submit" value="Invia"/>
+    </form>
 </div>
