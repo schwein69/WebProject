@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-12 col-md-8 mx-auto p-0">
 <?php for ($i=count($templateParams["messages"])-1;  $i>=0; $i--):?>
-    <div style="background-color:green;max-width:50%;" class="my-1 <?php echo $templateParams["currentUser"] == $templateParams["messages"][$i]["idMittente"]? "text-start" : "text-end ms-auto";?>">
+    <div class="chat-msg my-1 <?php echo $templateParams["currentUser"] != $templateParams["messages"][$i]["idMittente"]? "text-start" : "text-end ms-auto";?>">
     <p>
     <?php echo $templateParams["messages"][$i]["testoMsg"];?>
     </p>

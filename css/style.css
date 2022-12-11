@@ -55,6 +55,13 @@ form > fieldset button {
 form .img-label{
   display: none;
 }
+
+div.chat-msg{
+  background-color:green;
+  width: fit-content;
+  max-width:50%;
+}
+
 @media only screen and (min-width: 768px) {
   
   body > main section ul li span{

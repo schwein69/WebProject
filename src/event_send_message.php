@@ -1,19 +1,19 @@
 <?php 
 require_once 'bootstrap.php';
 
-//TODO check session
-//TODO manage like/dislike
-//TODO use $_SESSION["idUtente"]
-$postid=$_POST["postid"];
-$user=1;
-$result["liked"]=$dbh->isPostLiked($user, $postid);
-if($result["liked"]){
-    $dbh->dislikePost($user, $postid);
+redirectNotLoggedUser();
+$result["status"] = false;
+if(isset($_POST["chatid"]) && isset($_POST["msg"])){
+    $msg = trim($_POST["msg"]);
+    if($msg != ""){
+        $dbh->insertMessage($_POST["chatid"],$_SESSION["idUtente"], $msg);
+        $result["status"] = true;
+    } else {
+        $result["err"] = "Il messaggio non può essere vuoto";
+    }
 } else {
-    $dbh->likePost($user, $postid);
+    $result["err"] = "Errore di comunicazione: parametri non presenti";
 }
-$result["liked"]=!$result["liked"];
-
 header('Content-Type: application/json');
 echo json_encode($result);
 ?>
