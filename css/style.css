@@ -5,7 +5,7 @@ button {
   box-shadow: 0 0 5px 2px black;
 }
 
-footer nav ul li a div{
+footer nav ul li a h2{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:black;
   font-size: large;
@@ -45,6 +45,15 @@ h1 a{
   text-align: center;
   border-radius: 15px;
   background: #fff;
+}
+
+/* Form buttons (used in new_post.php)*/
+form > fieldset button {
+  width: fit-content!important;
+}
+
+form .img-label{
+  display: none;
 }
 @media only screen and (min-width: 768px) {
   

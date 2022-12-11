@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2022 at 06:44 PM
+-- Generation Time: Dec 08, 2022 at 11:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -80,7 +80,7 @@ CREATE TABLE `contenutimultimediali` (
 CREATE TABLE `messaggi` (
   `idMessaggio` int(11) NOT NULL,
   `testoMsg` varchar(2712) NOT NULL,
-  `oraMsg` time NOT NULL,
+  `msgTimestamp` datetime NOT NULL,
   `letto` tinyint(1) NOT NULL,
   `idMittente` int(11) NOT NULL,
   `idChat` int(11) NOT NULL
@@ -103,10 +103,10 @@ CREATE TABLE `notifiche` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `postpaciuti`
+-- Table structure for table `postpiaciuti`
 --
 
-CREATE TABLE `postpaciuti` (
+CREATE TABLE `postpiaciuti` (
   `idPostPiaciuto` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idPost` int(11) NOT NULL
@@ -122,8 +122,8 @@ CREATE TABLE `posts` (
   `idPost` int(11) NOT NULL,
   `dataPost` date NOT NULL,
   `testo` varchar(2000) DEFAULT NULL,
-  `numLike` int(11) NOT NULL,
-  `numCommenti` int(11) NOT NULL,
+  `numLike` int(11) NOT NULL DEFAULT 0,
+  `numCommenti` int(11) NOT NULL DEFAULT 0,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

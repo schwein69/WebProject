@@ -238,5 +238,119 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
+    public function insertPost($user, $testo, $dataPost){
+        $stmt = $this->db->prepare("INSERT INTO posts(idUser,testo,dataPost) VALUES (?,?,?)");
+        $stmt->bind_param("iss",$user,$testo,$dataPost);
+        $stmt->execute();
+        return $this->db->insert_id;
+    }
+
+    private function getTagId($tag) {
+        $stmt = $this->db->prepare("SELECT idTag FROM tags WHERE nomeTag=?");
+        $stmt->bind_param("s",$tag);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->fetch_all(MYSQLI_NUM);
+        return count($res) > 0 ? $res[0][0] : -1;
+    }
+
+    private function insertTag($tag) {
+        $stmt = $this->db->prepare("INSERT INTO tags(nomeTag) VALUES (?)");
+        $stmt->bind_param("s",$tag);
+        $stmt->execute();
+        return $this->db->insert_id;
+    }
+
+    public function addTagsToPost($postId, $tags){
+        $stmt = $this->db->prepare("INSERT INTO posttags(idPost,idTag) VALUES (?,?)");
+        foreach($tags as $tag){
+            $tagId = $this->getTagId($tag);
+            if($tagId < 0){
+                $tagId = $this->insertTag($tag);
+            }
+            $stmt->bind_param("ii",$postId,$tagId);
+            $stmt->execute();
+        }
+    }
+
+    public function addMediaToPost($postId, $path, $desc, $fileType){
+        $stmt = $this->db->prepare("INSERT INTO contenutimultimediali(formato,percorso,idPost,descrizione) VALUES (?,?,?,?)");    
+        $stmt->bind_param("ssis",$fileType,$path,$postId,$desc);
+        $stmt->execute();  
+    }
+
+    public function getRecentChats($user, $initialChat=0, $numChats=5){
+        //retrieving chats
+       $query = "SELECT idChat, usr1, usr2, anteprimachat, "
+                   ."(SELECT max(msgTimestamp) "
+                   ."FROM messaggi M "
+                   ."WHERE C.idChat = M.idChat) AS tempo "
+                ."FROM chat C WHERE usr1=? OR usr2=? "
+                ."ORDER BY tempo DESC "
+                ."LIMIT ?,?";
+        $stmt = $this->db->prepare($query);    
+        $stmt->bind_param("iiii",$user,$user,$initialChat,$numChats);
+        $stmt->execute();
+        $queryRes = $stmt->get_result(); 
+        $result = $queryRes->fetch_all(MYSQLI_ASSOC);
+        //retrieving info about users
+        $stmt = $this->db->prepare("SELECT username, fotoProfilo FROM utenti WHERE idUtente=?");
+        $chats = array();
+        foreach($result as $userchat){
+            $arrayElem["idChat"] = $userchat["idChat"]; 
+            $arrayElem["anteprimaChat"] = $userchat["anteprimachat"];
+            $arrayElem["idUtente"] = $userchat["usr1"] == $user
+                                    ? $userchat["usr2"]
+                                    : $userchat["usr1"];
+            $stmt->bind_param("i",$arrayElem["idUtente"]);
+            $stmt->execute();
+            $queryRes = $stmt->get_result(); 
+            $result = $queryRes->fetch_all(MYSQLI_ASSOC);
+            $arrayElem["username"] = $result[0]['username'];
+            $arrayElem["fotoProfilo"] = $result[0]['fotoProfilo'];
+            array_push($chats,$arrayElem);      
+        }
+        return $chats;
+    }
+
+    function isPostLiked($user, $postId){
+        $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+    function likePost($user, $postId){
+        $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike+1 WHERE idPost=?');    
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+    }
+    function dislikePost($user, $postId){
+        $stmt = $this->db->prepare("DELETE FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike-1 WHERE idPost=?');    
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+    }
+    //it fetches chat messages starting from the last and goint up to numMsgs messages
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10){
+        //retrieving chats
+        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente "
+                ."FROM messaggi WHERE idChat=? "
+                ."ORDER BY msgTimestamp DESC "
+                ."LIMIT ?,?";
+        $stmt = $this->db->prepare($query);    
+        $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
+        $stmt->execute();
+        $queryRes = $stmt->get_result(); 
+        return $queryRes->fetch_all(MYSQLI_ASSOC);;
+    }
+
 }
 ?>
