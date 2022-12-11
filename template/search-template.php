@@ -1,3 +1,22 @@
+<script>
+    document.getElementById("search").addEventListener('click', search);
+</script>
+<script src="../js/search.js"></script>
+<div class="row" id="searchbar">
+    <div class="col-md-2"></div>
+    <div class="col-12 col-md-8 my-2">
+        <form action="" method="GET">
+            <input type="radio" id="user" name="searchOption" value="User" required>
+            <label for="user">USER</label>
+            <input type="radio" id="tag" name="searchOption" value="Tag">
+            <label for="tag">TAG</label>
+            <input class="col-6" type="text" name="searchValue" placeholder="Search" style="" required />
+            <input class="col-2" type="submit"></input>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<?php if($templateParams["selector"] == true):?>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-12 col-md-8">
@@ -30,20 +49,21 @@
 
                     <?php $immaginiPost = $dbh->getPostContents($post["idPost"]) ?>
                     <?php $active = true; ?>
-                    
-                    <?php if (count($immaginiPost) != 1) : ?>
+
+                    <?php if (count($immaginiPost) != 1): ?>
 
                     <div id="carousel" class="carousel slide" data-bs-interval="false">
                         <div class="carousel-inner">
 
-                        <?php foreach ($immaginiPost as $immagine): ?>
-                        <?php if ($active) {
-                            echo "<div class='carousel-item active'>";
-                            $active = false;
-                        } else {
-                            echo "<div class='carousel-item'>";
-                        } ?>
-                            <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immagine["percorso"] ?>" alt="<?php echo $immagine["descrizione"] ?>" style="width: 50%; display: block;" />
+                            <?php foreach ($immaginiPost as $immagine): ?>
+                            <?php if ($active) {
+                        echo "<div class='carousel-item active'>";
+                        $active = false;
+                    } else {
+                        echo "<div class='carousel-item'>";
+                    } ?>
+                            <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                                alt="<?php echo $immagine["descrizione"] ?>" style="width: 50%; display: block;" />
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -54,23 +74,24 @@
                         <span>Next</span>
                     </a>
                 </div>
-                    <?php else: ?>
-                    
+                <?php else: ?>
+
                 <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" style="width: 50%; display: block;" />
                 <?php endif; ?>
 
 
-                <a href="#" value="<?php echo $post["idPost"]?>" class="btn btn-primary ms-auto" style="display:block ; width: fit-content;">Espandi</a>
+                <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
+                    style="display:block ; width: fit-content;">Espandi</a>
             </div>
             <div class="card-footer">
                 <ul class="nav nav-pills">
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-heart"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-chat"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-star"></span></button></li>
+                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"
+                            id="like<?php echo $post["idPost"]?>"><span class="bi bi-heart"></span></button></li>
+                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"
+                            id="chat<?php echo $post["idPost"]?>"><span class="bi bi-chat"></span></button></li>
+                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"
+                            id="star<?php echo $post["idPost"]?>"><span class="bi bi-star"></span></button></li>
                 </ul>
             </div>
     </div>
@@ -79,3 +100,28 @@
 </div>
 <div class="col-md-2"></div>
 </div>
+<?php else :?>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-12 col-md-8">
+        <?php foreach ($userData as $user): ?>
+        <div class="card col-12 mx-auto">
+            <div class="row g-0">
+                <div class="col-4">
+                    <img src="<?php echo $user["fotoProfilo"] ?>" class="img-fluid rounded-start" alt="foto profilo di <?php echo $user["username"] ?>">
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h2 class="card-title"><?php echo $user["username"] ?></h2>
+                        <p class="card-text"><?php echo $user["descrizione"] ?></p>
+                        <p class="card-text">
+                            <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"]?>" class="btn btn-primary">Visit page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="col-md-2"></div>
+    <?php endif ;?>

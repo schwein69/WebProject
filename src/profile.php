@@ -7,8 +7,16 @@ if(!isUserLoggedIn()){
     window.location.href="login.php";
     </script>';
 } else {
-    $userData = $dbh->getUserData($_SESSION["idUtente"]);
-    $posts = $dbh->getProfilePosts(5,$_SESSION["idUtente"]);
+    if(isset($_GET["idUtente"])){
+        $userid=$_GET["idUtente"];
+    } else {
+        $userid = $_SESSION["idUtente"];
+    }
+    $userData = $dbh->getUserData($userid);
+    $posts = $dbh->getProfilePosts(-1,$userid);
+    $numPosts = count($dbh->getProfilePosts(-1,$userid));
+    $numFollower = count($dbh->getNumFollower($userid));
+    $numFollowed = count($dbh->getNumFollowed($userid));
     $templateParams["content"] = "profilepage.php";
     $templateParams["profileTopNav"]=true;
 }

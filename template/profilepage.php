@@ -11,12 +11,11 @@
                                 <figcaption class="figure-caption"> <?php echo $userData["username"] ?></figcaption>
                             </figure>
                         </li>
-                        <li class="nav-item mt-2"><span class="bi bi-folder-fill"></span><br>Posts</li>
-                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span><br>Follower</li>
-                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span><br>Followed</li>
+                        <li class="nav-item mt-2"><span class="bi bi-folder-fill"></span><br>Posts<br><?php echo $numPosts ?></li>
+                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span><br>Follower<br><?php echo $numFollower ?></li>
+                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span><br>Followed<br><?php echo $numFollowed ?></li>
                     </ul>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><?php echo $userData["descrizione"] ?></p>
                 </div>
             </div>
         </section>
@@ -39,7 +38,7 @@
                     <?php if (count($immaginiPost) != 1): ?>
 
                     <div id="carousel" class="carousel slide" data-bs-interval="false">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" style="height: 500px;">
 
                             <?php foreach ($immaginiPost as $immagine): ?>
                             <?php if ($active) {

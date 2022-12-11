@@ -1,40 +1,46 @@
-<?php 
-class DatabaseHelper{
+<?php
+class DatabaseHelper
+{
     private $db;
 
-    public function __construct($servername, $username, $password, $dbname){
+    public function __construct($servername, $username, $password, $dbname)
+    {
         $this->db = new mysqli($servername, $username, $password, $dbname);
-        if($this->db->connect_error) {
+        if ($this->db->connect_error) {
             die("Connection failed: " . $db->connect_error);
         }
     }
 
-    public function checkLogin($username, $password){
+    public function checkLogin($username, $password)
+    {
         $query = "SELECT * FROM utenti WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
+        $stmt->bind_param('ss', $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }  
+    }
 
-    public function insertNewUser($name, $password,$email,$date,$img){
+    public function insertNewUser($name, $password, $email, $date, $img)
+    {
         $query = "INSERT INTO utenti (username, password, email, dataDiNascita, fotoProfilo) VALUES (?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss',$name, $password,$email,$date,$img);
+        $stmt->bind_param('sssss', $name, $password, $email, $date, $img);
         return $stmt->execute();
     }
-    public function checkUsername($name){
+    public function checkUsername($name)
+    {
         $query = "SELECT * FROM utenti WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$name);
+        $stmt->bind_param('s', $name);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkEmail($email){
+    public function checkEmail($email)
+    {
         $query = "SELECT *  FROM utenti WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
@@ -43,18 +49,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getUserData($idUser){
+    public function getUserData($idUser)
+    {
         $query = "SELECT * FROM utenti WHERE idUtente=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$idUser);
+        $stmt->bind_param('i', $idUser);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
-   
-    public function getPostData($id){
+
+    public function getPostData($id)
+    {
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE idPost=?");
-        $stmt->bind_param("i",$id);
+        $stmt->bind_param("i", $id);
         $stmt->execute();
 
         $queryRes = $stmt->get_result();
@@ -63,9 +71,10 @@ class DatabaseHelper{
         return $numRes != 0 ? $res[0] : null;
     }
 
-    public function getAuthorName($userId){
+    public function getAuthorName($userId)
+    {
         $stmt = $this->db->prepare("SELECT * FROM utenti WHERE idUtente=?");
-        $stmt->bind_param("i",$userId);
+        $stmt->bind_param("i", $userId);
         $stmt->execute();
 
         $queryRes = $stmt->get_result();
@@ -74,20 +83,22 @@ class DatabaseHelper{
         return $numRes != 0 ? $res[0] : null;
     }
 
-    public function getPostComments($postId){
+    public function getPostComments($postId)
+    {
         $query = "SELECT dataCommento, testo, U.idUtente, username, fotoProfilo
                     FROM commenti C 
                     JOIN Utenti U ON C.idUtente = U.idUtente
                     WHERE idPost=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i",$postId);
+        $stmt->bind_param("i", $postId);
         $stmt->execute();
 
         $queryRes = $stmt->get_result();
-        
+
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
-    public function getRandomPosts($n,$idUser){
+    public function getRandomPosts($n, $idUser)
+    {
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
                                     P.*, U.username, U.fotoProfilo, U.idUtente
@@ -100,33 +111,61 @@ class DatabaseHelper{
                                 WHERE
                                     P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U.idUtente != ?
                                     ORDER BY RAND() LIMIT ?;");
-        $stmt->bind_param('ii',$idUser,$n);
+        $stmt->bind_param('ii', $idUser, $n);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProfilePosts($n,$idUser){
+    public function getSearchUser($username)
+    {
+        $query = "SELECT idUtente,username,fotoProfilo,descrizione FROM utenti WHERE username like '%$username%'";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getSearchTagPosts($n, $tag)
+    {
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
-                                    P.*
+                                    P.*, U.username, U.fotoProfilo, U.idUtente
                                 FROM
                                     posts P,
-                                    utenti U
+                                    utenti U,
+                                    posttags T,
+                                    contenutimultimediali C,
+                                    tags TA
                                 WHERE
-                                    P.idUser = U.idUtente AND U.idUtente = ?
-                                ORDER BY
-                                    P.dataPost
-                                LIMIT ?;");
-        $stmt->bind_param('ii',$idUser,$n);
+                                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND TA.nomeTag like '%$tag%'
+                                    ORDER BY P.dataPost LIMIT ?;");
+        $stmt->bind_param('i',$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProfilePosts($n = -1, $idUser)
+    {
+        $query = "SELECT DISTINCT P.* FROM posts P, utenti U WHERE  P.idUser = U.idUtente AND U.idUtente = ?  ORDER BY P.dataPost DESC";
+        if ($n > 0) {
+            $query .= " LIMIT ?";
+        }
+        $stmt = $this->db->prepare($query);
+        if ($n > 0) {
+            $stmt->bind_param('ii', $idUser, $n);
+        } else {
+            $stmt->bind_param('i', $idUser);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFollowedPosts($idUser){//id dell'utente loggato
+    public function getFollowedPosts($idUser)
+    { //id dell'utente loggato
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
                                     P.*,
@@ -146,13 +185,47 @@ class DatabaseHelper{
                                     AND U1.idUtente = ?
                                 ORDER BY
                                     P.dataPost;");
-        $stmt->bind_param('i',$idUser);
+        $stmt->bind_param('i', $idUser);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
-    public function getPostContents($postId){
+
+    public function getNumFollower($idUser)
+    { //id dell'utente loggato
+        $stmt = $this->db->prepare("
+                                    SELECT DISTINCT *
+                                    FROM
+                                        utenti U1,
+                                        utenti U2,
+                                        relazioniutenti RE
+                                    WHERE
+                                        U2.idUtente != U1.idUtente AND U1.idUtente = RE.idFollower AND U2.idUtente = RE.idFollowed AND U1.idUtente = ?;");
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNumFollowed($idUser)
+    { //id dell'utente loggato
+        $stmt = $this->db->prepare("
+                                SELECT DISTINCT *
+                                FROM
+                                    utenti U1,
+                                    utenti U2,
+                                    relazioniutenti RE
+                                WHERE
+                                    U2.idUtente != U1.idUtente AND U2.idUtente = RE.idFollower AND U1.idUtente = RE.idFollowed AND U1.idUtente = ?;");
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+    public function getPostContents($postId)
+    {
         $stmt = $this->db->prepare("
                                     SELECT C.*
                                     FROM
@@ -160,7 +233,7 @@ class DatabaseHelper{
                                     contenutimultimediali C
                                     WHERE
                                     C.idPost = P.idPost AND P.idPost=?");
-        $stmt->bind_param('i',$postId);
+        $stmt->bind_param('i', $postId);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
