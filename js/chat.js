@@ -25,10 +25,13 @@ sendBtn.addEventListener('click', event => {
                                    + timeStamp.getMinutes();
                 newMsg.innerHTML = '<p>' + txtBox.value + '</p>'
                                     + '<span class="text-end">' + timeString + '</span>';
-                lastMsg.insertAdjacentElement("afterend",newMsg);
+                if(lastMsg!=null){
+                    lastMsg.insertAdjacentElement("afterend",newMsg);
+                } else {
+                    document.querySelector('main > div.row > div').appendChild(newMsg);
+                }
                 txtBox.value="";
                 window.scrollTo(0, document.body.scrollHeight);
-                console.log(document.body.scrollHeight);
             } else {
                 errElem.innerText = response.err;
             }

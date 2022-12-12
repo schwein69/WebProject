@@ -1,4 +1,4 @@
-<?php 
+<?php
 class DatabaseHelper{
     private $db;
 
@@ -10,14 +10,14 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $query = "SELECT * FROM utenti WHERE username = ? AND password = ?";
+        $query = "SELECT * FROM utenti WHERE username = ? AND pwd = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }  
+    }
 
     public function insertNewUser($name, $password,$email,$date,$img){
         $query = "INSERT INTO utenti (username, password, email, dataDiNascita, fotoProfilo) VALUES (?,?,?,?,?)";
@@ -51,7 +51,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
-   
+
     public function getPostData($id){
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE idPost=?");
         $stmt->bind_param("i",$id);
@@ -75,7 +75,7 @@ class DatabaseHelper{
 
     public function getPostComments($postId){
         $query = "SELECT dataCommento, testo, U.idUtente, username, fotoProfilo
-                    FROM commenti C 
+                    FROM commenti C
                     JOIN Utenti U ON C.idUtente = U.idUtente
                     WHERE idPost=?";
         $stmt = $this->db->prepare($query);
@@ -83,7 +83,7 @@ class DatabaseHelper{
         $stmt->execute();
 
         $queryRes = $stmt->get_result();
-        
+
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
     public function getRandomPosts($n,$idUser){
@@ -150,7 +150,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
     public function getPostContents($postId){
         $stmt = $this->db->prepare("
                                     SELECT C.*
@@ -202,55 +202,43 @@ class DatabaseHelper{
     }
 
     public function addMediaToPost($postId, $path, $desc, $fileType){
-        $stmt = $this->db->prepare("INSERT INTO contenutimultimediali(formato,percorso,idPost,descrizione) VALUES (?,?,?,?)");    
+        $stmt = $this->db->prepare("INSERT INTO contenutimultimediali(formato,percorso,idPost,descrizione) VALUES (?,?,?,?)");
         $stmt->bind_param("ssis",$fileType,$path,$postId,$desc);
-        $stmt->execute();  
+        $stmt->execute();
     }
 
     public function getChatUser($chatId, $user1){
-        $stmt = $this->db->prepare("SELECT usr1,usr2 FROM chat WHERE idChat=?");    
-        $stmt->bind_param("i",$chatId);
+        $query = "SELECT U.idUtente, username, fotoProfilo "
+                ."FROM utenti U "
+                ."JOIN partecipazione P ON U.idUtente=P.idUtente "
+                ."WHERE idChat=? AND U.idUtente<>?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$chatId,$user1);
         $stmt->execute();
         $queryRes = $stmt->get_result();
-        $res = $queryRes->fetch_all(MYSQLI_ASSOC)[0];
-        $user2 = $res["usr1"] == $user1 ? $res["usr2"] : $res["usr1"];
-        $userData["idUtente"] = $user2;
-        $userData["username"] = $this->getAuthorName($user2)["username"];
-        return $userData;
+        return $queryRes->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function getRecentChats($user, $initialChat=0, $numChats=5){
+    public function getRecentChats($user,$initialChat=0, $numChats=5){
         //retrieving chats
-       $query = "SELECT idChat, usr1, usr2, anteprimachat, "
+       $query = "SELECT C.idChat, P.idUtente, username, fotoProfilo, anteprimaChat, "
                    ."(SELECT max(msgTimestamp) "
                    ."FROM messaggi M "
                    ."WHERE C.idChat = M.idChat) AS tempo "
-                ."FROM chat C WHERE usr1=? OR usr2=? "
+                ."FROM chat C "
+                ."JOIN partecipazione P ON C.idChat=P.idChat "
+                ."JOIN utenti U ON U.idUtente=P.idUtente "
+                ."WHERE P.idUtente<>? AND C.idChat IN (SELECT C2.idChat "
+                                    ."FROM chat C2 "
+                                    ."JOIN partecipazione P2 ON P2.idChat = C2.idChat "
+                                    ."WHERE idUtente=?) "
                 ."ORDER BY tempo DESC "
                 ."LIMIT ?,?";
-        $stmt = $this->db->prepare($query);    
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param("iiii",$user,$user,$initialChat,$numChats);
         $stmt->execute();
-        $queryRes = $stmt->get_result(); 
-        $result = $queryRes->fetch_all(MYSQLI_ASSOC);
-        //retrieving info about users
-        $stmt = $this->db->prepare("SELECT username, fotoProfilo FROM utenti WHERE idUtente=?");
-        $chats = array();
-        foreach($result as $userchat){
-            $arrayElem["idChat"] = $userchat["idChat"]; 
-            $arrayElem["anteprimaChat"] = $userchat["anteprimachat"];
-            $arrayElem["idUtente"] = $userchat["usr1"] == $user
-                                    ? $userchat["usr2"]
-                                    : $userchat["usr1"];
-            $stmt->bind_param("i",$arrayElem["idUtente"]);
-            $stmt->execute();
-            $queryRes = $stmt->get_result(); 
-            $result = $queryRes->fetch_all(MYSQLI_ASSOC);
-            $arrayElem["username"] = $result[0]['username'];
-            $arrayElem["fotoProfilo"] = $result[0]['fotoProfilo'];
-            array_push($chats,$arrayElem);      
-        }
-        return $chats;
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
     //it fetches chat messages starting from the last and goint up to numMsgs messages
     public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10){
@@ -259,45 +247,45 @@ class DatabaseHelper{
                 ."FROM messaggi WHERE idChat=? "
                 ."ORDER BY msgTimestamp DESC "
                 ."LIMIT ?,?";
-        $stmt = $this->db->prepare($query);    
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
         $stmt->execute();
-        $queryRes = $stmt->get_result(); 
+        $queryRes = $stmt->get_result();
         return $queryRes->fetch_all(MYSQLI_ASSOC);;
     }
 
     public function insertMessage($chatid,$user,$msg) {
-        $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");    
+        $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");
         $stmt->bind_param("sii",$msg,$user,$chatid);
         $stmt->execute();
     }
 
     public function updateChatPreview($chatid,$msg) {
-        $stmt = $this->db->prepare("UPDATE chat SET anteprimaChat=? WHERE idChat=?");    
+        $stmt = $this->db->prepare("UPDATE chat SET anteprimaChat=? WHERE idChat=?");
         $stmt->bind_param("si",$msg,$chatid);
         $stmt->execute();
     }
 
     function isPostLiked($user, $postId){
-        $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii",$user,$postId);
         $stmt->execute();
         $queryRes = $stmt->get_result();
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
     function likePost($user, $postId){
-        $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");    
+        $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");
         $stmt->bind_param("ii",$user,$postId);
         $stmt->execute();
-        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike+1 WHERE idPost=?');    
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike+1 WHERE idPost=?');
         $stmt->bind_param("i",$postId);
         $stmt->execute();
     }
     function dislikePost($user, $postId){
-        $stmt = $this->db->prepare("DELETE FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
+        $stmt = $this->db->prepare("DELETE FROM postpiaciuti WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii",$user,$postId);
         $stmt->execute();
-        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike-1 WHERE idPost=?');    
+        $stmt = $this->db->prepare('UPDATE posts SET numLike=numLike-1 WHERE idPost=?');
         $stmt->bind_param("i",$postId);
         $stmt->execute();
     }
