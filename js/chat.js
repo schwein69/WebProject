@@ -1,3 +1,5 @@
+window.scrollTo(0, document.body.scrollHeight);
+
 const txtBox = document.getElementById('inputMsg');
 const sendBtn = document.querySelector('form > input[type="submit"]');
 const errElem = document.getElementById('errMsg');
@@ -25,6 +27,8 @@ sendBtn.addEventListener('click', event => {
                                     + '<span class="text-end">' + timeString + '</span>';
                 lastMsg.insertAdjacentElement("afterend",newMsg);
                 txtBox.value="";
+                window.scrollTo(0, document.body.scrollHeight);
+                console.log(document.body.scrollHeight);
             } else {
                 errElem.innerText = response.err;
             }

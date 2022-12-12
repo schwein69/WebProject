@@ -67,7 +67,6 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT * FROM utenti WHERE idUtente=?");
         $stmt->bind_param("i",$userId);
         $stmt->execute();
-
         $queryRes = $stmt->get_result();
         $res = $queryRes->fetch_all(MYSQLI_ASSOC);
         $numRes = count($res);
@@ -208,6 +207,18 @@ class DatabaseHelper{
         $stmt->execute();  
     }
 
+    public function getChatUser($chatId, $user1){
+        $stmt = $this->db->prepare("SELECT usr1,usr2 FROM chat WHERE idChat=?");    
+        $stmt->bind_param("i",$chatId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->fetch_all(MYSQLI_ASSOC)[0];
+        $user2 = $res["usr1"] == $user1 ? $res["usr2"] : $res["usr1"];
+        $userData["idUtente"] = $user2;
+        $userData["username"] = $this->getAuthorName($user2)["username"];
+        return $userData;
+    }
+
     public function getRecentChats($user, $initialChat=0, $numChats=5){
         //retrieving chats
        $query = "SELECT idChat, usr1, usr2, anteprimachat, "
@@ -241,6 +252,31 @@ class DatabaseHelper{
         }
         return $chats;
     }
+    //it fetches chat messages starting from the last and goint up to numMsgs messages
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10){
+        //retrieving chats
+        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente "
+                ."FROM messaggi WHERE idChat=? "
+                ."ORDER BY msgTimestamp DESC "
+                ."LIMIT ?,?";
+        $stmt = $this->db->prepare($query);    
+        $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
+        $stmt->execute();
+        $queryRes = $stmt->get_result(); 
+        return $queryRes->fetch_all(MYSQLI_ASSOC);;
+    }
+
+    public function insertMessage($chatid,$user,$msg) {
+        $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");    
+        $stmt->bind_param("sii",$msg,$user,$chatid);
+        $stmt->execute();
+    }
+
+    public function updateChatPreview($chatid,$msg) {
+        $stmt = $this->db->prepare("UPDATE chat SET anteprimaChat=? WHERE idChat=?");    
+        $stmt->bind_param("si",$msg,$chatid);
+        $stmt->execute();
+    }
 
     function isPostLiked($user, $postId){
         $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");    
@@ -265,19 +301,5 @@ class DatabaseHelper{
         $stmt->bind_param("i",$postId);
         $stmt->execute();
     }
-    //it fetches chat messages starting from the last and goint up to numMsgs messages
-    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10){
-        //retrieving chats
-        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente "
-                ."FROM messaggi WHERE idChat=? "
-                ."ORDER BY msgTimestamp DESC "
-                ."LIMIT ?,?";
-        $stmt = $this->db->prepare($query);    
-        $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
-        $stmt->execute();
-        $queryRes = $stmt->get_result(); 
-        return $queryRes->fetch_all(MYSQLI_ASSOC);;
-    }
-
 }
 ?>

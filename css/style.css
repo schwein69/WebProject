@@ -4,7 +4,13 @@ html, body {
 button {
   box-shadow: 0 0 5px 2px black;
 }
-
+a{
+  text-decoration: none;
+  color: black;
+}
+h1 a{
+  font-size: 120%;
+}
 footer nav ul li a h2{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:black;
@@ -36,11 +42,7 @@ span{
 .btn-light{
   background-color: transparent;
 }
-h1 a{
-  font-size: 120%;
-  text-decoration: none;
-  color: black;
-}
+
 .form-group>label {
   text-align: center;
   border-radius: 15px;
