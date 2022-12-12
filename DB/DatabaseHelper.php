@@ -219,7 +219,7 @@ class DatabaseHelper{
         return $queryRes->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function getRecentChats($user,$initialChat=0, $numChats=5){
+    public function getRecentChats($user,$user2="",$initialChat=0, $numChats=5){
         //retrieving chats
        $query = "SELECT C.idChat, P.idUtente, username, fotoProfilo, anteprimaChat, "
                    ."(SELECT max(msgTimestamp) "
@@ -228,14 +228,25 @@ class DatabaseHelper{
                 ."FROM chat C "
                 ."JOIN partecipazione P ON C.idChat=P.idChat "
                 ."JOIN utenti U ON U.idUtente=P.idUtente "
-                ."WHERE P.idUtente<>? AND C.idChat IN (SELECT C2.idChat "
+                ."WHERE P.idUtente<>? ";
+        
+        if($user2 != ""){
+            $query .= 'AND username LIKE ? ';
+        }
+        $query .= "AND C.idChat IN (SELECT C2.idChat "
                                     ."FROM chat C2 "
                                     ."JOIN partecipazione P2 ON P2.idChat = C2.idChat "
                                     ."WHERE idUtente=?) "
                 ."ORDER BY tempo DESC "
                 ."LIMIT ?,?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iiii",$user,$user,$initialChat,$numChats);
+  
+        if($user2 != ""){
+            $usrPattern = "%".$user2."%";
+            $stmt->bind_param("isiii",$user,$usrPattern,$user,$initialChat,$numChats);
+        }else{
+            $stmt->bind_param("iiii",$user,$user,$initialChat,$numChats);
+        }
         $stmt->execute();
         $queryRes = $stmt->get_result();
         return $queryRes->fetch_all(MYSQLI_ASSOC);

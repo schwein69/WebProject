@@ -9,7 +9,7 @@
         <?php foreach($templateParams["chats"] as $chat):?>
         <li class="list-group-item"> 
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
-        <img src="<?php echo $chat["profilePicture"];?>" alt="<?php echo $chat["username"];?>"/>
+        <img src="<?php echo $chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
         <h2><?php echo $chat["username"];?></h2>
         <p><?php echo $chat["anteprimaChat"];?></p>
         </a>
