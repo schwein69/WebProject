@@ -1,25 +1,25 @@
-function like(event){
+function like(event) {
     event.preventDefault();
     const source = event.target || event.srcElement;
     const likeButton = source.nodeName.toLowerCase() == 'button' ? source : source.parentNode;
     const postId = likeButton.id.substring(4);
     const xhttp = new XMLHttpRequest();
-    xhttp.onload = function(){
+    xhttp.onload = function () {
         const response = JSON.parse(this.responseText);
         const numLikePlace = likeButton.nextElementSibling;
         let likeImg = '';
         let numLike = '';
-        if(response.liked){
+        if (response.liked) {
             likeImg = '../imgs/icons/heart-fill.svg';
-            numLike = numLikePlace.innerText.length == 0 ? '1' : ''+(parseInt(numLikePlace.innerText)+1);
+            numLike = numLikePlace.innerText.length == 0 ? '1' : '' + (parseInt(numLikePlace.innerText) + 1);
         } else {
             likeImg = '../imgs/icons/heart.svg';
-            numLike = parseInt(numLikePlace.innerText) == 1 ? '' : ''+(numLikePlace.innerText-1);
+            numLike = parseInt(numLikePlace.innerText) == 1 ? '' : '' + (numLikePlace.innerText - 1);
         }
-        likeButton.children[0].src=likeImg;
-        numLikePlace.innerText=numLike;
+        likeButton.children[0].src = likeImg;
+        numLikePlace.innerText = numLike;
     };
     xhttp.open("POST", "like_event.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("postid="+postId);
+    xhttp.send("postid=" + postId);
 }

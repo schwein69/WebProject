@@ -7,15 +7,26 @@
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item mx-2">
                             <figure class="figure m-2">
-                                <img class="figure-img img-fluid rounded" src="<?php echo $userData["fotoProfilo"] ?>" alt="foto profilo di <?php echo $userData["username"] ?>" />
-                                <figcaption class="figure-caption"> <?php echo $userData["username"] ?></figcaption>
+                                <img class="figure-img img-fluid avatar" src="<?php echo $userData["fotoProfilo"] ?>"
+                                    alt="foto profilo di <?php echo $userData["username"] ?>" />
+                                <figcaption class="figure-caption">
+                                    <?php echo $userData["username"] ?>
+                                </figcaption>
                             </figure>
                         </li>
-                        <li class="nav-item mt-2"><span class="bi bi-folder-fill"></span><br>Posts<br><?php echo $numPosts ?></li>
-                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span><br>Follower<br><?php echo $numFollower ?></li>
-                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span><br>Followed<br><?php echo $numFollowed ?></li>
+                        <li class="nav-item mt-2"><span class="bi bi-folder-fill"></span><br>Posts<br>
+                            <?php echo $numPosts ?>
+                        </li>
+                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span><br>Follower<br>
+                            <?php echo $numFollower ?>
+                        </li>
+                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span><br>Followed<br>
+                            <?php echo $numFollowed ?>
+                        </li>
                     </ul>
-                    <p class="card-text"><?php echo $userData["descrizione"] ?></p>
+                    <p class="card-text">
+                        <?php echo $userData["descrizione"] ?>
+                    </p>
                 </div>
             </div>
         </section>
@@ -38,45 +49,53 @@
                     <?php if (count($immaginiPost) != 1): ?>
 
                     <div id="carousel" class="carousel slide" data-bs-interval="false">
-                        <div class="carousel-inner" style="height: 500px;">
+                        <div class="carousel-inner">
 
                             <?php foreach ($immaginiPost as $immagine): ?>
                             <?php if ($active) {
-                                echo "<div class='carousel-item active'>";
-                                $active = false;
-                            } else {
-                                echo "<div class='carousel-item'>";
-                            } ?>
-                            <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immagine["percorso"] ?>"
-                                alt="<?php echo $immagine["descrizione"] ?>" style="width: 50%; display: block;" />
+                        echo "<div class='carousel-item active'>";
+                        $active = false;
+                    } else {
+                        echo "<div class='carousel-item'>";
+                    } ?>
+                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                                alt="<?php echo $immagine["descrizione"] ?>" />
                         </div>
                         <?php endforeach; ?>
                     </div>
                     <a class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                        <span>Previous</span>
+                        <span class="carousel-control-prev-icon bg-dark"></span>
                     </a>
                     <a class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                        <span>Next</span>
+                        <span class="carousel-control-next-icon bg-dark"></span>
                     </a>
                 </div>
                 <?php else: ?>
 
-                <img class="card-img-bottom my-3 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
-                    alt="<?php echo $immaginiPost[0]["descrizione"] ?>" style="width: 50%; display: block;" />
+                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
+                    alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 
 
                 <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
                     style="display:block ; width: fit-content;">Espandi</a>
             </div>
+            <?php $post_data = $dbh->getPostData($post["idPost"]);
+                  $post_data["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);         
+            ?>
             <div class="card-footer">
                 <ul class="nav nav-pills">
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-heart"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-chat"></span></button></li>
-                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><span
-                                class="bi bi-star"></span></button></li>
+                    <li class="nav-item mx-2">  <button type="button" id="like<?php echo $post["idPost"] ?>" class="btn btn-light">
+                            <img src="<?php echo $post_data["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
+                                alt="Like post" />
+                        </button>
+                        <span>
+                            <?php if($post_data['numLike']>0){echo $post_data['numLike'];}?>
+                        </span></li>
+                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><img
+                                src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>
+                    <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><img
+                                src="../imgs/icons/star.svg" alt="Salva post" /></button></li>
                 </ul>
             </div>
     </div>

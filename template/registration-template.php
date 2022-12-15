@@ -3,11 +3,11 @@
     <div class="col-12 col-md-8 text-centershadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
         <div class="col-8 border border-secondary mx-auto"
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
-            <h1>Register</h1>
+            <h1>Registrazione</h1>
             <p>Compila i seguenti campi per creare un nuovo account</p>
             <form  class="form-horizontal" name="myform" method="post" action="" onsubmit="return validateform()">
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="name"><b>Name</b></label>
+                    <label class="control-label col-2" for="name"><b>Nome</b></label>
                     <input class="col-6" type="text" placeholder="Nome" name="name" required>
                 </div>
                 <div class="form-group my-2">
@@ -27,11 +27,14 @@
                     <input class="col-6" type="password" placeholder="Password" name="pwd" id="pwd">
                 </div>
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="psw-repeat"><b>Confirm Password</b></label>
+                    <label class="control-label col-2" for="psw-repeat"><b>Conferma Password</b></label>
                     <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
                 </div>
+                <?php if(isset($templateParams["errormsg"])): ?>
+                  <p><?php echo $templateParams["errormsg"]; ?></p>
+                <?php endif; ?>
                 <hr>
-                <button type="submit" class="btn col-4" name="submit" value="Invia" onclick='Javascript:checkEmail()'>Registra</button>
+                <button type="submit" class="btn col-4" name="submit" value="Invia" onclick="checkEmail()">Registra</button>
             </form>
         </div>
     </div>

@@ -10,31 +10,28 @@ if(isset($_POST["submit"])){
         $email = $_POST["email"];
         $date = $_POST["date"];
         $img = UPLOAD_DIR.$_POST["image"];
-        $pwd =$_POST["pwd"];
+        $pwd =password_hash($_POST["pwd"], PASSWORD_DEFAULT);
         $id = $dbh->insertNewUser($name, $pwd, $email, $date, $img);
-        if($id!=false){
-            $msg = "Inserimento completato correttamente!";
-        }
-        else{
-            $msg = "Errore in inserimento!";
-        }
+        header("Location: login.php");
     } else {
         if(count($checkUsername) != 0){
             $msg= "Username esistente!";
         }else{
             $msg = "Email esistente!";
         }
+        $templateParams["errormsg"] = $msg;
     }
-    echo "<script type='text/javascript'> alert('$msg'); window.location.href='login.php'; </script>";
+
+   
 }
 
 $templateParams["content"] = "registration-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;;
-   
+array_push($templateParams["js"],"../js/registrationchecker.js");
 
 require '../template/base.php';
-$templateParams["js"] = array("https://unpkg.com/axios/dist/axios.min.js","../js/registrationchecker.js");
+
 
 
 ?>

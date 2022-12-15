@@ -11,8 +11,8 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style.css">
-</head>
-<?php
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <?php
     if (isset($templateParams["js"])):
         foreach ($templateParams["js"] as $script):
     ?>
@@ -21,6 +21,8 @@
         endforeach;
     endif;
     ?>
+</head>
+
 <body class="bg-primary bg-opacity-10 text-black">
     <div class="container-fluid p-0 overflow-hidden">
         <header>

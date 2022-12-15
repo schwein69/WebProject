@@ -1,46 +1,75 @@
-html, body {
-  height:100%;
+html,body {
+  height: 100%;
 }
+
 button {
   box-shadow: 0 0 5px 2px black;
 }
 
-footer nav ul li a h2{
+footer nav ul li a h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color:black;
+  color: black;
   font-size: large;
 }
 
+#settings-ul li {
+  border-style: solid;
+  border-width: 1px;
+}
 
-body > main section ul li span  {
+#settings-ul li button {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+.searchAvatar{
+  width: auto;
+  max-width: 50%;
+}
+.avatar{
+  object-fit: contain;
+  width: auto;
+  max-width: 40%;
+  border-radius: 50%;
+}
+body>main section ul li span {
   font-size: 15px;
 }
 
-footer nav ul li a{
+.card-img-bottom {
+  height: 65vh;
+  object-fit: contain;
+}
+
+footer nav ul li a {
   width: 100%;
-	border-radius: 50%;
+  border-radius: 50%;
   box-shadow: 0 0 5px 2px black;
 }
 
-#settings-ul li h2{
-  color:black;
+#settings-ul li h2 {
+  color: black;
 }
-#settings-ul li:nth-child(odd){
+
+#settings-ul li:nth-child(odd) {
   background-color: #7c8286;
 }
 
-span{
+span {
   font-size: 150%;
   color: black;
 }
-.btn-light{
+
+.btn-light {
   background-color: transparent;
 }
-h1 a{
+
+h1 a {
   font-size: 120%;
   text-decoration: none;
   color: black;
 }
+
 .form-group>label {
   text-align: center;
   border-radius: 15px;
@@ -48,16 +77,18 @@ h1 a{
 }
 
 /* Form buttons (used in new_post.php)*/
-form > fieldset button {
-  width: fit-content!important;
+form>fieldset button {
+  width: fit-content !important;
 }
 
-form .img-label{
+form .img-label {
   display: none;
 }
+
 @media only screen and (min-width: 768px) {
-  
-  body > main section ul li span{
+
+  body>main section ul li span {
     font-size: large;
   }
+
 }

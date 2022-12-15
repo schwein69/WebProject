@@ -1,12 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 //check login
-if(!isUserLoggedIn()){
-    echo '<script>
-    alert("Devi essere loggato!");
-    window.location.href="login.php";
-    </script>';
-} else {
+redirectNotLoggedUser();
     if(isset($_GET["idUtente"])){
         $userid=$_GET["idUtente"];
     } else {
@@ -20,7 +15,7 @@ if(!isUserLoggedIn()){
     $templateParams["content"] = "profilepage.php";
     $templateParams["profileTopNav"]=true;
     $templateParams["title"] = 'Lynkzone - profile'; 
-}
 
+    $templateParams["js"] = array("../js/like.js");
 require '../template/base.php';
 ?>

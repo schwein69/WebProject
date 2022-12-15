@@ -1,6 +1,6 @@
 <?php
 function redirectNotLoggedUser(){
-    if(!isset($_SESSION["userid"])){
+    if(!isset($_SESSION["idUtente"])){
         header("Location: login.php");
     }
 }

@@ -12,6 +12,9 @@
                     <input type="password" class="form-control" id="password" name="password" required/><label
                         for="password">Password:</label>
                 </div>
+                <?php if(isset($templateParams["errormsg"])): ?>
+                  <p><?php echo $templateParams["errormsg"]; ?></p>
+                <?php endif; ?>
                 <div class="form-floating mb-3 mt-3 col-6 mx-auto">
                     <button type="submit" class="btn col-6 mt-3" name="submit" value="Invia">Login</button>
                 </div>
