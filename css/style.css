@@ -55,7 +55,7 @@ form > fieldset button {
 }
 
 form .img-label{
-  display: none;
+  visibility: hidden;
 }
 
 div.chat-msg{
