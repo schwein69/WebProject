@@ -88,7 +88,8 @@ CREATE TABLE `notifiche` (
   `idUtenteNotificante` int(11) NOT NULL,
   `idPostRiferimento` int(11) DEFAULT NULL,
   `idTipo` int(11) NOT NULL,
-  `idUtente` int(11) NOT NULL
+  `idUtente` int(11) NOT NULL,
+  `letto` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -257,9 +258,9 @@ ALTER TABLE `notifiche`
   ADD KEY `idUtente` (`idUtente`);
 
 --
--- Indexes for table `postpaciuti`
+-- Indexes for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
+ALTER TABLE `postpiaciuti`
   ADD PRIMARY KEY (`idPostPiaciuto`),
   ADD UNIQUE KEY `unique` (`idUtente`,`idPost`) USING BTREE,
   ADD KEY `idUtente` (`idUtente`),
@@ -361,9 +362,9 @@ ALTER TABLE `notifiche`
   MODIFY `idNotifica` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `postpaciuti`
+-- AUTO_INCREMENT for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
+ALTER TABLE `postpiaciuti`
   MODIFY `idPostPiaciuto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -446,11 +447,11 @@ ALTER TABLE `notifiche`
   ADD CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipi` (`idTipo`);
 
 --
--- Constraints for table `postpaciuti`
+-- Constraints for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
-  ADD CONSTRAINT `postpaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `postpaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `postpiaciuti`
+  ADD CONSTRAINT `postpiaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  ADD CONSTRAINT `postpiaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `posts`

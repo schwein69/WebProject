@@ -300,5 +300,17 @@ class DatabaseHelper{
         $stmt->bind_param("i",$postId);
         $stmt->execute();
     }
+
+    function getNotifications($user, $first=0, $num=10){
+        $query =    "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
+        ." FROM notifiche N"
+        ." JOIN tipi T ON N.idTipo = T.idTipo"
+        ." WHERE idUtente=? LIMIT ?,?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iii",$user,$first, $num);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_ASSOC);      
+    }
 }
 ?>
