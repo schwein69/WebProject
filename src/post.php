@@ -8,7 +8,7 @@ if(!isset($_GET['postid'])){
 }
 //TODO manage images and videos
 //TODO usernames must be links to profile?userid=xyz
-//TODO user must be $_SESSION
+
 
 
 
@@ -25,6 +25,7 @@ $user = $dbh->getAuthorName($post_data['idUser']);
 $comments = $dbh->getPostComments($_GET['postid']);
 
 $templateParams["content"] = 'full_post.php'; 
+$templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
 $templateParams["title"] = 'Lynkzone - post'; 
 require '../template/base.php';
 ?>
