@@ -3,13 +3,22 @@ require_once 'bootstrap.php';
 
 redirectNotLoggedUser();
 $result["status"] = false;
-if(isset($_POST["text"])){
-    $msg = trim($_POST["text"]);
-    $result["status"] = true;
-    $result["chats"] = $dbh->getRecentChats($_SESSION["idUtente"],$msg);
-    
+
+$userString = isset($_POST["text"]) ? trim($_POST["text"]) : "";
+$result["status"] = true;
+
+if(isset($_POST["start"]) && isset($_POST["end"])){
+    $result["chats"] = $dbh->getRecentChats($_SESSION["idUtente"],$userString, $_POST["start"], $_POST["end"]);
 } else {
-    $result["err"] = "Errore di comunicazione: parametri non presenti";
+    $result["chats"] = $dbh->getRecentChats($_SESSION["idUtente"],$userString);
+}
+
+
+for ($i=0; $i < count($result["chats"]); $i++) { 
+    $result["chats"][$i]["fotoProfilo"] = UPLOAD_DIR.$result["chats"][$i]["idUtente"]."/".$result["chats"][$i]["fotoProfilo"];
+    if($result["chats"][$i]["anteprimaChat"] == "") {
+        $result["chats"][$i]["anteprimaChat"] = "Inizia la conversazione";
+    }
 }
 header('Content-Type: application/json');
 echo json_encode($result);

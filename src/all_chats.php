@@ -6,8 +6,7 @@ redirectNotLoggedUser();
 $templateParams["chats"] = $dbh->getRecentChats($_SESSION['idUtente']);
 //var_dump($templateParams["chats"]);
 $templateParams["content"] = 'chat_list.php';
-$templateParams["js"] = array();
-array_push($templateParams["js"],'../js/search_user.js');
+$templateParams["js"] = array('../js/chat_list.js');
 $templateParams["title"] = 'Lynkzone - DMs'; 
 require '../template/base.php';
 ?>

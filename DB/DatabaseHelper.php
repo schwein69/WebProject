@@ -86,6 +86,15 @@ class DatabaseHelper{
 
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addCommentToPost($user,$postId, $testo){
+        $query = "INSERT INTO commenti(dataCommento, testo, idPost,idUtente)
+                VALUES (NOW(),?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sii",$testo,$postId, $user);
+        $stmt->execute();
+    }
+    
     public function getRandomPosts($n,$idUser){
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
