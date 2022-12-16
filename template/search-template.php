@@ -22,8 +22,8 @@
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-header">
                     <div class="row mt-2">
-                        <div class="col-4"> <img class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
-                                alt="foto profilo di <?php echo $post["username"] ?>"/></div>
+                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"><img class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
+                                alt="foto profilo di <?php echo $post["username"] ?>"/></a></div>
                         <div class="col-4">
                             <h2 style="font-size: 2vw">
                                 <?php echo $post["username"] ?>
@@ -58,7 +58,7 @@
                     } else {
                         echo "<div class='carousel-item'>";
                     } ?>
-                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                            <img class="card-img-bottom img-fluid my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
                                 alt="<?php echo $immagine["descrizione"] ?>" />
                         </div>
                         <?php endforeach; ?>
@@ -72,7 +72,7 @@
                 </div>
                 <?php else: ?>
 
-                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
+                <img class="card-img-bottom img-fluid my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 
@@ -109,7 +109,7 @@
 </div>
 <script>
 const tagName = <?php if(isset($templateParams["tagName"])) { echo json_encode($templateParams['tagName']); } else echo json_encode("") ?>;
-let isTag = <?php echo $templateParams["isTag"]?>;
+const isTag = <?php echo $templateParams["isTag"]?>;
 const oldId = <?php echo json_encode($oldPostId)?>;
 </script>
 <?php else :?>

@@ -14,13 +14,17 @@
                                 </figcaption>
                             </figure>
                         </li>
-                        <li class="nav-item mt-2"><span class="bi bi-folder-fill"></span><br>Posts<br>
+                        <li class="nav-item mt-2">
+                            <span class="bi bi-folder-fill"></span>
+                            <br>Posts<br>
                             <?php echo $numPosts ?>
                         </li>
-                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span><br>Follower<br>
+                        <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
+                        <a href="followerList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Follower<br></a>
                             <?php echo $numFollower ?>
                         </li>
-                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span><br>Followed<br>
+                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
+                        <a href="followedList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Followed<br></a>
                             <?php echo $numFollowed ?>
                         </li>
                     </ul>

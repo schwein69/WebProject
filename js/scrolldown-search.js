@@ -138,6 +138,6 @@ $(window).scroll(function () {
         idString = idString.substring(0, idString.length - 1);
         xhttp.open("POST", "showmorerandomposts.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("stringList=" + idString + "&isTag=" + isTag + "&tagName="+ tagName);
+        xhttp.send("stringList=" + idString + "&isTag=" + isTag + "&tagName="+ tagName +"&start="+oldId.length + "&end="+ oldId.length+1);
     }
 });

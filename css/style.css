@@ -2,10 +2,19 @@ html,body {
   height: 100%;
 }
 
+body  header > div > div{
+  background-color: #49acf3;
+}
 button {
   box-shadow: 0 0 5px 2px black;
 }
-
+.profileLink{
+  text-decoration: none;
+  color:black;
+}
+.profileLink:hover {
+  background-color: lightgreen;
+}
 footer nav ul li a h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: black;
@@ -23,21 +32,21 @@ footer nav ul li a h2 {
   border: none;
 }
 .searchAvatar{
-  width: auto;
+  display: flex;
   max-width: 50%;
 }
 .avatar{
-  object-fit: contain;
-  width: auto;
-  max-width: 40%;
+  object-fit: cover;
   border-radius: 50%;
+  width: 75px;
+  height: 75px;
 }
 body>main section ul li span {
   font-size: 15px;
 }
 
 .card-img-bottom {
-  height: 65vh;
+  height: 75vh;
   object-fit: contain;
 }
 

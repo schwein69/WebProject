@@ -154,42 +154,6 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function getTaggedPostsWithArray($idUser,$tagName, $oldPostIds)
-    {
-        $query = "
-                SELECT DISTINCT
-                    P.*, U.username, U.fotoProfilo, U.idUtente
-                FROM
-                    posts P,
-                    utenti U,
-                    posttags T,
-                    tags TA
-                WHERE
-                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND U.idUtente != ? AND TA.nomeTag = ? AND P.idPost NOT IN (";
-
-
-        $length = count($oldPostIds);
-        for ($i = 0; $i < $length; $i++) {
-            if (is_numeric($oldPostIds[$i])) {
-                $query .= $oldPostIds[$i];
-            } else {
-                die("elements is not a number");
-            }
-            if ($i < $length - 1) {
-                $query .= ",";
-            }
-        }
-        $query .= ") ORDER BY P.dataPost DESC LIMIT 1";
-
-        //...decomprime array in stream
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("is", $idUser,$tagName);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
 
     public function getSearchUser($username,$idUser)
     {
@@ -200,20 +164,23 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function getSearchTagPosts($tag)
+    public function getSearchTagPosts($tag,$idUser,$start = 0,$end = 1)
     {
-        $stmt = $this->db->prepare("
-                                SELECT DISTINCT
-                                    P.*, U.username, U.fotoProfilo, U.idUtente
-                                FROM
-                                    posts P,
-                                    utenti U,
-                                    posttags T,
-                                    contenutimultimediali C,
-                                    tags TA
-                                WHERE
-                                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND TA.nomeTag like '%$tag%'
-                                    ORDER BY P.dataPost LIMIT 1;");
+        $query = "
+        SELECT DISTINCT
+            P.*, U.username, U.fotoProfilo, U.idUtente
+        FROM
+            posts P,
+            utenti U,
+            posttags T,
+            contenutimultimediali C,
+            tags TA
+        WHERE
+            P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND TA.nomeTag like CONCAT ('%', ?, '%') AND idUtente != ?
+            ORDER BY P.dataPost DESC LIMIT ?,?";
+       
+        $stmt = $this->db->prepare($query);                  
+        $stmt->bind_param('siii', $tag,$idUser,$start,$end);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -237,7 +204,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFollowedPosts($idUser)
+    public function getFollowedPosts($idUser,$start=0,$end=1)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
@@ -257,8 +224,8 @@ class DatabaseHelper
                                     P.idUser = U2.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U2.idUtente != U1.idUtente AND U1.idUtente = RE.idFollower AND U2.idUtente = RE.idFollowed
                                     AND U1.idUtente = ?
                                 ORDER BY
-                                    P.dataPost;");
-        $stmt->bind_param('i', $idUser);
+                                    P.dataPost DESC LIMIT ?,?");
+        $stmt->bind_param('iii', $idUser,$start,$end);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -398,6 +365,14 @@ class DatabaseHelper
     {
         $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii", $user, $postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+    function isFollowedByMe($userId,$adminId)//seguito da me
+    {
+        $stmt = $this->db->prepare("SELECT * FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
+        $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
         $queryRes = $stmt->get_result();
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;

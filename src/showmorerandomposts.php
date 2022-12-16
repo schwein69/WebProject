@@ -7,7 +7,7 @@ $result["status"] = false;
 if(isset($_POST["stringList"])){
     $data = explode(",",$_POST["stringList"]);//split in java
     if($_POST["isTag"]){
-        $rows = $dbh->getTaggedPostsWithArray( $_SESSION["idUtente"],$_POST["tagName"], $data);
+        $rows = $dbh->getSearchTagPosts( $_POST["tagName"],$_SESSION["idUtente"], $_POST["start"],$_POST["end"]);
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    

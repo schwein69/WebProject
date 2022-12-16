@@ -27,8 +27,7 @@
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
-
-                <div class="col-12 col-md-8 mx-auto" style="background-color: #49acf3;">
+                <div class="col-12 col-md-8 mx-auto">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-6 col-md-7 my-auto text-end">
