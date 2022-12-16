@@ -95,18 +95,6 @@ function generaArticoli(articoli) {
 }
 
 
-function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
-    if (!ancestorElem || (typeof ancestorElem === 'string' && !(ancestorElem = document.querySelector(ancestorElem)))) {
-        return
-    }
-
-    ancestorElem.addEventListener(eventType, e => {
-        if (e.target && e.target.closest && e.target.closest(childSelector)) {
-            (eventHandler)(e)
-        }
-    })
-
-}
 
 delegate_event('click', document, 'button[id^=like]', like);//assegna alla pagina di aggiungere ai button l'evento click, anche quando vengono inseriti dopo dinamicamente
 delegate_event('click', document, 'button[id^=follow]', follow);
