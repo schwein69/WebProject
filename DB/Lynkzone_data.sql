@@ -63,7 +63,7 @@ VALUES (1,'Like'),
 
 ---- POST INSERTION ----
 INSERT INTO posts(idPost, dataPost, testo, idUser, numLike, numCommenti)
-VALUES (1,'2022-12-01', 'Ciao, sono nuovo su questo social e mi andrebbe di conoscere qualcuno.',1,1,1);
+VALUES (1,'2022-12-01', 'Questo è il mio gattino.',1,1,1);
 
 ---- COMMENTI INSERTION ----
 INSERT INTO commenti(dataCommento, testo, idPost, idUtente)
@@ -72,4 +72,8 @@ VALUES ('2022-12-01', 'Ciao, ti va di conoscerci?',1,2);
 ---- NOTIFICHE INSERTION ----
 INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente, letto)
 VALUES (2, 1, 1, 1, 1),
-(2, 1, 2, 1, 0);
+(2, 1, 2, 1, 1),
+(3, 1, 1, 1, 1),
+(4, 1, 1, 1, 1),
+(5, 1, 1, 1, 0),
+(6, 1, 1, 1, 0);

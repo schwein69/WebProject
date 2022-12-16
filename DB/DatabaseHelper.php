@@ -310,11 +310,11 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    function getNotifications($user, $first=0, $num=10){
+    function getNotifications($user, $first=0, $num=5){
         $query =    "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
         ." FROM notifiche N"
         ." JOIN tipi T ON N.idTipo = T.idTipo"
-        ." WHERE idUtente=? LIMIT ?,?";
+        ." WHERE idUtente=? ORDER BY idNotifica LIMIT ?,?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("iii",$user,$first, $num);
         $stmt->execute();
