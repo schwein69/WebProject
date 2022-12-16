@@ -14,7 +14,6 @@ $templateParams["messages"] = $dbh->getRecentMessagesFromChat($_GET["chatId"]);
 $templateParams["user2"] = $dbh->getChatUser($_GET["chatId"], $_SESSION["idUtente"]);
 $templateParams["content"] = 'chat_content.php';
 $templateParams["title"] = 'Lynkzone - '.$templateParams["user2"]["username"]; 
-$templateParams["js"] = array();
-array_push($templateParams["js"],'../js/chat.js');
+$templateParams["js"] = array('../js/chat.js');
 require '../template/base.php';
 ?>

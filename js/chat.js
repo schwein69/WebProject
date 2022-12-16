@@ -1,5 +1,8 @@
-window.scrollTo(0, document.body.scrollHeight);
+//enter page at bottom
+document.addEventListener('load',window.scrollTo(0, document.body.scrollHeight));
 
+
+//send messages
 const txtBox = document.getElementById('inputMsg');
 const sendBtn = document.querySelector('form > input[type="submit"]');
 const errElem = document.getElementById('errMsg');
@@ -12,8 +15,8 @@ sendBtn.addEventListener('click', event => {
             const timeStamp = new Date(Date.now());
             const response = JSON.parse(this.responseText);
             if(response.status){
-                const lastMsg = document.querySelector('main > div.row > div > div:last-child');
                 const newMsg = document.createElement('div');
+                const lastMsg = document.querySelector('main > div.row > div > div:last-child');
                 newMsg.classList.add('chat-msg');
                 newMsg.classList.add('my-1');
                 newMsg.classList.add('text-end');
@@ -39,5 +42,51 @@ sendBtn.addEventListener('click', event => {
         xhttp.open("POST", "event_send_message.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("chatid=" + chatid + "&msg=" + txtBox.value.trim());
+    }
+});
+
+//endless scroll
+const messagesOffset= 1;
+let currentStart = 10;
+
+function chatScrollingTop(){
+    if(window.scrollY == 0){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            const response = JSON.parse(this.responseText);
+            if(response.status){
+                response.messages.forEach(element => {
+                    const chatElement = document.createElement('div');
+                    chatElement.classList.add('chat-msg');
+                    chatElement.classList.add('my-1');
+                    
+                    if(element.isSecondUser){
+                        chatElement.classList.add('text-start');
+                    } else{
+                        chatElement.classList.add('text-end');
+                        chatElement.classList.add('ms-auto');
+                    }
+                    chatElement.innerHTML = '<p>' + element.testoMsg +'</p>'
+                                            + '<span class="text-end">'
+                                            + element.msgTime
+                                            '</span>';
+                    const firstMessage = document.querySelector('main div.chat-msg');
+                    firstMessage.parentNode.insertBefore(chatElement, firstMessage);
+                });
+            }
+        };
+        xhttp.open('POST', 'api_chat.php');
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send('chatid='+ chatid +'&start=' + currentStart + '&end=' + messagesOffset);
+        currentStart += messagesOffset;
+    }
+}
+let scrollingTimeout = null;
+document.addEventListener('scroll', event => {
+    if(window.scrollY == 0){
+        scrollingTimeout = setInterval(chatScrollingTop, 300);
+    } else if(scrollingTimeout != null){
+        clearInterval(scrollingTimeout);
+        scrollingTimeout = null;
     }
 });
