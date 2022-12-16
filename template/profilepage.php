@@ -20,11 +20,11 @@
                             <?php echo $numPosts ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
-                        <a href="followerList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Follower<br></a>
+                        <a href="followerList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Seguiti<br></a>
                             <?php echo $numFollower ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
-                        <a href="followedList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Followed<br></a>
+                        <a href="followedList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=".$userData["idUtente"] : ""?>" class="profileLink"><br>Seguaci<br></a>
                             <?php echo $numFollowed ?>
                         </li>
                     </ul>

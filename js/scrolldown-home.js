@@ -109,7 +109,7 @@ function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
 }
 
 delegate_event('click', document, 'button[id^=like]', like);
-
+delegate_event('click', document, 'button[id^=follow]', follow);
 
 $(window).scroll(function () {
     if ($(window).scrollTop() + $(window).height() >= $(document).height()) {

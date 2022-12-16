@@ -29,7 +29,7 @@
                                 <?php echo $post["username"] ?>
                             </h2>
                         </div>
-                        <div class="col-4"> <button value="<?php echo $post["idUtente"] ?>" type="button"
+                        <div class="col-4"> <button id="follow<?php echo $post["idUtente"] ?>" type="button"
                                 class="btn btn-light btn-md border border-dark" style="box-shadow: none;">Segui</button>
                         </div>
                     </div>
