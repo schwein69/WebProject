@@ -186,6 +186,7 @@ CREATE TABLE `utenti` (
   `username` varchar(30) NOT NULL,
   `pwd` varchar(512) NOT NULL,
   `email` varchar(320) NOT NULL,
+  `descrizione` varchar(512),
   `dataDiNascita` date NOT NULL,
   `fotoProfilo` varchar(100) NOT NULL,
   `tema` enum('d','l') NOT NULL DEFAULT 'l',

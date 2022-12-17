@@ -10,6 +10,10 @@ if(!isset($_GET["chatId"])){
 //TODO autoscroll to end
 
 $templateParams["currentUser"] = $_SESSION["idUtente"];
+
+if(!$dbh->isUserInChat($_GET["chatId"],$templateParams["currentUser"])){
+    header('Location: index.php');
+}
 $templateParams["messages"] = $dbh->getRecentMessagesFromChat($_GET["chatId"]);
 $templateParams["user2"] = $dbh->getChatUser($_GET["chatId"], $_SESSION["idUtente"]);
 $templateParams["content"] = 'chat_content.php';

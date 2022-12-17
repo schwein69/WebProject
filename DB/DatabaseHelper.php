@@ -216,6 +216,15 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function isUserInChat($chatId, $user){
+        $query = "SELECT idUtente FROM partecipazione WHERE idChat=? AND idUtente=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$chatId,$user);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     public function getChatUser($chatId, $user1){
         $query = "SELECT U.idUtente, username, fotoProfilo "
                 ."FROM utenti U "
