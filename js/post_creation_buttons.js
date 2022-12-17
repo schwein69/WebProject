@@ -5,15 +5,20 @@ const tagButton = document.querySelector("fieldset div.row:last-child button");
 
 tagButton.addEventListener('click',event => {
     event.preventDefault();
+    console.log('click');
     if(numTag > 0) {
-        const elem = "<input type=\"text\" id=\"tag"
-                    + numTag
-                    + "\" name=\"tag"
-                    + numTag
-                    + "\" class=\"col-2 m-1\"/>";
-        tagSelector.innerHTML = elem + tagSelector.innerHTML;
-        
+        const elem = document.createElement('input');
+        elem.ariaLabel = "Tag "+ (10-numTag);
+        elem.type = "text";
+        elem.id="tag"+ (10 - numTag);
+        elem.name="tag"+ (10 - numTag);
+        elem.classList.add('col-2');
+        elem.classList.add('m-1');
+        //tagSelector.innerHTML = tagSelector.innerHTML + elem;
+        tagSelector.appendChild(elem);
         numTag--;
+        console.log('added');
+        console.log(elem);
     } else {
         tagButton.style.display='none';
     }
@@ -28,11 +33,10 @@ imgButton.addEventListener('click',event => {
     if(numImg < 10) {
 
         const newNode = document.createElement('div');
-        const elem = '<label class="img-label" for="f' + numImg + '">Immagine ' + numImg + '</label>'
-                    + '<input class="col-6" type="file" id="f' + numImg
+        const elem = '<input aria-label="Immagine ' + numImg + '" class="col-6" type="file" id="f' + numImg
                     + '" name="f' + numImg + '" accept="video/*,image/*"/>'
                     + '<label class="col-3" for="alt1">Testo alternativo:</label>'
-                    + '<input class="col-3" type="text" id="alt' + numImg
+                    + '<input aria-label="Testo alternativo per immagine ' + numImg + '" class="col-3" type="text" id="alt' + numImg
                     + '" name="alt' + numImg + '"/>';
 
         newNode.innerHTML = elem;

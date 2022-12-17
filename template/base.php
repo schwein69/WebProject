@@ -38,18 +38,17 @@
                                 <nav class="navbar navbar-expand-md navbar-light">
                                     <ul class="nav nav-pills ms-auto">
                                         <?php if (isset($templateParams["profileTopNav"])): ?>
-                                        <li class="mx-1"> <button role="link" type="button" class="btn btn-light"
-                                                onClick="window.location.href='../src/settings.php'">
+                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn btn-light">
                                                 <img src="../imgs/icons/gear-fill.svg" alt="Impostazioni" />
                                             </button></li>
                                         <?php else: ?>
                                         <li class="mx-1">
-                                            <button role="link" type="button" class="btn btn-light">
+                                            <button role="link" type="button" id="newpostButton" class="btn btn-light">
                                                 <img src="../imgs/icons/plus-circle.svg" alt="Crea post" />
                                             </button>
                                         </li>
                                         <li class="mx-1">
-                                            <button role="link" type="button" class="btn btn-light">
+                                            <button role="link" type="button" id="notifButton" class="btn btn-light">
                                                 <img src="../imgs/icons/bell.svg" alt="Notifiche" />
                                             </button>
                                         </li>
@@ -74,18 +73,18 @@
                 <nav class="col-12 col-md-8 mx-auto p-0" style="background-color: #49acf3;">
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item col-3">
-                            <a href="../src/index.php" class="btn btn-primary"><span
+                            <a href="index.php" class="btn btn-primary"><span
                                     class="bi bi-house-fill"></span><br>
                                 <h2>Home</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="../src/search.php" class="btn btn-primary"><span class="bi bi-search"></span>
+                            <a href="search.php" class="btn btn-primary"><span class="bi bi-search"></span>
                                 <h2>Search</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="#" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
+                            <a href="all_chats.php" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
                         </li>
@@ -104,6 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="../js/base.js"></script>
 </body>
 
 </html>

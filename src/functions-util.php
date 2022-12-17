@@ -8,6 +8,11 @@ function redirectNotLoggedUser(){
 function isVideoExtension($extension){
     return $extension == "mp4";
 }
+
+function isPostNotification($notType){
+    return $notType != "Follow";
+}
+
 function isImageExtension($extension){
     $imageExtensions = array("jpg", "jpeg", "png", "gif");
     return in_array($extension, $imageExtensions);

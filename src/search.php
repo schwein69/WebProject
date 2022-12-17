@@ -4,7 +4,6 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 $isPost = 0;
 $isTag = 0;
-
 if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["searchValue"]) && $_GET["searchValue"] != "") {
     if ($_GET["searchOption"] == "User") {
         $userData = $dbh->getSearchUser($_GET["searchValue"],$_SESSION["idUtente"]);
@@ -24,7 +23,7 @@ $templateParams["isTag"] = $isTag;
 $templateParams["selector"] = $isPost;
 $templateParams["title"] = 'Lynkzone - search'; 
 $templateParams["content"] = "search-template.php";
-array_push($templateParams["js"],"../js/scrolldown-search.js");
+$templateParams["js"] = array("../js/scrolldown-search.js");
 require '../template/base.php';
 
 ?>
