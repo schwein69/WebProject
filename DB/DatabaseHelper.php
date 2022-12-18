@@ -247,5 +247,11 @@ class DatabaseHelper{
         return $queryRes->fetch_all(MYSQLI_NUM)[0][0];
     }
     
+    function readAllNotifications($user)
+    {
+        $stmt = $this->db->prepare("UPDATE notifiche SET letto=1 WHERE idUtente=?");
+        $stmt->bind_param("i",$user);
+        $stmt->execute();
+    }
 }
 ?>

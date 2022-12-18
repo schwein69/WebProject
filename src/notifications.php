@@ -8,6 +8,7 @@ $langParam["notificationStatementLike"] = " ha messo mi piace al tuo post.";
 $langParam["notificationStatementFollow"] = " ha iniziato a seguirti.";
 
 $templateParams["notifications"] = $dbh->getNotifications($_SESSION["idUtente"]); 
+$dbh->readAllNotifications($_SESSION["idUtente"]);
 $templateParams["numNotifications"] = count($templateParams["notifications"]);
 for ($i=0; $i < $templateParams["numNotifications"]; $i++) { 
     $notifUser = $dbh->getUserData($templateParams["notifications"][$i]["idUtenteNotificante"]);
