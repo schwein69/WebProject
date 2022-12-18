@@ -224,7 +224,7 @@ class DatabaseHelper{
 
     function getNotifications($user, $first=0, $num=5)
     {
-        $query =    "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
+        $query = "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
         ." FROM notifiche N"
         ." JOIN tipi T ON N.idTipo = T.idTipo"
         ." WHERE idUtente=? ORDER BY idNotifica LIMIT ?,?";
@@ -234,5 +234,18 @@ class DatabaseHelper{
         $queryRes = $stmt->get_result();
         return $queryRes->fetch_all(MYSQLI_ASSOC);      
     }
+
+    function getUnreadNotificationsNumber($user)
+    {
+        $query = "SELECT count(*)"
+        ." FROM notifiche N"
+        ." WHERE idUtente=? AND letto=0";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$user);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_NUM)[0][0];
+    }
+    
 }
 ?>

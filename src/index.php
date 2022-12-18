@@ -7,6 +7,7 @@ $templateParams["js"] = array("../js/like.js",
                             "../js/settings.js",
                             "../js/functions.js",
                             "../js/follow-event.js",
+                            "../js/notifications_receiver.js",
                             "../js/scrolldown-home.js");
 $templateParams["title"] = 'Lynkzone - home'; 
 require '../template/base.php';
