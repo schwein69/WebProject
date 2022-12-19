@@ -157,9 +157,9 @@ class DatabaseHelper{
         return $this->chatFunctions->getRecentChats($user,$user2,$initialChat, $numChats);    
     }
     
-    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10)
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10, $letto=true, $user=-1)
     {
-        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs);    
+        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs,$letto,$user);    
     }
 
     public function insertMessage($chatid,$user,$msg)
@@ -170,6 +170,11 @@ class DatabaseHelper{
     public function updateChatPreview($chatid,$msg)
     {
         $this->chatFunctions->updateChatPreview($chatid,$msg);    
+    }
+
+    public function readAllMessages($chatId, $user)
+    {
+        $this->chatFunctions->readAllMessages($chatId,$user);
     }
 
     public function getSearchUser($username,$idUser)

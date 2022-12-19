@@ -92,3 +92,49 @@ document.addEventListener('scroll', event => {
         scrollingTimeout = null;
     }
 });
+
+function readNewMessages(){
+    const xhttp = new XMLHttpRequest();
+    xhttp.open('POST', 'api_chat.php');
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('chatid='+ chatid);
+
+}
+
+//receive new messages
+function getNewMessages(){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function(){
+        const response = JSON.parse(this.responseText);
+        if(response.status && response.messages.length > 0){
+            //update previous messages start point
+            currentStart += response.messages.length;
+            //set the new messages as read
+            readNewMessages();
+            //adding new messages to the page
+            response.messages.forEach(element => {
+                const chatElement = document.createElement('div');
+                chatElement.classList.add('chat-msg');
+                chatElement.classList.add('my-1');
+                
+                if(element.isSecondUser){
+                    chatElement.classList.add('text-start');
+                } else{
+                    chatElement.classList.add('text-end');
+                    chatElement.classList.add('ms-auto');
+                }
+                chatElement.innerHTML = '<p>' + element.testoMsg +'</p>'
+                                        + '<span class="text-end">'
+                                        + element.msgTime
+                                        '</span>';
+                const lastMessage = document.querySelector('main div.chat-msg:last-child');
+                lastMessage.parentNode.insertBefore(chatElement, lastMessage.nextSibling);
+            });
+        }
+    }
+    xhttp.open('POST', 'api_chat.php');
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('chatid='+ chatid +'&read=' + false);
+}
+
+setInterval(getNewMessages, 200);
