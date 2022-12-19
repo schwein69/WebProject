@@ -13,7 +13,9 @@ class UserFunctions
         $query = "INSERT INTO utenti (username, password, email, dataDiNascita, fotoProfilo) VALUES (?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss', $name, $password, $email, $date, $img);
-        return $stmt->execute();
+        $stmt->execute();
+        //return last id after insert
+        return $this->db->insert_id;
     }
 
     //---------- USER DATA ----------
@@ -25,7 +27,7 @@ class UserFunctions
         $stmt->bind_param('s', $name);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return count($result->fetch_all(MYSQLI_ASSOC))>0;
     }
 
     public function checkEmail($email)
@@ -35,7 +37,7 @@ class UserFunctions
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return count($result->fetch_all(MYSQLI_ASSOC))>0;
     }
 
     public function getUserData($idUser)

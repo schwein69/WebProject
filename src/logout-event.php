@@ -1,5 +1,5 @@
-<?php   
-session_start(); //to ensure you are using same session
+<?php
+require_once "bootstrap.php";
 session_destroy(); //destroy the session
 $result=true;
 header('Content-Type: application/json');

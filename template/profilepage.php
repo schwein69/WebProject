@@ -7,7 +7,7 @@
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item mx-2">
                             <figure class="figure m-2">
-                                <img class="figure-img img-fluid avatar" src="<?php echo $userData["fotoProfilo"] ?>"
+                                <img class="figure-img img-fluid avatar" src="<?php echo UPLOAD_DIR.$userData["idUtente"]."/profile.png" ?>"
                                     alt="foto profilo di <?php echo $userData["username"] ?>" />
                                 <figcaption class="figure-caption">
                                     <?php echo $userData["username"] ?>

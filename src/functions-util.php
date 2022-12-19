@@ -27,13 +27,21 @@ function isUserLoggedIn(){
     return !empty($_SESSION['idUtente']);
 }
 
-function uploadFile($path, $image){
-    $imageName = basename($image["name"]);
+function uploadFile($path, $image, $imgName=""){
+    $baseName = basename($image["name"]);
+    $msg = "";
+     //Controllo estensione del file
+     $fileType = strtolower(pathinfo($baseName,PATHINFO_EXTENSION));
+     if(!isVideoExtension($fileType) && !isImageExtension($fileType)){
+         $msg .= "Formato file non valido";
+     }
+     
+    $imageName = $imgName != "" ? $imgName.".".$fileType : $baseName;// ... salva la vita
     $fullPath = $path.$imageName;
     
-    $maxKB = 500;
+    $maxKB = 4096;
     $result = 0;
-    $msg = "";
+   
     //Controllo se immagine è veramente un'immagine
     $imageSize = getimagesize($image["tmp_name"]);
     if($imageSize === false) {
@@ -44,14 +52,8 @@ function uploadFile($path, $image){
         $msg .= "File caricato pesa troppo! Dimensione massima è $maxKB KB. ";
     }
     
-    //Controllo estensione del file
-    $fileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
-    if(!isVideoExtension($fileType) && !isImageExtension($fileType)){
-        $msg .= "Formato file non valido";
-    }
-    
     //Controllo se esiste file con stesso nome ed eventualmente lo rinomino
-    if (file_exists($fullPath)) {
+    if (file_exists($fullPath) && $imgName == "") {
         $i = 1;
         do{
             $i++;
@@ -59,6 +61,8 @@ function uploadFile($path, $image){
         }
         while(file_exists($path.$imageName));
         $fullPath = $path.$imageName;
+    } else {
+        unlink($fullPath);
     }
   
     //Se non ci sono errori, sposto il file dalla posizione temporanea alla cartella di destinazione
