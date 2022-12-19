@@ -24,7 +24,7 @@ $templateParams["isTag"] = $isTag;
 $templateParams["selector"] = $isPost;
 $templateParams["title"] = 'Lynkzone - search'; 
 $templateParams["content"] = "search-template.php";
-array_push($templateParams["js"],"../js/scrolldown-search.js");
+$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/scrolldown-search.js","../js/livesearch.js");
 require '../template/base.php';
 
 ?>

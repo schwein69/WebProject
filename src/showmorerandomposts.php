@@ -10,6 +10,7 @@ if(isset($_POST["stringList"])){
         $rows = $dbh->getSearchTagPosts( $_POST["tagName"],$_SESSION["idUtente"], $_POST["start"],$_POST["end"]);
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
+            $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;
@@ -18,6 +19,8 @@ if(isset($_POST["stringList"])){
         $rows = $dbh->getRandomPostsWithArray(1, $_SESSION["idUtente"], $data);
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
+            $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
+          //  var_dump($result["followedByMe"]);
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;

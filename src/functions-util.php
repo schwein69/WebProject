@@ -15,6 +15,7 @@ function isImageExtension($extension){
 function registerLoggedUser($user){
     $_SESSION["idUtente"] = $user["idUtente"];
     $_SESSION["username"] = $user["username"];
+    $_SESSION["theme"] = $user["tema"];
 }
 
 function isUserLoggedIn(){

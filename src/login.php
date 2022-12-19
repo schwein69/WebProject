@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-
+ 
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] !== "" && $_POST["password"] !== ""){
     $row = $dbh->getUserDataLogin($_POST["username"]);
     if(password_verify($_POST["password"], $row[0]["password"])){

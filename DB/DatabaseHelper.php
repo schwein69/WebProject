@@ -7,7 +7,7 @@ class DatabaseHelper
     {
         $this->db = new mysqli($servername, $username, $password, $dbname);
         if ($this->db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
+            die("Connection failed: " . $this->db->connect_error);
         }
     }
 
@@ -18,7 +18,6 @@ class DatabaseHelper
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -160,6 +159,16 @@ class DatabaseHelper
         $query = "SELECT idUtente,username,fotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $username,$idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getTags($tagName)
+    {
+        $query = "SELECT * FROM tags WHERE nomeTag like CONCAT ('%', ?, '%')";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $tagName);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -377,6 +386,18 @@ class DatabaseHelper
         $queryRes = $stmt->get_result();
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
+    function followUser($userId, $adminId)
+    {
+        $stmt = $this->db->prepare("INSERT INTO relazioniutenti(idFollower,idFollowed) VALUES (?,?)");
+        $stmt->bind_param("ii", $userId, $adminId);
+        $stmt->execute();
+    }
+    function unfollowUser($userId, $adminId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
+        $stmt->bind_param("ii", $userId, $adminId);
+        $stmt->execute();
+    }
     function likePost($user, $postId)
     {
         $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");
@@ -409,6 +430,12 @@ class DatabaseHelper
         $queryRes = $stmt->get_result();
         return $queryRes->fetch_all(MYSQLI_ASSOC);
         ;
+    }
+    function changeTheme($userId, $newTheme)
+    {
+        $stmt = $this->db->prepare('UPDATE utenti SET tema=? WHERE idUtente=?');
+        $stmt->bind_param("si", $newTheme, $userId);
+        $stmt->execute();
     }
 
 }

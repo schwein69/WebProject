@@ -6,7 +6,7 @@
                 <nav class="navbar my-5">
                     <ul class="navbar-nav w-100" id="settings-ul">
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../src/theme.php">
                                 <h2>Profile Settings</h2>
                             </a>
                         </li>

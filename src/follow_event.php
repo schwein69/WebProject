@@ -1,18 +1,15 @@
 <?php 
 require_once 'bootstrap.php';
 
-//TODO check session
-//TODO manage like/dislike
-//TODO use $_SESSION["idUtente"]
-$postid=$_POST["userId"];
-$user=1;
-$result["follower"]=$dbh->isPostLiked($user, $postid);
-if($result["liked"]){
-    $dbh->dislikePost($user, $postid);
+
+$userId=$_POST["userId"];
+$result["follower"]=$dbh->isFollowedByMe($userId,$_SESSION["idUtente"]);
+if($result["follower"]){
+    $dbh->unfollowUser($userId,$_SESSION["idUtente"]);
 } else {
-    $dbh->likePost($user, $postid);
+    $dbh->followUser($userId,$_SESSION["idUtente"]);
 }
-$result["liked"]=!$result["liked"];
+$result["follower"]=!$result["follower"];
 
 header('Content-Type: application/json');
 echo json_encode($result);

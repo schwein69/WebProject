@@ -11,19 +11,9 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <?php
-    if (isset($templateParams["js"])):
-        foreach ($templateParams["js"] as $script):
-    ?>
-    <script src="<?php echo $script; ?>"></script>
-    <?php
-        endforeach;
-    endif;
-    ?>
 </head>
 
-<body class="bg-primary bg-opacity-10 text-black">
+<body class="bg-primary bg-opacity-10 text-black" data-theme="<?php if(isset($_SESSION["theme"])) echo $_SESSION["theme"]; else echo "chiaro"?>">
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
@@ -105,5 +95,13 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 </body>
-
+<?php
+    if (isset($templateParams["js"])):
+        foreach ($templateParams["js"] as $script):
+    ?>
+    <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </html>

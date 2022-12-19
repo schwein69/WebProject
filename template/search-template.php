@@ -6,8 +6,11 @@
             <label for="user">USER</label>
             <input type="radio" id="tag" name="searchOption" value="Tag">
             <label for="tag">TAG</label>
-            <input class="col-6" type="text" name="searchValue" placeholder="Search" style="" required />
+            <input class="col-6" type="text" list="search keyword" id="searchTextArea" name="searchValue" placeholder="Search" required />
+            <datalist id="search keyword" style="background-color: white;">
+            </datalist>
             <input class="col-2" type="submit"></input>
+           
         </form>
     </div>
     <div class="col-md-2"></div>
@@ -22,15 +25,20 @@
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-header">
                     <div class="row mt-2">
-                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"><img class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
-                                alt="foto profilo di <?php echo $post["username"] ?>"/></a></div>
+                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"><img
+                                    class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
+                                    alt="foto profilo di <?php echo $post["username"] ?>" /></a></div>
                         <div class="col-4">
                             <h2 style="font-size: 2vw">
                                 <?php echo $post["username"] ?>
                             </h2>
                         </div>
-                        <div class="col-4"> <button id="follow<?php echo $post["idUtente"] ?>" type="button"
-                                class="btn btn-light btn-md border border-dark" style="box-shadow: none;">Segui</button>
+                        <div class="col-4">
+                            <?php $post["followedByMe"] = $dbh->isFollowedByMe($post["idUtente"],$_SESSION["idUtente"]); ?>
+                            <button type="button" id="follower<?php echo $post["idUtente"] ?>" class="btn btn-primary"
+                                style="box-shadow: none;">
+                                <?php echo $post["followedByMe"]  ? "seguito" :  "segui" ?>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -58,7 +66,8 @@
                     } else {
                         echo "<div class='carousel-item'>";
                     } ?>
-                            <img class="card-img-bottom img-fluid my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                            <img class="card-img-bottom img-fluid my-2 mx-auto"
+                                src="<?php echo $immagine["percorso"] ?>"
                                 alt="<?php echo $immagine["descrizione"] ?>" />
                         </div>
                         <?php endforeach; ?>
@@ -80,24 +89,24 @@
                 <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
                     style="display:block ; width: fit-content;">Espandi</a>
             </div>
-            <?php $post_data = $dbh->getPostData($post["idPost"]);
-                  $post_data["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);         
+            <?php 
+                  $post["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);       
             ?>
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
                         <button type="button" id="like<?php echo $post["idPost"] ?>" class="btn btn-light">
-                            <img src="<?php echo $post_data["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
+                            <img src="<?php echo $post["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
                                 alt="Like post" />
                         </button>
                         <span>
-                            <?php if($post_data['numLike']>0){echo $post_data['numLike'];}?>
+                            <?php if($post['numLike']>0){echo $post['numLike'];}?>
                         </span>
                     </li>
                     <li class="nav-item mx-2"> <button type="button" id="chat<?php echo $post["idPost"] ?>"
-                            class="btn btn-light"><img src="../imgs/icons/chat.svg" alt="Commenta post"/></button></li>
+                            class="btn btn-light"><img src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>
                     <li class="nav-item mx-2"> <button type="button" id="save<?php echo $post["idPost"] ?>"
-                            class="btn btn-light"><img src="../imgs/icons/star.svg" alt="Salva post"/></button></li>
+                            class="btn btn-light"><img src="../imgs/icons/star.svg" alt="Salva post" /></button></li>
                 </ul>
             </div>
     </div>
@@ -108,9 +117,9 @@
 <div class="col-md-2"></div>
 </div>
 <script>
-const tagName = <?php if(isset($templateParams["tagName"])) { echo json_encode($templateParams['tagName']); } else echo json_encode("") ?>;
-const isTag = <?php echo $templateParams["isTag"]?>;
-const oldId = <?php echo json_encode($oldPostId)?>;
+    const tagName = <?php if (isset($templateParams[" tagName "])) { echo json_encode($templateParams[' tagName ']); } else echo json_encode("") ?>;
+    const isTag = <?php echo $templateParams["isTag"]?>;
+    const oldId = <?php echo json_encode($oldPostId) ?>;
 </script>
 <?php else :?>
 <div class="row">

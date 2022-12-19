@@ -84,17 +84,17 @@
                 <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
                     style="display:block ; width: fit-content;">Espandi</a>
             </div>
-            <?php $post_data = $dbh->getPostData($post["idPost"]);
-                  $post_data["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);         
+            <?php 
+                $post["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$post["idPost"]);         
             ?>
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">  <button type="button" id="like<?php echo $post["idPost"] ?>" class="btn btn-light">
-                            <img src="<?php echo $post_data["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
+                            <img src="<?php echo $post["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
                                 alt="Like post" />
                         </button>
                         <span>
-                            <?php if($post_data['numLike']>0){echo $post_data['numLike'];}?>
+                            <?php if($post['numLike']>0){echo $post['numLike'];}?>
                         </span></li>
                     <li class="nav-item mx-2"> <button type="button" class="btn btn-light"><img
                                 src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>

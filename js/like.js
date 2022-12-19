@@ -1,3 +1,4 @@
+delegate_event('click', document, 'button[id^=like]', like);
 function like(event) {
     event.preventDefault();
     const source = event.target || event.srcElement;

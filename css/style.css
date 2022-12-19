@@ -1,23 +1,40 @@
+:root {
+  --colour-bck: #49acf3;
+  --colour-font: #000000;
+  --colour-hover:lightgreen;
+  --search-resultbox-bck: white;
+}
+
+/*[data-theme="chiaro"],
+a {
+    transition-duration: 1s;
+}*/
+
+[data-theme="scuro"] {
+  --colour-bck: #000000;
+  --colour-font: #FFFFFF;
+}
+
 html,body {
   height: 100%;
 }
 
 body  header > div > div{
-  background-color: #49acf3;
+  background-color: var(--colour-bck);
 }
 button {
   box-shadow: 0 0 5px 2px black;
 }
 .profileLink{
   text-decoration: none;
-  color:black;
+  color: var(--colour-font);
 }
 .profileLink:hover {
-  background-color: lightgreen;
+  background-color: var(--colour-hover);
 }
 footer nav ul li a h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: black;
+  color: var(--colour-font);
   font-size: large;
 }
 
@@ -57,7 +74,7 @@ footer nav ul li a {
 }
 
 #settings-ul li h2 {
-  color: black;
+  color: var(--colour-font);;
 }
 
 #settings-ul li:nth-child(odd) {
@@ -66,7 +83,7 @@ footer nav ul li a {
 
 span {
   font-size: 150%;
-  color: black;
+  color: var(--colour-font);
 }
 
 .btn-light {
@@ -76,13 +93,13 @@ span {
 h1 a {
   font-size: 120%;
   text-decoration: none;
-  color: black;
+  color: var(--colour-font);
 }
 
 .form-group>label {
   text-align: center;
   border-radius: 15px;
-  background: #fff;
+  background: var(--search-resultbox-bck);
 }
 
 /* Form buttons (used in new_post.php)*/

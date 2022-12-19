@@ -12,5 +12,5 @@ require_once('functions-util.php');
 
 
 $dbh = new DatabaseHelper('localhost', 'root', '', 'social_network');
-$templateParams["js"] = array("../js/like.js","../js/settings.js","../js/functions.js","../js/follow-event.js");
+
 ?>

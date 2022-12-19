@@ -15,8 +15,11 @@
                                 <?php echo $post["username"] ?>
                             </h2>
                         </div>
-                        <div class="col-4"> <button value="<?php echo $post["idUtente"] ?>" type="button"
-                                class="btn btn-light btn-md border border-dark" style="box-shadow: none;">Segui</button>
+                        <div class="col-4"> 
+                        <?php $post["followedByMe"] = $dbh->isFollowedByMe($post["idUtente"],$_SESSION["idUtente"]); ?>
+                            <button type="button" id="follower<?php echo $post["idUtente"] ?>" class="btn btn-primary" style="box-shadow: none;">
+                                <?php echo $post["followedByMe"]  ? "seguito" :  "segui" ?>
+                            </button>
                         </div>
                     </div>
                 </div>
