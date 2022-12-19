@@ -253,5 +253,23 @@ class DatabaseHelper{
         $stmt->bind_param("i",$user);
         $stmt->execute();
     }
+
+    function getChatsNotifications($user)
+    {
+        $query = "SELECT C.idChat, count(*) AS numMsgs, (SELECT max(msgTimestamp)
+                                                        FROM messaggi M2
+                                                        WHERE M2.idChat = C.idChat) AS tempo
+                 FROM partecipazione P 
+                 JOIN chat C ON P.idChat = C.idChat
+                 JOIN messaggi M ON C.idChat = M.idChat
+                 WHERE P.idUtente=? AND letto=0 AND M.idMittente<>?
+                 GROUP BY C.idChat
+                 ORDER BY tempo DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$user,$user);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
