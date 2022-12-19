@@ -1,4 +1,4 @@
-<!-- TODO search feature, limit number of chats, infinite scroll (?) -->
+<!-- TODO search feature, infinite scroll (?) -->
 <div class="row col-12 col-md-8 mx-auto">
 <input id="searchBox" type="text" placeholder="Cerca..."/>
 </div>
@@ -9,9 +9,9 @@
         <?php foreach($templateParams["chats"] as $chat):?>
         <li class="list-group-item"> 
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
-        <img src="<?php echo $chat["profilePicture"];?>" alt="<?php echo $chat["username"];?>"/>
+        <img src="<?php echo UPLOAD_DIR.$chat['idUtente'].'/'.$chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
         <h2><?php echo $chat["username"];?></h2>
-        <p><?php echo $chat["anteprimaChat"];?></p>
+        <p><?php echo $chat["anteprimaChat"] != "" ? $chat["anteprimaChat"] : "Inizia la conversazione";?></p>
         </a>
         </li>
         <?php endforeach;?>

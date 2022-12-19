@@ -29,13 +29,18 @@ button {
   text-decoration: none;
   color: var(--colour-font);
 }
+a{
+  text-decoration: none;
+  color: var(--colour-font);
+}
+
+
 .profileLink:hover {
   background-color: var(--colour-hover);
 }
 footer nav ul li a h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: var(--colour-font);
-  font-size: large;
 }
 
 #settings-ul li {
@@ -92,7 +97,6 @@ span {
 
 h1 a {
   font-size: 120%;
-  text-decoration: none;
   color: var(--colour-font);
 }
 
@@ -107,8 +111,10 @@ form>fieldset button {
   width: fit-content !important;
 }
 
-form .img-label {
-  display: none;
+div.chat-msg{
+  background-color:green;
+  width: fit-content;
+  max-width:50%;
 }
 
 @media only screen and (min-width: 768px) {

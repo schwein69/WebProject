@@ -1,9 +1,8 @@
 <?php 
 require_once 'bootstrap.php';
 
-//TODO check session
-//TODO manage like/dislike
-//TODO use $_SESSION["idUtente"]
+redirectNotLoggedUser();
+
 $postid=$_POST["postid"];
 $user=$_SESSION["idUtente"];
 $result["liked"]=$dbh->isPostLiked($user, $postid);

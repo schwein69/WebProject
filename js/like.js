@@ -20,7 +20,7 @@ function like(event) {
         likeButton.children[0].src = likeImg;
         numLikePlace.innerText = numLike;
     };
-    xhttp.open("POST", "like_event.php");
+    xhttp.open("POST", "event_like.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("postid=" + postId);
 }

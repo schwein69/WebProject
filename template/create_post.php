@@ -12,7 +12,7 @@
     <legend class="text-start">Tags</legend>
     <div class="container-fluid p-0 overflow-hidden">
         <div class="row">
-        <input type="text" id="tag9" name="tag9" class="col-2 m-1"/>
+        <input type="text" aria-label="tag1" id="tag1" name="tag1" class="col-2 m-1"/>
         </div>
         <div class="row">
         <button type="button" class="m-1">Aggiungi tag</button>
@@ -23,10 +23,9 @@
     <legend class="text-start">Immagini</legend>
     <div class="container-fluid p-0 overflow-hidden">
         <div class="row my-1">
-        <label class="img-label" for="f1">Immagine 1</label>
-        <input class="col-6" type="file" id="f1" name="f1" accept="video/*,image/*"/> 
+        <input class="col-6" aria-label="Immagine 1" type="file" id="f1" name="f1" accept="video/*,image/*"/> 
         <label class="col-3" for="alt1">Testo alternativo:</label>
-        <input class="col-3" type="text" id="alt1" name="alt1"/>
+        <input class="col-3" aria-label="Testo alternativo per immagine 1" type="text" id="alt1" name="alt1"/>
         </div> 
         <div class="row">
         <button class="mt-2 d-flex mx-auto">Aggiungi immagine/video</button>
@@ -36,4 +35,3 @@
     <input class="d-flex ms-auto mt-2" type="submit" value="Crea post"/>
 </form>
 </div>
-<script src="../js/post_creation_buttons.js"></script>

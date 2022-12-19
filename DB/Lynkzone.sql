@@ -31,8 +31,6 @@ USE `social_network`;
 
 CREATE TABLE `chat` (
   `idChat` int(11) NOT NULL,
-  `usr1` int(11) NOT NULL,
-  `usr2` int(11) NOT NULL,
   `anteprimaChat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -49,13 +47,6 @@ CREATE TABLE `commenti` (
   `idPost` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `commenti`
---
-
-INSERT INTO `commenti` (`idCommento`, `dataCommento`, `testo`, `idPost`, `idUtente`) VALUES
-(1, '2022-12-02', 'BRUH', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +88,8 @@ CREATE TABLE `notifiche` (
   `idUtenteNotificante` int(11) NOT NULL,
   `idPostRiferimento` int(11) DEFAULT NULL,
   `idTipo` int(11) NOT NULL,
-  `idUtente` int(11) NOT NULL
+  `idUtente` int(11) NOT NULL,
+  `letto` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -126,15 +118,6 @@ CREATE TABLE `posts` (
   `numCommenti` int(11) NOT NULL DEFAULT 0,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`idPost`, `dataPost`, `testo`, `numLike`, `numCommenti`, `idUser`) VALUES
-(1, '2022-12-02', 'Questo è un post di prova.', 11, 6, 1);
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `postsalvati`
@@ -201,21 +184,26 @@ CREATE TABLE `tipi` (
 CREATE TABLE `utenti` (
   `idUtente` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(512) NOT NULL,
+  `pwd` varchar(512) NOT NULL,
   `email` varchar(320) NOT NULL,
+  `descrizione` varchar(512),
   `dataDiNascita` date NOT NULL,
   `fotoProfilo` varchar(100) NOT NULL,
   `tema` enum('d','l') NOT NULL DEFAULT 'l',
   `lang` enum('it','en') NOT NULL DEFAULT 'it'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `utenti`
+-- Table structure for table `partecipazione`
 --
 
-INSERT INTO `utenti` (`idUtente`, `username`, `password`, `email`, `dataDiNascita`, `fotoProfilo`, `tema`, `lang`) VALUES
-(1, 'ginopino', 'ginopino', 'ginopino@gmail.com', '2002-02-02', 'profile.jpg', 'l', 'it'),
-(2, 'cippalippa', 'cippalippa', 'cippalippa', '2001-12-06', 'kitty.png', 'l', 'it');
+CREATE TABLE `partecipazione` (
+  `idPartecipazione` int(11) NOT NULL,
+  `idChat` int(11) NOT NULL,
+  `idUtente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -229,6 +217,15 @@ ALTER TABLE `chat`
   ADD UNIQUE KEY `unique` (`usr1`,`usr2`) USING BTREE,
   ADD KEY `usr2` (`usr2`),
   ADD KEY `usr1` (`usr1`) USING BTREE;
+
+--
+-- Indexes for table `partecipazione`
+--
+ALTER TABLE `partecipazione`
+  ADD PRIMARY KEY (`idPartecipazione`),
+  ADD UNIQUE KEY `unique` (`idChat`,`idUtente`) USING BTREE,
+  ADD KEY `idChat` (`idChat`),
+  ADD KEY `idUtente` (`idUtente`) USING BTREE;
 
 --
 -- Indexes for table `commenti`
@@ -262,9 +259,9 @@ ALTER TABLE `notifiche`
   ADD KEY `idUtente` (`idUtente`);
 
 --
--- Indexes for table `postpaciuti`
+-- Indexes for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
+ALTER TABLE `postpiaciuti`
   ADD PRIMARY KEY (`idPostPiaciuto`),
   ADD UNIQUE KEY `unique` (`idUtente`,`idPost`) USING BTREE,
   ADD KEY `idUtente` (`idUtente`),
@@ -336,6 +333,12 @@ ALTER TABLE `chat`
   MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `partecipazione`
+--
+ALTER TABLE `partecipazione`
+  MODIFY `idPartecipazione` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `commenti`
 --
 ALTER TABLE `commenti`
@@ -360,9 +363,9 @@ ALTER TABLE `notifiche`
   MODIFY `idNotifica` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `postpaciuti`
+-- AUTO_INCREMENT for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
+ALTER TABLE `postpiaciuti`
   MODIFY `idPostPiaciuto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -412,11 +415,11 @@ ALTER TABLE `utenti`
 --
 
 --
--- Constraints for table `chat`
+-- Constraints for table `partecipazione`
 --
-ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`usr1`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`usr2`) REFERENCES `utenti` (`idUtente`);
+ALTER TABLE `partecipazione`
+  ADD CONSTRAINT `partecipazione_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  ADD CONSTRAINT `partecipazione_ibfk_2` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`);
 
 --
 -- Constraints for table `commenti`
@@ -445,11 +448,11 @@ ALTER TABLE `notifiche`
   ADD CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipi` (`idTipo`);
 
 --
--- Constraints for table `postpaciuti`
+-- Constraints for table `postpiaciuti`
 --
-ALTER TABLE `postpaciuti`
-  ADD CONSTRAINT `postpaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `postpaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `postpiaciuti`
+  ADD CONSTRAINT `postpiaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  ADD CONSTRAINT `postpiaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `posts`

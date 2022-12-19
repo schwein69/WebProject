@@ -12,5 +12,4 @@ require_once('functions-util.php');
 
 
 $dbh = new DatabaseHelper('localhost', 'root', '', 'social_network');
-
 ?>
