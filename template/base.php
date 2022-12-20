@@ -40,8 +40,7 @@
                                         <li class="mx-1">
                                             <button role="link" type="button" id="notifButton" class="btn btn-light">                                                
                                                 <img src="../imgs/icons/bell.svg" alt="Notifiche" />
-                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                    
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
                                                 <span aria-label="new notifications"></span>
                                                 </span>
                                             </button>
