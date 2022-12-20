@@ -2,12 +2,14 @@
 require 'UserFunctions.php';
 require 'PostFunctions.php';
 require 'ChatFunctions.php';
+require 'NotificationFunctions.php';
 
 class DatabaseHelper{
     private $db;
     private $userFunctions;
     private $postFunctions;
     private $chatFunctions;
+    private $notifFunctions;
 
     public function __construct($servername, $username, $password, $dbname)
     {
@@ -18,6 +20,7 @@ class DatabaseHelper{
         $this->userFunctions = new UserFunctions($this->db);
         $this->postFunctions = new PostFunctions($this->db);
         $this->chatFunctions = new ChatFunctions($this->db);
+        $this->notifFunctions = new NotificationFunctions($this->db);
     }
 
     //--------------- USER FUNCTIONS ------------------
@@ -177,6 +180,45 @@ class DatabaseHelper{
         $this->chatFunctions->readAllMessages($chatId,$user);
     }
 
+    //--------------- NOTIFICATION FUNCTIONS ------------------
+
+    function getChatsNotifications($user)
+    {
+        return $this->notifFunctions->getChatsNotifications($user);
+    }
+
+    function getNotifications($user, $first=0, $num=5)
+    {
+        return $this->notifFunctions->getNotifications($user, $first, $num);
+    }
+
+    function getUnreadNotificationsNumber($user)
+    {
+        return $this->notifFunctions->getUnreadNotificationsNumber($user);
+    }
+    
+    function readAllNotifications($user)
+    {
+        $this->notifFunctions->readAllNotifications($user);
+    }
+
+    function notifUserLike($userId, $postId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "like", $targetId, $postId);
+    }
+
+    function notifUserComment($userId, $postId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "comment", $targetId, $postId);
+    }
+
+    function notifUserFollow($userId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "follow", $targetId);
+    }
+
+    //--------------- OTHER FUNCTIONS ------------------
+    
     public function getSearchUser($username,$idUser)
     {
         $query = "SELECT idUtente,username,fotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
@@ -225,56 +267,6 @@ class DatabaseHelper{
         $stmt->bind_param("s", $tag);
         $stmt->execute();
         return $this->db->insert_id;
-    }
-
-    function getNotifications($user, $first=0, $num=5)
-    {
-        $query = "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
-        ." FROM notifiche N"
-        ." JOIN tipi T ON N.idTipo = T.idTipo"
-        ." WHERE idUtente=? ORDER BY idNotifica LIMIT ?,?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iii",$user,$first, $num);
-        $stmt->execute();
-        $queryRes = $stmt->get_result();
-        return $queryRes->fetch_all(MYSQLI_ASSOC);      
-    }
-
-    function getUnreadNotificationsNumber($user)
-    {
-        $query = "SELECT count(*)"
-        ." FROM notifiche N"
-        ." WHERE idUtente=? AND letto=0";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i",$user);
-        $stmt->execute();
-        $queryRes = $stmt->get_result();
-        return $queryRes->fetch_all(MYSQLI_NUM)[0][0];
-    }
-    
-    function readAllNotifications($user)
-    {
-        $stmt = $this->db->prepare("UPDATE notifiche SET letto=1 WHERE idUtente=?");
-        $stmt->bind_param("i",$user);
-        $stmt->execute();
-    }
-
-    function getChatsNotifications($user)
-    {
-        $query = "SELECT C.idChat, count(*) AS numMsgs, (SELECT max(msgTimestamp)
-                                                        FROM messaggi M2
-                                                        WHERE M2.idChat = C.idChat) AS tempo
-                 FROM partecipazione P 
-                 JOIN chat C ON P.idChat = C.idChat
-                 JOIN messaggi M ON C.idChat = M.idChat
-                 WHERE P.idUtente=? AND letto=0 AND M.idMittente<>?
-                 GROUP BY C.idChat
-                 ORDER BY tempo DESC";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii",$user,$user);
-        $stmt->execute();
-        $queryRes = $stmt->get_result();
-        return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
