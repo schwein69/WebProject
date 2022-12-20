@@ -2,7 +2,7 @@
 <div class="card-header">
     <div class="row mt-2">
     <div class="col-4">
-        <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$user['idUtente'].'/'.$user['fotoProfilo']?>" alt="<?php echo "foto profilo di ".$user['username'];?>" style="width: auto; max-width: 25%;"/>
+        <img class="img-fluid rounded" src="<?php echo $post_data['fotoProfilo']?>" alt="<?php echo "foto profilo di ".$user['username'];?>" style="width: auto; max-width: 25%;"/>
     </div>
     <div class="col-4"> <h2 style="font-size: 2vw"><?php echo $user['username'];?></h2></div>
     <div class="col-4"> <button type="button" class="btn btn-light btn-md border border-dark" style="box-shadow: none;">Segui</button></div>

@@ -2,12 +2,14 @@
 require 'UserFunctions.php';
 require 'PostFunctions.php';
 require 'ChatFunctions.php';
+require 'NotificationFunctions.php';
 
 class DatabaseHelper{
     private $db;
     private $userFunctions;
     private $postFunctions;
     private $chatFunctions;
+    private $notifFunctions;
 
     public function __construct($servername, $username, $password, $dbname)
     {
@@ -18,6 +20,7 @@ class DatabaseHelper{
         $this->userFunctions = new UserFunctions($this->db);
         $this->postFunctions = new PostFunctions($this->db);
         $this->chatFunctions = new ChatFunctions($this->db);
+        $this->notifFunctions = new NotificationFunctions($this->db);
     }
 
     //--------------- USER FUNCTIONS ------------------
@@ -157,9 +160,9 @@ class DatabaseHelper{
         return $this->chatFunctions->getRecentChats($user,$user2,$initialChat, $numChats);    
     }
     
-    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10)
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10, $letto=true, $user=-1)
     {
-        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs);    
+        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs,$letto,$user);    
     }
 
     public function insertMessage($chatid,$user,$msg)
@@ -172,6 +175,50 @@ class DatabaseHelper{
         $this->chatFunctions->updateChatPreview($chatid,$msg);    
     }
 
+    public function readAllMessages($chatId, $user)
+    {
+        $this->chatFunctions->readAllMessages($chatId,$user);
+    }
+
+    //--------------- NOTIFICATION FUNCTIONS ------------------
+
+    function getChatsNotifications($user)
+    {
+        return $this->notifFunctions->getChatsNotifications($user);
+    }
+
+    function getNotifications($user, $first=0, $num=5)
+    {
+        return $this->notifFunctions->getNotifications($user, $first, $num);
+    }
+
+    function getUnreadNotificationsNumber($user)
+    {
+        return $this->notifFunctions->getUnreadNotificationsNumber($user);
+    }
+    
+    function readAllNotifications($user)
+    {
+        $this->notifFunctions->readAllNotifications($user);
+    }
+
+    function notifUserLike($userId, $postId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "like", $targetId, $postId);
+    }
+
+    function notifUserComment($userId, $postId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "comment", $targetId, $postId);
+    }
+
+    function notifUserFollow($userId, $targetId)
+    {
+        $this->notifFunctions->notifUser($userId, "follow", $targetId);
+    }
+
+    //--------------- OTHER FUNCTIONS ------------------
+    
     public function getSearchUser($username,$idUser)
     {
         $query = "SELECT idUtente,username,fotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
@@ -232,20 +279,13 @@ class DatabaseHelper{
         return $this->db->insert_id;
     }
 
-    function getNotifications($user, $first=0, $num=5)
-    {
-        $stmt = $this->db->prepare("SELECT * FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
-        $stmt->bind_param("ii", $userId, $adminId);
-        $stmt->execute();
-        $queryRes = $stmt->get_result();
-        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
-    }
     function followUser($userId, $adminId)
     {
         $stmt = $this->db->prepare("INSERT INTO relazioniutenti(idFollower,idFollowed) VALUES (?,?)");
         $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
     }
+    
     function unfollowUser($userId, $adminId)
     {
         $stmt = $this->db->prepare("DELETE FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
@@ -253,14 +293,11 @@ class DatabaseHelper{
         $stmt->execute();
     }
  
-
     function changeTheme($userId, $newTheme)
     {
         $stmt = $this->db->prepare('UPDATE utenti SET tema=? WHERE idUtente=?');
         $stmt->bind_param("si", $newTheme, $userId);
         $stmt->execute();
     }
-
-
 }
 ?>

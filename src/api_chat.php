@@ -5,14 +5,24 @@ redirectNotLoggedUser();
 $result["status"] = false;
 
 
-if(isset($_POST["chatid"]) && isset($_POST["start"]) && isset($_POST["end"])){
-    $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], $_POST["start"], $_POST["end"]);
-    for ($i=0; $i < count($result["messages"]); $i++) { 
-        $result["messages"][$i]["isSecondUser"] = $result["messages"][$i]["idMittente"] != $_SESSION["idUtente"];
-        $result["messages"][$i]["msgTime"] = date('d-m-Y H:i',strtotime($result["messages"][$i]["msgTimestamp"]));
-        $result["messages"][$i]["testoMsg"] = utf8_encode($result["messages"][$i]["testoMsg"]);
+if(isset($_POST["chatid"])){
+    if(isset($_POST["start"]) && isset($_POST["end"])){
+        $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], $_POST["start"], $_POST["end"]);
+    } else if(isset($_POST["read"])){
+        //used for live messages meanwhile the user is in chat page
+        $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], 0, 10, false, $_SESSION["idUtente"]);
+    }else{
+        $dbh->readAllMessages($_POST["chatid"],$_SESSION["idUtente"]);
     }
-    $result["status"] = true;
+
+    if(isset($result["messages"])){
+        for ($i=0; $i < count($result["messages"]); $i++) { 
+            $result["messages"][$i]["isSecondUser"] = $result["messages"][$i]["idMittente"] != $_SESSION["idUtente"];
+            $result["messages"][$i]["msgTime"] = date('d-m-Y H:i',strtotime($result["messages"][$i]["msgTimestamp"]));
+            $result["messages"][$i]["testoMsg"] = utf8_encode($result["messages"][$i]["testoMsg"]);
+        }
+        $result["status"] = true;
+    }
 }
 
 //var_dump($result);

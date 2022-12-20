@@ -8,6 +8,18 @@ class ChatFunctions
         $this->db = $db;
     }
     
+    public function readAllMessages($chatId, $user)
+    {
+        $query = "UPDATE messaggi
+                SET letto=1
+                WHERE idChat=? AND idMittente<>? AND ? IN (SELECT idUtente
+                                                                FROM partecipazione
+                                                                WHERE idChat=?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iiii",$chatId,$user,$user,$chatId);
+        $stmt->execute();
+    }
+
     public function isUserInChat($chatId, $user)
     {
         $query = "SELECT idUtente FROM partecipazione WHERE idChat=? AND idUtente=?";
@@ -20,7 +32,7 @@ class ChatFunctions
 
     public function getChatUser($chatId, $user1)
     {
-        $query = "SELECT U.idUtente, username, fotoProfilo "
+        $query = "SELECT U.idUtente, username, formatoFotoProfilo "
                 ."FROM utenti U "
                 ."JOIN partecipazione P ON U.idUtente=P.idUtente "
                 ."WHERE idChat=? AND U.idUtente<>?";
@@ -34,7 +46,7 @@ class ChatFunctions
     public function getRecentChats($user,$user2,$initialChat, $numChats)
     {
         //retrieving chats
-       $query = "SELECT C.idChat, P.idUtente, username, fotoProfilo, anteprimaChat, "
+       $query = "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "
                    ."(SELECT max(msgTimestamp) "
                    ."FROM messaggi M "
                    ."WHERE C.idChat = M.idChat) AS tempo "
@@ -66,15 +78,23 @@ class ChatFunctions
     }
     
     //it fetches chat messages starting from the last and goint up to numMsgs messages
-    public function getRecentMessagesFromChat($chat, $initialMsg, $numMsgs)
+    public function getRecentMessagesFromChat($chat, $initialMsg, $numMsgs, $letto, $user)
     {
         //retrieving chats
-        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente "
-                ."FROM messaggi WHERE idChat=? "
-                ."ORDER BY msgTimestamp DESC "
+        $query = "SELECT testoMsg, msgTimestamp, letto, idMittente
+                 FROM messaggi WHERE idChat=? ";
+        if(!$letto){
+            $query .= "AND (letto=0 AND idMittente<>?) ";
+        }
+
+        $query .= "ORDER BY msgTimestamp DESC "
                 ."LIMIT ?,?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
+        if($letto){
+            $stmt->bind_param("iii",$chat,$initialMsg,$numMsgs);
+        } else {
+            $stmt->bind_param("iiii",$chat,$user,$initialMsg,$numMsgs);
+        }
         $stmt->execute();
         $queryRes = $stmt->get_result();
         return $queryRes->fetch_all(MYSQLI_ASSOC);;

@@ -17,7 +17,7 @@
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
-                <div class="col-12 col-md-8 mx-auto">
+                <div class="col-12 col-md-8 mx-auto pt-3">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-6 col-md-7 my-auto text-end">
@@ -38,8 +38,11 @@
                                             </button>
                                         </li>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="notifButton" class="btn btn-light">
+                                            <button role="link" type="button" id="notifButton" class="btn btn-light">                                                
                                                 <img src="../imgs/icons/bell.svg" alt="Notifiche" />
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                                                <span aria-label="new notifications"></span>
+                                                </span>
                                             </button>
                                         </li>
                                         <?php endif; ?>
@@ -73,10 +76,13 @@
                                 <h2>Search</h2>
                             </a>
                         </li>
-                        <li class="nav-item col-3">
+                        <li class="nav-item col-3" id='menuChatButton'>
                             <a href="all_chats.php" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">                 
+                                <span aria-label="unread messages"></span>
+                            </span>
                         </li>
                         <li class="nav-item col-3">
                             <a href="../src/profile.php" class="btn btn-primary"><span
@@ -93,7 +99,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="../js/messages_notification.js"></script>
     <script src="../js/base.js"></script>
+    <?php
+    if (isset($templateParams["js"])):
+        foreach ($templateParams["js"] as $script):
+    ?>
+    <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </body>
 <?php
     if (isset($templateParams["js"])):

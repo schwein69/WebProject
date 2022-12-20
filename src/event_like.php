@@ -10,6 +10,8 @@ if($result["liked"]){
     $dbh->dislikePost($user, $postid);
 } else {
     $dbh->likePost($user, $postid);
+    $authId = $dbh->getPostData($postId)["idUser"];
+    $dbh->notifUserLike($user, $postId, $authId);
 }
 $result["liked"]=!$result["liked"];
 
