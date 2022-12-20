@@ -1,11 +1,11 @@
 <?php 
 require_once 'bootstrap.php';
 
-//TODO check session
-//TODO manage like/dislike
-//TODO use $_SESSION["idUtente"]
+redirectNotLoggedUser();
+
+//TODO insert notification
 $postid=$_POST["userId"];
-$user=1;
+$user=$_SESSION["idUtente"];
 $result["follower"]=$dbh->isPostLiked($user, $postid);
 if($result["liked"]){
     $dbh->dislikePost($user, $postid);
