@@ -26,7 +26,7 @@
                 <div class="card-header">
                     <div class="row mt-2">
                         <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"><img
-                                    class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
+                                    class="img-fluid avatar" src="<?php echo UPLOAD_DIR.$userData["idUtente"]."/profile.png" ?>"
                                     alt="foto profilo di <?php echo $post["username"] ?>" /></a></div>
                         <div class="col-4">
                             <h2 style="font-size: 2vw">
@@ -81,7 +81,7 @@
                 </div>
                 <?php else: ?>
 
-                <img class="card-img-bottom img-fluid my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
+                <img class="card-img-bottom img-fluid my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"]?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 
@@ -130,7 +130,7 @@
         <div class="card col-12 mx-auto">
             <div class="row g-0">
                 <div class="col-4 my-auto">
-                    <img src="<?php echo $user["fotoProfilo"] ?>" class="img-fluid rounded searchAvatar"
+                    <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.png" ?>" class="img-fluid rounded searchAvatar"
                         alt="foto profilo di <?php echo $user["username"] ?>">
                 </div>
                 <div class="col-8 my-auto">

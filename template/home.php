@@ -7,7 +7,7 @@
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-header">
                     <div class="row mt-2">
-                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"> <img class="img-fluid avatar" src="<?php echo $post["fotoProfilo"] ?>"
+                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $post["idUtente"]?>"> <img class="img-fluid avatar" src="<?php echo UPLOAD_DIR.$post["idUtente"]."/profile.png" ?>"
                                 alt="foto profilo di <?php echo $post["username"] ?>" /></a>
                         </div>
                         <div class="col-4">

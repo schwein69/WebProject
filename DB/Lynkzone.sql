@@ -214,10 +214,7 @@ CREATE TABLE `partecipazione` (
 -- Indexes for table `chat`
 --
 ALTER TABLE `chat`
-  ADD PRIMARY KEY (`idChat`),
-  ADD UNIQUE KEY `unique` (`usr1`,`usr2`) USING BTREE,
-  ADD KEY `usr2` (`usr2`),
-  ADD KEY `usr1` (`usr1`) USING BTREE;
+  ADD PRIMARY KEY (`idChat`);
 
 --
 -- Indexes for table `partecipazione`

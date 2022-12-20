@@ -221,7 +221,7 @@ class DatabaseHelper{
     
     public function getSearchUser($username,$idUser)
     {
-        $query = "SELECT idUtente,username,fotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
+        $query = "SELECT idUtente,username,formatoFotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $username,$idUser);
         $stmt->execute();
@@ -243,7 +243,7 @@ class DatabaseHelper{
     {
         $query = "
         SELECT DISTINCT
-            P.*, U.username, U.fotoProfilo, U.idUtente
+            P.*, U.username, U.formatoFotoProfilo, U.idUtente
         FROM
             posts P,
             utenti U,

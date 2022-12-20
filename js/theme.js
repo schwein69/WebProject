@@ -7,7 +7,7 @@ document.getElementById("changeThemeButton").addEventListener("click",changeThem
      container.setAttribute('data-theme', localStorage.getItem('theme'));
  })();*/
 function changeTheme() {
-    let targetTheme = container.getAttribute('data-theme') === 'scuro' ? 'chiaro' : 'scuro';
+    let targetTheme = container.getAttribute('data-theme') === 'd' ? 'l' : 'd';
 
     // Set the attribute 'data-theme' to the targetTheme
     //container.setAttribute('data-theme', targetTheme);
