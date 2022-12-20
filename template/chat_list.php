@@ -1,4 +1,3 @@
-<!-- TODO search feature, infinite scroll (?) -->
 <div class="row col-12 col-md-8 mx-auto">
 <input id="searchBox" type="text" placeholder="Cerca..."/>
 </div>
@@ -10,7 +9,7 @@
         <li class="list-group-item"> 
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
         <img src="<?php echo UPLOAD_DIR.$chat['idUtente'].'/'.$chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
-        <h2><?php echo $chat["username"];?></h2>
+        <h2><?php echo $chat["username"];?></h2><span style="<?php echo isset($chat['numNotif'])? 'style:display:none':'';?>" class="badge bg-secondary"><?php echo isset($chat['numNotif'])? $chat['numNotif']:'';?></span>
         <p><?php echo $chat["anteprimaChat"] != "" ? $chat["anteprimaChat"] : "Inizia la conversazione";?></p>
         </a>
         </li>

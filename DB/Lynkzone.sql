@@ -188,7 +188,8 @@ CREATE TABLE `utenti` (
   `email` varchar(320) NOT NULL,
   `descrizione` varchar(512),
   `dataDiNascita` date NOT NULL,
-  `fotoProfilo` varchar(100) NOT NULL,
+  `formatoFotoProfilo` varchar(6) NOT NULL,
+  `codiceRecupero` varchar(256),
   `tema` enum('d','l') NOT NULL DEFAULT 'l',
   `lang` enum('it','en') NOT NULL DEFAULT 'it'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
