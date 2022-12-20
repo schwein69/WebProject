@@ -5,7 +5,7 @@
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h1>Recovery</h1>
             <p>Compila l'email per ricevere il link</p>
-            <form  class="form-horizontal" name="myform" method="post" action="" onsubmit="return checkEmail()">
+            <form  class="form-horizontal" name="myform" method="post" action="">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="email"><b>Email</b></label>
                     <input class="col-6" type="text" placeholder="Email" name="email" id='email'>

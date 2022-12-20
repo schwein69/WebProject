@@ -17,7 +17,7 @@ function generaArticoli(articoli) {
         <div class="card col-10 col-md-8 mx-auto">
         <div class="card-header">
             <div class="row mt-2">
-                <div class="col-4"> <img class="img-fluid avatar" src="${articoli["post"]["fotoProfilo"]}"
+                <div class="col-4"> <img class="img-fluid avatar" src="${articoli["post"]["idUtente"]}./profile.${articoli["post"]["formatoFotoProfilo"]}"
                         alt="foto profilo di ${articoli["post"]["username"]}?>"/>
                 </div>
                 <div class="col-4">

@@ -20,10 +20,7 @@ if(isset($_POST["email"])){
         $mail->Body    = 'Test body';
     
         $mail->send();
-        echo '<script>
-        alert("Message has been sent!");
-        window.location.href="login.php";
-        </script>';
+        header("Location: changePassword_recovery.php");
     } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     } 
@@ -31,10 +28,10 @@ if(isset($_POST["email"])){
 
 $templateParams["content"] = "recovery-template.php";
 $templateParams["loginTopNav"]=true;
-$templateParams["loginBottomNav"]=true;;
-   
+$templateParams["loginBottomNav"]=true;
+$templateParams["js"] = array("../js/recovery-checker.js");
 
 require '../template/base.php';
-echo '<script src="../javascript/registrationchecker.js" type="text/javascript"></script>'
+
 
 ?>
