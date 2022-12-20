@@ -1,13 +1,13 @@
 ---- USER INSERTION ----
-INSERT INTO utenti(idUtente,username,pwd,email,dataDiNascita,fotoProfilo,tema,lang)
-VALUES (1,'Gino Pino','ginopino','ginopino@gmail.com','2001-01-01','kitty2.png','d','it'),
-(2,'Gigi','gigi','gigi@gmail.com','2001-01-01','childe.jpg','l','it'),
-(3,'John Doe','johndoe','johndoe@gmail.com','1960-04-06','childe.jpg','l','en'),
-(4,'Mike Bryan','mikebryan','mikebryan@gmail.com','1980-03-02','childe.jpg','l','en'),
-(5,'William Adams','williamadams','williamadams@gmail.com','2002-08-10','childe.jpg','d','en'),
-(6,'Alessandra Arpini','alessandraarpini','alessandraarpini@gmail.com','2000-04-07','childe.jpg','l','it'),
-(7,'Britney Jefferson','britneyjefferson','britneyjefferson@gmail.com','1972-11-12','childe.jpg','l','en'),
-(8,'Tommasino Guglielmi','tommasinoguglielmi','tommasinoguglielmi@gmail.com','1989-07-06','childe.jpg','d','it');
+INSERT INTO utenti(idUtente,username,pwd,email,dataDiNascita,formatoFotoProfilo,tema,lang)
+VALUES (1,'Gino Pino','$2y$10$q6BUrmxI9DlqSgcsYqEO2uJGZae4ZycWpTXWlpmCn8owtzxLI7t6W','ginopino@gmail.com','2001-01-01','png','d','it'),
+(2,'Gigi','gigi','gigi@gmail.com','2001-01-01','jpg','l','it'),
+(3,'John Doe','johndoe','johndoe@gmail.com','1960-04-06','jpg','l','en'),
+(4,'Mike Bryan','mikebryan','mikebryan@gmail.com','1980-03-02','jpg','l','en'),
+(5,'William Adams','williamadams','williamadams@gmail.com','2002-08-10','jpg','d','en'),
+(6,'Alessandra Arpini','alessandraarpini','alessandraarpini@gmail.com','2000-04-07','jpg','l','it'),
+(7,'Britney Jefferson','britneyjefferson','britneyjefferson@gmail.com','1972-11-12','jpg','l','en'),
+(8,'Tommasino Guglielmi','tommasinoguglielmi','tommasinoguglielmi@gmail.com','1989-07-06','jpg','d','it');
 
 ---- CHAT INSERTION ----
 INSERT INTO chat(idChat, anteprimaChat)

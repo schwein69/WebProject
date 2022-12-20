@@ -1,9 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-//TODO remove this
-$_SESSION["idUtente"] = 1; 
-
 
 //check params and session
 redirectNotLoggedUser();

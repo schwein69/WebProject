@@ -12,14 +12,28 @@ TODO (optional):
 redirectNotLoggedUser();
 $templateParams["chats"] = $dbh->getRecentChats($_SESSION['idUtente']);
 $chatNotifs = $dbh->getChatsNotifications($_SESSION['idUtente']);
+$numChats = count($templateParams["chats"]);
+
+//getting num notifications
 foreach ($chatNotifs as $chatNotif) {
-    for ($i=0; $i < count($templateParams["chats"]) ; $i++) { 
+    for ($i=0; $i < $numChats ; $i++) { 
         if($chatNotif['idChat'] == $templateParams["chats"][$i]['idChat']){
             $templateParams["chats"][$i]['numNotif'] = $chatNotif['numMsgs'];
             break;
         }
     }
 }
+
+//getting profile picture name
+for ($i=0; $i < $numChats ; $i++) { 
+    $templateParams["chats"][$i]['fotoProfilo'] = UPLOAD_DIR
+    .$templateParams["chats"][$i]['idUtente']
+    .'/profile.'
+    .$templateParams["chats"][$i]['formatoFotoProfilo'];
+}
+
+
+
 $templateParams["content"] = 'chat_list.php';
 $templateParams["js"] = array('../js/chat_list.js', '../js/notifications_receiver.js');
 $templateParams["title"] = 'Lynkzone - DMs'; 

@@ -32,7 +32,7 @@ class ChatFunctions
 
     public function getChatUser($chatId, $user1)
     {
-        $query = "SELECT U.idUtente, username, fotoProfilo "
+        $query = "SELECT U.idUtente, username, formatoFotoProfilo "
                 ."FROM utenti U "
                 ."JOIN partecipazione P ON U.idUtente=P.idUtente "
                 ."WHERE idChat=? AND U.idUtente<>?";
@@ -46,7 +46,7 @@ class ChatFunctions
     public function getRecentChats($user,$user2,$initialChat, $numChats)
     {
         //retrieving chats
-       $query = "SELECT C.idChat, P.idUtente, username, fotoProfilo, anteprimaChat, "
+       $query = "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "
                    ."(SELECT max(msgTimestamp) "
                    ."FROM messaggi M "
                    ."WHERE C.idChat = M.idChat) AS tempo "

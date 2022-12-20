@@ -10,7 +10,7 @@ class UserFunctions
     
     public function insertNewUser($name, $password, $email, $date, $img)
     {
-        $query = "INSERT INTO utenti (username, password, email, dataDiNascita, fotoProfilo) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO utenti (username, pwd, email, dataDiNascita, formatoFotoProfilo) VALUES (?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss', $name, $password, $email, $date, $img);
         $stmt->execute();
@@ -58,7 +58,7 @@ class UserFunctions
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
     //---------- USER RELATIONSHIPS ----------

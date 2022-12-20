@@ -99,7 +99,7 @@ class PostFunctions
 
     public function getPostComments($postId)
     {
-        $query = "SELECT dataCommento, testo, U.idUtente, username, fotoProfilo
+        $query = "SELECT dataCommento, testo, U.idUtente, username, formatoFotoProfilo
                     FROM commenti C
                     JOIN Utenti U ON C.idUtente = U.idUtente
                     WHERE idPost=?";
@@ -125,7 +125,7 @@ class PostFunctions
     {
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT
-                                    P.*, U.username, U.fotoProfilo, U.idUtente
+                                    P.*, U.username, U.formatoFotoProfilo, U.idUtente
                                 FROM
                                     posts P,
                                     utenti U,
@@ -145,7 +145,7 @@ class PostFunctions
     {
         $query = "
                 SELECT DISTINCT
-                    P.*, U.username, U.fotoProfilo, U.idUtente
+                    P.*, U.username, U.formatoFotoProfilo, U.idUtente
                 FROM
                     posts P,
                     utenti U,
@@ -202,7 +202,7 @@ class PostFunctions
                                 SELECT DISTINCT
                                     P.*,
                                     U2.username,
-                                    U2.fotoProfilo,
+                                    U2.formatoFotoProfilo,
                                     U2.idUtente
                                 FROM
                                     posts P,

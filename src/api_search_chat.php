@@ -15,7 +15,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
 
 
 for ($i=0; $i < count($result["chats"]); $i++) { 
-    $result["chats"][$i]["fotoProfilo"] = UPLOAD_DIR.$result["chats"][$i]["idUtente"]."/".$result["chats"][$i]["fotoProfilo"];
+    $result["chats"][$i]["fotoProfilo"] = UPLOAD_DIR.$result["chats"][$i]["idUtente"]."/profile.".$result["chats"][$i]["formatoFotoProfilo"];
     if($result["chats"][$i]["anteprimaChat"] == "") {
         $result["chats"][$i]["anteprimaChat"] = "Inizia la conversazione";
     }
