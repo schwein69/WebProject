@@ -5,7 +5,7 @@
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h1>Registrazione</h1>
             <p>Compila i seguenti campi per creare un nuovo account</p>
-            <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="" onsubmit="return validateform()">
+            <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="name"><b>Nome</b></label>
                     <input class="col-6" type="text" placeholder="Nome" name="name" required>
@@ -34,7 +34,7 @@
                   <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
                 <hr>
-                <button type="submit" class="btn col-4" name="submit" value="Invia" onclick="checkEmail()">Registra</button>
+                <button type="submit" class="btn col-4" name="submit" value="Invia">Registra</button>
             </form>
         </div>
     </div>

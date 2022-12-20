@@ -1,4 +1,13 @@
 
+/*document.getElementById("logout")
+    .addEventListener("click", function (e) {
+        if (!confirm("Do you want logout?")) {
+            e.preventDefault();
+        } else {
+            logout();
+        }
+    });
+
 function logout() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
@@ -10,4 +19,4 @@ function logout() {
     xhttp.open("POST", "logout-event.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
-}
+}*/
