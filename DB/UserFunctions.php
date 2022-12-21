@@ -12,7 +12,7 @@ class UserFunctions
     {
         $query = "INSERT INTO utenti (username, pwd, email, dataDiNascita, formatoFotoProfilo) VALUES (?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $name, $password, $email, $date, $img);
+        $stmt->bind_param('sssss', $name, $password, $email, date('Y-m-d', strtotime($date)), $img);
         $stmt->execute();
         //return last id after insert
         return $this->db->insert_id;
