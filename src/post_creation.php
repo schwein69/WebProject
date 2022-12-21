@@ -6,7 +6,7 @@ redirectNotLoggedUser();
 
 $files_to_upload = array();
 for($i=1;$i<10;$i++){
-    if(isset($_FILES["f".$i])){
+    if(isset($_FILES["f".$i]) && $_FILES["f".$i]['size']!=0){
         $elem["file"]=$_FILES["f".$i];
         $elem["desc"]=$_POST["alt".$i];
         array_push($files_to_upload,$elem);
@@ -16,7 +16,6 @@ for($i=1;$i<10;$i++){
 if(!isset($_POST["testo"]) && count($files_to_upload) == 0){
    header('Location: new_post.php'); 
 }
-
 
 $testo = isset($_POST["testo"]) ? $_POST["testo"] : "";
 $now = date('Y-m-d');
@@ -46,7 +45,6 @@ foreach($files_to_upload as $file){
         array_push($errMsgs, $msg);
     }
 }
-
 $templateParams["content"]="post_creation_result.php"; 
 $templateParams["title"]=count($errMsgs) == 0? "Lynkzone - post creato" : "Lynkzone - problema creazione post";
 require '../template/base.php';

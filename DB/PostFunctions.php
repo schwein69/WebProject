@@ -29,6 +29,24 @@ class PostFunctions
         $stmt->execute();
     }
 
+    private function getTagId($tag)
+    {
+        $stmt = $this->db->prepare("SELECT idTag FROM tags WHERE nomeTag=?");
+        $stmt->bind_param("s", $tag);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->fetch_all(MYSQLI_NUM);
+        return count($res) > 0 ? $res[0][0] : -1;
+    }
+
+    private function insertTag($tag)
+    {
+        $stmt = $this->db->prepare("INSERT INTO tags(nomeTag) VALUES (?)");
+        $stmt->bind_param("s", $tag);
+        $stmt->execute();
+        return $this->db->insert_id;
+    }
+    
     public function addTagsToPost($postId, $tags)
     {
         $stmt = $this->db->prepare("INSERT INTO posttags(idPost,idTag) VALUES (?,?)");
