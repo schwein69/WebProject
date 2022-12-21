@@ -44,7 +44,7 @@ class PostFunctions
 
     public function addMediaToPost($postId, $path, $desc, $fileType)
     {
-        $stmt = $this->db->prepare("INSERT INTO contenutimultimediali(formato,percorso,idPost,descrizione) VALUES (?,?,?,?)");
+        $stmt = $this->db->prepare("INSERT INTO contenutimultimediali(formato,nomeImmagine,idPost,descrizione) VALUES (?,?,?,?)");
         $stmt->bind_param("ssis",$fileType,$path,$postId,$desc);
         $stmt->execute();
     }

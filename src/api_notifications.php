@@ -11,7 +11,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
     for ($i=0; $i < $result["numNotifications"]; $i++) { 
         $notifUser = $dbh->getUserData($result["notifications"][$i]["idUtenteNotificante"]);
         $result["notifications"][$i]["username"] = $notifUser["username"];
-        $result["notifications"][$i]["fotoProfilo"] = UPLOAD_DIR.$notifUser['idUtente'].'/'.$notifUser["fotoProfilo"];
+        $result["notifications"][$i]["fotoProfilo"] = UPLOAD_DIR.$notifUser['idUtente'].'/profile.'.$notifUser["formatoFotoProfilo"];
         $result["notifications"][$i]["isPostNotification"] = isPostNotification($result["notifications"][$i]["nomeTipo"]);
     }
     $result["status"] = true;

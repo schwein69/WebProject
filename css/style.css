@@ -18,7 +18,12 @@ a {
 html,body {
   height: 100%;
 }
-
+.notificationAvatar{
+  width: 20%;
+}
+.chatAvatar{
+  width: 20%;
+}
 body  header > div > div{
   background-color: var(--colour-bck);
 }

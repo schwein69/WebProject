@@ -57,7 +57,7 @@ CREATE TABLE `commenti` (
 CREATE TABLE `contenutimultimediali` (
   `idContenuto` int(11) NOT NULL,
   `formato` varchar(6) NOT NULL,
-  `percorso` varchar(200) NOT NULL,
+  `nomeImmagine` varchar(200) NOT NULL,
   `idPost` int(11) NOT NULL,
   `descrizione` varchar(125) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -238,7 +238,7 @@ ALTER TABLE `commenti`
 --
 ALTER TABLE `contenutimultimediali`
   ADD PRIMARY KEY (`idContenuto`),
-  ADD UNIQUE KEY `percorso` (`percorso`),
+  ADD UNIQUE KEY `nomeImmagine` (`nomeImmagine`),
   ADD KEY `idPost` (`idPost`);
 
 --

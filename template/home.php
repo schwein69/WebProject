@@ -47,7 +47,7 @@
                     } else {
                         echo "<div class='carousel-item'>";
                     } ?>
-                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["nomeImmagine"] ?>"
                                 alt="<?php echo $immagine["descrizione"] ?>" />
                         </div>
                         <?php endforeach; ?>
@@ -59,8 +59,8 @@
                         <span class="carousel-control-next-icon bg-dark"></span>
                     </a>
                 </div>
-                <?php else: ?>
-                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
+                <?php elseif(count($immaginiPost) == 1): ?>
+                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["nomeImmagine"] ?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 

@@ -15,7 +15,7 @@ searchBox.addEventListener('input', event => {
                 response.chats.forEach(element => {
                     content += '<li class="list-group-item">' 
                             + '<a href="chat.php?chatId=' + element["idChat"] + '">'
-                            + '<img src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
+                            + '<img class="chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
                             + '<h2>' + element["username"] + '</h2>'
                             + '<p>' + element["anteprimaChat"] + '</p>'
                             + '</a>'
@@ -47,7 +47,7 @@ document.addEventListener('scroll', event => {
                     const chatElement = document.createElement('li');
                     chatElement.classList.add("list-group-item"); 
                     chatElement.innerHTML = '<a href="chat.php?chatId=' + element["idChat"] + '">'
-                            + '<img src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
+                            + '<img class="chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
                             + '<h2>' + element["username"] + '</h2>'
                             + '<p>' + element["anteprimaChat"] + '</p>'
                             + '</a>';

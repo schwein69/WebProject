@@ -53,12 +53,12 @@ class UserFunctions
     public function getUserDataLogin($username)
     {
         $query = "SELECT * FROM utenti WHERE username = ?";
+        
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC)[0];
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     //---------- USER RELATIONSHIPS ----------

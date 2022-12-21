@@ -40,7 +40,7 @@
     foreach($comments as $comment):
     ?>
     <div class="row">
-    <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/'.$comment['fotoProfilo']?>" alt="<?php echo "foto profilo di ".$comment['username'];?>" style="width: auto; max-width: 25%;"/>
+    <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo "foto profilo di ".$comment['username'];?>" style="width: auto; max-width: 25%;"/>
     <h3><?php echo $comment['username'];?></h3>
     <p><?php echo $comment['testo'];?></p>
     <p><?php echo $comment['dataCommento'];?></p>
@@ -54,12 +54,13 @@
     </button>
     </div>
 </section>
-
+<script src="../js/functions.js"></script>
 <script src="../js/like.js"></script>
 <script src="../js/comment.js"></script>
+
 <script>
-    const user = {username: "<?php echo $templateParams["user"]["username"];?>", fotoProfilo: "<?php echo UPLOAD_DIR.$templateParams['user']['idUtente'].'/'.$templateParams["user"]["fotoProfilo"];?>"};
-    document.getElementById("like<?php echo $_GET["postid"];?>").addEventListener('click', like);
+    const user = {username: "<?php echo $templateParams["user"]["username"];?>", fotoProfilo: "<?php echo UPLOAD_DIR.$templateParams['user']['idUtente'].'/profile.'.$templateParams["user"]["formatoFotoProfilo"];?>"};
+    //document.getElementById("like<?php echo $_GET["postid"];?>").addEventListener('click', like);
     document.getElementById("comment<?php echo $_GET["postid"];?>").addEventListener('click', comment);
 </script>
     

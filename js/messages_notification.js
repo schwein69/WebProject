@@ -1,6 +1,11 @@
+
 const chatButton = document.getElementById('menuChatButton');
-const chatBadge = chatButton.querySelector('span');
-chatBadge.setAttribute('display','display:none;');
+let chatBadge;
+if(chatButton != null){
+    chatBadge = chatButton.querySelector('span');
+    chatBadge.setAttribute('display','display:none;');
+    setInterval(updateNewMessagesNumber,300);
+}
 function updateNewMessagesNumber(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
@@ -19,4 +24,3 @@ function updateNewMessagesNumber(){
     xhttp.send();
 
 }
-setInterval(updateNewMessagesNumber,300);

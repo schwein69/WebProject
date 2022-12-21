@@ -6,7 +6,7 @@
         <?php foreach($templateParams["notifications"] as $notif):?>
         <li class="list-group-item"> 
         <a href="profile.php?idutente=<?php echo $notif["idUtenteNotificante"];?>">
-        <img src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo $notif["username"];?>"/>
+        <img class="notificationAvatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo $notif["username"];?>"/>
         </a>
         <p>
             <a href="<?php echo isPostNotification($notif["nomeTipo"]) ?

@@ -50,7 +50,7 @@
                     <?php $immaginiPost = $dbh->getPostContents($post["idPost"]) ?>
                     <?php $active = true; ?>
 
-                    <?php if (count($immaginiPost) != 1): ?>
+                    <?php if (count($immaginiPost) > 1): ?>
 
                     <div id="carousel" class="carousel slide" data-bs-interval="false">
                         <div class="carousel-inner">
@@ -62,7 +62,7 @@
                     } else {
                         echo "<div class='carousel-item'>";
                     } ?>
-                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["percorso"] ?>"
+                            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immagine["nomeImmagine"] ?>"
                                 alt="<?php echo $immagine["descrizione"] ?>" />
                         </div>
                         <?php endforeach; ?>
@@ -74,9 +74,9 @@
                         <span class="carousel-control-next-icon bg-dark"></span>
                     </a>
                 </div>
-                <?php else: ?>
+                <?php elseif(count($immaginiPost) == 1): ?>
 
-                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["percorso"] ?>"
+                <img class="card-img-bottom my-2 mx-auto" src="<?php echo $immaginiPost[0]["nomeImmagine"] ?>"
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 

@@ -15,7 +15,7 @@ document.addEventListener('scroll', event => {
                     const notifElement = document.createElement('li');
                     notifElement.classList.add("list-group-item"); 
                     let content = '<a href="profile.php?idutente=' + element.idUtenteNotificante + '">'
-                    + '<img src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
+                    + '<img class="notificationAvatar" src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
                     + '</a> <p> <a href="';
                     if(element.isPostNotification){
                         content += 'post.php?postid=' + element.idPostRiferimento;

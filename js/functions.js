@@ -55,7 +55,7 @@ function generaArticoli(articoli) {
                 concat += `<div class='carousel-item'>`;
             }
             concat +=
-                `<img class="card-img-bottom my-2 mx-auto" src="${articoli["content"][index]["percorso"]}"
+                `<img class="card-img-bottom my-2 mx-auto" src="${articoli["content"][index]["nomeImmagine"]}"
             alt="${articoli["content"][index]["descrizione"]}" />
         </div>`;
         }
@@ -69,7 +69,7 @@ function generaArticoli(articoli) {
                 </div > `;
     } else if(articoli["content"].length == 1){
         concat +=
-            `<img class="card-img-bottom my-2 mx-auto" src = "${articoli["content"][0]["percorso"]}"
+            `<img class="card-img-bottom my-2 mx-auto" src = "${articoli["content"][0]["nomeImmagine"]}"
     alt = "${articoli["content"][0]["descrizione"]}" /> `;
     }
     concat += `<a href = "#" value = "${articoli["post"]["idPost"]}" class="btn btn-primary ms-auto"

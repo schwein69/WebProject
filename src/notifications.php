@@ -13,7 +13,7 @@ $templateParams["numNotifications"] = count($templateParams["notifications"]);
 for ($i=0; $i < $templateParams["numNotifications"]; $i++) { 
     $notifUser = $dbh->getUserData($templateParams["notifications"][$i]["idUtenteNotificante"]);
     $templateParams["notifications"][$i]["username"] = $notifUser["username"];
-    $templateParams["notifications"][$i]["fotoProfilo"] = UPLOAD_DIR.$notifUser['idUtente'].'/'.$notifUser["fotoProfilo"];
+    $templateParams["notifications"][$i]["fotoProfilo"] = UPLOAD_DIR.$notifUser['idUtente'].'/profile.'.$notifUser["formatoFotoProfilo"];
 }
 $templateParams["js"] = array('../js/infinite_notificationsList.js');
 $templateParams["content"] = 'notification_list.php';
