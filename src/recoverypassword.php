@@ -15,12 +15,14 @@ if(isset($_POST["email"])){
     
         $mail->setFrom('guojiahao707@gmail.com', "Sender"); // sender's email and name
         $mail->addAddress('guojiahao707@gmail.com', "Receiver");  // receiver's email and name
-    
-        $mail->Subject = 'Test subject';
-        $mail->Body    = 'Test body';
+        $uniqueCode = uniqid();
+        $dbh->generateCode($_POST["email"],$uniqueCode);
+        $mail->Subject = 'Recovery password for LinkZone';
+        $mail->Body    = "Here is your link to recovery page\r\n
+                          http://localhost/WebProject/src/changePassword_recovery.php?code=".$uniqueCode;
     
         $mail->send();
-        header("Location: changePassword_recovery.php");
+        header("Location: login.php");
     } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     } 

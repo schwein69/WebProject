@@ -7,16 +7,28 @@ function follow(event) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         const response = JSON.parse(this.responseText);
-        const contentPlace = document.querySelectorAll("button[id=follower"+userId+"]");//tutti i button
+        const contentPlace = document.querySelectorAll("button[id=follower" + userId + "]");//tutti i button
         if (response.follower) {//quelli che seguo io
             contentPlace.forEach(element => {
                 element.innerText = "seguito";
             });
-        } else {  
+            if (document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
+                let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;
+                let value = parseInt(updatePlace.nodeValue) + 1;
+                updatePlace.nodeValue = value;
+
+            }
+        } else {
             contentPlace.forEach(element => {
                 element.innerText = "segui";
             });
-        }      
+            if (document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
+                let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;
+                let value = parseInt(updatePlace.nodeValue) - 1;
+                updatePlace.nodeValue = value;
+            }
+        }
+
     };
     xhttp.open("POST", "follow_event.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

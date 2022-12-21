@@ -16,6 +16,6 @@ redirectNotLoggedUser();
     $templateParams["profileTopNav"]=true;
     $templateParams["title"] = 'Lynkzone - profile'; 
 
-    $templateParams["js"] = array("../js/functions.js","../js/like.js");
+    $templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js");
 require '../template/base.php';
 ?>

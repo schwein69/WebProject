@@ -5,12 +5,11 @@
   --search-resultbox-bck: white;
 }
 
-/*[data-theme="chiaro"],
-a {
-    transition-duration: 1s;
+/*[data-theme="l"] {
+  
 }*/
 
-[data-theme="scuro"] {
+[data-theme="d"] {
   --colour-bck: #000000;
   --colour-font: #FFFFFF;
 }

@@ -1,7 +1,4 @@
-<?php
-require_once 'bootstrap.php';
-redirectNotLoggedUser();
-?>
+
 <div class="row">
     <div class="col-12">
         <div class="col-10 mx-auto">

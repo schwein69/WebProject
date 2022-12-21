@@ -4,7 +4,8 @@ require 'PostFunctions.php';
 require 'ChatFunctions.php';
 require 'NotificationFunctions.php';
 
-class DatabaseHelper{
+class DatabaseHelper
+{
     private $db;
     private $userFunctions;
     private $postFunctions;
@@ -61,9 +62,9 @@ class DatabaseHelper{
 
     }
 
-    function isFollowedByMe($userId,$adminId)
+    function isFollowedByMe($userId, $adminId)
     {
-        return $this->userFunctions->isFollowedByMe($userId,$adminId);
+        return $this->userFunctions->isFollowedByMe($userId, $adminId);
     }
 
     //--------------- POST FUNCTIONS ------------------
@@ -78,11 +79,11 @@ class DatabaseHelper{
         return $this->postFunctions->getPostComments($postId);
     }
 
-    public function addCommentToPost($user,$postId, $testo)
+    public function addCommentToPost($user, $postId, $testo)
     {
-        $this->postFunctions->addCommentToPost($user,$postId, $testo);
+        $this->postFunctions->addCommentToPost($user, $postId, $testo);
     }
-    
+
     public function getRandomPosts($idUser)
     {
         return $this->postFunctions->getRandomPosts($idUser);
@@ -100,9 +101,9 @@ class DatabaseHelper{
 
     }
 
-    public function getFollowedPosts($idUser,$start=0,$end=1)
+    public function getFollowedPosts($idUser, $start = 0, $end = 1)
     {
-        return $this->postFunctions->getFollowedPosts($idUser,$start,$end);
+        return $this->postFunctions->getFollowedPosts($idUser, $start, $end);
 
     }
 
@@ -155,29 +156,29 @@ class DatabaseHelper{
         return $this->chatFunctions->getChatUser($chatId, $user1);
     }
 
-    public function getRecentChats($user,$user2="",$initialChat=0, $numChats=5)
+    public function getRecentChats($user, $user2 = "", $initialChat = 0, $numChats = 5)
     {
-        return $this->chatFunctions->getRecentChats($user,$user2,$initialChat, $numChats);    
-    }
-    
-    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10, $letto=true, $user=-1)
-    {
-        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs,$letto,$user);    
+        return $this->chatFunctions->getRecentChats($user, $user2, $initialChat, $numChats);
     }
 
-    public function insertMessage($chatid,$user,$msg)
+    public function getRecentMessagesFromChat($chat, $initialMsg = 0, $numMsgs = 10, $letto = true, $user = -1)
     {
-        $this->chatFunctions->insertMessage($chatid,$user,$msg);    
+        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs, $letto, $user);
     }
 
-    public function updateChatPreview($chatid,$msg)
+    public function insertMessage($chatid, $user, $msg)
     {
-        $this->chatFunctions->updateChatPreview($chatid,$msg);    
+        $this->chatFunctions->insertMessage($chatid, $user, $msg);
+    }
+
+    public function updateChatPreview($chatid, $msg)
+    {
+        $this->chatFunctions->updateChatPreview($chatid, $msg);
     }
 
     public function readAllMessages($chatId, $user)
     {
-        $this->chatFunctions->readAllMessages($chatId,$user);
+        $this->chatFunctions->readAllMessages($chatId, $user);
     }
 
     //--------------- NOTIFICATION FUNCTIONS ------------------
@@ -187,7 +188,7 @@ class DatabaseHelper{
         return $this->notifFunctions->getChatsNotifications($user);
     }
 
-    function getNotifications($user, $first=0, $num=5)
+    function getNotifications($user, $first = 0, $num = 5)
     {
         return $this->notifFunctions->getNotifications($user, $first, $num);
     }
@@ -196,7 +197,7 @@ class DatabaseHelper{
     {
         return $this->notifFunctions->getUnreadNotificationsNumber($user);
     }
-    
+
     function readAllNotifications($user)
     {
         $this->notifFunctions->readAllNotifications($user);
@@ -218,12 +219,12 @@ class DatabaseHelper{
     }
 
     //--------------- OTHER FUNCTIONS ------------------
-    
-    public function getSearchUser($username,$idUser)
+
+    public function getSearchUser($username, $idUser)
     {
         $query = "SELECT idUtente,username,formatoFotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $username,$idUser);
+        $stmt->bind_param('si', $username, $idUser);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -239,7 +240,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getSearchTagPosts($tag,$idUser,$start = 0,$end = 1)
+    public function getSearchTagPosts($tag, $idUser, $start = 0, $end = 1)
     {
         $query = "
         SELECT DISTINCT
@@ -253,9 +254,9 @@ class DatabaseHelper{
         WHERE
             P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND TA.nomeTag like CONCAT ('%', ?, '%') AND idUtente != ?
             ORDER BY P.dataPost DESC LIMIT ?,?";
-       
-        $stmt = $this->db->prepare($query);                  
-        $stmt->bind_param('siii', $tag,$idUser,$start,$end);
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('siii', $tag, $idUser, $start, $end);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -285,19 +286,37 @@ class DatabaseHelper{
         $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
     }
-    
+
     function unfollowUser($userId, $adminId)
     {
         $stmt = $this->db->prepare("DELETE FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
         $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
     }
- 
+
     function changeTheme($userId, $newTheme)
     {
         $stmt = $this->db->prepare('UPDATE utenti SET tema=? WHERE idUtente=?');
         $stmt->bind_param("si", $newTheme, $userId);
         $stmt->execute();
     }
+    function generateCode($email, $code)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET codiceRecupero = ? WHERE email = ?");
+        $stmt->bind_param("ss", $code, $email);
+        $stmt->execute();
+    }
+    public function checkCode($code)
+    {
+        $query = "SELECT * FROM utenti WHERE codiceRecupero = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $code);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
+
+
 }
 ?>

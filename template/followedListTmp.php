@@ -22,12 +22,6 @@
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
                                 class="btn btn-primary">Visit page</a>
                             <?php endif;?>
-                            <?php if(!isset($_GET["idUtente"])):?>
-                            <?php $post["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]); ?>
-                            <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn btn-primary" style="box-shadow: none;">
-                                <?php echo $post["followedByMe"]  ? "seguito" :  "segui" ?>
-                            </button>
-                            <?php endif;?>
                         </p>
                     </div>
                 </div>

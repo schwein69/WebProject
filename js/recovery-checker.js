@@ -6,10 +6,7 @@ document.querySelector("main form > button").addEventListener("click",function (
         email.value = "";
         email.setAttribute("placeholder", 'Email non valido, si prega di inserire un formato valido');
         e.preventDefault();
-        return false;
     }
-    return true;
-
 });
 
 

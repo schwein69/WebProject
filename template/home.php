@@ -64,7 +64,7 @@
                     alt="<?php echo $immaginiPost[0]["descrizione"] ?>" />
                 <?php endif; ?>
 
-                <a href="#" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
+                <a href="post.php?postid=<?php echo $post["idPost"] ?>" value="<?php echo $post["idPost"] ?>" class="btn btn-primary ms-auto"
                     style="display:block ; width: fit-content;">Espandi</a>
             </div>
             <?php 

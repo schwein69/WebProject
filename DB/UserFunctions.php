@@ -63,7 +63,7 @@ class UserFunctions
 
     //---------- USER RELATIONSHIPS ----------
 
-    public function getNumFollower($idUser)
+    public function getNumFollowed($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
                                     SELECT DISTINCT *
@@ -79,7 +79,7 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNumFollowed($idUser)
+    public function getNumFollower($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
                                 SELECT DISTINCT *

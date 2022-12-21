@@ -26,10 +26,10 @@
                 </li>
             </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php require("profileSetting.php") ?></div>
-        <div class="tab-pane" id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab"></div>
-        <div class="tab-pane" id="account" role="tabpanel" aria-labelledby="account-tab"></div>
-        <div class="tab-pane" id="privacy" role="tabpanel" aria-labelledby="privacy-tab"></div>
+        <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
+        <div class="tab-pane" id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab"><?php if(isset($templateParams["likedposts"])) require($templateParams["likedposts"]) ?></div>
+        <div class="tab-pane" id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
+        <div class="tab-pane" id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
     </div>
         </section>
     </div>
