@@ -6,21 +6,39 @@ document.querySelector("main form > button").addEventListener("click",function (
 
     if (!filter.test(email.value)) {
         email.value = "";
-        email.setAttribute("placeholder", 'Email non valido, si prega di inserire un formato valido');
+        let errormsg = "<p>Email non valido, si prega di inserire un formato valido</p>";
+        if(email.nextElementSibling == null){
+            email.insertAdjacentHTML("afterend", errormsg)
+        }
         e.preventDefault();
-        return false;
+    }else{
+        if(email.nextElementSibling){
+            email.nextElementSibling.remove();
+        }
     }
     if (pwd.value.length < 6) {
         pwd.value = "";
-        pwd.setAttribute("placeholder", "La password deve essere almeno di 6 caratteri");
+        let errormsg = "<p>La password deve essere almeno di 6 caratteri</p>";
+        if(pwd.nextElementSibling == null){
+            pwd.insertAdjacentHTML("afterend", errormsg)
+        }
         e.preventDefault();
-        return false;
+    }else{
+        if(pwd.nextElementSibling){
+            pwd.nextElementSibling.remove();
+        }
     }
     if (pwd.value !== pwdrep.value) {
         pwdrep.value = "";
-        pwdrep.setAttribute("placeholder", "Password diverse");
+        let errormsg = "<p>Password diverse</p>";
+        if(pwdrep.nextElementSibling == null){
+            pwdrep.insertAdjacentHTML("afterend", errormsg)
+        }
         e.preventDefault();
-        return false;
+    }else{
+        if(pwdrep.nextElementSibling){
+            pwdrep.nextElementSibling.remove();
+        }
     }
     return true;
 

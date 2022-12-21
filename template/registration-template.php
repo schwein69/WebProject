@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="date"><b>Data Di Nascita</b></label>
-                    <input class="col-6" type="date" placeholder="Compleanno" name='date' id='date' required>
+                    <input class="col-6" type="text" placeholder="dd-mm-yyyy" name='date' id='date' required>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="image"><b>Foto Profilo</b></label>
