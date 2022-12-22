@@ -1,5 +1,3 @@
-//TODO reading messages
-//TODO autoreceive messagges
 //enter page at bottom
 document.addEventListener('load',window.scrollTo(0, document.body.scrollHeight));
 

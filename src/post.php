@@ -1,6 +1,5 @@
 <?php
 require_once 'bootstrap.php';
-require_once 'post_template.php';
 //check params and session
 redirectNotLoggedUser();
 if(!isset($_GET['postid'])){
