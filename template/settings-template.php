@@ -26,12 +26,15 @@
                 </li>
             </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
-        <div class="tab-pane" id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab"><?php if(isset($templateParams["likedposts"])) require($templateParams["likedposts"]) ?></div>
-        <div class="tab-pane" id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
-        <div class="tab-pane" id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
+        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
+        <div class="tab-pane fade " id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab" tabindex="0"><?php if(isset($templateParams["likedposts"])) require($templateParams["likedposts"]) ?></div>
+        <div class="tab-pane fade " id="account" role="tabpanel" aria-labelledby="account-tab" tabindex="0"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
+        <div class="tab-pane fade " id="privacy" role="tabpanel" aria-labelledby="privacy-tab" tabindex="0"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
     </div>
         </section>
     </div>
     <div class="col-md-2"></div>
 </div>
+<script>
+  //TODO mantenere il tab attuale anche dopo il refresh
+    </script>

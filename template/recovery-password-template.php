@@ -4,12 +4,11 @@
         <div class="col-8 border border-secondary mx-auto"
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h1>Recovery</h1>
-            <p>Compila l'email per ricevere il link</p>
+            <?php if(isset($data)) :?>
+            <p>Benvenuto/a <?php  echo $data["username"]?></p>
+            <?php endif;?>
+            <p>Imposta la nuova password</p>
             <form class="form-horizontal" name="myform" method="post" action="">
-                <div class="form-group my-2">
-                    <label class="control-label col-2" for="email"><b>Email</b></label>
-                    <input class="col-6" type="text" placeholder="Email" name="email" id='email' required>
-                </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="psw"><b>Password</b></label>
                     <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd">
@@ -17,10 +16,6 @@
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="psw-repeat"><b>Conferma Password</b></label>
                     <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
-                </div>
-                <div class="form-group my-2">
-                    <label class="control-label col-2" for="name"><b>Code</b></label>
-                    <input class="col-6" type="text" placeholder="codice" name="code" required>
                 </div>
                 <?php if (isset($templateParams["errormsg"])): ?>
                 <p><?php echo $templateParams["errormsg"]; ?></p>

@@ -316,6 +316,55 @@ class DatabaseHelper
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
+    public function getUserDataByCode($code)
+    {
+        $query = "SELECT * FROM utenti WHERE codiceRecupero = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $code);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    function changePassword($pass, $idUtente)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET pwd = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $pass, $idUtente);
+        $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE utenti SET codiceRecupero = NULL WHERE idUtente = ?");
+        $stmt->bind_param("i", $idUtente);
+        $stmt->execute();
+
+    }
+
+    function updateUsername($username, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET username = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $username, $userId);
+        $stmt->execute();
+    }
+
+    function updateUserEmail($email, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET email = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $email, $userId);
+        $stmt->execute();
+    }
+    function updateUserAvatar($avatar, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET formatoFotoProfilo = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $avatar, $userId);
+        $stmt->execute();
+    }
+    public function updateUseBirthday($date, $userId)
+    {
+        $query = "UPDATE utenti SET dataDiNascita=? WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $date, $userId);
+        $stmt->execute();
+    }
+
+
 
 
 }

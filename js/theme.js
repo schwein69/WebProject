@@ -1,15 +1,13 @@
 
-const container = document.body;
-console.log(document.getElementById("changeThemeButton"));
 document.getElementById("changeThemeButton").addEventListener("click",changeTheme);
 
 function changeTheme() {
-    let targetTheme = container.getAttribute('data-theme') === 'd' ? 'l' : 'd';
+    let targetTheme = document.body.getAttribute('data-theme') === 'd' ? 'l' : 'd';
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         const response = this.responseText;
         if (response) {
-            container.setAttribute("data-theme", targetTheme);
+            document.body.setAttribute("data-theme", targetTheme);
         }
 
     };

@@ -31,7 +31,7 @@ if(isset($_POST["email"])){
 $templateParams["content"] = "recovery-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;
-$templateParams["js"] = array("../js/recovery-checker.js");
+$templateParams["js"] = array("../js/email-checker.js");
 
 require '../template/base.php';
 
