@@ -1,4 +1,5 @@
 <?php 
+//TODO add listener to carousel to stop video when changing media.
 /*
 Function that print a post card. 
 
@@ -17,6 +18,7 @@ Parameters used from postParams:
 -"idPost"           post id
 -"media"            array containing all post images and videos
 -"mediaPath"        path to the post media folder
+-"isImage"          true if a media is an image. false if it is a video
 */
 function writePost($postParams){
     ?>
@@ -51,9 +53,10 @@ function writePost($postParams){
                     </small></p>
 
                 
-                <?php $active = true; ?>
-
-                <?php if (count($postParams["media"]) > 1): ?>
+                <?php
+                $active = true; 
+                if (count($postParams["media"]) > 1):
+                ?>
 
                 <div id="carousel" class="carousel slide" data-bs-interval="false">
                     <div class="carousel-inner">
@@ -67,8 +70,15 @@ function writePost($postParams){
                         }
                     ?>
                         <div class='<?php echo $classes?>'>
+                        <?php if($immagine["isImage"]): ?>
                         <img class="card-img-bottom my-2 mx-auto" src="<?php echo $postParams["mediaPath"].$immagine["nomeImmagine"] ?>"
                             alt="<?php echo $immagine["descrizione"] ?>" />
+                        <?php else: ?>
+                        <video class="card-img-bottom my-2 mx-auto" controls loop>
+                            <source src="<?php echo $postParams["mediaPath"].$immagine["nomeImmagine"]; ?>" type="video/<?php echo $immagine["formato"]; ?>"/>
+                            <?php echo $immagine["descrizione"] != "" ?  $immagine["descrizione"] : 'Video not supported';?>
+                        </video>
+                        <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -80,8 +90,16 @@ function writePost($postParams){
                 </a>
             </div>
             <?php elseif(count($postParams["media"]) == 1): ?>
-            <img class="card-img-bottom my-2 mx-auto" src="<?php echo $postParams["mediaPath"].$postParams["media"][0]["nomeImmagine"] ?>"
-                alt="<?php echo $postParams["media"][0]["descrizione"] ?>" />
+                <?php if($postParams["media"][0]["isImage"]): ?>
+
+                    <img class="card-img-bottom my-2 mx-auto" src="<?php echo $postParams["mediaPath"].$postParams["media"][0]["nomeImmagine"] ?>"
+                        alt="<?php echo $postParams["media"][0]["descrizione"] ?>" />
+                    <?php else: ?>
+                    <video class="card-img-bottom my-2 mx-auto" controls loop>
+                        <source src="<?php echo $postParams["mediaPath"].$postParams['media'][0]["nomeImmagine"]; ?>" type="video/<?php echo $postParams['media'][0]["formato"]; ?>"/>
+                        <?php echo $postParams['media'][0]["descrizione"] != "" ?  $postParams['media'][0]["descrizione"] : 'Video not supported';?>
+                    </video>
+                    <?php endif; ?>
             <?php endif; 
             if(!$postParams["isFull"]):
             ?>

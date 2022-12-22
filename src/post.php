@@ -31,6 +31,8 @@ $templateParams["post"]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$_GET['p
 $templateParams["post"]["isFull"] = true;
 $templateParams["post"]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION['idUtente'];
 
+setMediaType($templateParams["post"]["media"]);
+
 $templateParams["content"] = 'full_post.php'; 
 $templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
 $templateParams["title"] = 'Lynkzone - post'; 
