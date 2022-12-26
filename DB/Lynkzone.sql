@@ -238,7 +238,6 @@ ALTER TABLE `commenti`
 --
 ALTER TABLE `contenutimultimediali`
   ADD PRIMARY KEY (`idContenuto`),
-  ADD UNIQUE KEY `nomeImmagine` (`nomeImmagine`),
   ADD KEY `idPost` (`idPost`);
 
 --
