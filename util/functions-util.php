@@ -27,6 +27,13 @@ function isUserLoggedIn(){
     return !empty($_SESSION['idUtente']);
 }
 
+function setMediaType(&$medias) {
+    $numMedias = count($medias);
+    for ($i=0; $i < $numMedias; $i++) { 
+        $medias[$i]["isImage"] = isImageExtension($medias[$i]['formato']);
+    }
+}
+
 function uploadFile($path, $image, $imgName=""){
     $baseName = basename($image["name"]);
     $msg = "";
@@ -44,7 +51,7 @@ function uploadFile($path, $image, $imgName=""){
    
     //Controllo se immagine è veramente un'immagine
     $imageSize = getimagesize($image["tmp_name"]);
-    if($imageSize === false) {
+    if(isImageExtension($fileType) && $imageSize === false) {
         $msg .= "File caricato non è un'immagine! ";
     }
     //Controllo dimensione dell'immagine < 500KB
