@@ -6,24 +6,24 @@
             <div class="form-group my-2">
                 <label class="control-label col-2" for="image"><b>Foto Profilo</b>
                     <img id="thumb" class="figure-img img-fluid avatar"
-                        src="<?php echo UPLOAD_DIR . $userData["idUtente"] . "/profile.png" ?>"
-                        alt="foto profilo di <?php echo $userData["username"] ?>" />
+                        src="<?php echo $templateParams["user"]["profilePic"]; ?>"
+                        alt="foto profilo di <?php echo $templateParams["user"]["username"]; ?>" />
                     <input type="file" id="image" name="newImage" accept="image/png, image/jpeg"
                         style="display: none;">
                 </label>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="name"><b>Nome</b></label>
-                <input class="col-6" type="text" value="<?php echo $userData["username"] ?>" name="name" id="name" required>
+                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="email"><b>Email</b></label>
-                <input class="col-6" type="text" value="<?php echo $userData["email"] ?>" name="email" id='email'
+                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["email"]; ?>" name="email" id='email'
                     required>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="date"><b>Data Di Nascita</b></label>
-                <input class="col-6" type="text" value="<?php echo $userData["dataDiNascita"] ?>" name='date' id='date'
+                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["dataDiNascita"]; ?>" name='date' id='date'
                     required>
             </div>
             <?php if (isset($templateParams["errormsg"])): ?>

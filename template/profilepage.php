@@ -8,38 +8,37 @@
                         <li class="nav-item mx-2">
                             <figure class="figure m-2">
                                 <img class="figure-img img-fluid avatar"
-                                    src="<?php echo UPLOAD_DIR . $userData["idUtente"] . "/profile.png" ?>"
-                                    alt="foto profilo di <?php echo $userData["username"] ?>" />
+                                    src="<?php echo $templateParams["user"]["profilePic"]; ?>"
+                                    alt="foto profilo di <?php echo $templateParams["user"]["username"] ?>" />
                                 <figcaption class="figure-caption">
-                                    <?php echo $userData["username"] ?>
+                                    <?php echo $templateParams["user"]["username"] ?>
                                 </figcaption>
                             </figure>
                         </li>
                         <li class="nav-item mt-2">
                             <span class="bi bi-folder-fill"></span>
                             <br>Posts<br>
-                            <?php echo $numPosts ?>
+                            <?php echo $$templateParams["user"]["numPosts"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
-                            <a href="followerList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $userData["idUtente"] : "" ?>"
+                            <a href="followerList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
                                 class="profileLink"><br>Seguiti<br></a>
-                            <?php echo $numFollower ?>
+                            <?php echo $templateParams["user"]["numFollower"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
-                            <a href="followedList.php<?php echo $userData["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $userData["idUtente"] : "" ?>"
+                            <a href="followedList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
                                 class="profileLink"><br>Seguaci<br></a>
-                            <?php echo $numFollowed ?>
+                            <?php echo $templateParams["user"]["numFollowed"]; ?>
                         </li>
                     </ul>
                     <p class="card-text">
-                        <?php echo $userData["descrizione"] ?>
+                        <?php echo $templateParams["user"]["descrizione"] ?>
                     </p>
                     <?php if(isset($_GET["idUtente"])) : ?>
                     <p class="card-text">
-                        <?php $userData["followedByMe"] = $dbh->isFollowedByMe($userData["idUtente"], $_SESSION["idUtente"]); ?>
-                        <button type="button" id="follower<?php echo $userData["idUtente"] ?>" class="btn btn-primary"
+                        <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn btn-primary"
                             style="box-shadow: none;">
-                            <?php echo $userData["followedByMe"] ? "seguito" : "segui" ?>
+                            <?php echo $templateParams["user"]["followedByMe"] ? "seguito" : "segui" ?>
                         </button>
                     </p>
                     <?php endif ;?>
