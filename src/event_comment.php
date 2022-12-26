@@ -9,7 +9,9 @@ $result["status"]=false;
 if(isset($_POST["testo"]) && $_POST["testo"]!=""){
     $dbh->addCommentToPost($user, $postid, $_POST["testo"]);
     $authId = $dbh->getPostData($postid)["idUser"];
-    $dbh->notifUserComment($user, $postid, $authId);
+    if($authId != $user){
+        $dbh->notifUserComment($user, $postid, $authId);
+    }
     $result["status"]=true;
 }
 header('Content-Type: application/json');

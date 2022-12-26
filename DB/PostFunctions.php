@@ -27,6 +27,12 @@ class PostFunctions
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sii",$testo,$postId, $user);
         $stmt->execute();
+        $query = "UPDATE posts
+                SET numCommenti=numCommenti+1
+                WHERE idPost=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
     }
 
     private function getTagId($tag)

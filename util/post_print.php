@@ -4,25 +4,25 @@
 Function that print a post card. 
 
 Parameters used from postParams:
+-"idPost"           post id
+-"testo"            contains post text
+-"dataPost"         contains post publication date
+-"numLike"          post number of likes
+-"idUser"           contains the post author id
 -"fotoProfilo"      contains the path to the post author profile picture
 -"fotoProfiloAlt"   contains the alt for post author profile picture
 -"username"         contains the post author username
--"idUser"           contains the post author id
 -"isLoggedUserPost" true if it is the logged user post
 -"followedByMe"     contains true if the current user is following the post author user
--"testo"            contains post text
--"dataPost"         contains post publication date
 -"isFull"           true if it is not required post expansion
 -"liked"            true if the user already likes the post
--"numLike"          post number of likes
--"idPost"           post id
 -"media"            array containing all post images and videos
+    >"isImage"          true if a media is an image. false if it is a video
 -"mediaPath"        path to the post media folder
--"isImage"          true if a media is an image. false if it is a video
 */
 function writePost($postParams){
     ?>
-    <article class="bg-white border border-primary col-10 col-md-8 mx-auto">
+    <article class="bg-white border border-primary col-12 col-md-8 mx-auto">
         <div class="card">
             <div class="card-header">
                 <div class="row mt-2">
@@ -31,7 +31,7 @@ function writePost($postParams){
                     </div>
                     <div class="col-4">
                         <h2 style="font-size: 2vw">
-                            <?php echo $postParams["username"] ?>
+                            <?php echo $postParams["username"]; ?>
                         </h2>
                     </div>
                     <div class="col-4"> 
@@ -104,7 +104,7 @@ function writePost($postParams){
             if(!$postParams["isFull"]):
             ?>
             
-            <a href="#" value="<?php echo $postParams["idPost"] ?>" class="btn btn-primary ms-auto"
+            <a href="post.php?postid=<?php echo $postParams["idPost"];?>" value="<?php echo $postParams["idPost"] ?>" class="btn btn-primary ms-auto"
                 style="display:block ; width: fit-content;">Espandi</a>
             <?php endif; ?>
         </div>
@@ -124,6 +124,11 @@ function writePost($postParams){
                 <li class="nav-item mx-2"> <button type="button" id="chat<?php echo $postParams["idPost"] ?>"
                         class="btn btn-light">
                         <img src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>
+                    <span>
+                    <?php if ($postParams['numCommenti'] > 0) {
+                        echo $postParams['numCommenti'];
+                    } ?>
+                    </span>
                 <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>"
                         class="btn btn-light">
                         <img src="../imgs/icons/star.svg" alt="Salva post" /></button></li>
