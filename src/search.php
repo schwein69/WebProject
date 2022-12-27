@@ -15,7 +15,32 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
         $isPost = 1;
     }
 } else {
-    $posts = $dbh->getRandomPosts($_SESSION["idUtente"]); //random post tranne dell'utente loggato
+    $templateParams["posts"] = $dbh->getRandomPosts($_SESSION["idUtente"]); //random post tranne dell'utente loggato
+    $templateParams["oldPostIds"] = array();
+    /*
+    Preparing posts
+    */
+    $numPosts = count($templateParams["posts"]);
+    for ($i=0; $i < $numPosts; $i++) {
+        array_push($templateParams["oldPostIds"], $templateParams["posts"][$i]["idPost"]);
+        $user = $dbh->getUserData($templateParams["posts"][$i]['idUser']);
+        $templateParams["posts"][$i]["fotoProfilo"] = UPLOAD_DIR.$user['idUtente'].'/profile.'.$user['formatoFotoProfilo'];
+        $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di ".$user['username'];
+        $templateParams["posts"][$i]["username"] = $user['username'];
+        $templateParams["posts"][$i]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION["idUtente"];
+        $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'],$templateParams["posts"][$i]["idPost"]);
+        $templateParams["posts"][$i]["isFull"] = false;
+        $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+
+        //adding medias to post
+        $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$templateParams["posts"][$i]["idPost"].'/';
+        $media = $dbh->getPostContents($templateParams["posts"][$i]["idPost"]);
+        
+        for ($m=0; $m < count($media) ; $m++) { 
+            $media[$m]["isImage"] = isImageExtension($media[$m]["formato"]);
+        }
+        $templateParams["posts"][$i]["media"] = $media;
+    }
     $isPost = 1;
 }
 

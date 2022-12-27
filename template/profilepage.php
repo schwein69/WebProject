@@ -47,8 +47,4 @@
 
     </div>
 </div>
-<?php foreach ($templateParams["posts"] as $post): ?>
-    <div class="row">
-    <?php writePost($post); ?>
-    </div>
-<?php endforeach; ?>
+<?php require 'post_template.php'; ?>

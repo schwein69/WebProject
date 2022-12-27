@@ -9,7 +9,6 @@ require_once '../PHPMailer/src/SMTP.php';
 
 require_once('../db/DatabaseHelper.php');
 require_once('../util/functions-util.php');
-require_once('../util/post_print.php');
 
 
 $dbh = new DatabaseHelper('localhost', 'root', '', 'social_network');

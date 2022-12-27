@@ -1,4 +1,5 @@
-<?php writePost($templateParams["post"]);?>
+<?php require 'post_template.php';?>
+<div class="row">
 <section id='comments' class="container-fluid p-0 overflow-hidden mx-auto col-12 col-md-8 bg-white mt-1 border border-primary py-3">
     <div class="row text-start">
     <h2>Commenti</h2>
@@ -21,13 +22,13 @@
     </button>
     </div>
 </section>
+</div>
 <script src="../js/functions.js"></script>
 <script src="../js/like.js"></script>
 <script src="../js/comment.js"></script>
 
 <script>
     const user = {username: "<?php echo $templateParams["user"]["username"];?>", fotoProfilo: "<?php echo UPLOAD_DIR.$templateParams['user']['idUtente'].'/profile.'.$templateParams["user"]["formatoFotoProfilo"];?>"};
-    //document.getElementById("like<?php echo $_GET["postid"];?>").addEventListener('click', like);
     document.getElementById("comment<?php echo $_GET["postid"];?>").addEventListener('click', comment);
 </script>
     

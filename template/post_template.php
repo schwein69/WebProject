@@ -20,8 +20,10 @@ Parameters used from postParams:
     >"isImage"          true if a media is an image. false if it is a video
 -"mediaPath"        path to the post media folder
 */
-function writePost($postParams){
+foreach ($templateParams["posts"] as $postParams):
+
     ?>
+    <div class="row">
     <article class="bg-white border border-primary col-12 col-md-8 mx-auto">
         <div class="card">
             <div class="card-header">
@@ -79,8 +81,9 @@ function writePost($postParams){
                             <?php echo $immagine["descrizione"] != "" ?  $immagine["descrizione"] : 'Video not supported';?>
                         </video>
                         <?php endif; ?>
-                    </div>
+                        </div>
                     <?php endforeach; ?>
+                    </div>
                 </div>
                 <a class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-dark"></span>
@@ -134,8 +137,9 @@ function writePost($postParams){
                         <img src="../imgs/icons/star.svg" alt="Salva post" /></button></li>
             </ul>
         </div>
-</div>
-</article>
+        </div>
+    </article>
+    </div>
 <?php
-}
+endforeach;
 ?>

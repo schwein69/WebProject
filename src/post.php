@@ -5,33 +5,33 @@ redirectNotLoggedUser();
 if(!isset($_GET['postid'])){
     header("Location: index.php");
 }
-//TODO manage images and videos
 //TODO usernames must be links to profile?userid=xyz
 
 
 
 
 //fetch post from db
-$templateParams["post"] = $dbh->getPostData($_GET['postid']);
+$post = $dbh->getPostData($_GET['postid']);
 
 //check if post exists
-if(is_null($templateParams["post"])){
+if(is_null($post)){
     header("Location: index.php");
 }
 
-$user = $dbh->getUserData($templateParams["post"]['idUser']);
+$user = $dbh->getUserData($post['idUser']);
 $comments = $dbh->getPostComments($_GET['postid']);
-$templateParams["post"]["fotoProfilo"] = UPLOAD_DIR.$user["idUtente"].'/profile.'.$user["formatoFotoProfilo"];
-$templateParams["post"]["fotoProfiloAlt"] = "foto profilo di ".$user["username"];
-$templateParams["post"]["username"] = $user["username"];
-$templateParams["post"]["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]);
-$templateParams["post"]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$_GET['postid']);
-$templateParams["post"]["media"] = $dbh->getPostContents($_GET['postid']);
-$templateParams["post"]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$_GET['postid'].'/';
-$templateParams["post"]["isFull"] = true;
-$templateParams["post"]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION['idUtente'];
+$post["fotoProfilo"] = UPLOAD_DIR.$user["idUtente"].'/profile.'.$user["formatoFotoProfilo"];
+$post["fotoProfiloAlt"] = "foto profilo di ".$user["username"];
+$post["username"] = $user["username"];
+$post["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]);
+$post["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$_GET['postid']);
+$post["media"] = $dbh->getPostContents($_GET['postid']);
+$post["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$_GET['postid'].'/';
+$post["isFull"] = true;
+$post["isLoggedUserPost"] = $user['idUtente'] == $_SESSION['idUtente'];
 
-setMediaType($templateParams["post"]["media"]);
+setMediaType($post["media"]);
+$templateParams["posts"] = array($post);
 
 $templateParams["content"] = 'full_post.php'; 
 $templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
