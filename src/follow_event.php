@@ -3,11 +3,11 @@ require_once 'bootstrap.php';
 
 
 $userId=$_POST["userId"];
-$result["follower"]=$dbh->isFollowedByMe($userId,$_SESSION["idUtente"]);
+$result["follower"]=$dbh->isFollowedByMe($_SESSION["idUtente"],$userId);
 if($result["follower"]){
-    $dbh->unfollowUser($userId,$_SESSION["idUtente"]);
+    $dbh->unfollowUser($_SESSION["idUtente"],$userId);
 } else {
-    $dbh->followUser($userId,$_SESSION["idUtente"]);
+    $dbh->followUser($_SESSION["idUtente"],$userId);
     $dbh->notifUserFollow($userId,$_SESSION["idUtente"]);
 }
 $result["follower"]=!$result["follower"];
