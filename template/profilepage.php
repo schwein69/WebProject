@@ -17,7 +17,7 @@
                         <li class="nav-item mt-2">
                             <span class="bi bi-folder-fill"></span>
                             <br>Posts<br>
-                            <?php echo $$templateParams["user"]["numPosts"]; ?>
+                            <?php echo $templateParams["user"]["numPosts"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
                             <a href="followerList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
@@ -33,7 +33,7 @@
                     <p class="card-text">
                         <?php echo $templateParams["user"]["descrizione"] ?>
                     </p>
-                    <?php if(isset($_GET["idUtente"])) : ?>
+                    <?php if(isset($_GET["idUtente"]) && $_GET["idUtente"] != $_SESSION["idUtente"]) : ?>
                     <p class="card-text">
                         <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn btn-primary"
                             style="box-shadow: none;">
