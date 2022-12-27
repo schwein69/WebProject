@@ -1,19 +1,18 @@
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 mx-auto">
         <section class="bg-white border border-primary" style="height: 100vh;">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                         type="button" role="tab" aria-controls="profile" aria-selected="true">Profile Settings</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="likedposts-tab" data-bs-toggle="tab" data-bs-target="#likedposts"
-                        type="button" role="tab" aria-controls="likedposts" aria-selected="false">Liked posts</button>
+                        type="button" role="tab" aria-controls="likedposts" aria-selected="false">Saved posts</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account"
-                        type="button" role="tab" aria-controls="account" aria-selected="false">Account management</button>
+                        type="button" role="tab" aria-controls="account" aria-selected="false">Account</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy"
@@ -26,15 +25,25 @@
                 </li>
             </ul>
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
-        <div class="tab-pane fade " id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab" tabindex="0"><?php if(isset($templateParams["likedposts"])) require($templateParams["likedposts"]) ?></div>
-        <div class="tab-pane fade " id="account" role="tabpanel" aria-labelledby="account-tab" tabindex="0"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
-        <div class="tab-pane fade " id="privacy" role="tabpanel" aria-labelledby="privacy-tab" tabindex="0"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
+        <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
+        <div class="tab-pane fade " id="likedposts" role="tabpanel" aria-labelledby="likedposts-tab"><?php if(isset($templateParams["likedposts"])) require($templateParams["likedposts"]) ?></div>
+        <div class="tab-pane fade " id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
+        <div class="tab-pane fade " id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
     </div>
         </section>
     </div>
-    <div class="col-md-2"></div>
 </div>
 <script>
-  //TODO mantenere il tab attuale anche dopo il refresh
-    </script>
+  window.addEventListener("DOMContentLoaded",function(){
+    document.querySelectorAll('Button[data-bs-toggle="tab"]').forEach(el => el.addEventListener("click", function(el) {
+       const source = el.target || event.srcElement;
+       const triggeredButton = source.nodeName.toLowerCase() == 'button' ? source : source.parentNode;
+       localStorage.setItem('activeTab',triggeredButton.getAttribute("data-bs-target"));
+    }));
+    let activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        document.querySelector('#myTab Button[id="' + activeTab.substring(1) + '-tab"]').classList.add("active");
+        document.querySelector('.tab-content div[id="' + activeTab.substring(1) + '"]').classList.add("show","active");
+    }
+});
+</script>

@@ -68,9 +68,7 @@ function uploadFile($path, $image, $imgName=""){
         }
         while(file_exists($path.$imageName));
         $fullPath = $path.$imageName;
-    } else {
-        unlink($fullPath);
-    }
+    } 
   
     //Se non ci sono errori, sposto il file dalla posizione temporanea alla cartella di destinazione
     if(strlen($msg)==0){

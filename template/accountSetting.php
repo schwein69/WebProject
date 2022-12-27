@@ -8,7 +8,7 @@
                     <img id="thumb" class="figure-img img-fluid avatar"
                         src="<?php echo $templateParams["user"]["profilePic"]; ?>"
                         alt="foto profilo di <?php echo $templateParams["user"]["username"]; ?>" />
-                    <input type="file" id="image" name="newImage" accept="image/png, image/jpeg"
+                    <input type="file" id="image" name="newImage" accept="image/png, image/jpeg, image/jpg"
                         style="display: none;">
                 </label>
             </div>

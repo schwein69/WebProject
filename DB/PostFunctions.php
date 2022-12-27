@@ -220,6 +220,30 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getSavedPosts($idUser,$start,$end)
+    { //id dell'utente loggato
+        $stmt = $this->db->prepare("
+                                SELECT
+                                    P.*,
+                                    U.idUtente,
+                                    U.username,
+                                    U.formatoFotoProfilo
+                                FROM
+                                    posts P,
+                                    utenti U,
+                                    postpiaciuti PS
+                                WHERE
+                                    P.idUser = U.idUtente AND PS.idUtente = ? AND PS.idPost = P.idPost
+                                ORDER BY
+                                    PS.idPostPiaciuto
+                                DESC
+                                LIMIT ?,?");
+        $stmt->bind_param('iii', $idUser,$start,$end);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getFollowedPosts($idUser,$start,$end)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("

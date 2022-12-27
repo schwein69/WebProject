@@ -107,6 +107,12 @@ class DatabaseHelper
 
     }
 
+    public function getSavedPosts($idUser, $start = 0, $end = 1)
+    {
+        return $this->postFunctions->getSavedPosts($idUser, $start, $end);
+
+    }
+
     public function insertPost($user, $testo, $dataPost)
     {
         return $this->postFunctions->insertPost($user, $testo, $dataPost);
