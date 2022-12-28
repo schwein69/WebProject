@@ -66,6 +66,21 @@ class UserFunctions
     public function getNumFollowed($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
+                                    SELECT count(*)
+                                    FROM
+                                        utenti U1,
+                                        utenti U2,
+                                        relazioniutenti RE
+                                    WHERE
+                                        U2.idUtente != U1.idUtente AND U1.idUtente = RE.idFollower AND U2.idUtente = RE.idFollowed AND U1.idUtente = ?;");
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_NUM)[0][0];
+    }
+    public function getFollowed($idUser)
+    { //id dell'utente loggato
+        $stmt = $this->db->prepare("
                                     SELECT DISTINCT *
                                     FROM
                                         utenti U1,
@@ -79,10 +94,26 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getFollower($idUser)
+    { //id dell'utente loggato
+        $stmt = $this->db->prepare("
+                                    SELECT DISTINCT *
+                                    FROM
+                                        utenti U1,
+                                        utenti U2,
+                                        relazioniutenti RE
+                                    WHERE
+                                        U2.idUtente != U1.idUtente AND U2.idUtente = RE.idFollower AND U1.idUtente = RE.idFollowed AND U1.idUtente = ?;");
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getNumFollower($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
-                                SELECT DISTINCT *
+                                SELECT count(*)
                                 FROM
                                     utenti U1,
                                     utenti U2,
@@ -92,7 +123,7 @@ class UserFunctions
         $stmt->bind_param('i', $idUser);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_all(MYSQLI_NUM)[0][0];
     }
 
     function isFollowedByMe($userId,$adminId)

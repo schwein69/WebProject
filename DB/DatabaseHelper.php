@@ -55,7 +55,17 @@ class DatabaseHelper
         return $this->userFunctions->getNumFollower($idUser);
 
     }
+    public function getFollowed($idUser)
+    {
+        return $this->userFunctions->getFollowed($idUser);
 
+    }
+
+    public function getFollower($idUser)
+    {
+        return $this->userFunctions->getFollower($idUser);
+
+    }
     public function getNumFollowed($idUser)
     {
         return $this->userFunctions->getNumFollowed($idUser);

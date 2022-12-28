@@ -124,8 +124,8 @@ foreach ($templateParams["posts"] as $postParams):
                     } ?>
                     </span>
                 </li>
-                <li class="nav-item mx-2"> <button type="button" id="chat<?php echo $postParams["idPost"] ?>"
-                        class="btn btn-light">
+                <li class="nav-item mx-2"> <button type="button" id="comment<?php echo $postParams["idPost"] ?>"
+                        class="btn btn-light commentBtn">
                         <img src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>
                     <span>
                     <?php if ($postParams['numCommenti'] > 0) {

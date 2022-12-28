@@ -8,7 +8,7 @@ if($result["follower"]){
     $dbh->unfollowUser($_SESSION["idUtente"],$userId);
 } else {
     $dbh->followUser($_SESSION["idUtente"],$userId);
-    $dbh->notifUserFollow($userId,$_SESSION["idUtente"]);
+    $dbh->notifUserFollow($_SESSION["idUtente"],$userId);
 }
 $result["follower"]=!$result["follower"];
 

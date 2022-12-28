@@ -12,3 +12,4 @@ const notifBtn = document.getElementById('notifButton');
 if(notifBtn != null){
         notifBtn.addEventListener('click', event => window.location.href='../src/notifications.php');
 }
+

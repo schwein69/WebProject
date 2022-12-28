@@ -1,4 +1,15 @@
 delegate_event('click', document, 'button[id^=like]', like);
+const commentBtn = document.getElementsByClassName("commentBtn");
+if (commentBtn != null) {
+    for (let index = 0; index < commentBtn.length; index++) {
+        const id = commentBtn[index].id;
+        const postId = id.substring(7);
+        const redirectUrl = '../src/post.php?postid=' + postId + '#comment';
+      // console.log(postId);
+        commentBtn[index].addEventListener('click', event => window.location.href=redirectUrl);
+    }
+}
+
 function like(event) {
     event.preventDefault();
     const source = event.target || event.srcElement;
@@ -6,7 +17,6 @@ function like(event) {
     const postId = likeButton.id.substring(4);
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
-        console.log(this.responseText);
         const response = JSON.parse(this.responseText);
 
         const numLikePlace = likeButton.nextElementSibling;

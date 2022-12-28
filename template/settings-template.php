@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 col-md-8 mx-auto">
+    <div class="container-fluid col-12 col-md-8 mx-auto p-0">
         <section class="bg-white border border-primary" style="height: 100vh;">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">

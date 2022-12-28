@@ -1,8 +1,7 @@
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 mx-auto">
         <?php $oldUserId = array(); ?>
-        <?php foreach ($userData as $user): ?>
+        <?php foreach ($templateParams["followed"] as $user): ?>
         <div class="card col-12 mx-auto">
             <div class="row g-0">
                 <div class="col-4 my-auto">
@@ -22,6 +21,12 @@
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
                                 class="btn btn-primary">Visit page</a>
                             <?php endif;?>
+                            <?php if(!isset($_GET["idUtente"])):?>
+                                
+                            <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn btn-primary" style="box-shadow: none;">
+                            seguito
+                            </button>
+                            <?php endif;?>
                         </p>
                     </div>
                 </div>
@@ -29,4 +34,3 @@
         </div>
         <?php endforeach; ?>
     </div>
-    <div class="col-md-2"></div>

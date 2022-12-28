@@ -7,12 +7,12 @@ function follow(event) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         const response = JSON.parse(this.responseText);
-        const contentPlace = document.querySelectorAll("button[id=follower" + userId + "]");//tutti i button
+        const contentPlace = document.querySelectorAll("button[id=follower" + userId + "]");//tutti i button che hanno lo stesso id
         if (response.follower) {//quelli che seguo io
-            contentPlace.forEach(element => {
+            contentPlace.forEach(element => {//aggiorna la scritta a tutti i post dello stesso utente
                 element.innerText = "seguito";
             });
-            if (document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
+            if (document.querySelector(".card-body ul li:last-child a") != null && document.querySelector(".card-body ul li:last-child a").nextSibling != null) {//se lo seguo dal profilo aggiorno i numeri
                 let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;
                 let value = parseInt(updatePlace.nodeValue) + 1;
                 updatePlace.nodeValue = value;
@@ -22,7 +22,7 @@ function follow(event) {
             contentPlace.forEach(element => {
                 element.innerText = "segui";
             });
-            if (document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
+            if (document.querySelector(".card-body ul li:last-child a") != null && document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
                 let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;
                 let value = parseInt(updatePlace.nodeValue) - 1;
                 updatePlace.nodeValue = value;

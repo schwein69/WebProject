@@ -9,10 +9,10 @@ if(isset($_GET["idUtente"])){
 }
 $templateParams["user"] = $dbh->getUserData($userid);
 $templateParams["posts"] = $dbh->getProfilePosts(-1,$userid);
-$templateParams["user"]["numPosts"] = count($dbh->getProfilePosts(-1,$userid));
-$templateParams["user"]["numFollower"] = count($dbh->getNumFollower($userid));
-$templateParams["user"]["numFollowed"] = count($dbh->getNumFollowed($userid));
-$templateParams["user"]["followedByMe"] = $dbh->isFollowedByMe($templateParams["user"]["idUtente"], $_SESSION["idUtente"]);
+$templateParams["user"]["numPosts"] = count($templateParams["posts"]);
+$templateParams["user"]["numFollower"] = $dbh->getNumFollower($userid);
+$templateParams["user"]["numFollowed"] = $dbh->getNumFollowed($userid);
+$templateParams["user"]["followedByMe"] = $dbh->isFollowedByMe( $_SESSION["idUtente"],$templateParams["user"]["idUtente"]);
 $templateParams["user"]["profilePic"] = UPLOAD_DIR.$templateParams["user"]["idUtente"]."/profile.".$templateParams["user"]["formatoFotoProfilo"];
 $templateParams["content"] = "profilepage.php";
 $templateParams["profileTopNav"] = true;
