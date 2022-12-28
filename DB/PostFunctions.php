@@ -231,11 +231,11 @@ class PostFunctions
                                 FROM
                                     posts P,
                                     utenti U,
-                                    postpiaciuti PS
+                                    postsalvati PS
                                 WHERE
                                     P.idUser = U.idUtente AND PS.idUtente = ? AND PS.idPost = P.idPost
                                 ORDER BY
-                                    PS.idPostPiaciuto
+                                    PS.idPostSalvato 
                                 DESC
                                 LIMIT ?,?");
         $stmt->bind_param('iii', $idUser,$start,$end);

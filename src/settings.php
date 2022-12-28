@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 /*
 Preparing posts
 */
-$templateParams["posts"] = $dbh->getSavedPosts($_SESSION["idUtente"]);;
+$templateParams["posts"] = $dbh->getSavedPosts($_SESSION["idUtente"]);
 $templateParams["oldPostIds"] = array();
 
 $numPosts = count($templateParams["posts"]);
@@ -71,7 +71,7 @@ $templateParams["user"]["profilePic"] = UPLOAD_DIR.$templateParams["user"]["idUt
 $templateParams["content"] = "settings-template.php";
 $templateParams["profileSetting"] = "profileSetting.php";
 $templateParams["accountSetting"] = "accountSetting.php";
-$templateParams["likedposts"] = "likedPosts.php";
+$templateParams["savedposts"] = "savedposts.php";
 /*$templateParams["privacy"] = "";*/
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';

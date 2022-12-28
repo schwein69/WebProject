@@ -17,6 +17,7 @@ function like(event) {
     const postId = likeButton.id.substring(4);
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
+        console.log(this.responseText);
         const response = JSON.parse(this.responseText);
 
         const numLikePlace = likeButton.nextElementSibling;

@@ -5,7 +5,6 @@ document.addEventListener('scroll', event => {
         let xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             const response = JSON.parse(this.responseText);
-
             if (response.status) {
                 let newArticle = generaArticoli(response);
                 let lastarticle = document.querySelector("article:last-of-type");
