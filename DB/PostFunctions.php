@@ -246,25 +246,13 @@ class PostFunctions
 
     public function getFollowedPosts($idUser,$start,$end)
     { //id dell'utente loggato
-        $stmt = $this->db->prepare("
-                                SELECT DISTINCT
-                                    P.*,
-                                    U2.username,
-                                    U2.formatoFotoProfilo,
-                                    U2.idUtente
-                                FROM
-                                    posts P,
-                                    utenti U1,
-                                    utenti U2,
-                                    posttags T,
-                                    relazioniutenti RE,
-                                    contenutimultimediali C,
-                                    tags TA
-                                WHERE
-                                    P.idUser = U2.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U2.idUtente != U1.idUtente AND U1.idUtente = RE.idFollower AND U2.idUtente = RE.idFollowed
-                                    AND U1.idUtente = ?
-                                ORDER BY
-                                    P.dataPost DESC LIMIT ?,?");
+        $query = "SELECT * 
+                FROM posts
+                WHERE idUser IN (SELECT idFollowed
+                                FROM relazioniutenti
+                                WHERE idFollower=?) 
+                LIMIT ?,?";
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii', $idUser,$start,$end);
         $stmt->execute();
         $result = $stmt->get_result();
