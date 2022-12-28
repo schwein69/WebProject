@@ -21,8 +21,7 @@
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
                                 class="btn btn-primary">Visit page</a>
                             <?php endif;?>
-                            <?php if(!isset($_GET["idUtente"])):?>
-                                
+                            <?php if(!isset($_GET["idUtente"])):?>                              
                             <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn btn-primary" style="box-shadow: none;">
                             seguito
                             </button>

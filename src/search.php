@@ -11,8 +11,9 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
     } elseif ($_GET["searchOption"] == "Tag") {
         $isTag = 1;
         $templateParams["tagName"] = $_GET["searchValue"];
-        $posts = $dbh->getSearchTagPosts($templateParams["tagName"],$_SESSION["idUtente"]);
+        $templateParams["posts"] = $dbh->getSearchTagPosts($templateParams["tagName"],$_SESSION["idUtente"]);
         $isPost = 1;
+        $templateParams["oldPostIds"] = array();
     }
 } else {
     $templateParams["posts"] = $dbh->getRandomPosts($_SESSION["idUtente"]); //random post tranne dell'utente loggato
