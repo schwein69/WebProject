@@ -25,6 +25,7 @@ $post["fotoProfiloAlt"] = "foto profilo di ".$user["username"];
 $post["username"] = $user["username"];
 $post["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]);
 $post["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$_GET['postid']);
+$post["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$_GET['postid']);
 $post["media"] = $dbh->getPostContents($_GET['postid']);
 $post["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$_GET['postid'].'/';
 $post["isFull"] = true;

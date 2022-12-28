@@ -8,6 +8,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
             $result["post"] = $rows[0];
             $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
+            $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);    
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;
         }

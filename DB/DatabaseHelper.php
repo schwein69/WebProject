@@ -160,6 +160,21 @@ class DatabaseHelper
         $this->postFunctions->dislikePost($user, $postId);
     }
 
+    function isPostSaved($user, $postId)
+    {
+        return $this->postFunctions->isPostSaved($user, $postId);
+    }
+
+    function savePost($user, $postId)
+    {
+        $this->postFunctions->savePost($user, $postId);
+    }
+
+    function unsavePost($user, $postId)
+    {
+        $this->postFunctions->unsavePost($user, $postId);
+    }
+
     //--------------- CHAT FUNCTIONS ------------------
 
     public function isUserInChat($chatId, $user)

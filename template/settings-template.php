@@ -7,8 +7,8 @@
                         type="button" role="tab" aria-controls="profile" aria-selected="true">Profile Settings</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="savedposts-tab" data-bs-toggle="tab" data-bs-target="#savedposts"
-                        type="button" role="tab" aria-controls="savedposts" aria-selected="false">Saved posts</button>
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts"
+                        type="button" role="tab" aria-controls="posts" aria-selected="false">Saved posts</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account"
@@ -26,7 +26,7 @@
             </ul>
     <div class="tab-content">
         <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
-        <div class="tab-pane fade " id="savedposts" role="tabpanel" aria-labelledby="savedposts-tab"><?php if(isset($templateParams["savedposts"])) require($templateParams["savedposts"]) ?></div>
+        <div class="tab-pane fade " id="posts" role="tabpanel" aria-labelledby="posts-tab"><?php if(isset($templateParams["savedposts"])) require($templateParams["savedposts"]) ?></div>
         <div class="tab-pane fade " id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
         <div class="tab-pane fade " id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
     </div>

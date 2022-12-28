@@ -16,7 +16,7 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'],$templateParams["posts"][$i]["idPost"]);
     $templateParams["posts"][$i]["isFull"] = false;
     $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
-
+    $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$templateParams["posts"][$i]["idPost"].'/';
     $media = $dbh->getPostContents($templateParams["posts"][$i]["idPost"]);
@@ -29,7 +29,7 @@ for ($i=0; $i < $numPosts; $i++) {
 
 $templateParams["content"] = "home.php";
 
-$templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-home.js", "../js/notifications_receiver.js");
+$templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-home.js", "../js/notifications_receiver.js","../js/savePost.js");
 
 $templateParams["title"] = 'Lynkzone - home';
 require '../template/base.php';

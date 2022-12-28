@@ -20,7 +20,7 @@
                 <div class="col-12 col-md-8 mx-auto pt-3">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-6 col-md-7 my-auto text-end">
+                            <div class="col-6 col-md-7 my-auto text-start">
                                 <h1><a href="./index.php">Lynkzone</a></h1>
                             </div>
                             <div class="col-6 col-md-5">

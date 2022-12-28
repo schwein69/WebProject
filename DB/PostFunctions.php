@@ -93,6 +93,20 @@ class PostFunctions
         $stmt->execute();
     }
 
+    function savePost($user, $postId)
+    {
+        $stmt = $this->db->prepare("INSERT INTO postsalvati(idUtente,idPost) VALUES (?,?)");
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+    }
+
+    function unsavePost($user, $postId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM postsalvati WHERE idUtente=? AND idPost=?");
+        $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+    }
+
     //-------- GETTING POST DATA -------
 
     public function getPostData($id)
@@ -143,6 +157,15 @@ class PostFunctions
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
+    function isPostSaved($user, $postId)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM postsalvati WHERE idUtente=? AND idPost=?");
+        $stmt->bind_param("ii", $user, $postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+    
     //-------- GETTING POSTS -------
 
     public function getRandomPosts($idUser)

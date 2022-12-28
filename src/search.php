@@ -32,6 +32,7 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
         $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'],$templateParams["posts"][$i]["idPost"]);
         $templateParams["posts"][$i]["isFull"] = false;
         $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+        $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
 
         //adding medias to post
         $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$templateParams["posts"][$i]["idPost"].'/';
@@ -49,7 +50,7 @@ $templateParams["isTag"] = $isTag;
 $templateParams["selector"] = $isPost;
 $templateParams["title"] = 'Lynkzone - search'; 
 $templateParams["content"] = "search-template.php";
-$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/scrolldown-search.js","../js/livesearch.js");
+$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/scrolldown-search.js","../js/livesearch.js","../js/savePost.js");
 require '../template/base.php';
 
 ?>

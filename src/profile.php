@@ -30,6 +30,7 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["followedByMe"] = $templateParams["user"]["followedByMe"];
     $templateParams["posts"][$i]["isFull"] = false;
     $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
 
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$userid.'/'.$templateParams["posts"][$i]["idPost"].'/';
@@ -41,6 +42,6 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["media"] = $media;
 }
 
-$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js");
+$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/savePost.js");
 require '../template/base.php';
 ?>

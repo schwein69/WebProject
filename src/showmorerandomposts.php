@@ -11,7 +11,8 @@ if(isset($_POST["stringList"])){
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
             $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
-            $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
+            $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);   
+            $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);     
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;
         }
@@ -21,7 +22,8 @@ if(isset($_POST["stringList"])){
             $result["post"] = $rows[0];
             $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
           //  var_dump($result["followedByMe"]);
-            $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
+            $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);  
+            $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);      
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;
         }

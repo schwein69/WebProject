@@ -55,6 +55,7 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'],$templateParams["posts"][$i]["idPost"]);
     $templateParams["posts"][$i]["isFull"] = false;
     $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
 
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$templateParams["posts"][$i]["idPost"].'/';
@@ -75,7 +76,7 @@ $templateParams["savedposts"] = "savedposts.php";
 /*$templateParams["privacy"] = "";*/
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';
-$templateParams["js"] = array("../js/settings.js","../js/functions.js", "../js/theme.js", "../js/email-checker.js","../js/updateUserData.js","../js/scrolldown-savedPost.js","../js/like.js");
+$templateParams["js"] = array("../js/settings.js","../js/functions.js", "../js/theme.js", "../js/email-checker.js","../js/updateUserData.js","../js/scrolldown-savedPost.js","../js/like.js","../js/savePost.js");
 require '../template/base.php';
 
 ?>

@@ -132,9 +132,10 @@ foreach ($templateParams["posts"] as $postParams):
                         echo $postParams['numCommenti'];
                     } ?>
                     </span>
-                <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>"
-                        class="btn btn-light">
-                        <img src="../imgs/icons/star.svg" alt="Salva post" /></button></li>
+                <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>" class="btn btn-light">
+                        <img src="<?php echo $postParams["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg" ?>"
+                            alt="<?php echo $postParams["saved"] ? "Save post" : "Unsave post" ?>" /></button>
+                </li>
             </ul>
         </div>
         </div>
