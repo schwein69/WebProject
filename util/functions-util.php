@@ -34,6 +34,13 @@ function setMediaType(&$medias) {
     }
 }
 
+function getProfilePicAlt($username) {
+    global $lang;
+    return $_SESSION["lang"] == "en" ?
+            $username.$lang["ppalt"]
+            : $lang["ppalt"].$username;
+}
+
 function uploadFile($path, $image, $imgName=""){
     $baseName = basename($image["name"]);
     $msg = "";
