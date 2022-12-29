@@ -61,6 +61,17 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUserByKeepConnectionCode($code)
+    {
+        $query = "SELECT idUtente, username, tema, lang FROM utenti WHERE keepCon=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $code);
+        $stmt->execute();
+        $queyResult = $stmt->get_result();
+        $result= $queyResult->fetch_all(MYSQLI_ASSOC);
+        return count($result) > 0 ? $result[0] : null;
+    }
+
     //---------- USER RELATIONSHIPS ----------
 
     public function getNumFollowed($idUser)
@@ -95,13 +106,22 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function isFollowedByMe($userId,$adminId)
+    public function isFollowedByMe($userId,$adminId)
     {
         $stmt = $this->db->prepare("SELECT * FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
         $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
         $queryRes = $stmt->get_result();
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
+    //---------- UPDATE DATA ----------
+
+    public function updateKeepLogin($userId,$code)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET keepCon=? WHERE idUtente=?");
+        $stmt->bind_param("si", $code, $userId);
+        $stmt->execute();
     }
 }
 

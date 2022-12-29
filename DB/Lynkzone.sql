@@ -190,6 +190,7 @@ CREATE TABLE `utenti` (
   `dataDiNascita` date NOT NULL,
   `formatoFotoProfilo` varchar(6) NOT NULL,
   `codiceRecupero` varchar(256),
+  `keepCon` varchar(256),
   `tema` enum('d','l') NOT NULL DEFAULT 'l',
   `lang` enum('it','en') NOT NULL DEFAULT 'it'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -12,6 +12,8 @@
                     <input type="password" class="form-control" id="password" name="password" required/><label
                         for="password">Password:</label>
                 </div>
+                    <input type="checkbox" id="keepLogin" name="keepLogin"/><label
+                        for="keepLogin">Keep me logged in</label>
                 <?php if(isset($templateParams["errormsg"])): ?>
                   <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
