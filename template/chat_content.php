@@ -24,7 +24,7 @@
 <div class="row" id="chat-bottom">
     <form class="col-12 col-md-8 mx-auto">
     <input type="hidden" name="chatid" value="<?php echo $_GET["chatId"];?>"/>
-    <input id="inputMsg" name="inputMsg" type="text" placeholder="Scrivi qui il tuo messaggio"/>
-    <input type="submit" value="Invia"/>
+    <input id="inputMsg" name="inputMsg" type="text" placeholder="<?php echo $lang["chat_textPlaceholder"];?>"/>
+    <input type="submit" value="<?php echo $lang["Send"];?>"/>
     </form>
 </div>
