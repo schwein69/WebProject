@@ -1,7 +1,6 @@
-document.querySelector("main form > button").addEventListener("click",function (e) {
-    var pwd = document.querySelector("main form").pwd;
-    var pwdrep =document.querySelector("main form").pwdrepeat;
-    
+document.querySelector("button[id*=PswButton]").addEventListener("click",function (e) {
+    const pwd = document.querySelector('input[name="pwd"]');
+    const pwdrep =document.querySelector('input[name="pwdrepeat"]');
     if (pwd.value.length < 6) {
         pwd.value = "";
         let errormsg = "<p>La password deve essere almeno di 6 caratteri</p>";

@@ -1,6 +1,5 @@
 <div class="row" style=" display: flex; justify-content: center; align-items: center;">
-    <div class="col-md-2"></div>
-    <div class="col-12 col-md-8 text-centershadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
+    <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
         <div class="col-8 border border-secondary mx-auto" style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h2>Login</h2>
             <form action="" method="POST">
@@ -26,5 +25,4 @@
         </div>
 
     </div>
-    <div class="col-md-2"></div>
 </div>

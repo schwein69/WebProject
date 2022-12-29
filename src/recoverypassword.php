@@ -4,6 +4,7 @@ require_once 'bootstrap.php';
 
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);      
 if(isset($_POST["email"])){
+    if($dbh->checkEmail($_POST["email"])){ 
     try {
         $mail->isSMTP(); // using SMTP protocol                                     
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 
@@ -25,7 +26,11 @@ if(isset($_POST["email"])){
         header("Location: login.php");
     } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    } 
+    }
+    } else {
+        $msg = "Email inesistente!";
+        $templateParams["errormsg"] = $msg;
+    }
 }
 
 $templateParams["content"] = "recovery-template.php";
