@@ -48,7 +48,7 @@ foreach ($templateParams["posts"] as $postParams):
 
             <div class="card-body">
                 <p class="card-text">
-                    <?php echo $postParams["testo"] ?>
+                    <?php echo htmlspecialchars($postParams["testo"]) ?>
                 </p>
                 <p class="card-text"><small class="text-muted">
                         <?php echo $postParams["dataPost"] ?>

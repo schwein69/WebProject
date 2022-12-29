@@ -34,12 +34,13 @@ function generaArticoli(articoli) {
     } else {
         articolo += `segui`;
     }
+        let convertedText = document.createTextNode(articoli["post"]["testo"]);
         articolo += `</button>
                 </div>
                 </div>
                 </div>
                 <div class="card-body">
-                <p class="card-text"> ${articoli["post"]["testo"]} </p>
+                <p class="card-text">`+convertedText+` </p>
                 <p class="card-text"><small class="text-muted">${articoli["post"]["dataPost"]}</small></p> `;
 
     let concat = "";
