@@ -24,7 +24,7 @@ foreach ($templateParams["posts"] as $postParams):
 
     ?>
     <div class="row">
-    <article class="bg-white border border-primary col-12 col-md-8 mx-auto">
+    <article class="col-12 col-md-8 mx-auto">
         <div class="card">
             <div class="card-header">
                 <div class="row mt-2">
@@ -38,7 +38,7 @@ foreach ($templateParams["posts"] as $postParams):
                     </div>
                     <div class="col-4"> 
                         <?php if(!$postParams["isLoggedUserPost"]): ?>
-                        <button type="button" id="follower<?php echo $postParams["idUser"] ?>" class="btn" style="box-shadow: none;">
+                        <button type="button" id="follower<?php echo $postParams["idUser"] ?>" class="btn">
                             <?php echo $postParams["followedByMe"]  ? "seguito" :  "segui" ?>
                         </button>
                         <?php endif; ?>

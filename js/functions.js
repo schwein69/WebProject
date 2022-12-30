@@ -26,7 +26,7 @@ function generaArticoli(articoli) {
                     </h2>
                 </div>
                 <div class="col-4">  
-                <button type="button" id="follower${articoli["post"]["idUtente"]}" class="btn btn-primary" style="box-shadow: none;">`;
+                <button type="button" id="follower${articoli["post"]["idUtente"]}" class="btn">`;
 
     if (`${articoli["followedByMe"]}` == "true") {
         articolo += `seguito`;
@@ -73,7 +73,7 @@ function generaArticoli(articoli) {
             `<img class="card-img-bottom my-2 mx-auto" src = "${articoli["content"][0]["nomeImmagine"]}"
     alt = "${articoli["content"][0]["descrizione"]}" /> `;
     }
-    concat += `<a href = "post.php?postid=${articoli["post"]["idPost"]}" value = "${articoli["post"]["idPost"]}" class="btn btn-primary ms-auto"
+    concat += `<a href = "post.php?postid=${articoli["post"]["idPost"]}" value = "${articoli["post"]["idPost"]}" class="btn ms-auto"
     style = "display:block ; width: fit-content;" > Espandi</a >
             </div >
             <div class="card-footer">

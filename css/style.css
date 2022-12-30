@@ -1,8 +1,9 @@
 :root {
-  --colour-bck: #49acf3;
-  --colour-bck-base:white;
-  --colour-bck-form: white;
-  --colour-bck-backside: #deebf5;
+  --colour-bck-nav: #49acf3;/*Area Nav and footer*/
+  --colour-bck-base:white;/*Area di contenuto*/
+  --colour-bck-chatbg:white;/*Chat Area*/
+  --colour-bck-form: white;/*Form Area*/
+  --colour-bck-backside: #deebf5;/*Area nullo*/
   --colour-font: #000000;
   --colour-border: #000000;
   --colour-hover:lightgreen;
@@ -14,13 +15,14 @@
 }*/
 
 [data-theme="d"] {
-  --colour-bck: #818cab;
+  --colour-bck-nav: #818cab;
   --colour-bck-base:#161625;
-  --colour-border: white;
-  --colour-font: #e1e1ff;
-  --colour-hover:rgb(56, 24, 236);
+  --colour-bck-chatbg:#818cab;
   --colour-bck-form:black;
   --colour-bck-backside: rgb(39, 38, 38);
+  --colour-border: white;
+  --colour-hover:rgb(56, 24, 236);
+  --colour-font: #e1e1ff;
 }
 
 html,body {
@@ -41,10 +43,17 @@ form,input{
   color: var(--colour-font);
 }
 form label,form input {
-  background-color: var(--colour-bck-form) !important;
+  background-color: var(--colour-bck-form);
+  text-align: center;
+  border-radius: 15px;
 }
-.btn ,.chatbg{
-  background-color: var(--colour-bck);
+.btn {
+  background-color: var(--colour-bck-nav);
+  box-shadow: none;
+  border:  1px solid var(--colour-border) !important;
+}
+.chatbg{
+  background-color: var(--colour-bck-chatbg);
   box-shadow: none;
   border:  1px solid var(--colour-border) !important;
 }
@@ -52,7 +61,7 @@ form label,form input {
   background-color: var(--colour-hover);
 }
 #myTab{
-  background-color: var(--colour-bck);
+  background-color: var(--colour-bck-nav);
 }
 .notificationAvatar{
   width: 20%;
@@ -61,7 +70,7 @@ form label,form input {
   width: 20%;
 }
 body  header > div > div{
-  background-color: var(--colour-bck);
+  background-color: var(--colour-bck-nav);
 }
 button {
   box-shadow: 0 0 5px 2px black;
@@ -86,7 +95,7 @@ footer nav ul li a h2 {
   box-shadow: none;
 }
 .nav-link.active {
-  color:red !important
+  color:red !important;
 }
 .nav-link{
   color: var(--colour-font);
@@ -116,31 +125,17 @@ footer nav ul li a {
   box-shadow: 0 0 5px 2px black;
 }
 
-#settings-ul li h2 {
-  color: var(--colour-font);;
-}
-
-#settings-ul li:nth-child(odd) {
-  background-color: #7c8286;
-}
-
 span {
   font-size: 150%;
   color: var(--colour-font);
 }
-
-
 
 h1 a {
   font-size: 120%;
   color: var(--colour-font);
 }
 
-.form-group>label {
-  text-align: center;
-  border-radius: 15px;
-  background: var(--search-resultbox-bck);
-}
+
 
 /* Form buttons (used in new_post.php)*/
 form>fieldset button {

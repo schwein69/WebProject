@@ -17,7 +17,7 @@
     <div class="row">
     <label class="col-3 mx-1 text-end" for="userComment">Scrivi il tuo commento</label>
     <input class="col-7 mx-1" type="text" id="userComment" placeholder="Scrivi il tuo commento..."/> 
-    <button class="col-1 mx-1" id="comment<?php echo $_GET["postid"];?>" type="button" class="btn">
+    <button class="col-1 mx-1 btn" id="comment<?php echo $_GET["postid"];?>" type="button">
         <img src="../imgs/icons/send.svg" alt="Invia commento"/>
     </button>
     </div>

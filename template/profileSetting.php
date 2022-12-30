@@ -5,10 +5,9 @@
                 <li class="nav-item" style="border:1px black;">
                     <h2>Cambio tema</h2>
                     <p>Clicca per cambiare il tema tra chiaro e scuro</p>
-                    <button type="button" id="changeThemeButton" style="box-shadow: none;">Cambia</button>
+                    <button type="button" class="btn" id="changeThemeButton">Cambia</button>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../js/theme.js"></script>

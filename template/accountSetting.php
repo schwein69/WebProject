@@ -31,7 +31,7 @@
             <?php endif; ?>
             <hr>
             <input type="hidden" name="form1submission" value="yes" >
-            <button id="updateDataButton" type="submit" class="btn btn-primary col-4 mb-3" name="submit" value="Invia"
+            <button id="updateDataButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia"
                 style="box-shadow: none;">Aggiorna</button>
         </form> 
     </div>
@@ -59,7 +59,7 @@
             </div>    
             <hr>
             <input type="hidden" name="form2submission" value="yes" >
-            <button id="updatePswButton" type="submit" class="btn btn-primary col-4 mb-3" name="submit" value="Invia"
+            <button id="updatePswButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia"
                 style="box-shadow: none;">Aggiorna</button>
         </form>
     </div>
