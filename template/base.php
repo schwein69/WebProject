@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="bg-primary bg-opacity-10 text-black" data-theme="<?php if(isset($_SESSION["theme"])) echo $_SESSION["theme"]; else echo "chiaro"?>">
+<body data-theme="<?php if(isset($_SESSION["theme"])) echo $_SESSION["theme"]; else echo "l"?>">
     <div class="container-fluid p-0 overflow-hidden">
         <header>
             <div class="row">
@@ -28,17 +28,17 @@
                                 <nav class="navbar navbar-expand-md navbar-light">
                                     <ul class="nav nav-pills ms-auto">
                                         <?php if (isset($templateParams["profileTopNav"])): ?>
-                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn btn-light">
+                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn">
                                                 <img src="../imgs/icons/gear-fill.svg" alt="Impostazioni" />
                                             </button></li>
                                         <?php else: ?>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="newpostButton" class="btn btn-light">
+                                            <button role="link" type="button" id="newpostButton" class="btn">
                                                 <img src="../imgs/icons/plus-circle.svg" alt="Crea post" />
                                             </button>
                                         </li>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="notifButton" class="btn btn-light">                                                
+                                            <button role="link" type="button" id="notifButton" class="btn">                                                
                                                 <img src="../imgs/icons/bell.svg" alt="Notifiche" />
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
                                                 <span aria-label="new notifications"></span>
@@ -63,21 +63,21 @@
         <?php if (!isset($templateParams["loginBottomNav"])): ?>
         <footer class="pb-5">
             <div class="fixed-bottom row">
-                <nav class="col-12 col-md-8 mx-auto p-0" style="background-color: #49acf3;">
+                <nav class="col-12 col-md-8 mx-auto p-0">
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item col-3">
-                            <a href="index.php" class="btn btn-primary"><span
+                            <a href="index.php" class="btn"><span
                                     class="bi bi-house-fill"></span><br>
                                 <h2>Home</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="search.php" class="btn btn-primary"><span class="bi bi-search"></span>
+                            <a href="search.php" class="btn"><span class="bi bi-search"></span>
                                 <h2>Search</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3" id='menuChatButton'>
-                            <a href="all_chats.php" class="btn btn-primary"><span class="bi bi-chat-dots-fill"></span>
+                            <a href="all_chats.php" class="btn"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">                 
@@ -85,7 +85,7 @@
                             </span>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="../src/profile.php" class="btn btn-primary"><span
+                            <a href="../src/profile.php" class="btn"><span
                                     class="bi bi-person-fill"></span><br>
                                 <h2>Profile</h2>
                             </a>

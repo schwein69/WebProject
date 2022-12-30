@@ -1,6 +1,6 @@
 <?php require 'post_template.php';?>
 <div class="row">
-<section id='comments' class="container-fluid p-0 overflow-hidden mx-auto col-12 col-md-8 bg-white mt-1 border border-primary py-3">
+<section id='comments' class="container-fluid p-0 overflow-hidden mx-auto col-12 col-md-8 mt-1 py-3">
     <div class="row text-start">
     <h2>Commenti</h2>
     </div>
@@ -17,7 +17,7 @@
     <div class="row">
     <label class="col-3 mx-1 text-end" for="userComment">Scrivi il tuo commento</label>
     <input class="col-7 mx-1" type="text" id="userComment" placeholder="Scrivi il tuo commento..."/> 
-    <button class="col-1 mx-1" id="comment<?php echo $_GET["postid"];?>" type="button" class="btn btn-light">
+    <button class="col-1 mx-1" id="comment<?php echo $_GET["postid"];?>" type="button" class="btn">
         <img src="../imgs/icons/send.svg" alt="Invia commento"/>
     </button>
     </div>

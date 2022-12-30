@@ -13,7 +13,7 @@ function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
 function generaArticoli(articoli) {
     let active = true;
     let articolo = `
-        <article class="bg-white border border-primary py-3"> 
+        <article class="py-3"> 
         <div class="card col-12 col-md-8 mx-auto">
         <div class="card-header">
             <div class="row mt-2">

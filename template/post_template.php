@@ -38,7 +38,7 @@ foreach ($templateParams["posts"] as $postParams):
                     </div>
                     <div class="col-4"> 
                         <?php if(!$postParams["isLoggedUserPost"]): ?>
-                        <button type="button" id="follower<?php echo $postParams["idUser"] ?>" class="btn btn-primary" style="box-shadow: none;">
+                        <button type="button" id="follower<?php echo $postParams["idUser"] ?>" class="btn" style="box-shadow: none;">
                             <?php echo $postParams["followedByMe"]  ? "seguito" :  "segui" ?>
                         </button>
                         <?php endif; ?>
@@ -107,14 +107,14 @@ foreach ($templateParams["posts"] as $postParams):
             if(!$postParams["isFull"]):
             ?>
             
-            <a href="post.php?postid=<?php echo $postParams["idPost"];?>" value="<?php echo $postParams["idPost"] ?>" class="btn btn-primary ms-auto"
+            <a href="post.php?postid=<?php echo $postParams["idPost"];?>" value="<?php echo $postParams["idPost"] ?>" class="btn ms-auto"
                 style="display:block ; width: fit-content;">Espandi</a>
             <?php endif; ?>
         </div>
         <div class="card-footer">
             <ul class="nav nav-pills">
                 <li class="nav-item mx-2">
-                    <button type="button" id="like<?php echo $postParams["idPost"] ?>" class="btn btn-light">
+                    <button type="button" id="like<?php echo $postParams["idPost"] ?>" class="btn">
                         <img src="<?php echo $postParams["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg" ?>"
                             alt="<?php echo $postParams["liked"] ? "Dislike post" : "Like post" ?>" />
                     </button>
@@ -125,14 +125,14 @@ foreach ($templateParams["posts"] as $postParams):
                     </span>
                 </li>
                 <li class="nav-item mx-2"> <button type="button" id="comment<?php echo $postParams["idPost"] ?>"
-                        class="btn btn-light commentBtn">
+                        class="btn commentBtn">
                         <img src="../imgs/icons/chat.svg" alt="Commenta post" /></button></li>
                     <span>
                     <?php if ($postParams['numCommenti'] > 0) {
                         echo $postParams['numCommenti'];
                     } ?>
                     </span>
-                <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>" class="btn btn-light">
+                <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>" class="btn">
                         <img src="<?php echo $postParams["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg" ?>"
                             alt="<?php echo $postParams["saved"] ? "Save post" : "Unsave post" ?>" /></button>
                 </li>

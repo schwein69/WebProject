@@ -1,6 +1,10 @@
 :root {
   --colour-bck: #49acf3;
+  --colour-bck-base:white;
+  --colour-bck-form: white;
+  --colour-bck-backside: #deebf5;
   --colour-font: #000000;
+  --colour-border: #000000;
   --colour-hover:lightgreen;
   --search-resultbox-bck: white;
 }
@@ -10,12 +14,45 @@
 }*/
 
 [data-theme="d"] {
-  --colour-bck: #000000;
-  --colour-font: #FFFFFF;
+  --colour-bck: #818cab;
+  --colour-bck-base:#161625;
+  --colour-border: white;
+  --colour-font: #e1e1ff;
+  --colour-hover:rgb(56, 24, 236);
+  --colour-bck-form:black;
+  --colour-bck-backside: rgb(39, 38, 38);
 }
 
 html,body {
   height: 100%;
+}
+body{
+  background-color: var(--colour-bck-backside);
+}
+section,.card-body,.card-header,.card-footer{
+  color: var(--colour-font);
+  background-color: var(--colour-bck-base);
+  border:  1px solid var(--colour-border) !important;
+}
+.card-body,article{
+  border:  1px solid var(--colour-border) !important;
+}
+form,input{
+  color: var(--colour-font);
+}
+form label,form input {
+  background-color: var(--colour-bck-form) !important;
+}
+.btn ,.chatbg{
+  background-color: var(--colour-bck);
+  box-shadow: none;
+  border:  1px solid var(--colour-border) !important;
+}
+.btn:hover{
+  background-color: var(--colour-hover);
+}
+#myTab{
+  background-color: var(--colour-bck);
 }
 .notificationAvatar{
   width: 20%;
@@ -92,9 +129,7 @@ span {
   color: var(--colour-font);
 }
 
-.btn-light {
-  background-color: transparent;
-}
+
 
 h1 a {
   font-size: 120%;

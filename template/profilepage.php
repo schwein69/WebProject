@@ -1,6 +1,6 @@
 <div class="row">
     <div class="container-fluid col-12 col-md-8 mx-auto p-0">
-        <section class="bg-white border border-primary py-3">
+        <section class="py-3">
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-body">
                     <ul class="nav nav-pills nav-justified">
@@ -35,7 +35,7 @@
                     </p>
                     <?php if(isset($_GET["idUtente"]) && $_GET["idUtente"] != $_SESSION["idUtente"]) : ?>
                     <p class="card-text">
-                        <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn btn-primary"
+                        <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn"
                             style="box-shadow: none;">
                             <?php echo $templateParams["user"]["followedByMe"] ? "seguito" : "segui" ?>
                         </button>

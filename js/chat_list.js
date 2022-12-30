@@ -45,7 +45,7 @@ document.addEventListener('scroll', event => {
             if(response.status){
                 response.chats.forEach(element => {
                     const chatElement = document.createElement('li');
-                    chatElement.classList.add("list-group-item"); 
+                    chatElement.classList.add("list-group-item","chatbg"); 
                     chatElement.innerHTML = '<a href="chat.php?chatId=' + element["idChat"] + '">'
                             + '<img class="chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
                             + '<h2>' + element["username"] + '</h2>'
