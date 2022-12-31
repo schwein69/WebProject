@@ -6,6 +6,15 @@ $lang["writeHere"] = "Scrivi qui";
 $lang["image"] = "Immagine";
 $lang["altText"] = "Testo alternativo";
 $lang["for"] = " per ";
+$lang["comments"] = "Commenti";
+$lang["Follower"] = "Seguaci";
+$lang["Followed"] = "Seguiti";
+$lang["userFollowed"] = "Seguito";
+$lang["userNotFollowed"] = "Segui";
+$lang["Birthday"] = "Data di nascita";
+$lang["ProfilePicture"] = "Foto profilo";
+$lang["Repeat"] = "Ripeti";
+$lang["VisitPage"] = "Visita profilo";
 
 /* -------------------------- BASE ---------------------------------- */
 $lang["settings"] = "Impostazioni";
@@ -35,10 +44,29 @@ $lang["accountSetting_submitlabel"] = "Aggiorna";
 
 /* -------------------------- POST ---------------------------------- */
 
+/* Post content*/
+$lang["post_writeComment"] = "Scrivi il tuo commento:";
+
 /* Post creation */
 $lang["createPost_errNoMsgVidsTxt"] = "Inserire del testo, un'immagine o un video.";
 $lang["createPost_Txt"] = "Testo del post";
 $lang["createPost_addTag"] = "Aggiungi un altro tag";
 $lang["createPost_ImgsVids"] = "Immagini e Video";
 $lang["createPost_addImgVid"] = "Aggiungi immagine/video";
+$lang["createPost_success"] = "Il post è stato caricato con successo!";
+$lang["createPost_error"] = "Il post è stato creato ma sono stati riscontrati alcuni problemi";
+
+/* -------------------------- LOGIN ---------------------------------- */
+
+$lang["login_keepLoggedIn"] = "Rimani connesso";
+$lang["login_pwdForgot"] = "Password dimenticata?";
+$lang["login_signUp"] = "Registrati";
+$lang["login_signUpText"] = "Compila i seguenti campi per creare un nuovo account";
+
+/* -------------------------- NOTIFICATIONS ---------------------------------- */
+
+$lang["notification_Comment"] = " ha commentato il tuo post.";
+$lang["notification_Like"] = " ha messo mi piace al tuo post.";
+$lang["notification_Follow"] = " ha iniziato a seguirti.";
+$lang["notification_noNotif"] = "Non hai ricevuto alcuna notifica.";
 ?>

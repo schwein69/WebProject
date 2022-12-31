@@ -1,9 +1,8 @@
 <div class="row" id="searchbar">
-    <div class="col-md-2"></div>
-    <div class="col-12 col-md-8 my-2">
+    <div class="col-12 col-md-8 my-2 mx-auto">
         <form action="" method="GET">
             <input type="radio" id="user" name="searchOption" value="User" required>
-            <label for="user">USER</label>
+            <label for="user">USERNAME</label>
             <input type="radio" id="tag" name="searchOption" value="Tag">
             <label for="tag">TAG</label>
             <input class="col-6" type="text" list="search keyword" id="searchTextArea" name="searchValue"
@@ -14,7 +13,6 @@
 
         </form>
     </div>
-    <div class="col-md-2"></div>
 </div>
 <?php
 if($templateParams["selector"] == true):
@@ -36,7 +34,7 @@ if($templateParams["selector"] == true):
             <div class="row g-0">
                 <div class="col-4 my-auto">
                     <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>"
-                        class="img-fluid rounded searchAvatar" alt="foto profilo di <?php echo $user["username"] ?>">
+                        class="img-fluid rounded searchAvatar" alt="<?php echo getProfilePicAlt($user["username"]); ?>">
                 </div>
                 <div class="col-8 my-auto">
                     <div class="card-body">
@@ -48,11 +46,11 @@ if($templateParams["selector"] == true):
                         </p>
                         <p class="card-text">
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"]?>"
-                                class="btn btn-primary">Visit page</a>
+                                class="btn btn-primary"><?php echo $lang["VisitPage"];?></a>
                             <?php $user["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]); ?>
                             <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn btn-primary"
                                 style="box-shadow: none;">
-                                <?php echo $user["followedByMe"]  ? "seguito" :  "segui" ?>
+                                <?php echo $user["followedByMe"]  ? $lang["userFollowed"] :  $lang["userNotFollowed"]; ?>
                             </button>
                         </p>
                     </div>
