@@ -11,18 +11,19 @@
                     <input type="password" class="form-control" id="password" name="password" required/><label
                         for="password" style="background-color:transparent;">Password:</label>
                 </div>
+                    <input type="checkbox" id="keepLogin" name="keepLogin"/><label
+                        for="keepLogin"><?php echo $lang["login_keepLoggedIn"];?></label>
                 <?php if(isset($templateParams["errormsg"])): ?>
                   <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
                 <div class="form-floating mb-3 mt-3 col-6 mx-auto">
-                    <button type="submit" class="btn col-6 mt-3" name="submit" value="Invia">Login</button>
+                    <button type="submit" class="btn col-6 mt-3" name="submit" value="<?php echo $lang["Send"];?>">Login</button>
                 </div>
                 <div class="btn-toolbar my-5" style="justify-content: center; display: flex;">
-                    <a class="btn btn-outline-primary mx-2" href="./recoverypassword.php">Forget password?</a>
-                    <a class="btn btn-outline-primary mx-2" href="./registration.php">Sign up</a>
+                    <a class="btn btn-outline-primary mx-2" href="./recoverypassword.php"><?php echo $lang["login_pwdForgot"];?></a>
+                    <a class="btn btn-outline-primary mx-2" href="./registration.php"><?php echo $lang["login_signUp"];?></a>
                 </div>
             </form>
         </div>
-
     </div>
 </div>

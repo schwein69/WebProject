@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="<?php echo $_SESSION["lang"];?>">
 
 <head>
     <meta charset="utf-8" />
@@ -28,20 +28,20 @@
                                 <nav class="navbar navbar-expand-md navbar-light">
                                     <ul class="nav nav-pills ms-auto">
                                         <?php if (isset($templateParams["profileTopNav"])): ?>
-                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn">
-                                                <img src="../imgs/icons/gear-fill.svg" alt="Impostazioni" />
+                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn btn-light">
+                                                <img src="../imgs/icons/gear-fill.svg" alt="<?php echo $lang["settings"];?>" />
                                             </button></li>
                                         <?php else: ?>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="newpostButton" class="btn">
-                                                <img src="../imgs/icons/plus-circle.svg" alt="Crea post" />
+                                            <button role="link" type="button" id="newpostButton" class="btn btn-light">
+                                                <img src="../imgs/icons/plus-circle.svg" alt="<?php echo $lang["postCreation"];?>" />
                                             </button>
                                         </li>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="notifButton" class="btn">                                                
-                                                <img src="../imgs/icons/bell.svg" alt="Notifiche" />
+                                            <button role="link" type="button" id="notifButton" class="btn btn-light">                                                
+                                                <img src="../imgs/icons/bell.svg" alt="<?php echo $lang["notifications"];?>" />
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
-                                                <span aria-label="new notifications"></span>
+                                                <span aria-label="<?php echo $lang["newNotifications"];?>"></span>
                                                 </span>
                                             </button>
                                         </li>
@@ -72,8 +72,8 @@
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="search.php" class="btn"><span class="bi bi-search"></span>
-                                <h2>Search</h2>
+                            <a href="search.php" class="btn btn-primary"><span class="bi bi-search"></span>
+                                <h2><?php echo $lang["Search"];?></h2>
                             </a>
                         </li>
                         <li class="nav-item col-3" id='menuChatButton'>
@@ -81,13 +81,13 @@
                                 <h2>Chat</h2>
                             </a>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">                 
-                                <span aria-label="unread messages"></span>
+                                <span aria-label="<?php echo $lang["unreadMessages"];?>"></span>
                             </span>
                         </li>
                         <li class="nav-item col-3">
                             <a href="../src/profile.php" class="btn"><span
                                     class="bi bi-person-fill"></span><br>
-                                <h2>Profile</h2>
+                                <h2><?php echo $lang["Profile"];?></h2>
                             </a>
                         </li>
                     </ul>

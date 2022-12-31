@@ -1,7 +1,7 @@
 <?php if(count($errMsgs) == 0): ?>
-    <h2>Il post è stato caricato con successo!<h2>
+    <h2><?php echo $lang["createPost_success"];?><h2>
 <?php else: ?>
-    <h2>Il post è stato creato ma sono stati riscontrati alcuni problemi</h2>
+    <h2><?php echo $lang["createPost_error"]; ?></h2>
     <div class="text-danger">
         <?php foreach($errMsgs as $err): ?>
             <p><?php echo $err;?></p>

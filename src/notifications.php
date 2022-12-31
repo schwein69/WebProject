@@ -2,10 +2,6 @@
 require_once 'bootstrap.php';
 
 redirectNotLoggedUser();
-//TODO move the following lines in language.php pages
-$langParam["notificationStatementComment"] = " ha commentato il tuo post.";
-$langParam["notificationStatementLike"] = " ha messo mi piace al tuo post.";
-$langParam["notificationStatementFollow"] = " ha iniziato a seguirti.";
 
 $templateParams["notifications"] = $dbh->getNotifications($_SESSION["idUtente"]); 
 $dbh->readAllNotifications($_SESSION["idUtente"]);

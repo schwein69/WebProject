@@ -72,9 +72,19 @@ class DatabaseHelper
 
     }
 
-    function isFollowedByMe($userId, $adminId)
+    public function isFollowedByMe($userId, $adminId)
     {
         return $this->userFunctions->isFollowedByMe($userId, $adminId);
+    }
+
+    public function updateKeepLogin($userId,$code)
+    {
+        $this->userFunctions->updateKeepLogin($userId, $code);
+    }
+
+    public function getUserByKeepConnectionCode($code)
+    {
+        return $this->userFunctions->getUserByKeepConnectionCode($code);
     }
 
     //--------------- POST FUNCTIONS ------------------

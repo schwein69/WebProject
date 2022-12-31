@@ -8,7 +8,7 @@
                             <figure class="figure m-2">
                                 <img class="figure-img img-fluid avatar"
                                     src="<?php echo $templateParams["user"]["profilePic"]; ?>"
-                                    alt="foto profilo di <?php echo $templateParams["user"]["username"] ?>" />
+                                    alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />
                                 <figcaption class="figure-caption">
                                     <?php echo $templateParams["user"]["username"] ?>
                                 </figcaption>
@@ -21,12 +21,12 @@
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
                             <a href="followerList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
-                                class="profileLink"><br>Seguaci<br></a>
+                                class="profileLink"><br><?php $lang["Followed"];?><br></a>
                             <?php echo $templateParams["user"]["numFollower"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
                             <a href="followedList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
-                                class="profileLink"><br>Seguiti<br></a>
+                                class="profileLink"><br><?php $lang["Follower"];?><br></a>
                             <?php echo $templateParams["user"]["numFollowed"]; ?>
                         </li>
                     </ul>
@@ -37,7 +37,7 @@
                     <p class="card-text">
                         <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn"
                             style="box-shadow: none;">
-                            <?php echo $templateParams["user"]["followedByMe"] ? "seguito" : "segui" ?>
+                            <?php echo $templateParams["user"]["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
                         </button>
                     </p>
                     <?php endif ;?>
