@@ -46,6 +46,10 @@ $lang["accountSetting_submitlabel"] = "Update";
 
 /* Post content*/
 $lang["post_writeComment"] = "Comment here:";
+$lang["post_readMore"] = "Expand";
+$lang["post_comment"] = "Comment post";
+$lang["post_saved"] = "Unsave post";
+$lang["post_notSaved"] = "Save post";
 
 /* Post creation */
 $lang["createPost_errNoMsgVidsTxt"] = "Insert text, images or videos.";

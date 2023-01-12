@@ -5,13 +5,13 @@
         <ul class="list-group">
         <?php foreach($templateParams["notifications"] as $notif):?>
         <li class="list-group-item"> 
-        <a href="profile.php?idutente=<?php echo $notif["idUtenteNotificante"];?>">
+        <a href="profile.php?idUtente=<?php echo $notif["idUtenteNotificante"];?>">
         <img class="notificationAvatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo getProfilePicAlt($notif["username"]);?>"/>
         </a>
         <p>
             <a href="<?php echo isPostNotification($notif["nomeTipo"]) ?
                             "post.php?postid=".$notif["idPostRiferimento"]
-                            : "profile.php?idutente=".$notif["idUtenteNotificante"];?>">
+                            : "profile.php?idUtente=".$notif["idUtenteNotificante"];?>">
                 <?php echo $notif["username"].$lang["notification_".$notif["nomeTipo"]];?>
             </a>
         </p>

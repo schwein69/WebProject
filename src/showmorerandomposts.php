@@ -13,23 +13,26 @@ if(isset($_POST["stringList"])){
     }
     if (count($rows) > 0) {
         $result["post"] = $rows[0];
-        $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
+        $user=$dbh->getUserData($result["post"]["idUser"]);
+        $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUtente"]);
         $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);   
         $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);     
         $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
         $result["status"] = true;
-
+        $result["imagealt"] = getProfilePicAlt($user["username"]);
+        $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
         //TODO da chiedere/ aggiungere al function.js
-        $result["mediaPath"] = UPLOAD_DIR . $result["post"]["idUtente"] . '/' . $result["post"]["idPost"] . '/';
+        //adding medias to post
+        $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';
         $media = $dbh->getPostContents($result["post"]["idPost"]);
-
-        for ($m = 0; $m < count($media); $m++) {
+        
+        for ($m=0; $m < count($media) ; $m++) { 
             $media[$m]["isImage"] = isImageExtension($media[$m]["formato"]);
         }
-        $result["media"] = $media;
-        $result["fotoProfiloAlt"] = "foto profilo di ".$result["post"]['username'];
-        $result["isFull"] = false;
-        $result["isLoggedUserPost"] = $result["post"]["idUtente"] == $_SESSION["idUtente"];
+        $result["post"]["media"] = $media;
+        $result["readMore"] = $lang["post_readMore"];
+        $result["comment"] = $lang["post_comment"];
+        $result["savedText"] = $result["saved"] ? $lang["post_saved"] : $lang["post_notSaved"];
     }
 }
 

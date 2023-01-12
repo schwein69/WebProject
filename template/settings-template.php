@@ -1,6 +1,6 @@
 <div class="row">
     <div class="container-fluid col-12 col-md-8 mx-auto p-0">
-        <section style="height: 100vh;">
+        <section>
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"

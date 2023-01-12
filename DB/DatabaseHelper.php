@@ -121,13 +121,13 @@ class DatabaseHelper
 
     }
 
-    public function getFollowedPosts($idUser, $start = 0, $end = 1)
+    public function getFollowedPosts($idUser, $start = 0, $end = 7)
     {
         return $this->postFunctions->getFollowedPosts($idUser, $start, $end);
 
     }
 
-    public function getSavedPosts($idUser, $start = 0, $end = 1)
+    public function getSavedPosts($idUser, $start = 0, $end = 7)
     {
         return $this->postFunctions->getSavedPosts($idUser, $start, $end);
 

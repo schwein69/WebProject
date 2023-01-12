@@ -7,7 +7,7 @@ document.addEventListener('scroll', event => {
             const response = JSON.parse(this.responseText);
             if (response.status) {
                 let newArticle = generaArticoli(response);
-                let lastarticle = document.querySelector("article:last-of-type");
+                let lastarticle = document.querySelector("main > div.row:last-of-type");
                 lastarticle.insertAdjacentHTML("afterend", newArticle);
                 oldId.push(response["post"]["idPost"]);
             }

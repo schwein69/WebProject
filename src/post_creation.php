@@ -40,9 +40,9 @@ if(!mkdir($postPath, 0777, true)){
 foreach($files_to_upload as $file){
     list($result, $fileType, $msg) = uploadFile($postPath,$file["file"]);
     if($result){
-        var_dump($postId, $msg, $fileType,$file["desc"]);
+        //var_dump($postId, $msg, $fileType,$file["desc"]);
         $dbh->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
-        echo "OK";
+        //echo "OK";
     } else {
         array_push($errMsgs, $msg);
     }

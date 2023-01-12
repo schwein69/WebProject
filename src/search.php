@@ -29,7 +29,7 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
         $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di ".$user['username'];
         $templateParams["posts"][$i]["username"] = $user['username'];
         $templateParams["posts"][$i]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION["idUtente"];
-        $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'],$templateParams["posts"][$i]["idPost"]);
+        $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$user['idUtente']);
         $templateParams["posts"][$i]["isFull"] = false;
         $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
         $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);

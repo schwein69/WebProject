@@ -6,11 +6,25 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
         $rows = $dbh->getSavedPosts($_SESSION["idUtente"], $_POST["start"],$_POST["end"]);
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
-            $result["followedByMe"] = $dbh->isFollowedByMe($result["post"]["idUtente"],$_SESSION["idUtente"]);
+            $user=$dbh->getUserData($result["post"]["idUser"]);
+            $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUtente"]);
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);  
             $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);      
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["status"] = true;
+            $result["imagealt"] = getProfilePicAlt($user["username"]);
+            $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
+             //adding medias to post
+             $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';
+             $media = $dbh->getPostContents($result["post"]["idPost"]);
+             
+             for ($m=0; $m < count($media) ; $m++) { 
+                 $media[$m]["isImage"] = isImageExtension($media[$m]["formato"]);
+             }
+             $result["post"]["media"] = $media;
+             $result["readMore"] = $lang["post_readMore"];
+             $result["comment"] = $lang["post_comment"];
+             $result["savedText"] = $result["saved"] ? $lang["post_saved"] : $lang["post_notSaved"];
         }
     }
 
