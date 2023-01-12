@@ -1,11 +1,11 @@
 const commentBox = document.getElementById("userComment");
 function comment(event){
     event.preventDefault();
-
+    
     const source = event.target || event.srcElement;
     const commentButton = source.nodeName.toLowerCase() == 'button' ? source : source.parentNode;
-    const postId = commentButton.id.substring(7);
-
+    const postId = commentButton.id.substring(11);
+    
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         const timeStamp = new Date(Date.now());
