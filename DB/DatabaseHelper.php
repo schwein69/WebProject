@@ -94,6 +94,11 @@ class DatabaseHelper
         return $this->postFunctions->getPostData($id);
     }
 
+    public function getPostTags($postId)
+    {
+        return $this->postFunctions->getPostTags($postId);
+    }
+
     public function getPostComments($postId)
     {
         return $this->postFunctions->getPostComments($postId);

@@ -21,6 +21,7 @@ if(isset($_POST["stringList"])){
         $result["status"] = true;
         $result["imagealt"] = getProfilePicAlt($user["username"]);
         $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
+        $result["post"]["tags"] = $dbh->getPostTags($result["post"]["idPost"]);
         //TODO da chiedere/ aggiungere al function.js
         //adding medias to post
         $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';

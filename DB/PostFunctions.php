@@ -135,6 +135,22 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostTags($postId)
+    {
+        $query = "SELECT *
+                FROM tags
+                WHERE idTag IN (SELECT T.idTag
+                                FROM tags T
+                                JOIN posttags PT ON T.idTag = PT.idTag
+                                JOIN posts P ON PT.idPost = P.idPost
+                                WHERE PT.idPost = ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPostComments($postId)
     {
         $query = "SELECT dataCommento, testo, U.idUtente, username, formatoFotoProfilo

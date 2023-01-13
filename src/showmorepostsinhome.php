@@ -17,6 +17,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
             $result["isLoggedUserPost"] = $_SESSION["idUtente"] == $result["post"]["idUser"];
             $result["status"] = true;
             $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
+            $result["post"]["tags"] = $dbh->getPostTags($result["post"]["idPost"]);
             //adding medias to post
             $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUser'].'/'.$result["post"]["idPost"].'/';
             $media = $dbh->getPostContents($result["post"]["idPost"]);

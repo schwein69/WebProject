@@ -19,6 +19,7 @@ Parameters used from postParams:
 -"media"            array containing all post images and videos
     >"isImage"          true if a media is an image. false if it is a video
 -"mediaPath"        path to the post media folder
+-"tags"             array of tags associated to the post
 */
 foreach ($templateParams["posts"] as $postParams):
 
@@ -119,6 +120,15 @@ foreach ($templateParams["posts"] as $postParams):
                     </a>
                     <?php endif; ?>
             </div>
+
+            <?php if(isset($postParams["tags"]) && count($postParams["tags"])>0):?>
+                <section>
+                <?php foreach ($postParams["tags"] as $tag):?>
+                    <span><?php echo $tag["nomeTag"];?></span>
+                <?php endforeach;?>
+                </section>
+            <?php endif;?>
+            
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
