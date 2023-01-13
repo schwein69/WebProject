@@ -17,6 +17,7 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["isFull"] = false;
     $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
     $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["tags"] = $dbh->getPostTags($templateParams["posts"][$i]["idPost"]);
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$templateParams["posts"][$i]["idPost"].'/';
     $media = $dbh->getPostContents($templateParams["posts"][$i]["idPost"]);

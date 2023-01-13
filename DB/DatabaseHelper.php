@@ -94,6 +94,11 @@ class DatabaseHelper
         return $this->postFunctions->getPostData($id);
     }
 
+    public function getPostTags($postId)
+    {
+        return $this->postFunctions->getPostTags($postId);
+    }
+
     public function getPostComments($postId)
     {
         return $this->postFunctions->getPostComments($postId);
@@ -104,15 +109,9 @@ class DatabaseHelper
         $this->postFunctions->addCommentToPost($user, $postId, $testo);
     }
 
-    public function getRandomPosts($idUser)
+    public function getRandomPosts($idUser, $oldPostIds=array(), $n=5)
     {
-        return $this->postFunctions->getRandomPosts($idUser);
-    }
-
-    public function getRandomPostsWithArray($n, $idUser, $oldPostIds)
-    {
-        return $this->postFunctions->getRandomPostsWithArray($n, $idUser, $oldPostIds);
-
+        return $this->postFunctions->getRandomPosts($idUser,$oldPostIds, $n);
     }
 
     public function getProfilePosts($n = -1, $idUser)

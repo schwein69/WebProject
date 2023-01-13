@@ -9,7 +9,7 @@ if(isset($_POST["stringList"])){
     if($_POST["isTag"]){
         $rows = $dbh->getSearchTagPosts( $_POST["tagName"],$_SESSION["idUtente"], $_POST["start"],$_POST["end"]);      
     } else {
-        $rows = $dbh->getRandomPostsWithArray(1, $_SESSION["idUtente"], $data);   
+        $rows = $dbh->getRandomPosts($_SESSION["idUtente"], $data, 1);   
     }
     if (count($rows) > 0) {
         $result["post"] = $rows[0];
@@ -21,6 +21,9 @@ if(isset($_POST["stringList"])){
         $result["status"] = true;
         $result["imagealt"] = getProfilePicAlt($user["username"]);
         $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
+        $result["post"]["tags"] = $dbh->getPostTags($result["post"]["idPost"]);
+        $result["post"]["username"] = $user["username"];
+        $result["post"]["formatoFotoProfilo"] = $user["formatoFotoProfilo"];
         //TODO da chiedere/ aggiungere al function.js
         //adding medias to post
         $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';

@@ -135,6 +135,22 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostTags($postId)
+    {
+        $query = "SELECT *
+                FROM tags
+                WHERE idTag IN (SELECT T.idTag
+                                FROM tags T
+                                JOIN posttags PT ON T.idTag = PT.idTag
+                                JOIN posts P ON PT.idPost = P.idPost
+                                WHERE PT.idPost = ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $postId);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return $queryRes->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPostComments($postId)
     {
         $query = "SELECT dataCommento, testo, U.idUtente, username, formatoFotoProfilo
@@ -168,55 +184,28 @@ class PostFunctions
     
     //-------- GETTING POSTS -------
 
-    public function getRandomPosts($idUser)
+    public function getRandomPosts($idUser, $oldPostIds, $n)
     {
-        $stmt = $this->db->prepare("
-                                SELECT DISTINCT
-                                    P.*, U.username, U.formatoFotoProfilo, U.idUtente
-                                FROM
-                                    posts P,
-                                    utenti U,
-                                    posttags T,
-                                    contenutimultimediali C,
-                                    tags TA
-                                WHERE
-                                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND U.idUtente != ?
-                                    ORDER BY RAND() LIMIT 1;");
-        $stmt->bind_param('i', $idUser);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getRandomPostsWithArray($n, $idUser, $oldPostIds)
-    {
-        $query = "
-                SELECT DISTINCT
-                    P.*, U.username, U.formatoFotoProfilo, U.idUtente
-                FROM
-                    posts P,
-                    utenti U,
-                    posttags T,
-                    tags TA
-                WHERE
-                    P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND U.idUtente != ? AND P.idPost NOT IN (";
-
+        $query = "SELECT  *
+                FROM posts
+                WHERE idUser != ? ";
 
         $length = count($oldPostIds);
-        for ($i = 0; $i < $length; $i++) {
-            if (is_numeric($oldPostIds[$i])) {
-                $query .= $oldPostIds[$i];
-            } else {
-                die("elements is not a number");
+        if($length > 0){
+            $query .= "AND idPost NOT IN(";
+            for ($i = 0; $i < $length; $i++) {
+                if (is_numeric($oldPostIds[$i])) {
+                    $query .= $oldPostIds[$i];
+                } else {
+                    die("elements is not a number");
+                }
+                if ($i < $length - 1) {
+                    $query .= ",";
+                }
             }
-            if ($i < $length - 1) {
-                $query .= ",";
-            }
+            $query .= ") ";
         }
-        $query .= ") ORDER BY RAND() LIMIT ?";
-
-        //...decomprime array in stream
-
+        $query .= "ORDER BY RAND() LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $idUser, $n );
         $stmt->execute();
@@ -245,22 +234,16 @@ class PostFunctions
 
     public function getSavedPosts($idUser,$start,$end)
     { //id dell'utente loggato
-        $stmt = $this->db->prepare("
-                                SELECT
-                                    P.*,
-                                    U.idUtente,
-                                    U.username,
-                                    U.formatoFotoProfilo
-                                FROM
-                                    posts P,
-                                    utenti U,
-                                    postsalvati PS
-                                WHERE
-                                    P.idUser = U.idUtente AND PS.idUtente = ? AND PS.idPost = P.idPost
-                                ORDER BY
-                                    PS.idPostSalvato 
-                                DESC
-                                LIMIT ?,?");
+        $stmt = $this->db->prepare("SELECT P.*
+                                    FROM
+                                        posts P,
+                                        postsalvati PS
+                                    WHERE
+                                        PS.idUtente = ? AND PS.idPost = P.idPost
+                                    ORDER BY
+                                        PS.idPostSalvato 
+                                    DESC
+                                    LIMIT ?,?");
         $stmt->bind_param('iii', $idUser,$start,$end);
         $stmt->execute();
         $result = $stmt->get_result();
