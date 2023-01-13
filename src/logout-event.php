@@ -5,7 +5,7 @@ if(isset($_COOKIE["Lynkzone_keepLogin"])){
     $dbh->updateKeepLogin($_SESSION["idUtente"],null);
 }
 session_destroy(); //destroy the session
-header("Refresh: 2; url=login.php");
+header("Refresh: 1; url=login.php");
 ?>
 <script>
     localStorage.clear();

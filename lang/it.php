@@ -41,6 +41,16 @@ $lang["accountSetting_pplabel"] = "Foto Profilo";
 $lang["accountSetting_namelabel"] = "Nome";
 $lang["accountSetting_bdaylabel"] = "Data di nascita";
 $lang["accountSetting_submitlabel"] = "Aggiorna";
+$lang["accountSetting_changeThemeText"] = "Modifica tema";
+$lang["accountSetting_changeLanguageText"] = "Modifica lingua";
+$lang["accountSetting_chooseThemeText"] = "Scegli un tema";
+$lang["accountSetting_chooseLanguageText"] = "Scegli una lingua";
+
+/*Setting's tab texts */
+$lang["accountSetting_profileSettingsTab"] = "Impostazione generale";
+$lang["accountSetting_savedPostsTab"] = "Post salvati";
+$lang["accountSetting_accountSettingsTab"] = "Account";
+$lang["accountSetting_privacyTab"] = "Privacy & Policy";
 
 /* -------------------------- POST ---------------------------------- */
 

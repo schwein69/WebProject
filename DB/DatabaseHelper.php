@@ -316,6 +316,12 @@ class DatabaseHelper
         $stmt->bind_param("ii", $userId, $adminId);
         $stmt->execute();
     }
+    function changeLanguage($userId, $newLanguage)
+    {
+        $stmt = $this->db->prepare('UPDATE utenti SET lang=? WHERE idUtente=?');
+        $stmt->bind_param("si", $newLanguage, $userId);
+        $stmt->execute();
+    }
 
     function changeTheme($userId, $newTheme)
     {

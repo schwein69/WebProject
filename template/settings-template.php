@@ -4,19 +4,19 @@
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                        type="button" role="tab" aria-controls="profile" aria-selected="true">Profile Settings</button>
+                        type="button" role="tab" aria-controls="profile" aria-selected="true"><?php echo $lang["accountSetting_profileSettingsTab"]?></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts"
-                        type="button" role="tab" aria-controls="posts" aria-selected="false">Saved posts</button>
+                        type="button" role="tab" aria-controls="posts" aria-selected="false"><?php echo $lang["accountSetting_savedPostsTab"]?></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account"
-                        type="button" role="tab" aria-controls="account" aria-selected="false">Account</button>
+                        type="button" role="tab" aria-controls="account" aria-selected="false"><?php echo $lang["accountSetting_accountSettingsTab"]?></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy"
-                        type="button" role="tab" aria-controls="privacy" aria-selected="false">Privacy & policy</button>
+                        type="button" role="tab" aria-controls="privacy" aria-selected="false"><?php echo $lang["accountSetting_privacyTab"]?></button>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout-event.php">

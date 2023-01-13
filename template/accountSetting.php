@@ -2,7 +2,7 @@
     <div class="col-8 border border-secondary mx-auto"
         style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
         <h2><?php echo $lang["accountSetting_H2"];?></h2>
-        <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="">
             <div class="form-group my-2">
                 <label class="control-label col-2" for="image"><?php echo $lang["accountSetting_pplabel"];?>
                     <img id="thumb" class="figure-img img-fluid avatar"
@@ -30,9 +30,9 @@
             <p><?php echo $templateParams["errormsg"]; ?></p>
             <?php endif; ?>
             <hr>
-            <input type="hidden" name="form1submission" value="yes" >
-            <button id="updateDataButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia"
-                style="box-shadow: none;"><?php echo $lang["accountSetting_submitlabel"];?></button>
+            <input type="hidden" name="form" value="dataForm" >
+            <button id="updateDataButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia">
+            <?php echo $lang["accountSetting_submitlabel"];?></button>
         </form> 
     </div>
 </div>
@@ -41,7 +41,7 @@
     <div class="col-8 border border-secondary mx-auto"
         style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
         <h2>Aggiorna Password</h2>
-        <form class="form-horizontal" name="myform2" method="post" action="">
+        <form class="form-horizontal" method="post" action="">
             <div class="form-group my-2">
                     <label class="control-label col-2" for="oldpwd"><b>Password originale</b></label>
                     <input class="col-6" type="password" placeholder="Vecchia Password" name="oldpwd" id="oldpwd" required>
@@ -58,9 +58,9 @@
                 <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
             </div>    
             <hr>
-            <input type="hidden" name="form2submission" value="yes" >
-            <button id="updatePswButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia"
-                style="box-shadow: none;">Aggiorna</button>
+            <input type="hidden" name="form" value="passwordForm" >
+            <button id="updatePswButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia">
+            <?php echo $lang["accountSetting_submitlabel"]; ?></button>
         </form>
     </div>
 </div>

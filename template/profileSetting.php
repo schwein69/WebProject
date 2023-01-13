@@ -1,13 +1,40 @@
-<div class="row mt-5">
-    <div class="col-8 border border-secondary mx-auto" style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
-        <div class="col-10 mx-auto">
-            <ul class="navbar-nav w-100">
-                <li class="nav-item" style="border:1px black;">
-                    <h2>Cambio tema</h2>
-                    <p>Clicca per cambiare il tema tra chiaro e scuro</p>
-                    <button type="button" class="btn" id="changeThemeButton">Cambia</button>
-                </li>
-            </ul>
+<div class="row my-5">
+    <section class="col-8 border border-secondary mx-auto"
+        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+        <div class="col-10 mx-auto " style="border:1px black;">
+            <h2>
+                <?php echo $lang["accountSetting_changeThemeText"]; ?>
+            </h2>
+            <label for="themes">
+                <?php echo $lang["accountSetting_chooseThemeText"]; ?>
+            </label>
+            <select id="themes">
+                <option value="l">Light</option>
+                <option value="d">Dark</option>
+            </select>
+            <button type="button" class="btn mx-auto my-3" id="changeThemeButton" style="display: block;">
+                <?php echo $lang["accountSetting_submitlabel"]; ?>
+            </button>
         </div>
-    </div>
+    </section>
+</div>
+<div class="row my-5">
+    <section class="col-8 border border-secondary mx-auto"
+        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+        <div class="col-10 mx-auto" style="border:1px black;">
+            <form action="" method="POST">
+                <h2>
+                    <?php echo $lang["accountSetting_changeLanguageText"]; ?>
+                </h2>
+                <label for="languages" style="background-color: transparent;"><?php echo $lang["accountSetting_chooseLanguageText"]; ?></label>
+                <select name="languages" id="languages">
+                    <option value="it">Italiano</option>
+                    <option value="en">English</option>
+                </select>
+                <input type="hidden" name="form" value="languageFormSubmission">
+                <input type="submit" name="submit" class="btn mx-auto my-3" value="<?php echo $lang["accountSetting_submitlabel"]; ?>"
+                    style="display: block;" />
+            </form>
+        </div>
+    </section>
 </div>
