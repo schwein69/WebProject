@@ -4,15 +4,14 @@
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-body">
                     <ul class="nav nav-pills nav-justified">
-                        <li class="nav-item mx-2">
-                            <figure class="figure m-2">
-                                <img class="figure-img img-fluid avatar"
+                        <li class="nav-item mx-2">               
+                                <img class="img-fluid avatar"
                                     src="<?php echo $templateParams["user"]["profilePic"]; ?>"
                                     alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />
-                                <figcaption class="figure-caption">
+                                <h2 style="font-size: 2vw"> 
                                     <?php echo $templateParams["user"]["username"] ?>
-                                </figcaption>
-                            </figure>
+                                </h2>
+                                 
                         </li>
                         <li class="nav-item mt-2">
                             <span class="bi bi-folder-fill"></span>
