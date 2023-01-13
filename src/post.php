@@ -31,7 +31,6 @@ $post["mediaPath"] = UPLOAD_DIR.$user['idUtente'].'/'.$_GET['postid'].'/';
 $post["isFull"] = true;
 $post["isLoggedUserPost"] = $user['idUtente'] == $_SESSION['idUtente'];
 $post["tags"] = $dbh->getPostTags($_GET['postid']);
-var_dump($post["tags"]);
 setMediaType($post["media"]);
 $templateParams["posts"] = array($post);
 
