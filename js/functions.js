@@ -13,8 +13,7 @@ function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
 function generaArticoli(articoli) {
     let articolo = `
         <div class="row">
-        <article class="col-12 col-md-8 mx-auto"> 
-        <div class="card">
+        <article class="card p-0 col-12 col-md-8 mx-auto"> 
         <div class="card-header">
             <div class="row mt-2">
                 <div class="col-4"> 
@@ -109,7 +108,6 @@ function generaArticoli(articoli) {
                             class="btn"><img src="${articoli["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"}" alt="${articoli["savedText"]}"/></button><span></span></li >
                 </ul>
             </div>
-        </div>
         </article></div>`;
 
     articolo += concat;

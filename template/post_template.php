@@ -25,8 +25,7 @@ foreach ($templateParams["posts"] as $postParams):
 
     ?>
     <div class="row">
-        <article class="col-12 col-md-8 mx-auto">
-            <div class="card">
+        <article class="card p-0 col-12 col-md-8 mx-auto">
                 <div class="card-header">
                     <div class="row mt-2">
                         <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $postParams["idUser"]; ?>"> <img
@@ -158,7 +157,7 @@ foreach ($templateParams["posts"] as $postParams):
                     </li>
                 </ul>
             </div>
-    </div>
+    
     </article>
     </div>
 <?php
