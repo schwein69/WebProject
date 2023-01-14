@@ -7,7 +7,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
         if (count($rows) > 0) {
             $result["post"] = $rows[0];
             $user=$dbh->getUserData($result["post"]["idUser"]);
-            $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUtente"]);
+            $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUser"]);
             $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);  
             $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);      
             $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
@@ -18,7 +18,7 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
             $result["post"]["username"] = $user["username"];
             $result["post"]["formatoFotoProfilo"] = $user["formatoFotoProfilo"];
              //adding medias to post
-             $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';
+             $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUser'].'/'.$result["post"]["idPost"].'/';
              $media = $dbh->getPostContents($result["post"]["idPost"]);
              
              for ($m=0; $m < count($media) ; $m++) { 

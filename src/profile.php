@@ -43,6 +43,6 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["media"] = $media;
 }
 
-$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/savePost.js");
+$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/savePost.js","../js/removePost.js");
 require '../template/base.php';
 ?>

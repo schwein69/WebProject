@@ -15,7 +15,7 @@
                         </li>
                         <li class="nav-item mt-2">
                             <span class="bi bi-folder-fill"></span>
-                            <br>Posts<br>
+                            <div>Posts</div>
                             <?php echo $templateParams["user"]["numPosts"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
