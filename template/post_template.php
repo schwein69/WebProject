@@ -122,9 +122,12 @@ foreach ($templateParams["posts"] as $postParams):
 
             <?php if(isset($postParams["tags"]) && count($postParams["tags"])>0):?>
                 <section>
+                    <h2 class="text-start">Tags</h2>
+                    <ul class="list-group list-group-horizontal">
                 <?php foreach ($postParams["tags"] as $tag):?>
-                    <span><?php echo $tag["nomeTag"];?></span>
+                    <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light"><?php echo $tag["nomeTag"];?></li>
                 <?php endforeach;?>
+                </ul>
                 </section>
             <?php endif;?>
             

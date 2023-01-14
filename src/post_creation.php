@@ -24,11 +24,10 @@ $postId=$dbh->insertPost($_SESSION["idUtente"], $testo, $now);
 //get tags
 $tags = array();
 for($i=1;$i<10;$i++){
-    if(isset($_POST["tag".$i])){
+    if(isset($_POST["tag".$i]) && $_POST["tag".$i] != ""){
         array_push($tags,$_POST["tag".$i]);
     }
 }
-
 $dbh->addTagsToPost($postId, $tags);
 
 $errMsgs=array();
