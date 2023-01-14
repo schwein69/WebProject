@@ -66,11 +66,47 @@ function areThereImages() {
 }
 
 const submitButton = document.querySelector('form input[type="submit"]');
+const errMsgTags = document.querySelector('fieldset .errmsg');
+const errMsgAltText = document.querySelectorAll('fieldset .errmsg')[1];
 submitButton.addEventListener('click', event => {
     event.preventDefault();
-    if(!isTextEmpty() || areThereImages()) {
+    let canSub = true;
+    //minimal data to create post check
+    if(isTextEmpty() && !areThereImages()) {
+        document.querySelector('.errmsg').setAttribute('style','display:block');
+        canSub = false;
+    } else {
+        document.querySelector('.errmsg').removeAttribute('style');
+    }
+
+    //tags check
+    let showTagMsg = false;
+    for(let i=1; i < (10-numTag); i++){
+        if(areThereDangerousChars(document.getElementById('tag' + i).value)){
+            canSub = false;
+            showTagMsg = true;
+        }
+    }
+    if(showTagMsg){
+        errMsgTags.setAttribute('style', 'display:block');
+    } else {
+        errMsgTags.removeAttribute('style');
+    }
+
+    let showAltMsg = false;
+    for(let i=1; i < numImg; i++){
+        if(areThereDangerousChars(document.getElementById('alt' + i).value)){
+            canSub = false;
+            showAltMsg = true;
+        }
+    }
+    if(showAltMsg){
+        errMsgAltText.setAttribute('style', 'display:block');
+    } else {
+        errMsgAltText.removeAttribute('style');
+    }
+
+    if(canSub){
         document.querySelector('form').submit();
-    }else{
-        document.getElementById('errMsg').setAttribute('style','');
     }
 });

@@ -29,6 +29,16 @@ function isUserLoggedIn(){
     return !empty($_SESSION['idUtente']);
 }
 
+function areThereDangerousChars($text){
+    $dangChars = array('>','<',';',',',':','\\','/');
+    foreach ($dangChars as $char) {
+        if(strpos($text, $char) !== false){
+            return true;
+        }
+    }
+    return false;
+}
+
 function createRandomCode($length){
     $firstPrintChar = 33;
     $lastChar = 255;

@@ -5,7 +5,9 @@ require_once 'bootstrap.php';
 //TODO autocrop profile picture 1:1
 
 if(isset($_POST["submit"])){
-    $checkUsername = $dbh->checkUsername($_POST["name"]);
+    $checkUsername = $dbh->checkUsername($_POST["name"])
+                    || areThereDangerousChars($_POST["name"])
+                    || strpos($_POST["name"]," ") !== false;
     $checkEmail = $dbh->checkEmail($_POST["email"]);
     if(!$checkUsername && !$checkEmail){
         $name = $_POST["name"];
@@ -33,7 +35,7 @@ if(isset($_POST["submit"])){
 $templateParams["content"] = "registration-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;;
-$templateParams["js"] = array("../js/registrationchecker.js");
+$templateParams["js"] = array("../js/registrationchecker.js","../js/functions.js");
 
 require '../template/base.php';
 

@@ -113,3 +113,8 @@ function generaArticoli(articoli) {
     articolo += concat;
     return articolo;
 }
+
+function areThereDangerousChars(text){
+    const regExp = />|<|;|,|:|\\|\//;
+    return regExp.test(text);
+}

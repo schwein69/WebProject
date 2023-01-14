@@ -4,7 +4,7 @@
     <h2><?php echo $lang["createPost_error"]; ?></h2>
     <div class="text-danger">
         <?php foreach($errMsgs as $err): ?>
-            <p><?php echo $err;?></p>
+            <p><?php echo htmlspecialchars($err);?></p>
         <?php endforeach; ?>
     </div>
 <?php endif;?>

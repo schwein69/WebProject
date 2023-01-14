@@ -8,7 +8,6 @@ if(isset($_COOKIE["Lynkzone_keepLogin"])){
         registerLoggedUser($user);
         header("Location: index.php");
     }
-    //TODO on logout delete cookie
 }
 
 //standard login

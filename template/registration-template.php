@@ -7,15 +7,19 @@
             <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="name">Username</label>
-                    <input class="col-6" type="text" placeholder="username" name="name" required>
+                    <input class="col-6" id="name" type="text" placeholder="username" name="name" required>
+                    <p class="errmsg">Non sono permessi caratteri come: > < ; , :  \  / </p>
+                    <p class="errmsg">Non sono ammessi spazi bianchi</p>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="email">Email</label>
                     <input class="col-6" type="text" placeholder="email" name="email" id='email' required>
+                    <p class="errmsg">Email non valida, si prega di inserire un formato valido</p>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="date"><?php echo $lang["Birthday"];?></label>
                     <input class="col-6" type="text" placeholder="dd-mm-yyyy" name='date' id='date' required>
+                    <p class="errmsg">La data deve essere in formato dd-mm-yyyy</p>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="image"><?php echo $lang["ProfilePicture"];?></label>
@@ -24,10 +28,12 @@
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="psw">Password</label>
                     <input class="col-6" type="password" placeholder="password" name="pwd" id="pwd">
+                    <p class="errmsg">La password deve essere almeno di 6 caratteri</p>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="psw-repeat"><?php echo $lang["Repeat"];?> Password</label>
                     <input class="col-6" type="password" placeholder="password" name="pwdrepeat" id="pwdrepeat">
+                    <p class="errmsg">Password diverse</p>
                 </div>
                 <?php if(isset($templateParams["errormsg"])): ?>
                   <p><?php echo $templateParams["errormsg"]; ?></p>
