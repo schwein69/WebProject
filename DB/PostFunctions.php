@@ -107,6 +107,13 @@ class PostFunctions
         $stmt->execute();
     }
 
+    function removePost($postId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM posts WHERE idPost=?");
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+    }
+
     //-------- GETTING POST DATA -------
 
     public function getPostData($id)

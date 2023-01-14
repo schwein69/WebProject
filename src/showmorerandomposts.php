@@ -14,7 +14,7 @@ if(isset($_POST["stringList"])){
     if (count($rows) > 0) {
         $result["post"] = $rows[0];
         $user=$dbh->getUserData($result["post"]["idUser"]);
-        $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUtente"]);
+        $result["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUser"]);
         $result["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);   
         $result["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);     
         $result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
@@ -26,7 +26,7 @@ if(isset($_POST["stringList"])){
         $result["post"]["formatoFotoProfilo"] = $user["formatoFotoProfilo"];
         //TODO da chiedere/ aggiungere al function.js
         //adding medias to post
-        $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUtente'].'/'.$result["post"]["idPost"].'/';
+        $result["post"]["mediaPath"] = UPLOAD_DIR.$result["post"]['idUser'].'/'.$result["post"]["idPost"].'/';
         $media = $dbh->getPostContents($result["post"]["idPost"]);
         
         for ($m=0; $m < count($media) ; $m++) { 

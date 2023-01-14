@@ -184,6 +184,11 @@ class DatabaseHelper
         $this->postFunctions->unsavePost($user, $postId);
     }
 
+    function removePost($postId)
+    {
+        $this->postFunctions->removePost($postId);
+    }
+
     //--------------- CHAT FUNCTIONS ------------------
 
     public function isUserInChat($chatId, $user)

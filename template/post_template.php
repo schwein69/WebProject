@@ -42,7 +42,10 @@ foreach ($templateParams["posts"] as $postParams):
                                 <button type="button" id="follower<?php echo $postParams["idUser"]; ?>" class="btn">
                                     <?php echo $postParams["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
                                 </button>
-                                <?php endif; ?>
+                                <?php else: ?>
+                                    <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn removePostButton">
+                                <img src="../imgs/icons/trash3.svg" alt="<?php echo $lang["post_remove"]?>" /></button>
+                                <?php endif;?>
                         </div>
                     </div>
                 </div>
