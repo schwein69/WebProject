@@ -68,8 +68,7 @@ function generaArticoli(articoli) {
                 </a>
                 <a class="carousel-control-next" type="button" data-bs-target="#carousel${articoli["post"]["idPost"]}" data-bs-slide="next">
                     <span class="carousel-control-next-icon bg-dark"></span>
-                </a>
-                </div > `;
+                </a>`;
     } else if (articoli["post"]["media"].length == 1) {
         if (articoli["post"]["media"][0]["isImage"]) {
             concat +=
