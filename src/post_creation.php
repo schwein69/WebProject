@@ -19,7 +19,7 @@ if(!isset($_POST["testo"]) && count($files_to_upload) == 0){
 
 $testo = isset($_POST["testo"]) ? $_POST["testo"] : "";
 $now = date('Y-m-d');
-$postId=$dbh->insertPost($_SESSION["idUtente"], $testo, $now);
+$postId=$dbh->insertPost($_SESSION["idUtente"], htmlspecialchars($testo), $now);
 
 //get tags
 $tags = array();
@@ -43,9 +43,7 @@ if(!mkdir($postPath, 0777, true)){
 foreach($files_to_upload as $file){
     list($result, $fileType, $msg) = uploadFile($postPath,$file["file"]);
     if($result){
-        //var_dump($postId, $msg, $fileType,$file["desc"]);
         $dbh->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
-        //echo "OK";
     } else {
         array_push($errMsgs, $msg);
     }
