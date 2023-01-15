@@ -7,13 +7,22 @@
 <div class="row">
 <form action="post_creation.php" method="POST" enctype="multipart/form-data" class="col-12 col-md-8 mx-auto">
     <label for="testo" class="text-start col-12 fs-4"><?php echo $lang["createPost_Txt"];?></label>
-    <textarea id="testo" name="testo" rows="4" class="text-start col-10 mx-auto" placeholder="<?php echo $lang["writeHere"];?>..."></textarea>
+    <textarea id="testo" name="testo" rows="4" class="text-start col-10 mx-auto" placeholder="<?php echo $lang["writeHere"];?>..."><?php echo isset($templateParams["post"]["testo"]) ? $templateParams["post"]["testo"] : "";?></textarea>
     <fieldset>
     <legend class="text-start">Tags</legend>
     <div class="container-fluid p-2 overflow-hidden">
+        
         <div class="row">
-        <input type="text" aria-label="tag1" id="tag1" name="tag1" class="col-2 m-1"/>
+        <?php if(!isset($templateParams["post"]["tags"]) || count($templateParams["post"]["tags"]) == 0): ?>
+            <input type="text" aria-label="tag1" id="tag1" name="tag1" class="col-2 m-1"/>
+        <?php else: 
+            for ($i=0; $i < count($templateParams["post"]["tags"]); $i++):
+        ?>
+            <input type="text" aria-label="tag<?php echo $i;?>" id="tag<?php echo $i;?>" name="tag<?php echo $i;?>" class="col-2 m-1" value="<?php echo $templateParams["post"]["tags"][$i]["nomeTag"];?>"/>
+        <?php endfor;
+            endif;?>
         </div>
+
         <div class="row">
         <button type="button" class="m-1"><?php echo $lang["createPost_addTag"];?></button>
         </div> 
@@ -37,3 +46,9 @@
     <input class="d-flex ms-auto mt-2" type="submit" value="<?php echo $lang["postCreation"];?>"/>
 </form>
 </div>
+
+<script>
+    const tagOffset = <?php echo isset($templateParams["post"]["tags"]) && count($templateParams["post"]["tags"]) >0
+                                ? count($templateParams["post"]["tags"]) - 1
+                                : 0;?>;
+</script>
