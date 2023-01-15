@@ -168,4 +168,10 @@ foreach ($templateParams["posts"] as $postParams):
     </div>
 <?php
 endforeach;
+
+if(isset($templateParams["oldPostIds"])):
 ?>
+<script>
+const oldId = <?php echo json_encode($templateParams["oldPostIds"]);?>;
+</script>
+<?php endif;?>
