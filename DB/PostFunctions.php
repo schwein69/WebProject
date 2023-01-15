@@ -263,7 +263,8 @@ class PostFunctions
                 FROM posts
                 WHERE idUser IN (SELECT idFollowed
                                 FROM relazioniutenti
-                                WHERE idFollower=?) 
+                                WHERE idFollower=?)
+                ORDER BY dataPost DESC 
                 LIMIT ?,?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii', $idUser,$start,$end);

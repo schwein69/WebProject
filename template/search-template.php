@@ -23,7 +23,7 @@ if($templateParams["selector"] == true):
 <script>
     const tagName = <?php if (isset($templateParams[" tagName "])) { echo json_encode($templateParams[' tagName ']); } else echo json_encode("") ?>;
     const isTag = <?php echo $templateParams["isTag"];?>;
-    const oldId = <?php echo json_encode($templateParams["oldPostIds"]); ?>;
+   
 </script>
 <?php else :?>
 <div class="row">

@@ -61,7 +61,7 @@ foreach ($templateParams["posts"] as $postParams):
 
                 <div class="card-body">
                     <p class="card-text">
-                        <?php echo htmlspecialchars($postParams["testo"]); ?>
+                        <?php echo $postParams["testo"]; ?>
                     </p>
                     <p class="card-text">
                         <?php echo $postParams["dataPost"]; ?>
@@ -107,7 +107,7 @@ foreach ($templateParams["posts"] as $postParams):
                             data-bs-target="#carousel<?php echo $postParams["idPost"] ?>" data-bs-slide="next">
                             <span class="carousel-control-next-icon bg-dark"></span>
                         </a>
-                    </div>
+                    
                     <?php elseif (count($postParams["media"]) == 1): ?>
                     <?php if ($postParams["media"][0]["isImage"]): ?>
 
@@ -176,6 +176,10 @@ foreach ($templateParams["posts"] as $postParams):
     </div>
 <?php
 endforeach;
+
+if(isset($templateParams["oldPostIds"])):
 ?>
-
-
+<script>
+const oldId = <?php echo json_encode($templateParams["oldPostIds"]);?>;
+</script>
+<?php endif;?>

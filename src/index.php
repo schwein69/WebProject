@@ -28,7 +28,7 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["media"] = $media;
 }
 
-$templateParams["content"] = "home.php";
+$templateParams["content"] = "post_template.php";
 
 $templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-home.js", "../js/notifications_receiver.js","../js/savePost.js");
 
