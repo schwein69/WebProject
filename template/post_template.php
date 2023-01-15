@@ -1,4 +1,12 @@
+<div class="center-container" style="display:none;">
+<div role="dialog" class="confirmBox center">
+        <h2>Confermi di voler eliminare questo post?</h2>
+        <button class="btn confirmButton" value="yes">Conferma</button>
+        <button class="btn confirmButton" value="no">Annulla</button>
+</div>
+</div>
 <?php
+
 //TODO add listener to carousel to stop video when changing media.
 /*
 Function that print a post card. 
@@ -21,6 +29,7 @@ Parameters used from postParams:
 -"mediaPath"        path to the post media folder
 -"tags"             array of tags associated to the post
 */
+
 foreach ($templateParams["posts"] as $postParams):
 
     ?>
@@ -162,10 +171,11 @@ foreach ($templateParams["posts"] as $postParams):
                                 alt="<?php echo $postParams["saved"] ? $lang["post_saved"] : $lang["post_notSaved"]; ?>" /></button><span></span>
                     </li>
                 </ul>
-            </div>
-    
+            </div>             
     </article>
     </div>
 <?php
 endforeach;
 ?>
+
+
