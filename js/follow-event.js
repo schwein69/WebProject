@@ -10,7 +10,7 @@ function follow(event) {
         const contentPlace = document.querySelectorAll("button[id=follower" + userId + "]");//tutti i button che hanno lo stesso id
         if (response.follower) {//quelli che seguo io
             contentPlace.forEach(element => {//aggiorna la scritta a tutti i post dello stesso utente
-                element.innerText = "seguito";
+                element.innerText = element.innerText === "Follow" ? "Followed" : "Seguito";
             });
             if (document.querySelector(".card-body ul li:last-child a") != null && document.querySelector(".card-body ul li:last-child a").nextSibling != null) {//se lo seguo dal profilo aggiorno i numeri
                 let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;
@@ -20,7 +20,7 @@ function follow(event) {
             }
         } else {
             contentPlace.forEach(element => {
-                element.innerText = "segui";
+                element.innerText = element.innerText === "Followed" ? "Follow" : "Segui";
             });
             if (document.querySelector(".card-body ul li:last-child a") != null && document.querySelector(".card-body ul li:last-child a").nextSibling != null) {
                 let updatePlace = document.querySelector(".card-body ul li:last-child a").nextSibling;

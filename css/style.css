@@ -70,7 +70,14 @@ form label,form input {
 }
 .chatAvatar{
   width: 20%;
+  border:  1px solid var(--colour-border) !important;
 }
+
+.friendListAvatar{
+  width: 30%;
+  border:  1px solid var(--colour-border) !important;
+}
+
 body  header > div > div{
   background-color: var(--colour-bck-nav);
 }
@@ -150,7 +157,26 @@ h1 a {
   padding: 0;
 }
 
+.confirmShareBox{
+  background-color: var(--colour-bck-popup);
+  border: 1px solid var(--colour-border);
+  color: var(--colour-font);
+  text-align: center;
+  width: auto;  
+  height: auto;
+  margin: auto;
+  padding: 0;
+}
+
 .center-container{
+  width: 100%;  
+  height: 100%;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  z-index: 100;
+}
+
+.center-container2{
   width: 100%;  
   height: 100%;
   backdrop-filter: blur(10px);

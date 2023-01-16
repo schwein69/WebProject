@@ -9,6 +9,7 @@ if(isset($_GET["idUtente"])){
 }
 $templateParams["user"] = $dbh->getUserData($userid);
 $templateParams["posts"] = $dbh->getProfilePosts(-1,$userid);
+$templateParams["followed"] = $dbh->getFollowed($_SESSION["idUtente"]);//getFollowed = lista amici dell'utente loggato
 $templateParams["user"]["numPosts"] = count($templateParams["posts"]);
 $templateParams["user"]["numFollower"] = $dbh->getNumFollower($userid);
 $templateParams["user"]["numFollowed"] = $dbh->getNumFollowed($userid);
@@ -24,7 +25,7 @@ Preparing posts
 $numPosts = count($templateParams["posts"]);
 for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["fotoProfilo"] = $templateParams["user"]["profilePic"];
-    $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di ".$templateParams["user"]["profilePic"];
+    $templateParams["posts"][$i]["fotoProfiloAlt"] = getProfilePicAlt($templateParams["user"]["username"]);
     $templateParams["posts"][$i]["username"] = $templateParams["user"]["username"];
     $templateParams["posts"][$i]["isLoggedUserPost"] = $userid == $_SESSION["idUtente"];
     $templateParams["posts"][$i]["followedByMe"] = $templateParams["user"]["followedByMe"];
@@ -43,6 +44,6 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["media"] = $media;
 }
 
-$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/savePost.js","../js/removePost.js");
+$templateParams["js"] = array("../js/functions.js","../js/like.js","../js/follow-event.js","../js/savePost.js","../js/removePost.js","../js/sharePost.js");
 require '../template/base.php';
 ?>

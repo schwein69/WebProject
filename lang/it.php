@@ -61,6 +61,7 @@ $lang["post_comment"] = "Commenta post";
 $lang["post_saved"] = "Rimuovi post dai salvati";
 $lang["post_notSaved"] = "Salva post";
 $lang["post_remove"] = "Rimuovi post";
+$lang["post_share"] = "Condividi post";
 
 /* Post creation */
 $lang["createPost_errNoMsgVidsTxt"] = "Inserire del testo, un'immagine o un video.";
