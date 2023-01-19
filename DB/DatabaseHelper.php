@@ -189,6 +189,21 @@ class DatabaseHelper
         $this->postFunctions->removePost($postId);
     }
 
+    function updatePost($postId, $testo, $dataPost)
+    {
+        $this->postFunctions->updatePost($postId, $testo, $dataPost);
+    }
+
+    function deletePostMedia($mediaId)
+    {
+        $this->postFunctions->deletePostMedia($mediaId);
+    }
+    
+    function removeTagsFromPost($postId)
+    {
+        $this->postFunctions->removeTagsFromPost($postId);
+    }
+
     //--------------- CHAT FUNCTIONS ------------------
 
     public function isUserInChat($chatId, $user)

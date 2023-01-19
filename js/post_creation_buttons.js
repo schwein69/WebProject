@@ -82,6 +82,7 @@ submitButton.addEventListener('click', event => {
     //tags check
     let showTagMsg = false;
     for(let i=1; i < (10-numTag); i++){
+        console.log(i);
         if(areThereDangerousChars(document.getElementById('tag' + i).value)){
             canSub = false;
             showTagMsg = true;

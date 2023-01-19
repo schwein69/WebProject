@@ -48,7 +48,15 @@ foreach($files_to_upload as $file){
         array_push($errMsgs, $msg);
     }
 }
+if(count($errMsgs) == 0){
+    $templateParams["pageHeader"] = $lang["createPost_success"];
+    $templateParams["title"]= "Lynkzone - post creato";
+
+}else{
+    $templateParams["pageHeader"] = $lang["createPost_error"];
+    $templateParams["title"]= "Lynkzone - problema creazione post";
+}
+    
 $templateParams["content"] = "post_creation_result.php"; 
-$templateParams["title"]= count($errMsgs) == 0 ? "Lynkzone - post creato" : "Lynkzone - problema creazione post";
 require '../template/base.php';
 ?>
