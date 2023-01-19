@@ -98,11 +98,11 @@ $templateParams["user"]["profilePic"] = UPLOAD_DIR . $templateParams["user"]["id
 $templateParams["content"] = "settings-template.php";
 $templateParams["profileSetting"] = "profileSetting.php";
 $templateParams["accountSetting"] = "accountSetting.php";
-$templateParams["savedposts"] = "savedposts.php";
+$templateParams["savedposts"] = "post_template.php";
 /*$templateParams["privacy"] = "";*/
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';
-$templateParams["js"] = array("../js/settings.js", "../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", "../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js");
+$templateParams["js"] = array("../js/settings.js", "../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", "../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js");
 require '../template/base.php';
 
 ?>

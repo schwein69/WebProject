@@ -1,5 +1,35 @@
-<?php
-//TODO add listener to carousel to stop video when changing media.
+<div class="center-container" style="display:none;">
+    <div role="dialog" class="confirmBox center">
+        <h2>Confermi di voler eliminare questo post?</h2>
+        <button class="btn confirmButton" value="yes">Conferma</button>
+        <button class="btn confirmButton" value="no">Annulla</button>
+    </div>
+</div>
+<div class="center-container2" style="display:none;">
+    <div role="dialog" class="confirmShareBox center">
+        <h2>Condividi post a:</h2>
+        <?php foreach ($templateParams["followed"] as $flw): ?>
+            <div class="row mt-2">
+                <div class="col-4"><img class="img-fluid friendListAvatar" style=""
+                        src="../imgs/uploads/<?php echo $flw["idUtente"] ?>/profile.<?php echo $flw["formatoFotoProfilo"];?>"
+                        alt="<?php echo getProfilePicAlt($flw["username"]);?>">
+                </div>
+                <div class="col-4">
+                    <h2 style="font-size: medium">
+                        <?php echo $flw["username"] ?>
+                    </h2>
+                </div>
+                <div class="col-4">     
+                      <input class="col-6" type="checkbox" name="chb" value="<?php echo $flw["idUtente"] ?>" />
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <button class="btn confirmShareButton" value="yes">Conferma</button>
+        <button class="btn confirmShareButton" value="no">Annulla</button>
+        <p class="feedback-area my-3"></p>
+    </div>
+</div>
+<?php //TODO add listener to carousel to stop video when changing media.
 /*
 Function that print a post card. 
 
@@ -20,120 +50,120 @@ Parameters used from postParams:
     >"isImage"          true if a media is an image. false if it is a video
 -"mediaPath"        path to the post media folder
 -"tags"             array of tags associated to the post
-*/
-foreach ($templateParams["posts"] as $postParams):
+*/foreach ($templateParams["posts"] as $postParams):
 
     ?>
     <div class="row">
         <article class="card p-0 col-12 col-md-8 mx-auto">
-                <div class="card-header">
-                    <div class="row mt-2">
-                        <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $postParams["idUser"]; ?>"> <img
-                                    class="img-fluid avatar" src="<?php echo $postParams["fotoProfilo"]; ?>"
-                                    alt="<?php echo $postParams["fotoProfiloAlt"]; ?>" /></a>
-                        </div>
-                        <div class="col-4">
-                            <h2 style="font-size: 2vw">
-                                <?php echo $postParams["username"]; ?>
-                            </h2>
-                        </div>
-                        <div class="col-4">
-                            <?php if (!$postParams["isLoggedUserPost"]): ?>
-                                <button type="button" id="follower<?php echo $postParams["idUser"]; ?>" class="btn">
-                                    <?php echo $postParams["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
-                                </button>
-                                <?php else: ?>
-                                    <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn removePostButton">
-                                <img src="../imgs/icons/trash3.svg" alt="<?php echo $lang["post_remove"]?>" /></button>
-                                <?php endif;?>
-                        </div>
+            <div class="card-header">
+                <div class="row mt-2">
+                    <div class="col-4"><a href="../src/profile.php?idUtente=<?php echo $postParams["idUser"]; ?>"> <img
+                                class="img-fluid avatar" src="<?php echo $postParams["fotoProfilo"]; ?>"
+                                alt="<?php echo $postParams["fotoProfiloAlt"]; ?>" /></a>
+                    </div>
+                    <div class="col-4">
+                        <h2 style="font-size: 2vw">
+                            <?php echo $postParams["username"]; ?>
+                        </h2>
+                    </div>
+                    <div class="col-4">
+                        <?php if (!$postParams["isLoggedUserPost"]): ?>
+                            <button type="button" id="follower<?php echo $postParams["idUser"]; ?>" class="btn">
+                                <?php echo $postParams["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
+                            </button>
+                        <?php else: ?>
+                            <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn removePostButton">
+                                <img src="../imgs/icons/trash3.svg" alt="<?php echo $lang["post_remove"] ?>" /></button>
+                        <?php endif; ?>
                     </div>
                 </div>
+            </div>
 
-                <div class="card-body">
-                    <p class="card-text">
-                        <?php echo $postParams["testo"]; ?>
-                    </p>
-                    <p class="card-text">
-                        <?php echo $postParams["dataPost"]; ?>
-                    </p>
+            <div class="card-body">
+                <p class="card-text">
+                    <?php echo $postParams["testo"]; ?>
+                </p>
+                <p class="card-text">
+                    <?php echo $postParams["dataPost"]; ?>
+                </p>
 
 
-                    <?php
-                    $active = true;
-                    if (count($postParams["media"]) > 1):
-                        ?>
+                <?php
+                $active = true;
+                if (count($postParams["media"]) > 1):
+                    ?>
 
-                        <div id="carousel<?php echo $postParams["idPost"] ?>" class="carousel slide" data-bs-interval="false">
-                            <div class="carousel-inner">
+                    <div id="carousel<?php echo $postParams["idPost"] ?>" class="carousel slide" data-bs-interval="false">
+                        <div class="carousel-inner">
 
-                                <?php foreach ($postParams["media"] as $immagine):
+                            <?php foreach ($postParams["media"] as $immagine):
                                 $classes = 'carousel-item';
                                 if ($active) {
                                     $classes .= ' active';
                                     $active = false;
                                 }
                                 ?>
-                                    <div class='<?php echo $classes ?>'>
-                                        <?php if ($immagine["isImage"]): ?>
-                                            <img class="card-img-bottom my-2 mx-auto"
-                                                src="<?php echo $postParams["mediaPath"] . $immagine["nomeImmagine"] ?>"
-                                                alt="<?php echo $immagine["descrizione"] ?>" />
-                                            <?php else: ?>
-                                            <video class="card-img-bottom my-2 mx-auto" controls loop>
-                                                <source src="<?php echo $postParams["mediaPath"] . $immagine["nomeImmagine"]; ?>"
-                                                    type="video/<?php echo $immagine["formato"]; ?>" />
-                                                <?php echo $immagine["descrizione"] != "" ? $immagine["descrizione"] : 'Video not supported'; ?>
-                                            </video>
-                                            <?php endif; ?>
-                                    </div>
-                                    <?php endforeach; ?>
-                            </div>
+                                <div class='<?php echo $classes ?>'>
+                                    <?php if ($immagine["isImage"]): ?>
+                                        <img class="card-img-bottom my-2 mx-auto"
+                                            src="<?php echo $postParams["mediaPath"] . $immagine["nomeImmagine"] ?>"
+                                            alt="<?php echo $immagine["descrizione"] ?>" />
+                                    <?php else: ?>
+                                        <video class="card-img-bottom my-2 mx-auto" controls loop>
+                                            <source src="<?php echo $postParams["mediaPath"] . $immagine["nomeImmagine"]; ?>"
+                                                type="video/<?php echo $immagine["formato"]; ?>" />
+                                            <?php echo $immagine["descrizione"] != "" ? $immagine["descrizione"] : 'Video not supported'; ?>
+                                        </video>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                        <a class="carousel-control-prev" type="button"
-                            data-bs-target="#carousel<?php echo $postParams["idPost"] ?>" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon bg-dark"></span>
-                        </a>
-                        <a class="carousel-control-next" type="button"
-                            data-bs-target="#carousel<?php echo $postParams["idPost"] ?>" data-bs-slide="next">
-                            <span class="carousel-control-next-icon bg-dark"></span>
-                        </a>
                     </div>
-                    <?php elseif (count($postParams["media"]) == 1): ?>
+                    <a class="carousel-control-prev" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark"></span>
+                    </a>
+                    <a class="carousel-control-next" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark"></span>
+                    </a>
+
+                <?php elseif (count($postParams["media"]) == 1): ?>
                     <?php if ($postParams["media"][0]["isImage"]): ?>
 
                         <img class="card-img-bottom my-2 mx-auto"
                             src="<?php echo $postParams["mediaPath"] . $postParams["media"][0]["nomeImmagine"] ?>"
                             alt="<?php echo $postParams["media"][0]["descrizione"] ?>" />
-                        <?php else: ?>
+                    <?php else: ?>
                         <video class="card-img-bottom my-2 mx-auto" controls loop>
                             <source src="<?php echo $postParams["mediaPath"] . $postParams['media'][0]["nomeImmagine"]; ?>"
                                 type="video/<?php echo $postParams['media'][0]["formato"]; ?>" />
                             <?php echo $postParams['media'][0]["descrizione"] != "" ? $postParams['media'][0]["descrizione"] : 'Video not supported'; ?>
                         </video>
-                        <?php endif; ?>
-                    <?php endif;
-                    if (!$postParams["isFull"]):
-                        ?>
+                    <?php endif; ?>
+                <?php endif;
+                if (!$postParams["isFull"]):
+                    ?>
 
                     <a href="post.php?postid=<?php echo $postParams["idPost"]; ?>" value="<?php echo $postParams["idPost"] ?>"
                         class="btn ms-auto" style="display:block ; width: fit-content;">
                         <?php echo $lang["post_readMore"]; ?>
                     </a>
-                    <?php endif; ?>
+                <?php endif; ?>
             </div>
 
-            <?php if(isset($postParams["tags"]) && count($postParams["tags"])>0):?>
+            <?php if (isset($postParams["tags"]) && count($postParams["tags"]) > 0): ?>
                 <section>
                     <h2 class="text-start">Tags</h2>
                     <ul class="list-group list-group-horizontal">
-                <?php foreach ($postParams["tags"] as $tag):?>
-                    <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light"><?php echo $tag["nomeTag"];?></li>
-                <?php endforeach;?>
-                </ul>
+                        <?php foreach ($postParams["tags"] as $tag): ?>
+                            <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light"><?php echo $tag["nomeTag"]; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </section>
-            <?php endif;?>
-            
+            <?php endif; ?>
+
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
@@ -143,8 +173,8 @@ foreach ($templateParams["posts"] as $postParams):
                         </button>
                         <span>
                             <?php if ($postParams['numLike'] > 0) {
-                            echo $postParams['numLike'];
-                        } ?>
+                                echo $postParams['numLike'];
+                            } ?>
                         </span>
                     </li>
                     <li class="nav-item mx-2"> <button type="button" id="comment<?php echo $postParams["idPost"] ?>"
@@ -152,8 +182,8 @@ foreach ($templateParams["posts"] as $postParams):
                             <img src="../imgs/icons/chat.svg" alt="Commenta post" /></button>
                         <span>
                             <?php if ($postParams['numCommenti'] > 0) {
-                            echo $postParams['numCommenti'];
-                        } ?>
+                                echo $postParams['numCommenti'];
+                            } ?>
                         </span>
                     </li>
                     <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>"
@@ -161,17 +191,21 @@ foreach ($templateParams["posts"] as $postParams):
                             <img src="<?php echo $postParams["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"; ?>"
                                 alt="<?php echo $postParams["saved"] ? $lang["post_saved"] : $lang["post_notSaved"]; ?>" /></button><span></span>
                     </li>
+                    <li class="nav-item mx-2"> <button type="button" value="<?php echo $postParams["idPost"] ?>"
+                            class="btn sharePostButton">
+                            <img src="../imgs/icons/share.svg"
+                                alt="<?php echo $lang["post_share"] ?>" /></button><span></span>
+                    </li>
                 </ul>
             </div>
-    
-    </article>
+        </article>
     </div>
-<?php
+    <?php
 endforeach;
 
-if(isset($templateParams["oldPostIds"])):
-?>
-<script>
-const oldId = <?php echo json_encode($templateParams["oldPostIds"]);?>;
-</script>
-<?php endif;?>
+if (isset($templateParams["oldPostIds"])):
+    ?>
+    <script>
+        const oldId = <?php echo json_encode($templateParams["oldPostIds"]); ?>;
+    </script>
+<?php endif; ?>
