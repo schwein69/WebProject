@@ -1,5 +1,4 @@
-//TODO try using classes for incapsulation
-let numTag=8;
+let numTag = 8 - tagOffset;
 const tagSelector = document.querySelector("fieldset div.row");
 const tagButton = document.querySelector("fieldset div.row:last-child button");
 
@@ -14,14 +13,15 @@ tagButton.addEventListener('click',event => {
         elem.name="tag"+ (10 - numTag);
         elem.classList.add('col-2');
         elem.classList.add('m-1');
-        //tagSelector.innerHTML = tagSelector.innerHTML + elem;
         tagSelector.appendChild(elem);
         numTag--;
         console.log('added');
         console.log(elem);
-    } else {
+    }
+    if(numTag <= 0) {
         tagButton.style.display='none';
     }
+
 });
 
 let numImg=2;
@@ -82,6 +82,7 @@ submitButton.addEventListener('click', event => {
     //tags check
     let showTagMsg = false;
     for(let i=1; i < (10-numTag); i++){
+        console.log(i);
         if(areThereDangerousChars(document.getElementById('tag' + i).value)){
             canSub = false;
             showTagMsg = true;

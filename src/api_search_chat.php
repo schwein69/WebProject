@@ -19,6 +19,7 @@ for ($i=0; $i < count($result["chats"]); $i++) {
     if($result["chats"][$i]["anteprimaChat"] == "") {
         $result["chats"][$i]["anteprimaChat"] = "Inizia la conversazione";
     }
+    $result["chats"][$i]["unreadMessages"] = $dbh->getUnreadChatMessages($_SESSION["idUtente"], $result["chats"][$i]["idChat"]);
 }
 header('Content-Type: application/json');
 echo json_encode($result);

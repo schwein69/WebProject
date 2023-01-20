@@ -19,9 +19,9 @@ if(is_null($post)){
 }
 
 $user = $dbh->getUserData($post['idUser']);
-$comments = $dbh->getPostComments($_GET['postid']);
+$templateParams["comments"] = $dbh->getPostComments($_GET['postid']);
 $post["fotoProfilo"] = UPLOAD_DIR.$user["idUtente"].'/profile.'.$user["formatoFotoProfilo"];
-$post["fotoProfiloAlt"] = "foto profilo di ".$user["username"];
+$post["fotoProfiloAlt"] = getProfilePicAlt($user["username"]);
 $post["username"] = $user["username"];
 $post["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$user["idUtente"]);
 $post["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$_GET['postid']);

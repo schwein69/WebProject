@@ -65,6 +65,14 @@ class PostFunctions
             $stmt->execute();
         }
     }
+    
+    public function removeTagsFromPost($postId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM posttags WHERE idPost=?");
+        $stmt->bind_param("i", $postId);
+        $stmt->execute();
+        
+    }
 
     public function addMediaToPost($postId, $path, $fileType, $desc)
     {
@@ -104,6 +112,21 @@ class PostFunctions
     {
         $stmt = $this->db->prepare("DELETE FROM postsalvati WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii",$user,$postId);
+        $stmt->execute();
+    }
+
+    function updatePost($postId, $testo, $dataPost)
+    {
+        $stmt = $this->db->prepare("UPDATE posts SET testo=?, dataPost=? WHERE idPost=?");
+        $stmt->bind_param("ssi",$testo, $dataPost,$postId);
+        $stmt->execute();
+    }
+
+    function deletePostMedia($mediaId)
+    {
+        echo "OK";
+        $stmt = $this->db->prepare("DELETE FROM contenutimultimediali WHERE idContenuto=?");
+        $stmt->bind_param("i",$mediaId);
         $stmt->execute();
     }
 

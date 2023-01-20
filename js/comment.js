@@ -13,7 +13,6 @@ function comment(event){
         + timeStamp.getMonth() + "-"
         + timeStamp.getFullYear() + " ";
         const response = JSON.parse(this.responseText);
-        
         if(response.status){
             const newComment = document.createElement('div');
             newComment.classList.add('row');
@@ -21,7 +20,7 @@ function comment(event){
                                 '<img class="img-fluid rounded" src="' + user.fotoProfilo + '" alt="foto profilo di '
                                 + user.username + '" style="width: auto; max-width: 25%;"/>'
                                 +    '<h3>' + user.username + '</h3>'
-                                +    '<p>' + commentBox.value + '</p>'
+                                +    '<p>' + response.text + '</p>'
                                 +    '<p>' + timeString + '</p>'
             commentBox.value = "";
             const commentInputDiv = document.querySelector('#comments div.row:last-child');

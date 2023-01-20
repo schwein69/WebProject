@@ -5,7 +5,7 @@
     <h2><?php echo $lang["comments"];?></h2>
     </div>
     <?php
-    foreach($comments as $comment):
+    foreach($templateParams["comments"] as $comment):
     ?>
     <div class="row">
     <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>" style="width: auto; max-width: 25%;"/>

@@ -3,7 +3,8 @@ require_once 'bootstrap.php';
 
 //check params and session
 redirectNotLoggedUser();
-
+$templateParams["submitButtonText"] = $lang["postCreation"];
+$templateParams["formTarget"] = "post_creation.php";
 $templateParams["content"] = 'create_post.php'; 
 $templateParams["title"] = 'Lynkzone - nuovo post'; 
 $templateParams["js"] = array();

@@ -26,7 +26,7 @@ sendBtn.addEventListener('click', event => {
                                    + timeStamp.getFullYear() + " "
                                    + timeStamp.getHours() + ":"
                                    + timeStamp.getMinutes();
-                newMsg.innerHTML = '<p>' + txtBox.value + '</p>'
+                newMsg.innerHTML = '<p>' + response.text + '</p>'
                                     + '<span class="text-end">' + timeString + '</span>';
                 if(lastMsg!=null){
                     lastMsg.insertAdjacentElement("afterend",newMsg);

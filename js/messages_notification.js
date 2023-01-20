@@ -2,7 +2,7 @@
 const chatButton = document.getElementById('menuChatButton');
 let chatBadge;
 if(chatButton != null){
-    chatBadge = chatButton.querySelector('span');
+    chatBadge = chatButton.querySelector('span:nth-child(2)');
     chatBadge.setAttribute('display','display:none;');
     setInterval(updateNewMessagesNumber,300);
 }
@@ -16,8 +16,9 @@ function updateNewMessagesNumber(){
                 totMsgs += element.numMsgs;
             });
             chatBadge.innerHTML = totMsgs + '<span aria-label="unread messages"></span>';
+            chatBadge.setAttribute('style','');
         } else{
-            chatBadge.setAttribute('display','display:none;');
+            chatBadge.setAttribute('style','display:none;');
         }
     };
     xhttp.open('GET','api_notifications_counter.php?type=c');
