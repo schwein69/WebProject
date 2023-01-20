@@ -85,4 +85,12 @@ $lang["notification_Comment"] = " ha commentato il tuo post.";
 $lang["notification_Like"] = " ha messo mi piace al tuo post.";
 $lang["notification_Follow"] = " ha iniziato a seguirti.";
 $lang["notification_noNotif"] = "Non hai ricevuto alcuna notifica.";
+
+/* -------------------------- POP UP ---------------------------------- */
+
+$lang["popup_shareText"] = "Condividi post a:";
+$lang["popup_showMoreFriends"] = "Mostra altri amici";
+$lang["popup_deleteText"] = "Confermi di voler eliminare questo post?";
+$lang["popup_confirmBoxYes"] = "Conferma";
+$lang["popup_confirmBoxNo"] = "Annulla";
 ?>

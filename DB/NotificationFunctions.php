@@ -38,8 +38,8 @@ class NotificationFunctions
         $stmt->bind_param("iii",$user,$user,$chat);
         $stmt->execute();
         $queryRes = $stmt->get_result();
-        $res = $queryRes->fetch_all(MYSQLI_NUM)[0][0];
-        return $res != NULL ? $res : 0;
+        $res = $queryRes->num_rows > 0 ? $queryRes->fetch_all(MYSQLI_NUM)[0][0] : 0;
+        return $res;
     }
 
     function getNotifications($user, $first, $num)

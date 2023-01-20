@@ -241,6 +241,20 @@ class DatabaseHelper
         $this->chatFunctions->readAllMessages($chatId, $user);
     }
 
+    public function createChat($admin, $user)
+    {
+        $this->chatFunctions->createChat($admin, $user);
+    }
+
+    public function chatCreated($admin, $user)
+    { 
+        $stmt = $this->db->prepare("SELECT p.* FROM partecipazione p WHERE p.idUtente=? AND p.idChat in (SELECT a.idChat FROM partecipazione a WHERE a.idUtente = ?)");
+        $stmt->bind_param("ii",$admin,$user);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     //--------------- NOTIFICATION FUNCTIONS ------------------
 
     function getChatsNotifications($user)

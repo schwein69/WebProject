@@ -114,6 +114,24 @@ class ChatFunctions
         $stmt->bind_param("si",$msg,$chatid);
         $stmt->execute();
     }
+
+    public function createChat($admin,$user)
+    {
+        $stmt = $this->db->prepare("INSERT INTO chat(anteprimaChat) VALUES (\"\")");//creo chat
+        $stmt->execute();
+
+        $chatId = $this->db->insert_id;
+
+        $stmt = $this->db->prepare("INSERT INTO partecipazione(idChat,idUtente) VALUES (?,?)");
+        $stmt->bind_param("ii",$chatId,$admin);
+        $stmt->execute();
+
+        $stmt = $this->db->prepare("INSERT INTO partecipazione(idChat,idUtente) VALUES (?,?)");
+        $stmt->bind_param("ii",$chatId,$user);
+        $stmt->execute();
+    }
+    
+    
 }
 
 ?>

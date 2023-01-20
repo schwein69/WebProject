@@ -9,7 +9,6 @@ if(isset($_GET["idUtente"])){
 }
 $templateParams["user"] = $dbh->getUserData($userid);
 $templateParams["posts"] = $dbh->getProfilePosts(-1,$userid);
-$templateParams["followed"] = $dbh->getFollowed($_SESSION["idUtente"]);//getFollowed = lista amici dell'utente loggato
 $templateParams["user"]["numPosts"] = count($templateParams["posts"]);
 $templateParams["user"]["numFollower"] = $dbh->getNumFollower($userid);
 $templateParams["user"]["numFollowed"] = $dbh->getNumFollowed($userid);

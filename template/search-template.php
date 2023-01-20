@@ -47,7 +47,7 @@ if($templateParams["selector"] == true):
                         <p class="card-text">
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"]?>"
                                 class="btn"><?php echo $lang["VisitPage"];?></a>
-                            <?php $user["followedByMe"] = $dbh->isFollowedByMe($user["idUtente"],$_SESSION["idUtente"]); ?>
+                            <?php $user["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"],$user["idUtente"]); ?>
                             <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn">
                                 <?php echo $user["followedByMe"]  ? $lang["userFollowed"] :  $lang["userNotFollowed"]; ?>
                             </button>

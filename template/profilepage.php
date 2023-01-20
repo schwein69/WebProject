@@ -8,7 +8,7 @@
                                 <img class="img-fluid avatar"
                                     src="<?php echo $templateParams["user"]["profilePic"]; ?>"
                                     alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />
-                                <h2 style="font-size: 2vw"> 
+                                <h2 style="font-size: large;"> 
                                     <?php echo $templateParams["user"]["username"] ?>
                                 </h2>
                                  
