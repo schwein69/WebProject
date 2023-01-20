@@ -80,7 +80,7 @@
                             <a href="all_chats.php" class="btn"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">                 
+                            <span style="display:none" class="position-absolute translate-middle badge rounded-pill bg-danger">                 
                                 <span aria-label="<?php echo $lang["unreadMessages"];?>"></span>
                             </span>
                         </li>

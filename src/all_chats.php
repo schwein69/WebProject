@@ -11,16 +11,13 @@ TODO (optional):
 */
 redirectNotLoggedUser();
 $templateParams["chats"] = $dbh->getRecentChats($_SESSION['idUtente']);
-$chatNotifs = $dbh->getChatsNotifications($_SESSION['idUtente']);
 $numChats = count($templateParams["chats"]);
 
 //getting num notifications
-foreach ($chatNotifs as $chatNotif) {
-    for ($i=0; $i < $numChats ; $i++) { 
-        if($chatNotif['idChat'] == $templateParams["chats"][$i]['idChat']){
-            $templateParams["chats"][$i]['numNotif'] = $chatNotif['numMsgs'];
-            break;
-        }
+for ($i=0; $i < $numChats ; $i++) {
+    $chatNotif = $dbh->getUnreadChatMessages($_SESSION["idUtente"], $templateParams["chats"][$i]["idChat"]);
+    if($chatNotif > 0){
+        $templateParams["chats"][$i]['numNotif'] = $chatNotif;
     }
 }
 

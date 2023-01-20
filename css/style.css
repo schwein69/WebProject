@@ -69,8 +69,12 @@ form label,form input {
   width: 20%;
 }
 .chatAvatar{
-  width: 20%;
+  width: 80%;
   border:  1px solid var(--colour-border) !important;
+}
+li.chatbg p, li.chatbg span, li.chatbg div > div > div{
+  width: fit-content;
+  height: fit-content;
 }
 
 .friendListAvatar{

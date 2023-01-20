@@ -26,6 +26,22 @@ class NotificationFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
 
+    function getUnreadChatMessages($user, $chat)
+    {
+        $query = "SELECT count(*) AS numMsgs
+                 FROM partecipazione P 
+                 JOIN chat C ON P.idChat = C.idChat
+                 JOIN messaggi M ON C.idChat = M.idChat
+                 WHERE P.idUtente=? AND letto=0 AND M.idMittente<>? AND C.idChat = ?
+                 GROUP BY C.idChat";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iii",$user,$user,$chat);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->fetch_all(MYSQLI_NUM)[0][0];
+        return $res != NULL ? $res : 0;
+    }
+
     function getNotifications($user, $first, $num)
     {
         $query = "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"

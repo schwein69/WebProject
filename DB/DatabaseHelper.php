@@ -278,6 +278,9 @@ class DatabaseHelper
         $this->notifFunctions->notifUser($userId, "follow", $targetId);
     }
 
+    function getUnreadChatMessages($user, $chat){
+        return $this->notifFunctions->getUnreadChatMessages($user, $chat);
+    }
     //--------------- OTHER FUNCTIONS ------------------
 
     public function getSearchUser($username, $idUser)
