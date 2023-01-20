@@ -7,7 +7,6 @@ redirectNotLoggedUser();
 if(!isset($_GET["chatId"])){
     header('Location: all_chats.php');
 }
-//TODO autoscroll to end
 
 $templateParams["currentUser"] = $_SESSION["idUtente"];
 

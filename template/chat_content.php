@@ -16,7 +16,7 @@
 <?php endfor;?>
 </div>
 </div>
-<div class="row">
+<div style="display:none" class="row">
     <div class="col-12 col-md-8 mx-auto">
     <p id="errMsg"></p>
     </div>

@@ -65,9 +65,6 @@ form label,form input {
 #myTab{
   background-color: var(--colour-bck-nav);
 }
-.notificationAvatar{
-  width: 20%;
-}
 .chatAvatar{
   width: 80%;
   border:  1px solid var(--colour-border) !important;

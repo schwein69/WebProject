@@ -1,5 +1,12 @@
 //enter page at bottom
 document.addEventListener('load',window.scrollTo(0, document.body.scrollHeight));
+const chatContainer = document.querySelector('main > div.row:nth-child(2)');
+const chatTopOffset = window.pageYOffset + chatContainer.getBoundingClientRect().top;
+const inputTextHeight = document.getElementById('chat-bottom').offsetHeight;
+const footerHeight = document.querySelector('body > div > footer > div').offsetHeight;
+const bottomMargin = 30;
+const minChatHeight = document.body.offsetHeight - chatTopOffset - footerHeight - inputTextHeight - bottomMargin;
+chatContainer.setAttribute('style','height:'+minChatHeight+"px");
 
 
 //send messages
