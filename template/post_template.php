@@ -1,32 +1,21 @@
 <div class="center-container" style="display:none;">
     <div role="dialog" class="confirmBox center">
-        <h2>Confermi di voler eliminare questo post?</h2>
-        <button class="btn confirmButton" value="yes">Conferma</button>
-        <button class="btn confirmButton" value="no">Annulla</button>
+        <h2><?php echo $lang["popup_deleteText"];?></h2>
+        <button class="btn confirmButton" value="yes"><?php echo $lang["popup_confirmBoxYes"];?></button>
+        <button class="btn confirmButton" value="no"><?php echo $lang["popup_confirmBoxNo"];?></button>
     </div>
 </div>
 <div class="center-container2" style="display:none;">
-    <div role="dialog" class="confirmShareBox center">
-        <h2>Condividi post a:</h2>
-        <?php foreach ($templateParams["followed"] as $flw): ?>
-            <div class="row mt-2">
-                <div class="col-4"><img class="img-fluid friendListAvatar" style=""
-                        src="../imgs/uploads/<?php echo $flw["idUtente"] ?>/profile.<?php echo $flw["formatoFotoProfilo"];?>"
-                        alt="<?php echo getProfilePicAlt($flw["username"]);?>">
-                </div>
-                <div class="col-4">
-                    <h2 style="font-size: medium">
-                        <?php echo $flw["username"] ?>
-                    </h2>
-                </div>
-                <div class="col-4">     
-                      <input class="col-6" type="checkbox" name="chb" value="<?php echo $flw["idUtente"] ?>" />
-                </div>
-            </div>
-        <?php endforeach; ?>
-        <button class="btn confirmShareButton" value="yes">Conferma</button>
-        <button class="btn confirmShareButton" value="no">Annulla</button>
-        <p class="feedback-area my-3"></p>
+    <div role="dialog" class="confirmShareBox center" style="max-height:40%;overflow-y:auto; overflow-x:hidden">
+        <h2><?php echo $lang["popup_shareText"];?></h2>
+        <div class="insertHereFriendList">
+        </div>
+        <div class="row mt-2">
+        <p class="feedback-area my-2"></p>
+        <button class="btn col-12 showMoreFriendButton mx-auto my-2" style="font-size:medium;"><?php echo $lang["popup_showMoreFriends"];?></button>
+        <button class="btn col-6 confirmShareButton" value="yes"><?php echo $lang["popup_confirmBoxYes"];?></button>
+        <button class="btn col-6 confirmShareButton" value="no"><?php echo $lang["popup_confirmBoxNo"];?></button>
+        </div>
     </div>
 </div>
 <?php //TODO add listener to carousel to stop video when changing media.
@@ -62,7 +51,7 @@ Parameters used from postParams:
                                 alt="<?php echo $postParams["fotoProfiloAlt"]; ?>" /></a>
                     </div>
                     <div class="col-4">
-                        <h2 style="font-size: 2vw">
+                        <h2 style="font-size: x-large;">
                             <?php echo $postParams["username"]; ?>
                         </h2>
                     </div>

@@ -20,7 +20,7 @@
                         <p class="card-text">
                             <?php if($user["idUtente"] != $_SESSION["idUtente"]):?>
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
-                                class="btn">Visit page</a>
+                                class="btn"><?php echo $lang["VisitPage"]?></a>
                             <?php endif;?>
                            
                         </p>

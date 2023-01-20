@@ -66,18 +66,18 @@
                 <nav class="col-12 col-md-8 mx-auto p-0">
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item col-3">
-                            <a href="index.php" class="btn"><span
+                            <a href="index.php" class="btn bottom-nav-button"><span
                                     class="bi bi-house-fill"></span><br>
                                 <h2>Home</h2>
                             </a>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="search.php" class="btn btn-primary"><span class="bi bi-search"></span>
+                            <a href="search.php" class="btn bottom-nav-button"><span class="bi bi-search"></span>
                                 <h2><?php echo $lang["Search"];?></h2>
                             </a>
                         </li>
                         <li class="nav-item col-3" id='menuChatButton'>
-                            <a href="all_chats.php" class="btn"><span class="bi bi-chat-dots-fill"></span>
+                            <a href="all_chats.php" class="btn bottom-nav-button"><span class="bi bi-chat-dots-fill"></span>
                                 <h2>Chat</h2>
                             </a>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">                 
@@ -85,7 +85,7 @@
                             </span>
                         </li>
                         <li class="nav-item col-3">
-                            <a href="../src/profile.php" class="btn"><span
+                            <a href="../src/profile.php" class="btn bottom-nav-button"><span
                                     class="bi bi-person-fill"></span><br>
                                 <h2><?php echo $lang["Profile"];?></h2>
                             </a>

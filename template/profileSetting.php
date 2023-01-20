@@ -5,7 +5,7 @@
             <h2>
                 <?php echo $lang["accountSetting_changeThemeText"]; ?>
             </h2>
-            <label for="themes">
+            <label for="themes" class="p-1">
                 <?php echo $lang["accountSetting_chooseThemeText"]; ?>
             </label>
             <select id="themes">
@@ -26,7 +26,7 @@
                 <h2>
                     <?php echo $lang["accountSetting_changeLanguageText"]; ?>
                 </h2>
-                <label for="languages" style="background-color: transparent;"><?php echo $lang["accountSetting_chooseLanguageText"]; ?></label>
+                <label for="languages" class="p-1"><?php echo $lang["accountSetting_chooseLanguageText"]; ?></label>
                 <select name="languages" id="languages">
                     <option value="it">Italiano</option>
                     <option value="en">English</option>

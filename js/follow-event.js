@@ -6,6 +6,7 @@ function follow(event) {
     const userId = followButton.id.substring(8);
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
+        console.log(this.responseText);
         const response = JSON.parse(this.responseText);
         const contentPlace = document.querySelectorAll("button[id=follower" + userId + "]");//tutti i button che hanno lo stesso id
         if (response.follower) {//quelli che seguo io

@@ -19,11 +19,11 @@
                         <p class="card-text">
                             <?php if($user["idUtente"] != $_SESSION["idUtente"]):?>
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
-                                class="btn">Visit page</a>
+                                class="btn"><?php echo $lang["VisitPage"]?></a>
                             <?php endif;?>
                             <?php if(!isset($_GET["idUtente"])):?>                              
-                            <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn" style="box-shadow: none;">
-                            seguito
+                            <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn">
+                            <?php echo $user["followedByMe"]  ? $lang["userFollowed"] :  $lang["userNotFollowed"]; ?>
                             </button>
                             <?php endif;?>
                         </p>
