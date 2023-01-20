@@ -17,7 +17,6 @@ function showMoreFriends() {
     xhttp.onload = function () {
         const friends = JSON.parse(this.responseText);
         let list = [];
-        console.log(friends);
         friends.forEach(element => {
             const singleElement = document.createElement("div");
             singleElement.classList.add("row");
@@ -41,7 +40,6 @@ function showMoreFriends() {
         if(list.length == 0){
             document.querySelector("button.showMoreFriendButton").disabled = true;  
         }
-        console.log(actualCountOfFriendList)
     };
     xhttp.open("POST", "event_showMoreFriends.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
