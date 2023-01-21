@@ -211,6 +211,16 @@ class DatabaseHelper
         return $this->chatFunctions->isUserInChat($chatId, $user);
     }
 
+    public function activateChat($idChat)
+    {
+        return $this->chatFunctions->activateChat($idChat);
+    }
+
+    public function deactivateChat($idChat)
+    {
+        return $this->chatFunctions->deactivateChat($idChat);
+    }
+
     public function getChatUser($chatId, $user1)
     {
         return $this->chatFunctions->getChatUser($chatId, $user1);
@@ -243,7 +253,15 @@ class DatabaseHelper
 
     public function createChat($admin, $user)
     {
-        $this->chatFunctions->createChat($admin, $user);
+        return $this->chatFunctions->createChat($admin, $user);
+    }
+
+    public function getChatWithUsers($user1,$user2){
+        return $this->chatFunctions->getChatWithUsers($user1,$user2);
+    }
+
+    public function isChatActive($idChat){
+        return $this->chatFunctions->isChatActive($idChat);
     }
 
     public function chatCreated($admin, $user)

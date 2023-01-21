@@ -19,14 +19,14 @@
                             <?php echo $templateParams["user"]["numPosts"]; ?>
                         </li>
                         <li class="nav-item mt-2"><span class="bi bi-person-heart"></span>
-                            <a href="followerList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
-                                class="profileLink"><br><?php echo $lang["Follower"];?><br></a>
-                            <?php echo $templateParams["user"]["numFollower"]; ?>
-                        </li>
-                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
                             <a href="followedList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
                                 class="profileLink"><br><?php echo $lang["Followed"];?><br></a>
                             <?php echo $templateParams["user"]["numFollowed"]; ?>
+                        </li>
+                        <li class="nav-item mt-2"><span class="bi bi-people-fill"></span>
+                            <a href="followerList.php<?php echo $templateParams["user"]["idUtente"] != $_SESSION["idUtente"] ? "?idUtente=" . $templateParams["user"]["idUtente"] : "" ?>"
+                                class="profileLink"><br><?php echo $lang["Follower"];?><br></a>
+                            <?php echo $templateParams["user"]["numFollower"]; ?>
                         </li>
                     </ul>
                     <p class="card-text">

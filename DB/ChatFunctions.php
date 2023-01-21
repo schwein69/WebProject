@@ -53,7 +53,7 @@ class ChatFunctions
                 ."FROM chat C "
                 ."JOIN partecipazione P ON C.idChat=P.idChat "
                 ."JOIN utenti U ON U.idUtente=P.idUtente "
-                ."WHERE P.idUtente<>? ";
+                ."WHERE C.attiva=1 AND P.idUtente<>? ";
         
         if($user2 != ""){
             $query .= 'AND username LIKE ? ';
@@ -103,7 +103,7 @@ class ChatFunctions
     public function insertMessage($chatid,$user,$msg)
     {
         $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");
-        $stmt->bind_param("sii",$msg,$user,$chatid);
+        $stmt->bind_param("sii",$msg,$user,$chatidx);
         $stmt->execute();
     }
 
@@ -128,9 +128,54 @@ class ChatFunctions
         $stmt = $this->db->prepare("INSERT INTO partecipazione(idChat,idUtente) VALUES (?,?)");
         $stmt->bind_param("ii",$chatId,$user);
         $stmt->execute();
+
+        return $chatId;
     }
     
+    public function activateChat($idChat)
+    {
+        $this->setChatActivity($idChat,1);
+    }
+
+    public function deactivateChat($idChat)
+    {
+        $this->setChatActivity($idChat,0);
+    }
+
+    private function setChatActivity($idChat, $activity)
+    {
+        $stmt = $this->db->prepare("UPDATE chat SET attiva=? WHERE idChat=?");
+        $stmt->bind_param("ii", $activity, $idChat);
+        $stmt->execute();
+    }
+
+    public function getChatWithUsers($user1,$user2)
+    {
+        $query = "SELECT C.idChat
+                FROM chat C
+                JOIN partecipazione P ON C.idChat = P.idChat
+                WHERE P.idUtente = ? AND C.idChat IN (SELECT C2.idChat
+                                                    FROM chat C2
+                                                    JOIN partecipazione P2 ON C2.idChat = P2.idChat
+                                                    WHERE P2.idUtente = ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $user1, $user2);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->num_rows > 0 ? $queryRes->fetch_all(MYSQLI_NUM)[0][0] : 0;
+        return $res;
+    }
+
+    public function isChatActive($idChat)
+    {
+        $stmt = $this->db->prepare("SELECT attiva FROM chat WHERE idChat=?");
+        $stmt->bind_param("i", $idChat);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        $res = $queryRes->num_rows > 0 ? $queryRes->fetch_all(MYSQLI_NUM)[0][0] : 0;
+        return $res > 0;
     
+    }
 }
 
 ?>

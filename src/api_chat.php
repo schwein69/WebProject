@@ -4,8 +4,7 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 $result["status"] = false;
 
-
-if(isset($_POST["chatid"])){
+if(isset($_POST["chatid"]) && $dbh->isUserInChat($_POST["chatid"],$_SESSION["idUtente"])){
     if(isset($_POST["start"]) && isset($_POST["end"])){
         $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], $_POST["start"], $_POST["end"]);
     } else if(isset($_POST["read"])){

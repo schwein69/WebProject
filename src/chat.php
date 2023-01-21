@@ -10,7 +10,7 @@ if(!isset($_GET["chatId"])){
 
 $templateParams["currentUser"] = $_SESSION["idUtente"];
 
-if(!$dbh->isUserInChat($_GET["chatId"],$templateParams["currentUser"])){
+if(!$dbh->isUserInChat($_GET["chatId"],$templateParams["currentUser"]) || !$dbh->isChatActive($_GET["chatId"])){
     header('Location: index.php');
 }
 
