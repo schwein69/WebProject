@@ -28,6 +28,9 @@
 <script src="../js/functions.js"></script>
 <script src="../js/like.js"></script>
 <script src="../js/comment.js"></script>
+<script src="../js/sharePost.js"></script>
+<script src="../js/follow-event.js"></script>
+<script src="../js/savePost.js"></script>
 
 <script>
     const user = {username: "<?php echo $templateParams["user"]["username"];?>", fotoProfilo: "<?php echo UPLOAD_DIR.$templateParams['user']['idUtente'].'/profile.'.$templateParams["user"]["formatoFotoProfilo"];?>"};

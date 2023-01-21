@@ -78,7 +78,7 @@ for ($i = 0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di " . $user['username'];
     $templateParams["posts"][$i]["username"] = $user['username'];
     $templateParams["posts"][$i]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION["idUtente"];
-    $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($user['idUtente'], $templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"], $user['idUtente']);
     $templateParams["posts"][$i]["isFull"] = false;
     $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
     $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
@@ -102,7 +102,7 @@ $templateParams["savedposts"] = "post_template.php";
 /*$templateParams["privacy"] = "";*/
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';
-$templateParams["js"] = array("../js/settings.js", "../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", "../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js");
+$templateParams["js"] = array("../js/settings.js", "../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", "../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js","../js/follow-event.js","../js/sharePost.js");
 require '../template/base.php';
 
 ?>

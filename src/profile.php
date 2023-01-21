@@ -16,8 +16,8 @@ $templateParams["user"]["followedByMe"] = $dbh->isFollowedByMe( $_SESSION["idUte
 $templateParams["user"]["profilePic"] = UPLOAD_DIR.$templateParams["user"]["idUtente"]."/profile.".$templateParams["user"]["formatoFotoProfilo"];
 $templateParams["content"] = "profilepage.php";
 $templateParams["profileTopNav"] = true;
-$templateParams["title"] = 'Lynkzone - profile'; 
-
+$templateParams["title"] = 'Lynkzone - profile';
+$templateParams["dontShowFollowButton"] = true;//nel profilo degli altri c'è già il pulsante follow in alto, quindi rimuovo quelli ridondanti accanto ad ogni post
 /*
 Preparing posts
 */

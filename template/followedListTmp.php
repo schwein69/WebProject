@@ -22,7 +22,7 @@
                                 class="btn"><?php echo $lang["VisitPage"]?></a>
                             <?php endif;?>
                             <?php if(!isset($_GET["idUtente"])):?>                              
-                            <button type="button" id="follower<?php echo $user["idUtente"] ?>" class="btn">
+                            <button type="button" value="<?php echo $user["idUtente"] ?>" class="btn followButton<?php echo $user["idUtente"]; ?>">
                             <?php echo $user["followedByMe"]  ? $lang["userFollowed"] :  $lang["userNotFollowed"]; ?>
                             </button>
                             <?php endif;?>

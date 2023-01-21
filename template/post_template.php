@@ -56,11 +56,11 @@ Parameters used from postParams:
                         </h2>
                     </div>
                     <div class="col-4">
-                        <?php if (!$postParams["isLoggedUserPost"]): ?>
-                            <button type="button" id="follower<?php echo $postParams["idUser"]; ?>" class="btn">
+                        <?php if (!$postParams["isLoggedUserPost"] && !isset($templateParams["dontShowFollowButton"] )): ?>
+                            <button type="button" value="<?php echo $postParams["idUser"]; ?>" class="btn followButton<?php echo $postParams["idUser"]; ?>">
                                 <?php echo $postParams["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
                             </button>
-                        <?php else: ?>
+                        <?php elseif ($postParams["isLoggedUserPost"]): ?>
                             <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn removePostButton">
                                 <img src="../imgs/icons/trash3.svg" alt="<?php echo $lang["post_remove"] ?>" /></button>
                         <?php endif; ?>
@@ -175,8 +175,8 @@ Parameters used from postParams:
                             } ?>
                         </span>
                     </li>
-                    <li class="nav-item mx-2"> <button type="button" id="save<?php echo $postParams["idPost"] ?>"
-                            class="btn">
+                    <li class="nav-item mx-2"> <button type="button" value="<?php echo $postParams["idPost"] ?>"
+                            class="btn saveButton<?php echo $postParams["idPost"] ?>">
                             <img src="<?php echo $postParams["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"; ?>"
                                 alt="<?php echo $postParams["saved"] ? $lang["post_saved"] : $lang["post_notSaved"]; ?>" /></button><span></span>
                     </li>

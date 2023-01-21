@@ -34,8 +34,7 @@
                     </p>
                     <?php if(isset($_GET["idUtente"]) && $_GET["idUtente"] != $_SESSION["idUtente"]) : ?>
                     <p class="card-text">
-                        <button type="button" id="follower<?php echo $templateParams["user"]["idUtente"] ?>" class="btn"
-                            style="box-shadow: none;">
+                        <button type="button" value="<?php echo $templateParams["user"]["idUtente"] ?>" class="btn followButton<?php echo $templateParams["user"]["idUtente"] ?>">
                             <?php echo $templateParams["user"]["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
                         </button>
                     </p>
