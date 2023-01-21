@@ -6,7 +6,7 @@
         <div class="row">
         <div class="col-3">
         <a href="profile.php?idUtente=<?php echo $notif["idUtenteNotificante"];?>">
-        <img class="chatAvatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo getProfilePicAlt($notif["username"]);?>"/>
+        <img class="img-fluid avatar chatAvatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo getProfilePicAlt($notif["username"]);?>"/>
         </a>
         </div>
         <div class="my-auto col-9">
@@ -17,6 +17,7 @@
                 <?php echo $notif["username"].$lang["notification_".$notif["nomeTipo"]];?>
             </a>
         </p>
+        <p class="text-end small"><?php echo $notif["notifTimestamp"];?></p>
         </div>
         </div>
         </li>

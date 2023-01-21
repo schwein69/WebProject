@@ -31,7 +31,8 @@ USE `social_network`;
 
 CREATE TABLE `chat` (
   `idChat` int(11) NOT NULL,
-  `anteprimaChat` varchar(100) NOT NULL
+  `anteprimaChat` varchar(100) NOT NULL,
+  `attiva` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,6 +87,7 @@ CREATE TABLE `messaggi` (
 CREATE TABLE `notifiche` (
   `idNotifica` int(11) NOT NULL,
   `idUtenteNotificante` int(11) NOT NULL,
+  `notifTimestamp` datetime NOT NULL,
   `idPostRiferimento` int(11) DEFAULT NULL,
   `idTipo` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,

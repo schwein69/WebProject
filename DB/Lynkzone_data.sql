@@ -74,10 +74,10 @@ INSERT INTO commenti(dataCommento, testo, idPost, idUtente)
 VALUES ('2022-12-01', 'Ciao, ti va di conoscerci?',1,2);
 
 /*---- NOTIFICHE INSERTION ----*/
-INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente, letto)
-VALUES (2, 1, 1, 1, 1),
-(2, 1, 2, 1, 1),
-(3, 1, 1, 1, 1),
-(4, 1, 1, 1, 1),
-(5, 1, 1, 1, 0),
-(6, 1, 1, 1, 0);
+INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente, letto, notifTimestamp)
+VALUES (2, 1, 1, 1, 1, NOW()),
+(2, 1, 2, 1, 1, NOW()),
+(3, 1, 1, 1, 1, NOW()),
+(4, 1, 1, 1, 1, NOW()),
+(5, 1, 1, 1, 0, NOW()),
+(6, 1, 1, 1, 0, NOW());

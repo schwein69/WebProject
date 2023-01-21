@@ -4,10 +4,11 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 
 if (isset($_GET["idUtente"])) {
-    $userData = $dbh->getFollower($_GET["idUtente"]);
+    $templateParams["follower"] = $dbh->getFollower($_GET["idUtente"]);
 } else {
-    $userData = $dbh->getFollower($_SESSION["idUtente"]);
+    $templateParams["follower"] = $dbh->getFollower($_SESSION["idUtente"]);
 }
+
 
 $templateParams["title"] = 'Lynkzone - follower'; 
 $templateParams["content"] = "followerListTMP.php";

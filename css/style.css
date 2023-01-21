@@ -110,7 +110,7 @@ button {
   text-decoration: none;
   color: var(--colour-font);
 }
-a{
+a,p{
   text-decoration: none;
   color: var(--colour-font);
 }

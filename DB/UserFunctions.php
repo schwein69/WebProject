@@ -74,6 +74,7 @@ class UserFunctions
 
     //---------- USER RELATIONSHIPS ----------
 
+    //count total users followed by idUser
     public function getNumFollowed($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
@@ -89,6 +90,7 @@ class UserFunctions
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_NUM)[0][0];
     }
+    //get users followed by idUser
     public function getFollowed($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
@@ -105,6 +107,7 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //get users who follow idUser
     public function getFollower($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("
@@ -121,6 +124,7 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //count total users who follow idUser
     public function getNumFollower($idUser)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("

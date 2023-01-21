@@ -44,7 +44,7 @@ class NotificationFunctions
 
     function getNotifications($user, $first, $num)
     {
-        $query = "SELECT idUtenteNotificante, idPostRiferimento, nomeTipo, letto"
+        $query = "SELECT *"
         ." FROM notifiche N"
         ." JOIN tipi T ON N.idTipo = T.idTipo"
         ." WHERE idUtente=? ORDER BY idNotifica DESC LIMIT ?,?";
@@ -76,7 +76,7 @@ class NotificationFunctions
     
     function notifUser($user, $notifType, $targetId, $postId=-1)
     {
-        $query = "INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente,letto)
+        $query = "INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente,letto, notifTimestamp)
                     VALUES (?,";
         $query .= $postId != -1 ? "?," : "NULL,";
         switch ($notifType) {
@@ -96,7 +96,7 @@ class NotificationFunctions
                 die('Unknown notification type');
                 break;
         }
-        $query .= ",?,0)";
+        $query .= ",?,0,NOW())";
         $stmt = $this->db->prepare($query);
         if($postId != -1){
             $stmt->bind_param("iii",$user, $postId, $targetId);

@@ -10,7 +10,7 @@
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
         <div class="row">
             <div class="col-3">
-                <img class="chatAvatar" src="<?php echo $chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
+                <img class="img-fluid avatar chatAvatar" src="<?php echo $chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
             </div>
             <div class="row col-9">
                 <h2><?php echo $chat["username"];?></h2>

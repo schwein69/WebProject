@@ -4,7 +4,11 @@ const chatOffset= 5;
 const tolerance = 10;
 let currentEnd = chatOffset;
 const notifList = document.querySelector('main ul');
-document.addEventListener('scroll', event => {
+document.addEventListener('scroll', addNotification);
+
+addNotification();
+
+function addNotification(){
     if((document.body.offsetHeight + window.scrollY) >= (document.body.scrollHeight - tolerance)
     && notifList != null){
         const xhttp = new XMLHttpRequest();
@@ -18,7 +22,7 @@ document.addEventListener('scroll', event => {
                     let content = '<div class="row">'
                     + '<div class="col-3">'
                     + '<a href="profile.php?idutente=' + element.idUtenteNotificante + '">'
-                    + '<img class="chatAvatar" src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
+                    + '<img class="img-fluid avatar chatAvatar" src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
                     + '</a>'
                     + '</div>'
                     + '<div class="my-auto col-9">'
@@ -28,8 +32,9 @@ document.addEventListener('scroll', event => {
                     } else {
                         content += 'profile.php?idutente=' + element.idUtenteNotificante;                        
                     }
-                    content += '"> ' + element.username + "ha fatto " + element.nomeTipo
+                    content += '"> ' + element.username + element.text
                             + "</a></p>"
+                            + '<p class="text-end small">' + element.notifTimestamp + "</p>"
                             + "</div></div>";
                     notifElement.innerHTML = content;
                     notifList.appendChild(notifElement);
@@ -41,4 +46,4 @@ document.addEventListener('scroll', event => {
         xhttp.send('start=' + currentEnd + '&end=' + chatOffset);
         currentEnd += chatOffset;
     }
-});
+}

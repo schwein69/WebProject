@@ -2,7 +2,7 @@
     <div class="col-md-2"></div>
     <div class="col-12 col-md-8">
         <?php $oldUserId = array(); ?>
-        <?php foreach ($userData as $user): ?>
+        <?php foreach ($templateParams["follower"] as $user): ?>
         <div class="card col-12 mx-auto">
             <div class="row g-0">
                 <div class="col-4 my-auto">

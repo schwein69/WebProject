@@ -6,7 +6,6 @@ const resultSpace = document.querySelector('main > div:nth-child(2)');
 const chatOffset= 5;
 const tolerance = 10;
 let currentEnd = chatOffset;
-const chatList = document.querySelector('main ul');
 
 
 searchBox.addEventListener('input', event => {
@@ -25,7 +24,7 @@ searchBox.addEventListener('input', event => {
                             + '<a href="chat.php?chatId=' + element["idChat"] + '">'
                             + '<div class="row">'
                             + '<div class="col-3">'
-                            + '<img class="chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
+                            + '<img class="img-fluid avatar chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
                             + '</div>'
                             + '<div class="row col-9">'
                             + '<h2>' + element["username"] + '</h2>'
@@ -50,6 +49,7 @@ searchBox.addEventListener('input', event => {
 
 //endless scroll
 document.addEventListener('scroll', event => {
+    const chatList = document.querySelector('main ul');
     if((document.body.offsetHeight + window.scrollY) >= (document.body.scrollHeight - tolerance)
     && chatList != null){
         const xhttp = new XMLHttpRequest();
@@ -57,14 +57,13 @@ document.addEventListener('scroll', event => {
             const response = JSON.parse(this.responseText);
             if(response.status){
                 response.chats.forEach(element => {
-                    
                     const chatElement = document.createElement('li');
-                    chatElement.classList.add("list-group-item","chatbg");
                     chatElement.id = "chat" + element["idChat"]; 
+                    chatElement.classList.add("list-group-item","chatbg");
                     chatElement.innerHTML = '<a href="chat.php?chatId=' + element["idChat"] + '">'
                             + '<div class="row">'
                             + '<div class="col-3">'
-                            + '<img class="chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
+                            + '<img class="img-fluid avatar chatAvatar" src="' + element["fotoProfilo"] + '" alt="' + element["username"] + '"/>'
                             + '</div>'
                             + '<div class="row col-9">'
                             + '<h2>' + element["username"] + '</h2>'
@@ -75,13 +74,13 @@ document.addEventListener('scroll', event => {
                             + '</div>'
                             + '</div>'
                             + '</a>';
-                    chatList.appendChild(chatElement);
+                            chatList.appendChild(chatElement);
                 });
             }
         };
         xhttp.open('POST', 'api_search_chat.php');
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send('testo='+ searchBox.value.trim() +'&start=' + currentEnd + '&end=' + chatOffset);
+        xhttp.send('text='+ searchBox.value.trim() +'&start=' + currentEnd + '&end=' + chatOffset);
         currentEnd += chatOffset;
     }
 });
@@ -94,18 +93,20 @@ function updateChatsPreview(){
         if(response.status){
             response.chats.forEach(element => {
                 const chatElem = document.getElementById('chat'+element["idChat"]);
-                chatElem.querySelector('p').innerHTML = element["anteprimaChat"];
-                if(element["unreadMessages"] > 0){
-                    const chatElemBadge = chatElem.querySelector('span')
-                    chatElemBadge.innerHTML = element["unreadMessages"];
-                    chatElemBadge.setAttribute('style','');
+                if(chatElem != null){
+                    chatElem.querySelector('p').innerHTML = element["anteprimaChat"];
+                    if(element["unreadMessages"] > 0){
+                        const chatElemBadge = chatElem.querySelector('span')
+                        chatElemBadge.innerHTML = element["unreadMessages"];
+                        chatElemBadge.setAttribute('style','');
+                    }
                 }
             });
         }
     };
     xhttp.open('POST', 'api_search_chat.php');
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('testo='+ searchBox.value.trim() +'&start=' + 0 + '&end=' + currentEnd);
+    xhttp.send('text='+ searchBox.value.trim() +'&start=' + 0 + '&end=' + currentEnd);
 }
 
 
