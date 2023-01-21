@@ -13,8 +13,8 @@ function follow(event) {
             contentPlace.forEach(element => {//aggiorna la scritta a tutti i post dello stesso utente
                 element.innerText = element.innerText === "Follow" ? "Followed" : "Seguito";
             });
-            if (document.querySelector(".card-body ul li:nth-child(3) a") != null && document.querySelector(".card-body ul li:nth-child(3) a").nextSibling != null) {//se lo seguo dal profilo aggiorno i numeri
-                let updatePlace = document.querySelector(".card-body ul li:nth-child(3) a").nextSibling;
+            if (document.querySelector(".card-body ul li:nth-child(4) a") != null && document.querySelector(".card-body ul li:nth-child(4) a").nextSibling != null) {//se lo seguo dal profilo aggiorno i numeri
+                let updatePlace = document.querySelector(".card-body ul li:nth-child(4) a").nextSibling;
                 let value = parseInt(updatePlace.nodeValue) + 1;
                 updatePlace.nodeValue = value;
 
@@ -23,8 +23,8 @@ function follow(event) {
             contentPlace.forEach(element => {
                 element.innerText = element.innerText === "Followed" ? "Follow" : "Segui";
             });
-            if (document.querySelector(".card-body ul li:nth-child(3) a") != null && document.querySelector(".card-body ul li:nth-child(3) a").nextSibling != null) {
-                let updatePlace = document.querySelector(".card-body ul li:nth-child(3) a").nextSibling;
+            if (document.querySelector(".card-body ul li:nth-child(4) a") != null && document.querySelector(".card-body ul li:nth-child(4) a").nextSibling != null) {
+                let updatePlace = document.querySelector(".card-body ul li:nth-child(4) a").nextSibling;
                 let value = parseInt(updatePlace.nodeValue) - 1;
                 updatePlace.nodeValue = value;
             }
