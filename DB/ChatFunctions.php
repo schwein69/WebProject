@@ -46,8 +46,7 @@ class ChatFunctions
     public function getRecentChats($user,$user2,$initialChat, $numChats)
     {
         //retrieving chats
-        $query = "SELECT * FROM (";
-        $query .= "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "
+        $query = "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "
                    ."(SELECT max(msgTimestamp) "
                    ."FROM messaggi M "
                    ."WHERE C.idChat = M.idChat) AS tempo "
@@ -63,7 +62,7 @@ class ChatFunctions
                                     ."FROM chat C2 "
                                     ."JOIN partecipazione P2 ON P2.idChat = C2.idChat "
                                     ."WHERE idUtente=?) "
-                ."ORDER BY tempo DESC) AS ChatsList "
+                ."ORDER BY tempo DESC, idChat DESC "
                 ."LIMIT ?,?";
         $stmt = $this->db->prepare($query);
   

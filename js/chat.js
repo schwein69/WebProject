@@ -1,13 +1,25 @@
 //enter page at bottom
 document.addEventListener('load',window.scrollTo(0, document.body.scrollHeight));
-const chatContainer = document.querySelector('main > div.row:nth-child(2)');
-const chatTopOffset = window.pageYOffset + chatContainer.getBoundingClientRect().top;
-const inputTextHeight = document.getElementById('chat-bottom').offsetHeight;
-const footerHeight = document.querySelector('body > div > footer > div').offsetHeight;
-const bottomMargin = 30;
-const minChatHeight = document.body.offsetHeight - chatTopOffset - footerHeight - inputTextHeight - bottomMargin;
-chatContainer.setAttribute('style','height:'+minChatHeight+"px");
 
+//resize chat body
+const chatContainer = document.querySelector('main > div.row:nth-child(2)');
+const initialHeight = chatContainer.offsetHeight;
+function resizeChatBody(){
+    console.log('Resize');
+    const chatTopOffset = window.pageYOffset + chatContainer.getBoundingClientRect().top;
+    const inputTextHeight = document.getElementById('chat-bottom').offsetHeight;
+    const footerHeight = document.querySelector('body > div > footer > div').offsetHeight;
+    const bottomMargin = 30;
+    const minChatHeight = document.body.offsetHeight - chatTopOffset - footerHeight - inputTextHeight - bottomMargin;
+    console.log('H:' + chatContainer.offsetHeight);
+    console.log('MinH:' + minChatHeight);
+    if(initialHeight < minChatHeight){
+        chatContainer.setAttribute('style','height:'+minChatHeight+"px");
+    }
+}
+
+resizeChatBody();
+window.addEventListener('resize',resizeChatBody);
 
 //send messages
 const txtBox = document.getElementById('inputMsg');
