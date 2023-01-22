@@ -1,7 +1,7 @@
 <div class="row">
     <div class="container-fluid col-12 col-md-8 mx-auto p-0">
         <section>
-            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist" style="flex-basis:auto;">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                         type="button" role="tab" aria-controls="profile" aria-selected="true"><?php echo $lang["accountSetting_profileSettingsTab"]?></button>

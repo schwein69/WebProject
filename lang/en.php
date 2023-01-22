@@ -62,6 +62,7 @@ $lang["post_saved"] = "Unsave post";
 $lang["post_notSaved"] = "Save post";
 $lang["post_remove"] = "Remove post";
 $lang["post_share"] = "Share post";
+$lang["post_editPost"] = "Edit";
 
 /* Post creation */
 $lang["createPost_errNoMsgVidsTxt"] = "Insert text, images or videos.";
@@ -93,4 +94,10 @@ $lang["popup_showMoreFriends"] = "Show other friends";
 $lang["popup_deleteText"] = "Are you sure to eliminare this post?";
 $lang["popup_confirmBoxYes"] = "Confirm";
 $lang["popup_confirmBoxNo"] = "Cancel";
+
+/* -------------------------- ERROR MSG IN REGISTRATION PAGE ---------------------------------- */
+
+$lang["denied_characters"] = "These characters are not permitted: > < ; , :  \  /";
+$lang["denied_whiteSpace"] = "White space is not permitted: > < ; , :  \  /";
+$lang["denied_wrongEmail"] = "The format of inserted email is not valid!";
 ?>

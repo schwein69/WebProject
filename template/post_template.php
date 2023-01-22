@@ -61,7 +61,8 @@ Parameters used from postParams:
                                 <?php echo $postParams["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"]; ?>
                             </button>
                         <?php elseif ($postParams["isLoggedUserPost"]): ?>
-                            <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn removePostButton">
+                            <a href="edit_post.php?postid=<?php echo $postParams["idPost"];?>" class="btn"><?php echo $lang["post_editPost"];?></a>
+                            <button type="button" value="<?php echo $postParams["idPost"]; ?>" class="btn removePostButton">
                                 <img src="../imgs/icons/trash3.svg" alt="<?php echo $lang["post_remove"] ?>" /></button>
                         <?php endif; ?>
                     </div>
@@ -156,7 +157,7 @@ Parameters used from postParams:
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
-                        <button type="button" id="like<?php echo $postParams["idPost"] ?>" class="btn">
+                        <button type="button" value="<?php echo $postParams["idPost"] ?>" class="btn likeButton">
                             <img src="<?php echo $postParams["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg"; ?>"
                                 alt="<?php echo $postParams["liked"] ? "Dislike post" : "Like post"; ?>" />
                         </button>
@@ -166,7 +167,7 @@ Parameters used from postParams:
                             } ?>
                         </span>
                     </li>
-                    <li class="nav-item mx-2"> <button type="button" id="comment<?php echo $postParams["idPost"] ?>"
+                    <li class="nav-item mx-2"> <button type="button" value="<?php echo $postParams["idPost"] ?>"
                             class="btn commentBtn">
                             <img src="../imgs/icons/chat.svg" alt="Commenta post" /></button>
                         <span>
@@ -176,7 +177,7 @@ Parameters used from postParams:
                         </span>
                     </li>
                     <li class="nav-item mx-2"> <button type="button" value="<?php echo $postParams["idPost"] ?>"
-                            class="btn saveButton<?php echo $postParams["idPost"] ?>">
+                            class="btn saveButton">
                             <img src="<?php echo $postParams["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"; ?>"
                                 alt="<?php echo $postParams["saved"] ? $lang["post_saved"] : $lang["post_notSaved"]; ?>" /></button><span></span>
                     </li>

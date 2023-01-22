@@ -1,4 +1,4 @@
-delegate_event('click', document, 'button[class*=saveButton]', save);
+delegate_event('click', document, 'button.saveButton', save);
 
 function save(event) {
     event.preventDefault();
