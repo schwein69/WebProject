@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 
 $templateParams["notifications"] = $dbh->getNotificationFunctionHandler()->getNotifications($_SESSION["idUtente"]); 
-$dbh->getChatFunctionHandler()->readAllNotifications($_SESSION["idUtente"]);
+$dbh->getNotificationFunctionHandler()->readAllNotifications($_SESSION["idUtente"]);
 $templateParams["numNotifications"] = count($templateParams["notifications"]);
 for ($i=0; $i < $templateParams["numNotifications"]; $i++) { 
     $notifUser = $dbh->getUserFunctionHandler()->getUserData($templateParams["notifications"][$i]["idUtenteNotificante"]);
