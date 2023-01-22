@@ -3,7 +3,7 @@
 require_once 'bootstrap.php';
 if(isset($_GET["code"])){
     if($dbh->checkCode($_GET["code"])){//verifico il codice, se esiste prendo i dati dell'utente
-        $data = $dbh->getUserDataByCode($_GET["code"]);
+        $data = $dbh->getUserFunctionHandler()->getUserDataByCode($_GET["code"]);
         if(isset($_POST["pwd"]) && isset($_POST["pwdrepeat"])){
             $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
             $dbh->changePassword($pwd,$data["idUtente"]);

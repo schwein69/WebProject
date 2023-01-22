@@ -2,12 +2,12 @@
 require_once 'bootstrap.php';
 //check login
 redirectNotLoggedUser();
-$templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
+$templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
     switch ($_POST['form']) {
         case "dataForm": //data form
             if (isset($_POST["name"]) && $templateParams["user"]["username"] != $_POST["name"]) {
-                if (!$dbh->checkUsername($_POST["name"])) { //se è settato(di default è quello vecchio) ed è diverso da quello originale, lo aggiorno
+                if (!$dbh->getUserFunctionHandler()->checkUsername($_POST["name"])) { //se è settato(di default è quello vecchio) ed è diverso da quello originale, lo aggiorno
                     $dbh->updateUsername($_POST["name"], $_SESSION["idUtente"]);
                 } else {
                     $msg = "Username esistente!";
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 }
             }
             if (isset($_POST["email"]) && $templateParams["user"]["email"] != $_POST["email"]) {
-                if (!$dbh->checkEmail($_POST["email"])) {
+                if (!$dbh->getUserFunctionHandler()->checkEmail($_POST["email"])) {
                     $dbh->updateUserEmail($_POST["email"], $_SESSION["idUtente"]);
                 } else {
                     $msg = "Email esistente!";
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 $userPath = UPLOAD_DIR . $_SESSION["idUtente"] . '/';
                 list($result, $fileType, $msg) = uploadFile($userPath, $img, "profile");
             }
-            $templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
+            $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
         break;
 
         case "passwordForm": //password form
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                     $templateParams["errormsgPsw"] = $msg;
                 }
             }
-            $templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
+            $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
         break;
 
         case "languageFormSubmission": //language form
@@ -67,25 +67,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
 /*
 Preparing posts
 */
-$templateParams["posts"] = $dbh->getSavedPosts($_SESSION["idUtente"]);
+$templateParams["posts"] = $dbh->getPostFunctionHandler()->getSavedPosts($_SESSION["idUtente"]);
 $templateParams["oldPostIds"] = array();
 
 $numPosts = count($templateParams["posts"]);
 for ($i = 0; $i < $numPosts; $i++) {
     array_push($templateParams["oldPostIds"], $templateParams["posts"][$i]["idPost"]);
-    $user = $dbh->getUserData($templateParams["posts"][$i]['idUser']);
+    $user = $dbh->getUserFunctionHandler()->getUserData($templateParams["posts"][$i]['idUser']);
     $templateParams["posts"][$i]["fotoProfilo"] = UPLOAD_DIR . $user['idUtente'] . '/profile.' . $user['formatoFotoProfilo'];
     $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di " . $user['username'];
     $templateParams["posts"][$i]["username"] = $user['username'];
     $templateParams["posts"][$i]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION["idUtente"];
-    $templateParams["posts"][$i]["followedByMe"] = $dbh->isFollowedByMe($_SESSION["idUtente"], $user['idUtente']);
+    $templateParams["posts"][$i]["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe($_SESSION["idUtente"], $user['idUtente']);
     $templateParams["posts"][$i]["isFull"] = false;
-    $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
-    $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["liked"] = $dbh->getPostFunctionHandler()->isPostLiked($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["saved"] = $dbh->getPostFunctionHandler()->isPostSaved($_SESSION["idUtente"], $templateParams["posts"][$i]["idPost"]);
 
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR . $user['idUtente'] . '/' . $templateParams["posts"][$i]["idPost"] . '/';
-    $media = $dbh->getPostContents($templateParams["posts"][$i]["idPost"]);
+    $media = $dbh->getPostFunctionHandler()->getPostContents($templateParams["posts"][$i]["idPost"]);
 
     for ($m = 0; $m < count($media); $m++) {
         $media[$m]["isImage"] = isImageExtension($media[$m]["formato"]);

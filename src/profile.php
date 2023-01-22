@@ -7,12 +7,12 @@ if(isset($_GET["idUtente"])){
 } else {
     $userid = $_SESSION["idUtente"];
 }
-$templateParams["user"] = $dbh->getUserData($userid);
-$templateParams["posts"] = $dbh->getProfilePosts(-1,$userid);
+$templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($userid);
+$templateParams["posts"] = $dbh->getPostFunctionHandler()->getProfilePosts(-1,$userid);
 $templateParams["user"]["numPosts"] = count($templateParams["posts"]);
-$templateParams["user"]["numFollower"] = $dbh->getNumFollower($userid);
-$templateParams["user"]["numFollowed"] = $dbh->getNumFollowed($userid);
-$templateParams["user"]["followedByMe"] = $dbh->isFollowedByMe( $_SESSION["idUtente"],$templateParams["user"]["idUtente"]);
+$templateParams["user"]["numFollower"] = $dbh->getUserFunctionHandler()->getNumFollower($userid);
+$templateParams["user"]["numFollowed"] = $dbh->getUserFunctionHandler()->getNumFollowed($userid);
+$templateParams["user"]["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe( $_SESSION["idUtente"],$templateParams["user"]["idUtente"]);
 $templateParams["user"]["profilePic"] = UPLOAD_DIR.$templateParams["user"]["idUtente"]."/profile.".$templateParams["user"]["formatoFotoProfilo"];
 $templateParams["content"] = "profilepage.php";
 $templateParams["profileTopNav"] = true;
@@ -29,13 +29,13 @@ for ($i=0; $i < $numPosts; $i++) {
     $templateParams["posts"][$i]["isLoggedUserPost"] = $userid == $_SESSION["idUtente"];
     $templateParams["posts"][$i]["followedByMe"] = $templateParams["user"]["followedByMe"];
     $templateParams["posts"][$i]["isFull"] = false;
-    $templateParams["posts"][$i]["liked"] = $dbh->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
-    $templateParams["posts"][$i]["saved"] = $dbh->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
-    $templateParams["posts"][$i]["tags"] = $dbh->getPostTags($templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["liked"] = $dbh->getPostFunctionHandler()->isPostLiked($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["saved"] = $dbh->getPostFunctionHandler()->isPostSaved($_SESSION["idUtente"],$templateParams["posts"][$i]["idPost"]);
+    $templateParams["posts"][$i]["tags"] = $dbh->getPostFunctionHandler()->getPostTags($templateParams["posts"][$i]["idPost"]);
 
     //adding medias to post
     $templateParams["posts"][$i]["mediaPath"] = UPLOAD_DIR.$userid.'/'.$templateParams["posts"][$i]["idPost"].'/';
-    $media = $dbh->getPostContents($templateParams["posts"][$i]["idPost"]);
+    $media = $dbh->getPostFunctionHandler()->getPostContents($templateParams["posts"][$i]["idPost"]);
     
     for ($m=0; $m < count($media) ; $m++) { 
         $media[$m]["isImage"] = isImageExtension($media[$m]["formato"]);

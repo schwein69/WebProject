@@ -10,13 +10,13 @@ if(!isset($_GET["chatId"])){
 
 $templateParams["currentUser"] = $_SESSION["idUtente"];
 
-if(!$dbh->isUserInChat($_GET["chatId"],$templateParams["currentUser"]) || !$dbh->isChatActive($_GET["chatId"])){
+if(!$dbh->getChatFunctionHandler()->isUserInChat($_GET["chatId"],$templateParams["currentUser"]) || !$dbh->getChatFunctionHandler()->isChatActive($_GET["chatId"])){
     header('Location: index.php');
 }
 
-$templateParams["messages"] = $dbh->getRecentMessagesFromChat($_GET["chatId"]);
-$templateParams["user2"] = $dbh->getChatUser($_GET["chatId"], $_SESSION["idUtente"]);
-$dbh->readAllMessages($_GET["chatId"], $_SESSION["idUtente"]);
+$templateParams["messages"] = $dbh->getChatFunctionHandler()->getRecentMessagesFromChat($_GET["chatId"]);
+$templateParams["user2"] = $dbh->getChatFunctionHandler()->getChatUser($_GET["chatId"], $_SESSION["idUtente"]);
+$dbh->getChatFunctionHandler()->readAllMessages($_GET["chatId"], $_SESSION["idUtente"]);
 $templateParams["content"] = 'chat_content.php';
 $templateParams["title"] = 'Lynkzone - '.$templateParams["user2"]["username"]; 
 $templateParams["js"] = array('../js/chat.js','../js/notifications_receiver.js');

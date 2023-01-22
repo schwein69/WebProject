@@ -8,7 +8,7 @@ class NotificationFunctions
         $this->db = $db;
     }
     
-    function getChatsNotifications($user)
+    public function getChatsNotifications($user)
     {
         $query = "SELECT C.idChat, count(*) AS numMsgs, (SELECT max(msgTimestamp)
                                                         FROM messaggi M2
@@ -26,7 +26,7 @@ class NotificationFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
 
-    function getUnreadChatMessages($user, $chat)
+    public function getUnreadChatMessages($user, $chat)
     {
         $query = "SELECT count(*) AS numMsgs
                  FROM partecipazione P 
@@ -42,7 +42,7 @@ class NotificationFunctions
         return $res;
     }
 
-    function getNotifications($user, $first, $num)
+    public function getNotifications($user, $first=0, $num=5)
     {
         $query = "SELECT *"
         ." FROM notifiche N"
@@ -55,7 +55,7 @@ class NotificationFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC);      
     }
 
-    function getUnreadNotificationsNumber($user)
+    public function getUnreadNotificationsNumber($user)
     {
         $query = "SELECT count(*)"
         ." FROM notifiche N"
@@ -67,14 +67,29 @@ class NotificationFunctions
         return $queryRes->fetch_all(MYSQLI_NUM)[0][0];
     }
     
-    function readAllNotifications($user)
+    public function readAllNotifications($user)
     {
         $stmt = $this->db->prepare("UPDATE notifiche SET letto=1 WHERE idUtente=?");
         $stmt->bind_param("i",$user);
         $stmt->execute();
     }
     
-    function notifUser($user, $notifType, $targetId, $postId=-1)
+    public function notifUserLike($userId, $postId, $targetId)
+    {
+        $this->notifUser($userId, "like", $targetId, $postId);
+    }
+
+    public function notifUserComment($userId, $postId, $targetId)
+    {
+        $this->notifUser($userId, "comment", $targetId, $postId);
+    }
+
+    public function notifUserFollow($userId, $targetId)
+    {
+        $this->notifUser($userId, "follow", $targetId);
+    }
+
+    private function notifUser($user, $notifType, $targetId, $postId=-1)
     {
         $query = "INSERT INTO notifiche(idUtenteNotificante, idPostRiferimento, idTipo, idUtente,letto, notifTimestamp)
                     VALUES (?,";

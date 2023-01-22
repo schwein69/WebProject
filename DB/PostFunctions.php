@@ -81,7 +81,7 @@ class PostFunctions
         $stmt->execute();
     }
 
-    function likePost($user, $postId)
+    public function likePost($user, $postId)
     {
         $stmt = $this->db->prepare("INSERT INTO postpiaciuti(idUtente,idPost) VALUES (?,?)");
         $stmt->bind_param("ii",$user,$postId);
@@ -91,7 +91,7 @@ class PostFunctions
         $stmt->execute();
     }
 
-    function dislikePost($user, $postId)
+    public function dislikePost($user, $postId)
     {
         $stmt = $this->db->prepare("DELETE FROM postpiaciuti WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii",$user,$postId);
@@ -101,36 +101,35 @@ class PostFunctions
         $stmt->execute();
     }
 
-    function savePost($user, $postId)
+    public function savePost($user, $postId)
     {
         $stmt = $this->db->prepare("INSERT INTO postsalvati(idUtente,idPost) VALUES (?,?)");
         $stmt->bind_param("ii",$user,$postId);
         $stmt->execute();
     }
 
-    function unsavePost($user, $postId)
+    public function unsavePost($user, $postId)
     {
         $stmt = $this->db->prepare("DELETE FROM postsalvati WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii",$user,$postId);
         $stmt->execute();
     }
 
-    function updatePost($postId, $testo, $dataPost)
+    public function updatePost($postId, $testo, $dataPost)
     {
         $stmt = $this->db->prepare("UPDATE posts SET testo=?, dataPost=? WHERE idPost=?");
         $stmt->bind_param("ssi",$testo, $dataPost,$postId);
         $stmt->execute();
     }
 
-    function deletePostMedia($mediaId)
+    public function deletePostMedia($mediaId)
     {
-        echo "OK";
         $stmt = $this->db->prepare("DELETE FROM contenutimultimediali WHERE idContenuto=?");
         $stmt->bind_param("i",$mediaId);
         $stmt->execute();
     }
 
-    function removePost($postId)
+    public function removePost($postId)
     {
         $stmt = $this->db->prepare("DELETE FROM posts WHERE idPost=?");
         $stmt->bind_param("i",$postId);
@@ -194,7 +193,7 @@ class PostFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
 
-    function isPostLiked($user, $postId)
+    public function isPostLiked($user, $postId)
     {
         $stmt = $this->db->prepare("SELECT * FROM postpiaciuti WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii", $user, $postId);
@@ -203,7 +202,7 @@ class PostFunctions
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
-    function isPostSaved($user, $postId)
+    public function isPostSaved($user, $postId)
     {
         $stmt = $this->db->prepare("SELECT * FROM postsalvati WHERE idUtente=? AND idPost=?");
         $stmt->bind_param("ii", $user, $postId);
@@ -214,7 +213,7 @@ class PostFunctions
     
     //-------- GETTING POSTS -------
 
-    public function getRandomPosts($idUser, $oldPostIds, $n)
+    public function getRandomPosts($idUser, $oldPostIds=array(), $n=5)
     {
         $query = "SELECT  *
                 FROM posts
@@ -244,7 +243,7 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProfilePosts($n, $idUser)
+    public function getProfilePosts($n=-1, $idUser)
     {
         $query = "SELECT DISTINCT P.* FROM posts P, utenti U WHERE  P.idUser = U.idUtente AND U.idUtente = ?  ORDER BY P.dataPost DESC";
         if ($n > 0) {
@@ -262,7 +261,7 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getSavedPosts($idUser,$start,$end)
+    public function getSavedPosts($idUser,$start=0,$end=7)
     { //id dell'utente loggato
         $stmt = $this->db->prepare("SELECT P.*
                                     FROM
@@ -280,7 +279,7 @@ class PostFunctions
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFollowedPosts($idUser,$start,$end)
+    public function getFollowedPosts($idUser,$start=0,$end=7)
     { //id dell'utente loggato
         $query = "SELECT * 
                 FROM posts

@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
  
 //login with cookie
 if(isset($_COOKIE["Lynkzone_keepLogin"])){
-    $user = $dbh->getUserByKeepConnectionCode($_COOKIE["Lynkzone_keepLogin"]);
+    $user = $dbh->getUserFunctionHandler()->getUserByKeepConnectionCode($_COOKIE["Lynkzone_keepLogin"]);
     if (!is_null($user)) {
         registerLoggedUser($user);
         header("Location: index.php");
@@ -12,7 +12,7 @@ if(isset($_COOKIE["Lynkzone_keepLogin"])){
 
 //standard login
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] !== "" && $_POST["password"] !== ""){
-    $user = $dbh->getUserDataLogin($_POST["username"]);
+    $user = $dbh->getUserFunctionHandler()->getUserDataLogin($_POST["username"]);
     if(count($user) < 1){
         $templateParams["errormsg"] = "Username inesistente!";
     } else {
@@ -24,14 +24,14 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
                 $code = "";
                 do{
                     $code = createRandomCode(256);
-                }while(!is_null($dbh->getUserByKeepConnectionCode($code)));
+                }while(!is_null($dbh->getUserFunctionHandler()->getUserByKeepConnectionCode($code)));
                 
                 //set cookie time
                 $oneDayTime = time()+60*60*24;
                 $cookieTime = $oneDayTime * 30;//=30 days
                 //saving data on client and on server
                 setcookie("Lynkzone_keepLogin",$code, $cookieTime,'/');
-                $dbh->updateKeepLogin($user[0]['idUtente'],$code);
+                $dbh->getUserFunctionHandler()->updateKeepLogin($user[0]['idUtente'],$code);
             }
         }else{
             $templateParams["errormsg"] = "Credenziali errate!";

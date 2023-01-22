@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);      
 if(isset($_POST["email"])){
-    if($dbh->checkEmail($_POST["email"])){ 
+    if($dbh->getUserFunctionHandler()->checkEmail($_POST["email"])){ 
     try {
         $mail->isSMTP(); // using SMTP protocol                                     
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 

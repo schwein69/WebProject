@@ -43,7 +43,7 @@ class ChatFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function getRecentChats($user,$user2,$initialChat, $numChats)
+    public function getRecentChats($user,$user2="",$initialChat=0,$numChats=5)
     {
         //retrieving chats
         $query = "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "
@@ -78,7 +78,7 @@ class ChatFunctions
     }
     
     //it fetches chat messages starting from the last and goint up to numMsgs messages
-    public function getRecentMessagesFromChat($chat, $initialMsg, $numMsgs, $letto, $user)
+    public function getRecentMessagesFromChat($chat, $initialMsg=0, $numMsgs=10, $letto=true, $user=-1)
     {
         //retrieving chats
         $query = "SELECT testoMsg, msgTimestamp, letto, idMittente

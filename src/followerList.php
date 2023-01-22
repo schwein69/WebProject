@@ -4,9 +4,9 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 
 if (isset($_GET["idUtente"])) {
-    $templateParams["follower"] = $dbh->getFollower($_GET["idUtente"]);
+    $templateParams["follower"] = $dbh->getUserFunctionHandler()->getFollower($_GET["idUtente"]);
 } else {
-    $templateParams["follower"] = $dbh->getFollower($_SESSION["idUtente"]);
+    $templateParams["follower"] = $dbh->getUserFunctionHandler()->getFollower($_SESSION["idUtente"]);
 }
 
 

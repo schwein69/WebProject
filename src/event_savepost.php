@@ -5,11 +5,11 @@ redirectNotLoggedUser();
 
 $postid=$_POST["postid"];
 $user=$_SESSION["idUtente"];
-$result["saved"]=$dbh->isPostSaved($user, $postid);
+$result["saved"]=$dbh->getPostFunctionHandler()->isPostSaved($user, $postid);
 if($result["saved"]){
-    $dbh->unsavePost($user, $postid);
+    $dbh->getPostFunctionHandler()->unsavePost($user, $postid);
 } else {
-    $dbh->savePost($user, $postid);
+    $dbh->getPostFunctionHandler()->savePost($user, $postid);
 }
 $result["saved"]=!$result["saved"];
 

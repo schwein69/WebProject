@@ -5,14 +5,14 @@ redirectNotLoggedUser();
 
 $postid=$_POST["postid"];
 $user=$_SESSION["idUtente"];
-$result["liked"]=$dbh->isPostLiked($user, $postid);
+$result["liked"]=$dbh->getPostFunctionHandler()->isPostLiked($user, $postid);
 if($result["liked"]){
-    $dbh->dislikePost($user, $postid);
+    $dbh->getPostFunctionHandler()->dislikePost($user, $postid);
 } else {
-    $dbh->likePost($user, $postid);
-    $authId = $dbh->getPostData($postid)['idUser'];
+    $dbh->getPostFunctionHandler()->likePost($user, $postid);
+    $authId = $dbh->getPostFunctionHandler()->getPostData($postid)['idUser'];
     if($user != $authId){
-        $dbh->notifUserLike($user, $postid, $authId);
+        $dbh->getNotificationFunctionHandler()->notifUserLike($user, $postid, $authId);
     }
 }
 $result["liked"]=!$result["liked"];

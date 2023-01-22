@@ -19,7 +19,7 @@ if(!isset($_POST["testo"]) && count($files_to_upload) == 0){
 
 $testo = isset($_POST["testo"]) ? $_POST["testo"] : "";
 $now = date('Y-m-d');
-$postId=$dbh->insertPost($_SESSION["idUtente"], htmlspecialchars($testo), $now);
+$postId=$dbh->getPostFunctionHandler()->insertPost($_SESSION["idUtente"], htmlspecialchars($testo), $now);
 
 //get tags
 $tags = array();
@@ -33,7 +33,7 @@ for($i=1;$i<10;$i++){
         }
     }
 }
-$dbh->addTagsToPost($postId, $tags);
+$dbh->getPostFunctionHandler()->addTagsToPost($postId, $tags);
 
 
 $postPath=UPLOAD_DIR.'/'.$_SESSION["idUtente"].'/'.$postId.'/';
@@ -43,7 +43,7 @@ if(!mkdir($postPath, 0777, true)){
 foreach($files_to_upload as $file){
     list($result, $fileType, $msg) = uploadFile($postPath,$file["file"]);
     if($result){
-        $dbh->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
+        $dbh->getPostFunctionHandler()->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
     } else {
         array_push($errMsgs, $msg);
     }

@@ -24,244 +24,24 @@ class DatabaseHelper
         $this->notifFunctions = new NotificationFunctions($this->db);
     }
 
-    //--------------- USER FUNCTIONS ------------------
-
-    public function getUserDataLogin($username)
+    public function getUserFunctionHandler()
     {
-        return $this->userFunctions->getUserDataLogin($username);
+        return $this->userFunctions;
     }
 
-    public function insertNewUser($name, $password, $email, $date, $img)
+    public function getPostFunctionHandler()
     {
-        return $this->userFunctions->insertNewUser($name, $password, $email, $date, $img);
+        return $this->postFunctions;
     }
-    public function checkUsername($name)
+
+    public function getChatFunctionHandler()
     {
-        return $this->userFunctions->checkUsername($name);
+        return $this->chatFunctions;
     }
 
-    public function checkEmail($email)
+    public function getNotificationFunctionHandler()
     {
-        return $this->userFunctions->checkEmail($email);
-    }
-
-    public function getUserData($idUser)
-    {
-        return $this->userFunctions->getUserData($idUser);
-    }
-
-    public function getNumFollower($idUser)
-    {
-        return $this->userFunctions->getNumFollower($idUser);
-
-    }
-    public function getFollowed($idUser)
-    {
-        return $this->userFunctions->getFollowed($idUser);
-
-    }
-
-    public function getFollower($idUser)
-    {
-        return $this->userFunctions->getFollower($idUser);
-
-    }
-    public function getNumFollowed($idUser)
-    {
-        return $this->userFunctions->getNumFollowed($idUser);
-
-    }
-
-    public function isFollowedByMe($userId, $adminId)
-    {
-        return $this->userFunctions->isFollowedByMe($userId, $adminId);
-    }
-
-    public function updateKeepLogin($userId,$code)
-    {
-        $this->userFunctions->updateKeepLogin($userId, $code);
-    }
-
-    public function getUserByKeepConnectionCode($code)
-    {
-        return $this->userFunctions->getUserByKeepConnectionCode($code);
-    }
-
-    //--------------- POST FUNCTIONS ------------------
-
-    public function getPostData($id)
-    {
-        return $this->postFunctions->getPostData($id);
-    }
-
-    public function getPostTags($postId)
-    {
-        return $this->postFunctions->getPostTags($postId);
-    }
-
-    public function getPostComments($postId)
-    {
-        return $this->postFunctions->getPostComments($postId);
-    }
-
-    public function addCommentToPost($user, $postId, $testo)
-    {
-        $this->postFunctions->addCommentToPost($user, $postId, $testo);
-    }
-
-    public function getRandomPosts($idUser, $oldPostIds=array(), $n=5)
-    {
-        return $this->postFunctions->getRandomPosts($idUser,$oldPostIds, $n);
-    }
-
-    public function getProfilePosts($n = -1, $idUser)
-    {
-        return $this->postFunctions->getProfilePosts($n, $idUser);
-
-    }
-
-    public function getFollowedPosts($idUser, $start = 0, $end = 7)
-    {
-        return $this->postFunctions->getFollowedPosts($idUser, $start, $end);
-
-    }
-
-    public function getSavedPosts($idUser, $start = 0, $end = 7)
-    {
-        return $this->postFunctions->getSavedPosts($idUser, $start, $end);
-
-    }
-
-    public function insertPost($user, $testo, $dataPost)
-    {
-        return $this->postFunctions->insertPost($user, $testo, $dataPost);
-
-    }
-
-    public function getPostContents($postId)
-    {
-        return $this->postFunctions->getPostContents($postId);
-    }
-
-    public function addTagsToPost($postId, $tags)
-    {
-        $this->postFunctions->addTagsToPost($postId, $tags);
-    }
-
-    public function addMediaToPost($postId, $path, $desc, $fileType)
-    {
-        $this->postFunctions->addMediaToPost($postId, $path, $desc, $fileType);
-
-    }
-
-    function isPostLiked($user, $postId)
-    {
-        return $this->postFunctions->isPostLiked($user, $postId);
-    }
-
-    function likePost($user, $postId)
-    {
-        $this->postFunctions->likePost($user, $postId);
-    }
-
-    function dislikePost($user, $postId)
-    {
-        $this->postFunctions->dislikePost($user, $postId);
-    }
-
-    function isPostSaved($user, $postId)
-    {
-        return $this->postFunctions->isPostSaved($user, $postId);
-    }
-
-    function savePost($user, $postId)
-    {
-        $this->postFunctions->savePost($user, $postId);
-    }
-
-    function unsavePost($user, $postId)
-    {
-        $this->postFunctions->unsavePost($user, $postId);
-    }
-
-    function removePost($postId)
-    {
-        $this->postFunctions->removePost($postId);
-    }
-
-    function updatePost($postId, $testo, $dataPost)
-    {
-        $this->postFunctions->updatePost($postId, $testo, $dataPost);
-    }
-
-    function deletePostMedia($mediaId)
-    {
-        $this->postFunctions->deletePostMedia($mediaId);
-    }
-    
-    function removeTagsFromPost($postId)
-    {
-        $this->postFunctions->removeTagsFromPost($postId);
-    }
-
-    //--------------- CHAT FUNCTIONS ------------------
-
-    public function isUserInChat($chatId, $user)
-    {
-        return $this->chatFunctions->isUserInChat($chatId, $user);
-    }
-
-    public function activateChat($idChat)
-    {
-        return $this->chatFunctions->activateChat($idChat);
-    }
-
-    public function deactivateChat($idChat)
-    {
-        return $this->chatFunctions->deactivateChat($idChat);
-    }
-
-    public function getChatUser($chatId, $user1)
-    {
-        return $this->chatFunctions->getChatUser($chatId, $user1);
-    }
-
-    public function getRecentChats($user, $user2 = "", $initialChat = 0, $numChats = 5)
-    {
-        return $this->chatFunctions->getRecentChats($user, $user2, $initialChat, $numChats);
-    }
-
-    public function getRecentMessagesFromChat($chat, $initialMsg = 0, $numMsgs = 10, $letto = true, $user = -1)
-    {
-        return $this->chatFunctions->getRecentMessagesFromChat($chat, $initialMsg, $numMsgs, $letto, $user);
-    }
-
-    public function insertMessage($chatid, $user, $msg)
-    {
-        $this->chatFunctions->insertMessage($chatid, $user, $msg);
-    }
-
-    public function updateChatPreview($chatid, $msg)
-    {
-        $this->chatFunctions->updateChatPreview($chatid, $msg);
-    }
-
-    public function readAllMessages($chatId, $user)
-    {
-        $this->chatFunctions->readAllMessages($chatId, $user);
-    }
-
-    public function createChat($admin, $user)
-    {
-        return $this->chatFunctions->createChat($admin, $user);
-    }
-
-    public function getChatWithUsers($user1,$user2){
-        return $this->chatFunctions->getChatWithUsers($user1,$user2);
-    }
-
-    public function isChatActive($idChat){
-        return $this->chatFunctions->isChatActive($idChat);
+        return $this->notifFunctions;
     }
 
     public function chatCreated($admin, $user)
@@ -273,46 +53,6 @@ class DatabaseHelper
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
-    //--------------- NOTIFICATION FUNCTIONS ------------------
-
-    function getChatsNotifications($user)
-    {
-        return $this->notifFunctions->getChatsNotifications($user);
-    }
-
-    function getNotifications($user, $first = 0, $num = 5)
-    {
-        return $this->notifFunctions->getNotifications($user, $first, $num);
-    }
-
-    function getUnreadNotificationsNumber($user)
-    {
-        return $this->notifFunctions->getUnreadNotificationsNumber($user);
-    }
-
-    function readAllNotifications($user)
-    {
-        $this->notifFunctions->readAllNotifications($user);
-    }
-
-    function notifUserLike($userId, $postId, $targetId)
-    {
-        $this->notifFunctions->notifUser($userId, "like", $targetId, $postId);
-    }
-
-    function notifUserComment($userId, $postId, $targetId)
-    {
-        $this->notifFunctions->notifUser($userId, "comment", $targetId, $postId);
-    }
-
-    function notifUserFollow($userId, $targetId)
-    {
-        $this->notifFunctions->notifUser($userId, "follow", $targetId);
-    }
-
-    function getUnreadChatMessages($user, $chat){
-        return $this->notifFunctions->getUnreadChatMessages($user, $chat);
-    }
     //--------------- OTHER FUNCTIONS ------------------
 
     public function getSearchUser($username, $idUser)
@@ -446,9 +186,5 @@ class DatabaseHelper
         $stmt->bind_param('si', $date, $userId);
         $stmt->execute();
     }
-
-
-
-
 }
 ?>

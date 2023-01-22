@@ -2,12 +2,12 @@
 require_once 'bootstrap.php';
 
 redirectNotLoggedUser();
-$templateParams["chats"] = $dbh->getRecentChats($_SESSION['idUtente']);
+$templateParams["chats"] = $dbh->getChatFunctionHandler()->getRecentChats($_SESSION['idUtente']);
 $numChats = count($templateParams["chats"]);
 
 //getting num notifications
 for ($i=0; $i < $numChats ; $i++) {
-    $chatNotif = $dbh->getUnreadChatMessages($_SESSION["idUtente"], $templateParams["chats"][$i]["idChat"]);
+    $chatNotif = $dbh->getNotificationFunctionHandler()->getUnreadChatMessages($_SESSION["idUtente"], $templateParams["chats"][$i]["idChat"]);
     if($chatNotif > 0){
         $templateParams["chats"][$i]['numNotif'] = $chatNotif;
     }

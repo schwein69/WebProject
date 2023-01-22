@@ -5,11 +5,11 @@ redirectNotLoggedUser();
 if(isset($_GET["type"])){
     switch ($_GET["type"]) {
         case 'g':
-            $result["counter"] = $dbh->getUnreadNotificationsNumber($_SESSION["idUtente"]);
+            $result["counter"] = $dbh->getNotificationFunctionHandler()->getUnreadNotificationsNumber($_SESSION["idUtente"]);
             break;
         
         case 'c':
-            $result["chats"] = $dbh->getChatsNotifications($_SESSION['idUtente']);
+            $result["chats"] = $dbh->getNotificationFunctionHandler()->getChatsNotifications($_SESSION['idUtente']);
             break;
 
         default:

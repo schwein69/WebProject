@@ -4,14 +4,14 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 $result["status"] = false;
 
-if(isset($_POST["chatid"]) && $dbh->isUserInChat($_POST["chatid"],$_SESSION["idUtente"])){
+if(isset($_POST["chatid"]) && $dbh->getChatFunctionHandler()->isUserInChat($_POST["chatid"],$_SESSION["idUtente"])){
     if(isset($_POST["start"]) && isset($_POST["end"])){
-        $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], $_POST["start"], $_POST["end"]);
+        $result["messages"] = $dbh->getChatFunctionHandler()->getRecentMessagesFromChat($_POST["chatid"], $_POST["start"], $_POST["end"]);
     } else if(isset($_POST["read"])){
         //used for live messages meanwhile the user is in chat page
-        $result["messages"] = $dbh->getRecentMessagesFromChat($_POST["chatid"], 0, 10, false, $_SESSION["idUtente"]);
+        $result["messages"] = $dbh->getChatFunctionHandler()->getRecentMessagesFromChat($_POST["chatid"], 0, 10, false, $_SESSION["idUtente"]);
     }else{
-        $dbh->readAllMessages($_POST["chatid"],$_SESSION["idUtente"]);
+        $dbh->getChatFunctionHandler()->readAllMessages($_POST["chatid"],$_SESSION["idUtente"]);
     }
 
     if(isset($result["messages"])){

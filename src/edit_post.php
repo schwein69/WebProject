@@ -9,7 +9,7 @@ if(!isset($_GET["postid"]) && !isset($_POST["postid"])){
 
 //retrieving post data and checking post ownership
 $postId = isset($_GET["postid"]) ? $_GET["postid"] : $_POST["postid"];
-$post = $dbh->getPostData($postId);
+$post = $dbh->getPostFunctionHandler()->getPostData($postId);
 if($post["idUser"] != $_SESSION["idUtente"]){
     header("Location: index.php");
 }
@@ -18,8 +18,8 @@ if($post["idUser"] != $_SESSION["idUtente"]){
 if(isset($_GET["postid"])){
     //EDIT PAGE
     $templateParams["post"] = $post;
-    $templateParams["post"]["tags"] = $dbh->getPostTags($postId);
-    $templateParams["post"]["media"] = $dbh->getPostContents($postId);
+    $templateParams["post"]["tags"] = $dbh->getPostFunctionHandler()->getPostTags($postId);
+    $templateParams["post"]["media"] = $dbh->getPostFunctionHandler()->getPostContents($postId);
     for ($i=0; $i < count($templateParams["post"]["media"]); $i++) { 
         $templateParams["post"]["media"][$i]["percorsoImmagine"] = UPLOAD_DIR.$templateParams["post"]["idUser"]."/".$postId."/".$templateParams["post"]["media"][$i]["nomeImmagine"]; 
     }
@@ -33,12 +33,12 @@ if(isset($_GET["postid"])){
     $errMsgs=array();
 
     //deleting media
-    $medias = $dbh->getPostContents($postId);
+    $medias = $dbh->getPostFunctionHandler()->getPostContents($postId);
 
     $numDelMedia = 0;
     foreach ($medias as $media) {      
         if(isset($_POST["delMedia".$media["idContenuto"]])){
-            $dbh->deletePostMedia($media["idContenuto"]);
+            $dbh->getPostFunctionHandler()->deletePostMedia($media["idContenuto"]);
             unlink(UPLOAD_DIR.$_SESSION["idUtente"]."/".$postId."/".$media["nomeImmagine"]);
             $numDelMedia++;
         }
@@ -60,7 +60,7 @@ if(isset($_GET["postid"])){
 
     $testo = isset($_POST["testo"]) ? $_POST["testo"] : "";
     $now = date('Y-m-d');
-    $dbh->updatePost($postId, htmlspecialchars($testo), $now);
+    $dbh->getPostFunctionHandler()->updatePost($postId, htmlspecialchars($testo), $now);
 
     //get tags
     $tags = array();
@@ -76,16 +76,16 @@ if(isset($_GET["postid"])){
     }
 
     //remove tag post
-    $dbh->removeTagsFromPost($postId);
+    $dbh->getPostFunctionHandler()->removeTagsFromPost($postId);
 
     //add tag post
-    $dbh->addTagsToPost($postId, $tags);
+    $dbh->getPostFunctionHandler()->addTagsToPost($postId, $tags);
 
     $postPath=UPLOAD_DIR.'/'.$_SESSION["idUtente"].'/'.$postId.'/';
     foreach($files_to_upload as $file){
         list($result, $fileType, $msg) = uploadFile($postPath,$file["file"]);
         if($result){
-            $dbh->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
+            $dbh->getPostFunctionHandler()->addMediaToPost($postId, $msg, $fileType,$file["desc"]);
         } else {
             array_push($errMsgs, $msg);
         }
