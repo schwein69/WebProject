@@ -100,4 +100,14 @@ $lang["popup_confirmBoxNo"] = "Cancel";
 $lang["denied_characters"] = "These characters are not permitted: > < ; , :  \  /";
 $lang["denied_whiteSpace"] = "White space is not permitted: > < ; , :  \  /";
 $lang["denied_wrongEmail"] = "The format of inserted email is not valid!";
+$lang["denied_wrongDate"] = "The format of date must be dd-mm-yyyy";
+$lang["denied_wrongPassword"] = "The password must be greater than 6 characters";
+$lang["denied_wrongReapeatedPassword"] = "Password are different!";
+
+/* --------------------------RECOVERY PAGE ---------------------------------- */
+
+$lang["recovery_title"] = "Recovery password";
+$lang["recovery_text"] = "Fill up your email to receive link";
+$lang["recoveryPage_welcome"] = "Welcome ";
+$lang["recoveryPage_insertNewPass"] = "Insert new password";
 ?>

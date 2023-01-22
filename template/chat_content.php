@@ -1,5 +1,5 @@
 <div class="row">
-    <h2><a href="profile.php?idUtente=<?php echo $templateParams["user2"]["idUtente"];?>"><?php echo $templateParams["user2"]["username"];?></a></h2>
+    <label class="mx-auto" style="width: fit-content;"><h2><a href="profile.php?idUtente=<?php echo $templateParams["user2"]["idUtente"];?>"><?php echo $templateParams["user2"]["username"];?></a></h2></label>
 </div>
 
 <div class="row">

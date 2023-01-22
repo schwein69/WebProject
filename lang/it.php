@@ -94,4 +94,20 @@ $lang["popup_showMoreFriends"] = "Mostra altri amici";
 $lang["popup_deleteText"] = "Confermi di voler eliminare questo post?";
 $lang["popup_confirmBoxYes"] = "Conferma";
 $lang["popup_confirmBoxNo"] = "Annulla";
+
+/* -------------------------- ERROR MSG IN REGISTRATION PAGE ---------------------------------- */
+
+$lang["denied_characters"] = "Non sono permessi caratteri come: > < ; , :  \  /";
+$lang["denied_whiteSpace"] = "Non sono ammessi spazi bianchi";
+$lang["denied_wrongEmail"] = "Email non valida, si prega di inserire un formato valido";
+$lang["denied_wrongDate"] = "La data deve essere in formato dd-mm-yyyy";
+$lang["denied_wrongPassword"] = "La password deve essere almeno di 6 caratteri";
+$lang["denied_wrongReapeatedPassword"] = "Password diverse";
+
+/* --------------------------RECOVERY PAGE ---------------------------------- */
+
+$lang["recovery_title"] = "Ripristino password";
+$lang["recovery_text"] = "Compila l'email per ricevere il link";
+$lang["recoveryPage_welcome"] = "Benvenuto/a ";
+$lang["recoveryPage_insertNewPass"] = "Imposta la nuova password";
 ?>

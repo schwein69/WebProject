@@ -2,11 +2,11 @@
     <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
         <div class="col-8 border border-secondary mx-auto"
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
-            <h1>Recovery</h1>
+            <h2><?php echo $lang["recovery_title"] ?></h2>
             <?php if(isset($data)) :?>
-            <p>Benvenuto/a <?php  echo $data["username"]?></p>
+            <h4><?php echo $lang["recoveryPage_welcome"] ?><?php echo $data["username"];?></h4>
             <?php endif;?>
-            <p>Imposta la nuova password</p>
+            <p><?php echo $lang["recoveryPage_insertNewPass"]; ?></p>
             <form class="form-horizontal" name="myform" method="post" action="">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="pwd"><b>Password</b></label>

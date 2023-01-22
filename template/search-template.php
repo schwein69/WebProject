@@ -20,11 +20,6 @@ if($templateParams["selector"] == true):
     
 ?>
         
-<script>
-    const tagName = <?php if (isset($templateParams[" tagName "])) { echo json_encode($templateParams[' tagName ']); } else echo json_encode("") ?>;
-    const isTag = <?php echo $templateParams["isTag"];?>;
-   
-</script>
 <?php else :?>
 <div class="row">
     <div class="col-12 col-md-8 mx-auto">
@@ -60,3 +55,7 @@ if($templateParams["selector"] == true):
         <?php endforeach; ?>
     </div>
     <?php endif ;?>
+<script>
+const tagName = <?php if (isset($templateParams["tagName"])) { echo json_encode($templateParams['tagName']); } else echo json_encode("") ?>;
+const isTag = <?php echo $templateParams["isTag"];?>;
+</script>

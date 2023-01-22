@@ -44,8 +44,8 @@ function generaArticoli(articoli) {
                 <div class="col-4">`
     if (!articoli["isLoggedUserPost"]) {
         articolo += `<button type="button" value="${articoli["post"]["idUser"]}" class="btn followButton${articoli["post"]["idUser"]}"> ${articoli["followbtntext"]}</button>`;
-    }else{
-        articolo +=`<a href="edit_post.php?postid=${articoli["post"]["idPost"]}" class="btn">${articoli["postEditText"]}</a>`;
+    } else {
+        articolo += `<a href="edit_post.php?postid=${articoli["post"]["idPost"]}" class="btn">${articoli["postEditText"]}</a>`;
         articolo += `<button type="button" value="${articoli["post"]["idUser"]}" class="btn removePostButton"><img src="../imgs/icons/trash3.svg" alt="${articoli["removeText"]}"/></button>`;
     }
     articolo += `</div>
@@ -58,7 +58,7 @@ function generaArticoli(articoli) {
     let concat = "";
     if (articoli["post"]["media"].length > 1) {
         concat +=
-            `< div id="carousel${articoli["post"]["idPost"]}" class="carousel slide" data-bs-interval="false" >
+            `<div id="carousel${articoli["post"]["idPost"]}" class="carousel slide" data-bs-interval="false">
         <div class="carousel-inner">`;
 
         for (let index = 0; index < articoli["post"]["media"].length; index++) {
@@ -80,13 +80,13 @@ function generaArticoli(articoli) {
             }
             concat += `</div>`;
         }
-        concat += `</div >
+        concat += `</div>
                 <a class="carousel-control-prev" type="button" data-bs-target="#carousel${articoli["post"]["idPost"]}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-dark"></span>
                 </a>
                 <a class="carousel-control-next" type="button" data-bs-target="#carousel${articoli["post"]["idPost"]}" data-bs-slide="next">
                     <span class="carousel-control-next-icon bg-dark"></span>
-                </a>`;
+                </a></div>`;
     } else if (articoli["post"]["media"].length == 1) {
         if (articoli["post"]["media"][0]["isImage"]) {
             concat +=
@@ -101,9 +101,21 @@ function generaArticoli(articoli) {
 
     }
     concat += `<a href = "post.php?postid=${articoli["post"]["idPost"]}" value = "${articoli["post"]["idPost"]}" class="btn ms-auto"
-    style = "display:block ; width: fit-content;">${articoli["readMore"]}</a >
-            </div >
-            <div class="card-footer">
+               style = "display:block ; width: fit-content;">${articoli["readMore"]}</a>
+               </div>`;
+
+    if (articoli["post"]["tags"] != null && articoli["post"]["tags"].length > 0) {
+        concat += `<section>
+                <h2 class="text-start">Tags</h2>
+                <ul class="list-group list-group-horizontal">`;
+        articoli["post"]["tags"].forEach(element => {
+            concat += ` <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light">` + element["nomeTag"] + `</li>`;
+        });
+        concat += `</ul>
+           </section>`
+    }
+
+    concat += `<div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
                         <button type="button" value="${articoli["post"]["idPost"]}" class="btn likeButton">
