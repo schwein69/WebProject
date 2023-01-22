@@ -1,6 +1,6 @@
 <?php require 'post_template.php';?>
 <div class="row">
-<section id='comments' class="container-fluid p-0 overflow-hidden mx-auto col-12 col-md-8 mt-1 py-3">
+<section id='comments' class="container-fluid p-0 overflow-hidden mx-auto col-12 col-md-8 mt-1">
     <div class="row text-start">
     <h2><?php echo $lang["comments"];?></h2>
     </div>
@@ -8,13 +8,17 @@
     foreach($templateParams["comments"] as $comment):
     ?>
     <div class="row">
-    <img class="img-fluid rounded" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>" style="width: auto; max-width: 25%;"/>
-    <h3><?php echo $comment['username'];?></h3>
-    <p><?php echo $comment['testo'];?></p>
-    <p><?php echo $comment['dataCommento'];?></p>
+        <div class="col-3 m-0 py-auto">
+            <img class="img-fluid avatar chatAvatar my-auto" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>"/>
+        </div>
+        <div class="row col-9 m-0 text-start">
+            <h3><?php echo $comment['username'];?></h3>
+            <p><?php echo $comment['testo'];?></p>
+            <p class="text-end small"><?php echo $comment['dataCommento'];?></p>
+        </div>
     </div>
     <?php endforeach; ?>
-    <div class="row">
+    <div class="row py-3">
     <form action="#" method="GET">
     <label class="col-3 mx-1 text-end" for="userComment"><?php echo $lang["post_writeComment"];?></label>
     <input class="col-7 mx-1" type="text" id="userComment" placeholder="<?php echo $lang["post_writeComment"];?>..."/> 

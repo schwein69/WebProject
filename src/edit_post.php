@@ -27,7 +27,7 @@ if(isset($_GET["postid"])){
     $templateParams["formTarget"] = "edit_post.php";
     $templateParams["content"] = 'create_post.php'; 
     $templateParams["title"] = 'Lynkzone - modifica post'; 
-    $templateParams["js"] = array("../js/post_creation_buttons.js", "../js/functions.js");
+    $templateParams["js"] = array("../js/post_creation_buttons.js", "../js/functions.js",'../js/notifications_receiver.js');
 } else if(isset($_POST["postid"])) {
     //EDITING COMPUTATION
     $errMsgs=array();

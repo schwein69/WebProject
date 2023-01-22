@@ -1,14 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-//TODO automatically refresh chat preview (AJAX)
-/*
-TODO (optional):
--register all chats in the page
--remove/add chats based on existing scripts
--get chat ordered by tempo, with notifications (0 included)
--add new chatid to array and sort by time -> ATTENTION: possible bad visual effect due to content replacement, simple test required
-*/
 redirectNotLoggedUser();
 $templateParams["chats"] = $dbh->getRecentChats($_SESSION['idUtente']);
 $numChats = count($templateParams["chats"]);

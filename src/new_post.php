@@ -8,6 +8,6 @@ $templateParams["formTarget"] = "post_creation.php";
 $templateParams["content"] = 'create_post.php'; 
 $templateParams["title"] = 'Lynkzone - nuovo post'; 
 $templateParams["js"] = array();
-array_push($templateParams["js"], "../js/post_creation_buttons.js", "../js/functions.js");
+array_push($templateParams["js"], "../js/post_creation_buttons.js", "../js/functions.js",'../js/notifications_receiver.js');
 require '../template/base.php';
 ?>

@@ -1,5 +1,4 @@
 //endless scroll
-//TODO get language paragraph for user action (like, comment, follow) from server
 const chatOffset= 5;
 const tolerance = 10;
 let currentEnd = chatOffset;

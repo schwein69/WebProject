@@ -17,7 +17,7 @@ for ($i=0; $i < count($templateParams["followed"]); $i++) {
 
 $templateParams["title"] = 'Lynkzone - followed'; 
 $templateParams["content"] = "followedListTMP.php";
-$templateParams["js"] = array("../js/functions.js","../js/follow-event.js");
+$templateParams["js"] = array("../js/functions.js","../js/follow-event.js",'../js/notifications_receiver.js');
 require '../template/base.php';
 
 ?>

@@ -103,7 +103,7 @@ class ChatFunctions
     public function insertMessage($chatid,$user,$msg)
     {
         $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");
-        $stmt->bind_param("sii",$msg,$user,$chatidx);
+        $stmt->bind_param("sii",$msg,$user,$chatid);
         $stmt->execute();
     }
 

@@ -1,5 +1,3 @@
-//TODO add this script to every page that requires it
-
 const notifBadge = document.querySelector('#notifButton > span');
 
 function updateNotificationsCounter(){

@@ -34,6 +34,7 @@ $post["tags"] = $dbh->getPostTags($_GET['postid']);
 setMediaType($post["media"]);
 $templateParams["posts"] = array($post);
 
+$templateParams["js"] = array('../js/notifications_receiver.js');
 $templateParams["content"] = 'full_post.php'; 
 $templateParams["user"] = $dbh->getUserData($_SESSION["idUtente"]);
 $templateParams["title"] = 'Lynkzone - post'; 
