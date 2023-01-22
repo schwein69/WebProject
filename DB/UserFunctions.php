@@ -40,11 +40,31 @@ class UserFunctions
         return count($result->fetch_all(MYSQLI_ASSOC))>0;
     }
 
+    public function checkRecoveryCode($code)
+    {
+        $query = "SELECT * FROM utenti WHERE codiceRecupero = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $code);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     public function getUserData($idUser)
     {
         $query = "SELECT * FROM utenti WHERE idUtente=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+   
+    public function getUserDataByRecoveryCode($code)
+    {
+        $query = "SELECT * FROM utenti WHERE codiceRecupero = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $code);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC)[0];
@@ -70,6 +90,16 @@ class UserFunctions
         $queyResult = $stmt->get_result();
         $result= $queyResult->fetch_all(MYSQLI_ASSOC);
         return count($result) > 0 ? $result[0] : null;
+    }
+
+    public function getSearchUser($username, $idUser)
+    {
+        $query = "SELECT idUtente,username,formatoFotoProfilo,descrizione FROM utenti WHERE username like CONCAT ('%', ?, '%') AND idUtente != ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $username, $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     //---------- USER RELATIONSHIPS ----------
@@ -156,6 +186,80 @@ class UserFunctions
     {
         $stmt = $this->db->prepare("UPDATE utenti SET keepCon=? WHERE idUtente=?");
         $stmt->bind_param("si", $code, $userId);
+        $stmt->execute();
+    }
+
+    public function addRecoveryCode($email, $code)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET codiceRecupero = ? WHERE email = ?");
+        $stmt->bind_param("ss", $code, $email);
+        $stmt->execute();
+    }
+    
+    public function followUser($userId, $adminId)
+    {
+        $stmt = $this->db->prepare("INSERT INTO relazioniutenti(idFollower,idFollowed) VALUES (?,?)");
+        $stmt->bind_param("ii", $userId, $adminId);
+        $stmt->execute();
+    }
+
+    public function unfollowUser($userId, $adminId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
+        $stmt->bind_param("ii", $userId, $adminId);
+        $stmt->execute();
+    }
+
+    public function changeLanguage($userId, $newLanguage)
+    {
+        $stmt = $this->db->prepare('UPDATE utenti SET lang=? WHERE idUtente=?');
+        $stmt->bind_param("si", $newLanguage, $userId);
+        $stmt->execute();
+    }
+
+    public function changeTheme($userId, $newTheme)
+    {
+        $stmt = $this->db->prepare('UPDATE utenti SET tema=? WHERE idUtente=?');
+        $stmt->bind_param("si", $newTheme, $userId);
+        $stmt->execute();
+    }
+
+    public function updatePassword($pass, $idUtente)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET pwd = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $pass, $idUtente);
+        $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE utenti SET codiceRecupero = NULL WHERE idUtente = ?");
+        $stmt->bind_param("i", $idUtente);
+        $stmt->execute();
+    }
+
+    public function updateUsername($username, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET username = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $username, $userId);
+        $stmt->execute();
+    }
+
+    public function updateUserEmail($email, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET email = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $email, $userId);
+        $stmt->execute();
+    }
+
+    public function updateUserAvatar($avatar, $userId)
+    {
+        $stmt = $this->db->prepare("UPDATE utenti SET formatoFotoProfilo = ? WHERE idUtente = ?");
+        $stmt->bind_param("si", $avatar, $userId);
+        $stmt->execute();
+    }
+    
+    public function updateUserBirthday($date, $userId)
+    {
+        $query = "UPDATE utenti SET dataDiNascita=? WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $date, $userId);
         $stmt->execute();
     }
 }

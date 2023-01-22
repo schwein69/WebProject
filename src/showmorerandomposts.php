@@ -7,7 +7,7 @@ $result["status"] = false;
 if(isset($_POST["stringList"])){
     $data = explode(",",$_POST["stringList"]);//split in java
     if($_POST["isTag"]){
-        $rows = $dbh->getSearchTagPosts( $_POST["tagName"],$_SESSION["idUtente"], $_POST["start"],$_POST["end"]);      
+        $rows = $dbh->getPostFunctionHandler()->getSearchTagPosts( $_POST["tagName"],$_SESSION["idUtente"], $_POST["start"],$_POST["end"]);      
     } else {
         $rows = $dbh->getPostFunctionHandler()->getRandomPosts($_SESSION["idUtente"], $data, 1);   
     }

@@ -2,11 +2,11 @@
 
 require_once 'bootstrap.php';
 if(isset($_GET["code"])){
-    if($dbh->checkCode($_GET["code"])){//verifico il codice, se esiste prendo i dati dell'utente
-        $data = $dbh->getUserFunctionHandler()->getUserDataByCode($_GET["code"]);
+    if($dbh->getUserFunctionHandler()->checkRecoveryCode($_GET["code"])){//verifico il codice, se esiste prendo i dati dell'utente
+        $data = $dbh->getUserFunctionHandler()->getUserDataByRecoveryCode($_GET["code"]);
         if(isset($_POST["pwd"]) && isset($_POST["pwdrepeat"])){
             $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-            $dbh->changePassword($pwd,$data["idUtente"]);
+            $dbh->getUserFunctionHandler()->updatePassword($pwd,$data["idUtente"]);
             $templateParams["errormsg"] = "Cambiamento password avvenuto con successo!";
             header("Refresh: 3; url=login.php");
         }

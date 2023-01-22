@@ -180,6 +180,28 @@ class PostFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getSearchTagPosts($tag, $idUser, $start = 0, $end = 1)
+    {
+        $query = "
+        SELECT DISTINCT
+            P.*, U.username, U.formatoFotoProfilo, U.idUtente
+        FROM
+            posts P,
+            utenti U,
+            posttags T,
+            contenutimultimediali C,
+            tags TA
+        WHERE
+            P.idUser = U.idUtente AND T.idTag = TA.idTag AND T.idPost = P.idPost AND C.idPost = P.idPost AND TA.nomeTag like CONCAT ('%', ?, '%') AND idUtente != ?
+            ORDER BY P.dataPost DESC LIMIT ?,?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('siii', $tag, $idUser, $start, $end);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
     public function getPostComments($postId)
     {
         $query = "SELECT dataCommento, testo, U.idUtente, username, formatoFotoProfilo

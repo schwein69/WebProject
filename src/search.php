@@ -6,12 +6,12 @@ $isPost = 0;
 $isTag = 0;
 if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["searchValue"]) && $_GET["searchValue"] != "") {
     if ($_GET["searchOption"] == "User") {
-        $userData = $dbh->getSearchUser($_GET["searchValue"],$_SESSION["idUtente"]);
+        $userData = $dbh->getUserFunctionHandler()->getSearchUser($_GET["searchValue"],$_SESSION["idUtente"]);
         $isPost = 0;
     } elseif ($_GET["searchOption"] == "Tag") {
         $isTag = 1;
         $templateParams["tagName"] = $_GET["searchValue"];
-        $templateParams["posts"] = $dbh->getSearchTagPosts($templateParams["tagName"],$_SESSION["idUtente"]);
+        $templateParams["posts"] = $dbh->getPostFunctionHandler()->getSearchTagPosts($templateParams["tagName"],$_SESSION["idUtente"]);
         $isPost = 1;
         $templateParams["oldPostIds"] = array();
     }

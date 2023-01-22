@@ -17,7 +17,7 @@ if(isset($_POST["email"])){
         $mail->setFrom('guojiahao707@gmail.com', "Sender"); // sender's email and name
         $mail->addAddress('guojiahao707@gmail.com', "Receiver");  // receiver's email and name
         $uniqueCode = uniqid();
-        $dbh->generateCode($_POST["email"],$uniqueCode);
+        $dbh->getUserFunctionHandler()->addRecoveryCode($_POST["email"],$uniqueCode);
         $mail->Subject = 'Recovery password for LinkZone';
         $mail->Body    = "Here is your link to recovery page\r\n
                           http://localhost/WebProject/src/changePassword_recovery.php?code=".$uniqueCode;

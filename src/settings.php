@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
         case "dataForm": //data form
             if (isset($_POST["name"]) && $templateParams["user"]["username"] != $_POST["name"]) {
                 if (!$dbh->getUserFunctionHandler()->checkUsername($_POST["name"])) { //se è settato(di default è quello vecchio) ed è diverso da quello originale, lo aggiorno
-                    $dbh->updateUsername($_POST["name"], $_SESSION["idUtente"]);
+                    $dbh->getUserFunctionHandler()->updateUsername($_POST["name"], $_SESSION["idUtente"]);
                 } else {
                     $msg = "Username esistente!";
                     $templateParams["errormsg"] = $msg;
@@ -16,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
             }
             if (isset($_POST["email"]) && $templateParams["user"]["email"] != $_POST["email"]) {
                 if (!$dbh->getUserFunctionHandler()->checkEmail($_POST["email"])) {
-                    $dbh->updateUserEmail($_POST["email"], $_SESSION["idUtente"]);
+                    $dbh->getUserFunctionHandler()->updateUserEmail($_POST["email"], $_SESSION["idUtente"]);
                 } else {
                     $msg = "Email esistente!";
                     $templateParams["errormsg"] = $msg;
                 }
             }
             if (isset($_POST["date"]) && $templateParams["user"]["dataDiNascita"] != $_POST["date"]) {
-                $dbh->updateUseBirthday($_POST["date"], $_SESSION["idUtente"]);
+                $dbh->getUserFunctionHandler()->updateUserBirthday($_POST["date"], $_SESSION["idUtente"]);
             }
 
             if ($_FILES['newImage']['size'] != 0) {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 if (file_exists($picPath)) {
                     unlink($picPath);
                 }
-                $dbh->updateUserAvatar(strtolower(pathinfo($img["name"], PATHINFO_EXTENSION)), $_SESSION["idUtente"]);
+                $dbh->getUserFunctionHandler()->updateUserAvatar(strtolower(pathinfo($img["name"], PATHINFO_EXTENSION)), $_SESSION["idUtente"]);
                 $userPath = UPLOAD_DIR . $_SESSION["idUtente"] . '/';
                 list($result, $fileType, $msg) = uploadFile($userPath, $img, "profile");
             }
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 if (password_verify($_POST["oldpwd"], $templateParams["user"]["pwd"])) {
                     if ($_POST["pwd"] == $_POST["pwdrepeat"]) {
                         $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-                        $dbh->changePassword($pwd, $templateParams["user"]["idUtente"]);
+                        $dbh->getUserFunctionHandler()->updatePassword($pwd, $templateParams["user"]["idUtente"]);
                     }
                 } else {
                     $msg = "Password originale errata!";
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
 
         case "languageFormSubmission": //language form
             if (isset($_POST["languages"]) && $_POST["languages"] != $_SESSION["lang"]) { //se è diverso da quello già settato  
-                $dbh->changeLanguage($templateParams["user"]["idUtente"],$_POST["languages"]);
+                $dbh->getUserFunctionHandler()->changeLanguage($templateParams["user"]["idUtente"],$_POST["languages"]);
                 $_SESSION["lang"] = $_POST["languages"];
                 header("Refresh: 1");
             }

@@ -30,6 +30,15 @@ class ChatFunctions
         return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
+    public function isChatCreated($admin, $user)
+    { 
+        $stmt = $this->db->prepare("SELECT p.* FROM partecipazione p WHERE p.idUtente=? AND p.idChat in (SELECT a.idChat FROM partecipazione a WHERE a.idUtente = ?)");
+        $stmt->bind_param("ii",$admin,$user);
+        $stmt->execute();
+        $queryRes = $stmt->get_result();
+        return count($queryRes->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     public function getChatUser($chatId, $user1)
     {
         $query = "SELECT U.idUtente, username, formatoFotoProfilo "
