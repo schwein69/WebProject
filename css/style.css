@@ -73,11 +73,6 @@ label, input {
 #myTab{
   background-color: var(--colour-bck-nav);
 }
-/*
-.chatAvatar{
-  width: 80%;
-  border:  1px solid var(--colour-border) !important;
-}*/
 
 li.chatbg p, li.chatbg span, li.chatbg div > div > div{
   width: fit-content;
