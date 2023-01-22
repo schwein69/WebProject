@@ -12,7 +12,6 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
             $result["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe($_SESSION["idUtente"],$result["post"]["idUser"]);
             $result["liked"] = $dbh->getPostFunctionHandler()->isPostLiked($_SESSION["idUtente"],$result["post"]["idPost"]);    
             $result["saved"] = $dbh->getPostFunctionHandler()->isPostSaved($_SESSION["idUtente"],$result["post"]["idPost"]);    
-            //$result["content"] = $dbh->getPostContents($result["post"]["idPost"]);
             $result["imagealt"] = getProfilePicAlt($user["username"]);
             $result["isLoggedUserPost"] = $_SESSION["idUtente"] == $result["post"]["idUser"];
             $result["status"] = true;
@@ -31,12 +30,14 @@ if(isset($_POST["start"]) && isset($_POST["end"])){
             $result["readMore"] = $lang["post_readMore"];
             $result["comment"] = $lang["post_comment"];
             $result["savedText"] = $result["saved"] ? $lang["post_saved"] : $lang["post_notSaved"];
+            $result["shareText"] = $lang["post_share"];
+            $result["removeText"] = $lang["post_remove"];
+            $result["postEditText"] = $lang["post_editPost"];    
         }
-    }
+}
 
 header('Content-Type: application/json');
 echo json_encode($result);
 
 
 ?>
- 

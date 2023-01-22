@@ -30,7 +30,7 @@ for ($i=0; $i < $numPosts; $i++) {
 
 $templateParams["content"] = "post_template.php";
 
-$templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-home.js", "../js/notifications_receiver.js","../js/savePost.js");
+$templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-home.js", "../js/notifications_receiver.js","../js/savePost.js","../js/sharePost.js");
 
 $templateParams["title"] = 'Lynkzone - home';
 require '../template/base.php';

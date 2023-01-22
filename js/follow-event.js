@@ -6,9 +6,8 @@ function follow(event) {
     const userId = followButton.value;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
-        console.log(this.responseText);
         const response = JSON.parse(this.responseText);
-        const contentPlace = document.querySelectorAll("button[class*=followButton" + userId + "]");//tutti i button che hanno lo stesso id
+        const contentPlace = document.querySelectorAll("button[class*=followButton" + userId + "]");//tutti i button che hanno la stessa classe
         if (response.follower) {//quelli che seguo io
             contentPlace.forEach(element => {//aggiorna la scritta a tutti i post dello stesso utente
                 element.innerText = element.innerText === "Follow" ? "Followed" : "Seguito";

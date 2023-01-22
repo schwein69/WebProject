@@ -74,6 +74,10 @@ label, input {
   background-color: var(--colour-bck-nav);
 }
 
+.nav-justified .nav-item, .nav-justified>.nav-link {
+  flex-basis: auto;
+}
+
 li.chatbg p, li.chatbg span, li.chatbg div > div > div{
   width: fit-content;
   height: fit-content;
@@ -211,6 +215,10 @@ section#comments div{
   border: 1px solid var(--colour-border) !important;
 }
 
+.carousel-control-prev,.carousel-control-next{
+  top : 25%;
+  bottom: 25%;
+}
 /* Form buttons (used in new_post.php)*/
 form>fieldset button {
   width: fit-content !important;

@@ -13,17 +13,17 @@ function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
 function showBoxAndDeactivateScroll(container) {
     document.body.style.pointerEvents = "none";
     document.body.style.overflow = "hidden";
-    document.querySelector("div."+container).setAttribute('style', 'display:block;');
-    document.querySelector("div."+container).style.pointerEvents = "auto";
-    document.querySelector("div."+container).style.top = window.scrollY + "px";
+    document.querySelector("div." + container).setAttribute('style', 'display:block;');
+    document.querySelector("div." + container).style.pointerEvents = "auto";
+    document.querySelector("div." + container).style.top = window.scrollY + "px";
 
 }
 
 function hideBoxAndReactivateScroll(container) {
     document.body.style.pointerEvents = "auto";//attiva eventi
     document.body.style.overflow = "";//rimostra scrollbar
-    document.querySelector("div."+container).setAttribute('style', 'display:none;');//nascondi box
-    document.querySelector("div."+container).style.pointerEvents = "none";//disattiva eventi per sicurezza
+    document.querySelector("div." + container).setAttribute('style', 'display:none;');//nascondi box
+    document.querySelector("div." + container).style.pointerEvents = "none";//disattiva eventi per sicurezza
 }
 function generaArticoli(articoli) {
     let articolo = `
@@ -37,13 +37,16 @@ function generaArticoli(articoli) {
                 </a>
                 </div>
                 <div class="col-4">
-                <h2 style="font-size: 2vw">
+                <h2 style="font-size: x-large;">
                     ${articoli["post"]["username"]}
                 </h2>
                 </div>
                 <div class="col-4">`
     if (!articoli["isLoggedUserPost"]) {
-        articolo += `<button type="button" id="follower${articoli["post"]["idUser"]}" class="btn"> ${articoli["followbtntext"]}</button>`;
+        articolo += `<button type="button" value="${articoli["post"]["idUser"]}" class="btn followButton${articoli["post"]["idUser"]}"> ${articoli["followbtntext"]}</button>`;
+    }else{
+        articolo +=`<a href="edit_post.php?postid=${articoli["post"]["idPost"]}" class="btn">${articoli["postEditText"]}</a>`;
+        articolo += `<button type="button" value="${articoli["post"]["idUser"]}" class="btn removePostButton"><img src="../imgs/icons/trash3.svg" alt="${articoli["removeText"]}"/></button>`;
     }
     articolo += `</div>
                      </div>
@@ -103,7 +106,7 @@ function generaArticoli(articoli) {
             <div class="card-footer">
                 <ul class="nav nav-pills">
                     <li class="nav-item mx-2">
-                        <button type="button" id="like${articoli["post"]["idPost"]}" class="btn btn-light">
+                        <button type="button" value="${articoli["post"]["idPost"]}" class="btn likeButton">
                         <img src="${articoli["liked"] ? "../imgs/icons/heart-fill.svg" : "../imgs/icons/heart.svg"}"`;
 
     concat += `alt="${articoli["liked"] ? "Dislike post" : "Like post"}" />
@@ -115,11 +118,13 @@ function generaArticoli(articoli) {
     concat += `
                         </span>
                     </li>
-                    <li class="nav-item mx-2"> <button type="button" id="comment${articoli["post"]["idPost"]}"
-                            class="btn btn-light"><img src="../imgs/icons/chat.svg" alt="${articoli["comment"]}"/></button>
+                    <li class="nav-item mx-2"> <button type="button" value="${articoli["post"]["idPost"]}"
+                            class="btn commentBtn"><img src="../imgs/icons/chat.svg" alt="${articoli["comment"]}"/></button>
                             <span>${articoli["post"]["numCommenti"] > 0 ? articoli["post"]["numCommenti"] : ""}</span></li>
-                    <li class="nav-item mx-2"> <button type="button" id="save${articoli["post"]["idPost"]}"
-                            class="btn"><img src="${articoli["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"}" alt="${articoli["savedText"]}"/></button><span></span></li >
+                    <li class="nav-item mx-2"> <button type="button" value="${articoli["post"]["idPost"]}"
+                            class="btn saveButton"><img src="${articoli["saved"] ? "../imgs/icons/star-fill.svg" : "../imgs/icons/star.svg"}" alt="${articoli["savedText"]}"/></button><span></span></li >
+                    <li class="nav-item mx-2"> <button type="button" value="${articoli["post"]["idPost"]}"
+                    class="btn sharePostButton"><img src="../imgs/icons/share.svg" alt="${articoli["shareText"]}"/></button><span></span></li >
                 </ul>
             </div>
         </article></div>`;
@@ -128,7 +133,7 @@ function generaArticoli(articoli) {
     return articolo;
 }
 
-function areThereDangerousChars(text){
+function areThereDangerousChars(text) {
     const regExp = />|<|;|,|:|\\|\//;
     return regExp.test(text);
 }
