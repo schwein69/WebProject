@@ -17,13 +17,17 @@ function comment(event){
             const newComment = document.createElement('div');
             newComment.classList.add('row');
             newComment.innerHTML =
-                                '<img class="img-fluid rounded" src="' + user.fotoProfilo + '" alt="foto profilo di '
-                                + user.username + '" style="width: auto; max-width: 25%;"/>'
-                                +    '<h3>' + user.username + '</h3>'
-                                +    '<p>' + response.text + '</p>'
-                                +    '<p>' + timeString + '</p>'
+                                '<div class="col-4 my-auto">'
+                                + '<img class="img-fluid avatar" src="' + user.fotoProfilo + '" alt="foto profilo di '
+                                + user.username + '"/>'
+                                + '</div>'
+                                + '<div class="row col-8 m-0 text-start">'
+                                + '<h3>' + user.username + '</h3>'
+                                + '<p>' + response.text + '</p>'
+                                + '<p class="text-end small">' + timeString + '</p>'
+                                + '</div>';
             commentBox.value = "";
-            const commentInputDiv = document.querySelector('#comments div.row:last-child');
+            const commentInputDiv = document.querySelector('#comments > div.row:last-child');
             commentInputDiv.parentNode.insertBefore(newComment, commentInputDiv);
     
         }

@@ -19,12 +19,12 @@ function addNotification(){
                     const notifElement = document.createElement('li');
                     notifElement.classList.add("list-group-item"); 
                     let content = '<div class="row">'
-                    + '<div class="col-3">'
+                    + '<div class="col-4">'
                     + '<a href="profile.php?idutente=' + element.idUtenteNotificante + '">'
-                    + '<img class="img-fluid avatar chatAvatar" src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
+                    + '<img class="img-fluid avatar" src="' + element.fotoProfilo + '" alt="' + element.username + '"/>'
                     + '</a>'
                     + '</div>'
-                    + '<div class="my-auto col-9">'
+                    + '<div class="my-auto col-8">'
                     +' <p> <a href="';
                     if(element.isPostNotification){
                         content += 'post.php?postid=' + element.idPostRiferimento;

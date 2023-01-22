@@ -8,10 +8,10 @@
     foreach($templateParams["comments"] as $comment):
     ?>
     <div class="row">
-        <div class="col-3 m-0 py-auto">
-            <img class="img-fluid avatar chatAvatar my-auto" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>"/>
+        <div class="col-4 my-auto">
+            <img class="img-fluid avatar my-auto" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>"/>
         </div>
-        <div class="row col-9 m-0 text-start">
+        <div class="row col-8 m-0 text-start">
             <h3><?php echo $comment['username'];?></h3>
             <p><?php echo $comment['testo'];?></p>
             <p class="text-end small"><?php echo $comment['dataCommento'];?></p>

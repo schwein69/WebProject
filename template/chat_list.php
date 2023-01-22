@@ -9,10 +9,10 @@
         <li id="chat<?php echo $chat["idChat"];?>" class="list-group-item chatbg"> 
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
         <div class="row">
-            <div class="col-3">
-                <img class="img-fluid avatar chatAvatar" src="<?php echo $chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
+            <div class="col-4">
+                <img class="img-fluid avatar" src="<?php echo $chat["fotoProfilo"];?>" alt="<?php echo $chat["username"];?>"/>
             </div>
-            <div class="row col-9">
+            <div class="row col-8">
                 <h2><?php echo $chat["username"];?></h2>
                 <div class="row mx-auto">
                     <p><?php echo $chat["anteprimaChat"] != "" ? $chat["anteprimaChat"] : $lang["chat_startNewConversation"];?></p><span style="<?php echo isset($chat['numNotif'])? '':'display:none;';?>" class="badge bg-secondary"><?php echo isset($chat['numNotif'])? $chat['numNotif']:'';?></span>

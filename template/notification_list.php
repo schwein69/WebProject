@@ -4,12 +4,12 @@
         <?php foreach($templateParams["notifications"] as $notif):?>
         <li class="list-group-item"> 
         <div class="row">
-        <div class="col-3">
+        <div class="col-4">
         <a href="profile.php?idUtente=<?php echo $notif["idUtenteNotificante"];?>">
-        <img class="img-fluid avatar chatAvatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo getProfilePicAlt($notif["username"]);?>"/>
+        <img class="img-fluid avatar" src="<?php echo $notif["fotoProfilo"];?>" alt="<?php echo getProfilePicAlt($notif["username"]);?>"/>
         </a>
         </div>
-        <div class="my-auto col-9">
+        <div class="my-auto col-8">
         <p>
             <a href="<?php echo isPostNotification($notif["nomeTipo"]) ?
                             "post.php?postid=".$notif["idPostRiferimento"]

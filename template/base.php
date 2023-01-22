@@ -67,7 +67,7 @@
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item col-3">
                             <a href="index.php" class="btn bottom-nav-button"><span
-                                    class="bi bi-house-fill"></span><br>
+                                    class="bi bi-house-fill"></span>
                                 <h2>Home</h2>
                             </a>
                         </li>
@@ -86,7 +86,7 @@
                         </li>
                         <li class="nav-item col-3">
                             <a href="../src/profile.php" class="btn bottom-nav-button"><span
-                                    class="bi bi-person-fill"></span><br>
+                                    class="bi bi-person-fill"></span>
                                 <h2><?php echo $lang["Profile"];?></h2>
                             </a>
                         </li>

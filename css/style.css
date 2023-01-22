@@ -215,6 +215,10 @@ section#comments div{
   border: 1px solid var(--colour-border) !important;
 }
 
+section#comments > div.row > div:first-child{
+  border: none!important;
+}
+
 .carousel-control-prev,.carousel-control-next{
   top : 25%;
   bottom: 25%;
