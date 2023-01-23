@@ -1,10 +1,10 @@
-<?php foreach ($templateParams["followed"] as $user): ?>
+<?php foreach ($templateParams["likes"] as $user): ?>
 <div class="row">
     <div class="col-12 col-md-8 mx-auto">
         <div class="card col-12 mx-auto">
             <div class="row g-0">
                 <div class="col-4 my-auto">
-                    <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>" class="img-fluid avatar "
+                    <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>" class="img-fluid avatar"
                         alt="<?php echo getProfilePicAlt($user["username"]); ?>">
                 </div>
                 <div class="col-8 my-auto">
@@ -13,18 +13,11 @@
                             <?php echo $user["username"] ?>
                         </h2>
                         <p class="card-text">
-                            <?php echo $user["descrizione"] ?>
-                        </p>
-                        <p class="card-text">
                             <?php if($user["idUtente"] != $_SESSION["idUtente"]):?>
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"
                                 class="btn"><?php echo $lang["VisitPage"]?></a>
                             <?php endif;?>
-                            <?php if(!isset($_GET["idUtente"])):?>                              
-                            <button type="button" value="<?php echo $user["idUtente"] ?>" class="btn followButton<?php echo $user["idUtente"]; ?>">
-                            <?php echo $user["followedByMe"]  ? $lang["userFollowed"] :  $lang["userNotFollowed"]; ?>
-                            </button>
-                            <?php endif;?>
+                           
                         </p>
                     </div>
                 </div>

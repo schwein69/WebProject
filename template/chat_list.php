@@ -2,7 +2,7 @@
 <input id="searchBox" type="text" placeholder="<?php echo $lang["Search"];?>..."/>
 </div>
 
-<div class="row row col-12 col-md-8 mx-auto">
+<div class="row col-12 col-md-8 mx-auto">
     <?php if(count($templateParams["chats"]) > 0): ?>
         <ul class="list-group chatbg p-0">
         <?php foreach($templateParams["chats"] as $chat):?>

@@ -21,14 +21,15 @@ function showMoreFriends() {
             const singleElement = document.createElement("div");
             singleElement.classList.add("row");
             singleElement.classList.add("mt-2");
-            singleElement.innerHTML = `<div class="col-4">
-            <img class="img-fluid friendListAvatar" src="../imgs/uploads/`+ element["idUtente"] + `/profile.` + element["formatoFotoProfilo"] + `" alt="` + element["profilePicAlt"] + `">
+            singleElement.classList.add("singleRowOfFriendListPopUp");
+            singleElement.innerHTML = `<div class="col-3">
+            <img class="img-fluid avatar" src="../imgs/uploads/`+ element["idUtente"] + `/profile.` + element["formatoFotoProfilo"] + `" alt="` + element["profilePicAlt"] + `">
             </div>
-            <div class="col-4">
-               <h2 style="font-size: medium">`+ element["username"] + `</h2>
+            <div class="col-6 my-auto" style=" word-wrap: break-word;">
+               <h2 style="font-size: medium;">`+ element["username"] + `</h2>
             </div>
-            <div class="col-4">     
-                 <input class="col-6" type="checkbox" name="chb" value="`+element["idUtente"]+`" />
+            <div class="col-3 my-auto">     
+                 <input type="checkbox" name="chb" value="`+element["idUtente"]+`" />
             </div>`;
             list.push(singleElement);
         });

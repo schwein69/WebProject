@@ -28,17 +28,17 @@
                                 <nav class="navbar navbar-expand-md navbar-light">
                                     <ul class="nav nav-pills ms-auto">
                                         <?php if (isset($templateParams["profileTopNav"])): ?>
-                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn btn-light">
+                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn">
                                                 <img src="../imgs/icons/gear-fill.svg" alt="<?php echo $lang["settings"];?>" />
                                             </button></li>
                                         <?php else: ?>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="newpostButton" class="btn btn-light">
+                                            <button role="link" type="button" id="newpostButton" class="btn">
                                                 <img src="../imgs/icons/plus-circle.svg" alt="<?php echo $lang["postCreation"];?>" />
                                             </button>
                                         </li>
                                         <li class="mx-1">
-                                            <button role="link" type="button" id="notifButton" class="btn btn-light">                                                
+                                            <button role="link" type="button" id="notifButton" class="btn">                                                
                                                 <img src="../imgs/icons/bell.svg" alt="<?php echo $lang["notifications"];?>" />
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
                                                 <span aria-label="<?php echo $lang["newNotifications"];?>"></span>

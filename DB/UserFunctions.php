@@ -262,6 +262,13 @@ class UserFunctions
         $stmt->bind_param('si', $date, $userId);
         $stmt->execute();
     }
+    public function updateUserDescription($userId,$description)
+    {
+        $query = "UPDATE utenti SET descrizione=? WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $description, $userId);
+        $stmt->execute();
+    }
 }
 
 ?>

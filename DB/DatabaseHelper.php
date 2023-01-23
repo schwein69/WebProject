@@ -55,5 +55,15 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getAllLikes($idPost)
+    {
+        $query = "SELECT p.*,u.username,u.formatoFotoProfilo,u.idUtente FROM postpiaciuti p, utenti u WHERE p.idPost = ? AND p.idUtente = u.idUtente";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idPost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
