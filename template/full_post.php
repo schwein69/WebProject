@@ -20,7 +20,7 @@
     <?php endforeach; ?>
     <div class="row py-3">
     <form action="#" method="GET">
-    <label class="col-3 mx-1 text-end" for="userComment"><?php echo $lang["post_writeComment"];?></label>
+    <label class="col-3 mx-1" for="userComment"><?php echo $lang["post_writeComment"];?></label>
     <input class="col-7 mx-1" type="text" id="userComment" placeholder="<?php echo $lang["post_writeComment"];?>..."/> 
     <button class="col-1 mx-1 btn" id="commentsend<?php echo $_GET["postid"];?>" type="submit">
         <img src="../imgs/icons/send.svg" alt="<?php echo $lang["Send"];?>"/>

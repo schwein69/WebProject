@@ -234,6 +234,10 @@ div.chat-body, #chat-bottom > form{
   background-color: var(--colour-bck-base);
 }
 
+main > div.chat-body:nth-child(2){
+  overflow-y: scroll;
+}
+
 div.chat-body > div.row > div{
   background-color: orange;
   width: fit-content;

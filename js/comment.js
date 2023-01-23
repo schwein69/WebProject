@@ -9,9 +9,9 @@ function comment(event){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         const timeStamp = new Date(Date.now());
-        const timeString = timeStamp.getDate() + "-"
-        + timeStamp.getMonth() + "-"
-        + timeStamp.getFullYear() + " ";
+        const timeString = timeStamp.getFullYear() + "-"
+        + ("0"+(timeStamp.getMonth()+1)).slice(-2) + "-"
+        + timeStamp.getDate();
         const response = JSON.parse(this.responseText);
         if(response.status){
             const newComment = document.createElement('div');

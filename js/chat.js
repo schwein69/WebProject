@@ -1,22 +1,22 @@
-//enter page at bottom
-document.addEventListener('load',window.scrollTo(0, document.body.scrollHeight));
+const chatBody = document.getElementsByClassName('chat-body')[1];
 
 //resize chat body
-const chatContainer = document.querySelector('main > div:nth-child(2)');
-const initialHeight = chatContainer.offsetHeight;
 function resizeChatBody(){
-    const chatTopOffset = window.pageYOffset + chatContainer.getBoundingClientRect().top;
+    const chatTopOffset = window.pageYOffset + chatBody.getBoundingClientRect().top;
     const inputTextHeight = document.getElementById('chat-bottom').offsetHeight;
     const footerHeight = document.querySelector('body > div > footer > div').offsetHeight;
     const bottomMargin = 1;
     const minChatHeight = document.body.offsetHeight - chatTopOffset - footerHeight - inputTextHeight - bottomMargin;
-    if(initialHeight < minChatHeight){
-        chatContainer.setAttribute('style','min-height:'+minChatHeight+"px");
+    if(chatBody != minChatHeight){
+        chatBody.setAttribute('style','height:'+minChatHeight+"px");
     }
 }
 
 resizeChatBody();
 window.addEventListener('resize',resizeChatBody);
+
+//enter page at bottom
+document.addEventListener('load',chatBody.scrollTo(0, chatBody.scrollHeight));
 
 //send messages
 const txtBox = document.getElementById('inputMsg');
@@ -36,13 +36,8 @@ sendBtn.addEventListener('click', event => {
                 newMsg.classList.add('my-1');
                 newMsg.classList.add('text-end');
                 newMsg.classList.add('ms-auto');
-                const timeString = timeStamp.getDate() + "-"
-                                   + timeStamp.getMonth() + "-"
-                                   + timeStamp.getFullYear() + " "
-                                   + timeStamp.getHours() + ":"
-                                   + timeStamp.getMinutes();
                 newMsg.innerHTML = '<p>' + response.text + '</p>'
-                                    + '<span class="small text-end">' + timeString + '</span>';
+                                    + '<span class="small text-end">' + response.msgTime + '</span>';
 
                 const divChatEl = document.createElement('div');
                 divChatEl.classList.add('row');
@@ -55,7 +50,8 @@ sendBtn.addEventListener('click', event => {
                     document.querySelector('main > div.chat-body:nth-child(2)').appendChild(divChatEl);
                 }
                 txtBox.value="";
-                window.scrollTo(0, document.body.scrollHeight);
+                resizeChatBody();
+                chatBody.scrollTo(0, chatBody.scrollHeight);
             } else {
                 errElem.innerText = response.err;
             }
@@ -69,9 +65,9 @@ sendBtn.addEventListener('click', event => {
 //endless scroll
 const messagesOffset= 1;
 let currentStart = 10;
-
+let scrollingTimeout = null;
 function chatScrollingTop(){
-    if(window.scrollY == 0){
+    if(chatBody.scrollTop == 0){
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             const response = JSON.parse(this.responseText);
@@ -107,9 +103,8 @@ function chatScrollingTop(){
         currentStart += messagesOffset;
     }
 }
-let scrollingTimeout = null;
-document.addEventListener('scroll', event => {
-    if(window.scrollY == 0){
+chatBody.addEventListener('scroll', event => {
+    if(chatBody.scrollTop == 0){
         scrollingTimeout = setInterval(chatScrollingTop, 300);
     } else if(scrollingTimeout != null){
         clearInterval(scrollingTimeout);
@@ -158,6 +153,7 @@ function getNewMessages(){
                 divChatEl.appendChild(chatElement);
                 const lastMessage = document.querySelector('div.chat-body > div.row:last-child');
                 lastMessage.parentNode.insertBefore(divChatEl, lastMessage.nextSibling);
+                resizeChatBody();
             });
         }
     }

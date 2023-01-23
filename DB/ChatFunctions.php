@@ -114,6 +114,13 @@ class ChatFunctions
         $stmt = $this->db->prepare("INSERT INTO messaggi(testoMsg,msgTimestamp,letto,idMittente, idChat) VALUES (?,NOW(),0,?,?)");
         $stmt->bind_param("sii",$msg,$user,$chatid);
         $stmt->execute();
+        $msgId = $this->db->insert_id;
+
+        $stmt = $this->db->prepare("SELECT msgTimestamp FROM messaggi WHERE idMessaggio=?");
+        $stmt->bind_param("i",$msgId);
+        $stmt->execute();
+        $res = $stmt->get_result(); 
+        return $res->fetch_all(MYSQLI_ASSOC)[0];
     }
 
     public function updateChatPreview($chatid,$msg)
