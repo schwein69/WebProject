@@ -243,6 +243,18 @@ div.chat-body > div.row > div.ms-auto{
   background-color: purple;
 }
 
+.minForm label{
+  background-color: var(--colour-bck-backside);
+  border: 0px;
+}
+
+.minForm fieldset:nth-of-type(2) > div > div{
+  border: 1px solid var(--colour-border);
+}
+
+.minForm fieldset:nth-of-type(2) > div > div:last-of-type{
+  border: 0px;
+}
 
 .errmsg{
   display: none;

@@ -1,3 +1,4 @@
+//add tags
 let numTag = 8 - tagOffset;
 const tagSelector = document.querySelector("fieldset div.row");
 const tagButton = document.querySelector("fieldset div.row:last-child button");
@@ -11,12 +12,11 @@ tagButton.addEventListener('click',event => {
         elem.type = "text";
         elem.id="tag"+ (10 - numTag);
         elem.name="tag"+ (10 - numTag);
-        elem.classList.add('col-2');
+        elem.classList.add('col-12');
+        elem.classList.add('col-md-2');
         elem.classList.add('m-1');
         tagSelector.appendChild(elem);
         numTag--;
-        console.log('added');
-        console.log(elem);
     }
     if(numTag <= 0) {
         tagButton.style.display='none';
@@ -24,8 +24,9 @@ tagButton.addEventListener('click',event => {
 
 });
 
+//add images
 let numImg=2;
-const imgSelector = document.querySelectorAll("fieldset div.row:last-child")[1];
+const imgSelector = document.querySelectorAll("fieldset > div > div.row:last-child")[1];
 const imgButton = document.querySelectorAll("fieldset div.row:last-child button")[1];
 
 imgButton.addEventListener('click',event => {
@@ -35,16 +36,20 @@ imgButton.addEventListener('click',event => {
         const newNode = document.createElement('div');
         const elem = '<input aria-label="Immagine ' + numImg + '" class="col-6" type="file" id="f' + numImg
                     + '" name="f' + numImg + '" accept="video/*,image/*"/>'
+                    + '<div class="row my-2">'
                     + '<label class="col-3" for="alt1">Testo alternativo:</label>'
-                    + '<input aria-label="Testo alternativo per immagine ' + numImg + '" class="col-3" type="text" id="alt' + numImg
-                    + '" name="alt' + numImg + '"/>';
+                    + '<input aria-label="Testo alternativo per immagine ' + numImg + '" class="col-12 col-6" type="text" id="alt' + numImg
+                    + '" name="alt' + numImg + '"/>'
+                    + '</div>';
 
         newNode.innerHTML = elem;
         newNode.classList.add('row');
-        newNode.classList.add('my-1');
+        newNode.classList.add('my-2');
+        newNode.classList.add('p-3');
         
         imgSelector.parentNode.insertBefore(newNode, imgSelector);
         numImg++;
+        window.scrollTo(0, document.body.scrollHeight);
     } else {
         imgButton.setAttribute('style', 'display:none !important;');
     }
@@ -68,6 +73,7 @@ function areThereImages() {
 const submitButton = document.querySelector('form input[type="submit"]');
 const errMsgTags = document.querySelector('fieldset .errmsg');
 const errMsgAltText = document.querySelectorAll('fieldset .errmsg')[1];
+const errManyMedia = document.querySelectorAll('fieldset .errmsg')[2];
 submitButton.addEventListener('click', event => {
     event.preventDefault();
     let canSub = true;
@@ -82,7 +88,6 @@ submitButton.addEventListener('click', event => {
     //tags check
     let showTagMsg = false;
     for(let i=1; i < (10-numTag); i++){
-        console.log(i);
         if(areThereDangerousChars(document.getElementById('tag' + i).value)){
             canSub = false;
             showTagMsg = true;
@@ -106,8 +111,29 @@ submitButton.addEventListener('click', event => {
     } else {
         errMsgAltText.removeAttribute('style');
     }
+    
+    //check medias < 10
+    const checkBoxElements = document.querySelectorAll('input[type="checkbox"]');
+    let numMedia = 0;
+    for(let i=0;i<checkBoxElements.length;i++){
+        if(!checkBoxElements[i].checked){
+            numMedia++;
+        }
+    }
+    for(let i=1; i < numImg; i++){
+        if(document.getElementById('f'+i).files[0] != null){
+            numMedia++;
+        }
+    }
+    if(numMedia >= 10){
+        canSub = false;
+        errManyMedia.setAttribute('style','display:block');
+    } else{
+        errManyMedia.removeAttribute('style');
+    }
 
     if(canSub){
         document.querySelector('form').submit();
     }
 });
+

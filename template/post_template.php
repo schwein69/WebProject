@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-<?php //TODO add listener to carousel to stop video when changing media.
+<?php
 /*
 Function that print a post card. 
 

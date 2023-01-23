@@ -23,7 +23,7 @@ if(isset($_GET["postid"])){
     for ($i=0; $i < count($templateParams["post"]["media"]); $i++) { 
         $templateParams["post"]["media"][$i]["percorsoImmagine"] = UPLOAD_DIR.$templateParams["post"]["idUser"]."/".$postId."/".$templateParams["post"]["media"][$i]["nomeImmagine"]; 
     }
-    $templateParams["submitButtonText"] = "Piplup";
+    $templateParams["submitButtonText"] = $lang["post_editPost"];
     $templateParams["formTarget"] = "edit_post.php";
     $templateParams["content"] = 'create_post.php'; 
     $templateParams["title"] = 'Lynkzone - modifica post'; 
