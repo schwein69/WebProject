@@ -3,7 +3,7 @@ const chatButton = document.getElementById('menuChatButton');
 let chatBadge;
 if(chatButton != null){
     chatBadge = chatButton.querySelector('span:nth-child(2)');
-    chatBadge.setAttribute('display','display:none;');
+    chatBadge.setAttribute('style','display:none;');
     setInterval(updateNewMessagesNumber,300);
 }
 function updateNewMessagesNumber(){

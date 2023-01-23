@@ -12,7 +12,7 @@
           <a href="profile.php?idUtente=<?php echo $comment['idUtente'] ?>"><img class="img-fluid avatar my-auto" src="<?php echo UPLOAD_DIR.$comment['idUtente'].'/profile.'.$comment['formatoFotoProfilo']?>" alt="<?php echo getProfilePicAlt($comment['username']);?>"/></a>
         </div>
         <div class="row col-8 m-0 text-start">
-            <h3><?php echo $comment['username'];?></h3>
+            <h3><a href="profile.php?idUtente=<?php echo $comment['idUtente'] ?>"><?php echo $comment['username'];?></a></h3>
             <p><?php echo $comment['testo'];?></p>
             <p class="text-end small"><?php echo $comment['dataCommento'];?></p>
         </div>
