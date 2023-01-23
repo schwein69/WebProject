@@ -228,11 +228,23 @@ form>fieldset button {
   width: fit-content !important;
 }
 
-div.chat-msg{
-  background-color:green;
+/* CHAT */
+div.chat-body, #chat-bottom > form{
+  border: 1px solid var(--colour-border);
+  background-color: var(--colour-bck-base);
+}
+
+div.chat-body > div.row > div{
+  background-color: orange;
   width: fit-content;
+  height: fit-content;
   max-width:50%;
 }
+
+div.chat-body > div.row > div.ms-auto{
+  background-color: purple;
+}
+
 
 .errmsg{
   display: none;

@@ -16,6 +16,8 @@ if(!$dbh->getChatFunctionHandler()->isUserInChat($_GET["chatId"],$templateParams
 
 $templateParams["messages"] = $dbh->getChatFunctionHandler()->getRecentMessagesFromChat($_GET["chatId"]);
 $templateParams["user2"] = $dbh->getChatFunctionHandler()->getChatUser($_GET["chatId"], $_SESSION["idUtente"]);
+$templateParams["user2"]["profilePic"] = UPLOAD_DIR.$templateParams["user2"]["idUtente"]."/profile.".$templateParams["user2"]["formatoFotoProfilo"];
+$templateParams["user2"]["profilePicAlt"] = getProfilePicAlt($templateParams["user2"]["username"]);
 $dbh->getChatFunctionHandler()->readAllMessages($_GET["chatId"], $_SESSION["idUtente"]);
 $templateParams["content"] = 'chat_content.php';
 $templateParams["title"] = 'Lynkzone - '.$templateParams["user2"]["username"]; 
