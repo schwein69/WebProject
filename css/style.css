@@ -166,6 +166,9 @@ h1 a {
   color: var(--colour-font);
 }
 
+.row{
+  margin: 0;
+}
 .confirmBox{
   background-color: var(--colour-bck-popup);
   border: 1px solid var(--colour-border);
@@ -237,12 +240,4 @@ div.chat-msg{
 .errmsg{
   display: none;
   color: red;
-}
-
-@media only screen and (min-width: 768px) {
-
-  body>main section ul li span {
-    font-size: large;
-  }
-
 }
