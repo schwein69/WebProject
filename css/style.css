@@ -36,6 +36,10 @@ body{
   box-shadow: none;
   border:  1px solid var(--colour-border) !important;
 }
+.singleRowOfFriendListPopUp{
+  border:  1px solid var(--colour-border);
+}
+
 section,.card{
   color: var(--colour-font);
   background-color: var(--colour-bck-base);
@@ -83,12 +87,6 @@ li.chatbg p, li.chatbg span, li.chatbg div > div > div{
   height: fit-content;
 }
 
-.friendListAvatar{
-  width: 30%;
-  border:  1px solid var(--colour-border) !important;
-}
-
-
 body  header > div > div{/*top nav*/
   background-color: var(--colour-bck-nav);
 }
@@ -130,10 +128,7 @@ footer nav ul li a h2 {
 .nav-link{
   color: var(--colour-font);
 }
-.searchAvatar{
-  display: flex;
-  max-width: 50%;
-}
+
 .avatar{
   border:  1px solid var(--colour-border) !important;
   object-fit: cover;

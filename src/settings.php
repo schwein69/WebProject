@@ -61,6 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 header("Refresh: 1");
             }
         break;
+
+        case "descriptionFormSubmission": //language form
+            if (isset($_POST["textArea"]) && $_POST["textArea"] != $templateParams["user"]["descrizione"]) {
+                $dbh->getUserFunctionHandler()->updateUserDescription($templateParams["user"]["idUtente"],$_POST["textArea"]);
+                $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
+            }
+        break;
     }
 }
 

@@ -45,6 +45,8 @@ $lang["accountSetting_changeThemeText"] = "Modifica tema";
 $lang["accountSetting_changeLanguageText"] = "Modifica lingua";
 $lang["accountSetting_chooseThemeText"] = "Scegli un tema";
 $lang["accountSetting_chooseLanguageText"] = "Scegli una lingua";
+$lang["accountSetting_modifyStoryText"] = "Modifica descrizione";
+$lang["accountSetting_storyText"] = "Descrizione";
 
 /*Setting's tab texts */
 $lang["accountSetting_profileSettingsTab"] = "Impostazione generale";
@@ -110,4 +112,6 @@ $lang["recovery_title"] = "Ripristino password";
 $lang["recovery_text"] = "Compila l'email per ricevere il link";
 $lang["recoveryPage_welcome"] = "Benvenuto/a ";
 $lang["recoveryPage_insertNewPass"] = "Imposta la nuova password";
+$lang["recoveryPage_confirmNewPass"] = "Conferma password";
+$lang["recoveryPage_confirmButton"] = "Conferma";
 ?>

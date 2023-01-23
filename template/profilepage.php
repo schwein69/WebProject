@@ -30,7 +30,7 @@
                         </li>
                     </ul>
                     <p class="card-text">
-                        <?php echo $templateParams["user"]["descrizione"] ?>
+                        <h5 style="white-space: pre-wrap;"><?php echo $templateParams["user"]["descrizione"] ?></h5>
                     </p>
                     <?php if(isset($_GET["idUtente"]) && $_GET["idUtente"] != $_SESSION["idUtente"]) : ?>
                     <p class="card-text">

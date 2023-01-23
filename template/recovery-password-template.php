@@ -13,14 +13,14 @@
                     <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd">
                 </div>
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="pwdrepeat"><b>Conferma Password</b></label>
+                    <label class="control-label col-2" for="pwdrepeat"><b><?php echo $lang["recoveryPage_confirmNewPass"];?></b></label>
                     <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
                 </div>
                 <?php if (isset($templateParams["errormsg"])): ?>
                 <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
                 <hr>
-                <button id="newPswButton" type="submit" class="btn col-4" name="submit" value="Invia">Invia</button>
+                <button id="newPswButton" type="submit" class="btn col-4" name="submit" value="Invia"><?php echo $lang["recoveryPage_confirmButton"];?></button>
             </form>
         </div>
     </div>

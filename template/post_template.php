@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="center-container2" style="display:none;">
-    <div role="dialog" class="confirmShareBox center" style="max-height:40%;overflow-y:auto; overflow-x:hidden">
+    <div role="dialog" class="confirmShareBox center" style="max-height:40%;max-width:50%;overflow-y:auto; overflow-x:hidden">
         <h2><?php echo $lang["popup_shareText"];?></h2>
         <div class="insertHereFriendList">
         </div>
@@ -162,9 +162,12 @@ Parameters used from postParams:
                                 alt="<?php echo $postParams["liked"] ? "Dislike post" : "Like post"; ?>" />
                         </button>
                         <span>
-                            <?php if ($postParams['numLike'] > 0) {
+                            <?php if ($postParams['numLike'] > 0 && isset($postParams["allLikesClickable"])) : ?>
+                                <a href="all_likes.php?idPost=<?php echo $postParams['idPost'];?>" alt=""><?php echo $postParams['numLike'];?></a>
+                            <?php elseif($postParams['numLike'] > 0) : {
                                 echo $postParams['numLike'];
-                            } ?>
+                            }?>
+                            <?php endif;?>
                         </span>
                     </li>
                     <li class="nav-item mx-2"> <button type="button" value="<?php echo $postParams["idPost"] ?>"

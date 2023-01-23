@@ -1,13 +1,11 @@
+<?php foreach ($templateParams["follower"] as $user): ?>
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-12 col-md-8">
-        <?php $oldUserId = array(); ?>
-        <?php foreach ($templateParams["follower"] as $user): ?>
+    <div class="col-12 col-md-8 mx-auto">
         <div class="card col-12 mx-auto">
             <div class="row g-0">
                 <div class="col-4 my-auto">
-                    <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>" class="img-fluid rounded searchAvatar"
-                        alt="foto profilo di <?php echo $user["username"] ?>">
+                    <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>" class="img-fluid avatar"
+                        alt="<?php echo getProfilePicAlt($user["username"]); ?>">
                 </div>
                 <div class="col-8 my-auto">
                     <div class="card-body">
@@ -28,6 +26,6 @@
                 </div>
             </div>
         </div>
-        <?php endforeach; ?>
     </div>
-    <div class="col-md-2"></div>
+</div>    
+<?php endforeach; ?>
