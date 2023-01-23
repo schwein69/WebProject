@@ -55,7 +55,6 @@
     </section>
 </div>
 <script>
-
 const textArea = document.getElementById('textArea');
 const maxLength = textArea.getAttribute("maxlength");
 let actualLength = document.getElementById('count');
