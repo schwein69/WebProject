@@ -52,7 +52,9 @@ Parameters used from postParams:
                     </div>
                     <div class="col-4">
                         <h2 style="font-size: x-large;">
+                        <a href="profile.php?idUtente=<?php echo $postParams['idUser'] ?>">
                             <?php echo $postParams["username"]; ?>
+                        </a>
                         </h2>
                     </div>
                     <div class="col-4">

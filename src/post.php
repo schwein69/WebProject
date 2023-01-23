@@ -5,9 +5,6 @@ redirectNotLoggedUser();
 if(!isset($_GET['postid'])){
     header("Location: index.php");
 }
-//TODO usernames must be links to profile?userid=xyz
-
-
 
 
 //fetch post from db
@@ -34,7 +31,7 @@ $post["tags"] = $dbh->getPostFunctionHandler()->getPostTags($_GET['postid']);
 setMediaType($post["media"]);
 $templateParams["posts"] = array($post);
 
-$templateParams["js"] = array('../js/notifications_receiver.js');
+$templateParams["js"] = array('../js/notifications_receiver.js','../js/video_handler.js');
 $templateParams["content"] = 'full_post.php'; 
 $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
 $templateParams["title"] = 'Lynkzone - post'; 
