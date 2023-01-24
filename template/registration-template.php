@@ -4,7 +4,7 @@
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h2><?php echo $lang["login_signUp"];?></h2>
             <p></p>
-            <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="">
+            <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="#">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="name">Username</label>
                     <input class="col-6" id="name" type="text" placeholder="username" name="name" required/>
@@ -26,12 +26,12 @@
                     <input class="col-6" type="file" id="image" name="image" accept="image/png, image/jpeg" required/>
                 </div>
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="psw">Password</label>
+                    <label class="control-label col-2" for="pwd">Password</label>
                     <input class="col-6" type="password" placeholder="password" name="pwd" id="pwd"/>
                     <p class="errmsg"><?php echo $lang["denied_wrongPassword"]?></p>
                 </div>
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="psw-repeat"><?php echo $lang["Repeat"];?> Password</label>
+                    <label class="control-label col-2" for="pwdrepeat"><?php echo $lang["Repeat"];?> Password</label>
                     <input class="col-6" type="password" placeholder="password" name="pwdrepeat" id="pwdrepeat"/>
                     <p class="errmsg"><?php echo $lang["denied_wrongReapeatedPassword"]?></p>
                 </div>

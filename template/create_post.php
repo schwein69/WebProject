@@ -14,10 +14,12 @@
         
         <div class="row">
         <?php if(!isset($templateParams["post"]["tags"]) || count($templateParams["post"]["tags"]) == 0): ?>
+            <label for="tag1" class="invisibleLabel">tag1</label>
             <input type="text" aria-label="tag1" id="tag1" name="tag1" class="col-12 col-md-2 m-1"/>
         <?php else: 
             for ($i=1; $i <= count($templateParams["post"]["tags"]); $i++):
         ?>
+            <label for="tag<?php echo $i;?>" class="invisibleLabel">tag<?php echo $i;?></label>
             <input type="text" aria-label="tag<?php echo $i;?>" id="tag<?php echo $i;?>" name="tag<?php echo $i;?>" class="col-12 col-md-2 m-1" value="<?php echo $templateParams["post"]["tags"][$i-1]["nomeTag"];?>"/>
         <?php endfor;
             endif;?>
@@ -43,6 +45,7 @@
     <legend class="text-start"><?php echo $lang["createPost_ImgsVids"];?></legend>
     <div class="container-fluid p-3 overflow-hidden">
         <div class="row my-3 p-2">
+        <label for="f1" class="invisibleLabel"><?php echo $lang["image"];?> 1</label>
         <input class="col-6" aria-label="<?php echo $lang["image"];?> 1" type="file" id="f1" name="f1" accept="video/*,image/*"/> 
         <div class="row my-2">
         <label class="col-3" for="alt1"><?php echo $lang["altText"];?></label>

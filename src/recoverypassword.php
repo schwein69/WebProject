@@ -33,6 +33,7 @@ if(isset($_POST["email"])){
     }
 }
 
+$templateParams["title"]="Lynkzone - Password recovery";
 $templateParams["content"] = "recovery-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;

@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
 
    
 }
-
+$templateParams["title"] = "Lynkzone - Registration";
 $templateParams["content"] = "registration-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;;

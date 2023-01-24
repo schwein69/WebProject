@@ -15,6 +15,11 @@ tagButton.addEventListener('click',event => {
         elem.classList.add('col-md-2');
         elem.classList.add('m-1');
         tagSelector.appendChild(elem);
+        const labelEl = document.createElement('label');
+        labelEl.setAttribute('for','tag'+(10-numTag))
+        labelEl.classList.add('invisibleLabel');
+        labelEl.innerHTML = "Tag " + (10-numTag);
+        tagSelector.appendChild(labelEl);
         numTag--;
     }
     if(numTag <= 0) {
@@ -33,10 +38,12 @@ imgButton.addEventListener('click',event => {
     if(numImg < 10) {
 
         const newNode = document.createElement('div');
-        const elem = '<input aria-label="Immagine ' + numImg + '" class="col-6" type="file" id="f' + numImg
+        const elem = 
+                      '<label for="f' + numImg + '" class="invisibleLabel">File' + numImg + '</label>'
+                    +  '<input aria-label="File ' + numImg + '" class="col-6" type="file" id="f' + numImg
                     + '" name="f' + numImg + '" accept="video/*,image/*"/>'
                     + '<div class="row my-2">'
-                    + '<label class="col-3" for="alt1">Testo alternativo:</label>'
+                    + '<label class="col-3" for="alt' + numImg + '">Testo alternativo:</label>'
                     + '<input aria-label="Testo alternativo per immagine ' + numImg + '" class="col-12 col-6" type="text" id="alt' + numImg
                     + '" name="alt' + numImg + '"/>'
                     + '</div>';

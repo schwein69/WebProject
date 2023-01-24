@@ -22,7 +22,7 @@
     <section class="col-8 mx-auto"
         style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
         <div class="col-10 mx-auto">
-            <form action="" method="POST">
+            <form action="#" method="POST">
                 <h2>
                     <?php echo $lang["accountSetting_changeLanguageText"]; ?>
                 </h2>
@@ -42,7 +42,7 @@
     <section class="col-8 mx-auto"
         style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
         <div class="col-10 mx-auto">
-            <form action="" method="POST">
+            <form action="#" method="POST">
                 <h2><?php echo $lang["accountSetting_modifyStoryText"]; ?></h2>
                 <label for="textArea" class="p-1 my-2"><?php echo $lang["accountSetting_storyText"]; ?></label>
                 <textarea class="col-12" rows="6" maxlength="512" name="textArea" id="textArea"><?php echo $templateParams["user"]["descrizione"]; ?></textarea>

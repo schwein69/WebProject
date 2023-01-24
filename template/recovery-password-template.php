@@ -7,13 +7,13 @@
             <h4><?php echo $lang["recoveryPage_welcome"] ?><?php echo $data["username"];?></h4>
             <?php endif;?>
             <p><?php echo $lang["recoveryPage_insertNewPass"]; ?></p>
-            <form class="form-horizontal" name="myform" method="post" action="">
+            <form class="form-horizontal" name="myform" method="post" action="#">
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="pwd"><b>Password</b></label>
+                    <label class="control-label col-2" for="pwd" style="font-weight:bold;">Password</label>
                     <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd"/>
                 </div>
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="pwdrepeat"><b><?php echo $lang["recoveryPage_confirmNewPass"];?></b></label>
+                    <label class="control-label col-2" for="pwdrepeat" style="font-weight:bold;"><?php echo $lang["recoveryPage_confirmNewPass"];?></label>
                     <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat"/>
                 </div>
                 <?php if (isset($templateParams["errormsg"])): ?>

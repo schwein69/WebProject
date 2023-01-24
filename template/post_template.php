@@ -111,14 +111,14 @@ Parameters used from postParams:
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark"></span>
-                    </a>
-                    <a class="carousel-control-next" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel<?php echo $postParams["idPost"] ?>"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon bg-dark"></span>
-                    </a>
+                    </button>
 
                 <?php elseif (count($postParams["media"]) == 1): ?>
                     <?php if ($postParams["media"][0]["isImage"]): ?>

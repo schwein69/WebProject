@@ -4,6 +4,6 @@ function pauseAllVideos(){
         videos[i].pause();
     }
 }
-delegate_event('click', document, 'a.carousel-control-prev', pauseAllVideos);
-delegate_event('click', document, 'a.carousel-control-next', pauseAllVideos);
+delegate_event('click', document, '.carousel-control-prev', pauseAllVideos);
+delegate_event('click', document, '.carousel-control-next', pauseAllVideos);
 document.addEventListener('scroll',pauseAllVideos);

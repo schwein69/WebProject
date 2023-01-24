@@ -29,7 +29,8 @@
 <div class="row col-12 col-md-8 mx-auto" id="chat-bottom">
     <form class="chat-body p-2">
     <input type="hidden" name="chatid" value="<?php echo $_GET["chatId"];?>"/>
-    <input id="inputMsg" name="inputMsg" type="text" placeholder="<?php echo $lang["chat_textPlaceholder"];?>"/>
+    <label for="inputMsg" class="invisibleLabel"><?php echo $lang["chat_textPlaceholder"];?></label>
+    <input id="inputMsg" name="inputMsg" aria-label="<?php echo $lang["chat_textPlaceholder"];?>" type="text" placeholder="<?php echo $lang["chat_textPlaceholder"];?>"/>
     <input type="submit" value="<?php echo $lang["Send"];?>"/>
     </form>
 </div>

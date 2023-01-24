@@ -4,9 +4,9 @@
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h2><?php echo $lang["recovery_title"] ?></h2>
             <h4><?php echo $lang["recovery_text"] ?></h4>
-            <form  class="form-horizontal" name="myform" method="post" action="">
+            <form  class="form-horizontal" name="myform" method="post" action="#">
                 <div class="form-group my-2">
-                    <label class="control-label col-2" for="email"><b>Email</b></label>
+                    <label class="control-label col-2" for="email" style="font-weight:bold;">Email</label>
                     <input class="col-6" type="text" placeholder="Email" name="email" id='email'/>
                 </div>
                 <hr/>

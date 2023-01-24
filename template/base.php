@@ -41,7 +41,7 @@
                                             <button role="link" type="button" id="notifButton" class="btn">                                                
                                                 <img src="../imgs/icons/bell.svg" alt="<?php echo $lang["notifications"];?>" />
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
-                                                <span aria-label="<?php echo $lang["newNotifications"];?>"></span>
+                                                <span></span>
                                                 </span>
                                             </button>
                                         </li>
@@ -81,7 +81,7 @@
                                 <h2>Chat</h2>
                             </a>
                             <span style="display:none" class="position-absolute translate-middle badge rounded-pill bg-danger">                 
-                                <span aria-label="<?php echo $lang["unreadMessages"];?>"></span>
+                                <span></span>
                             </span>
                         </li>
                         <li class="nav-item col-3">

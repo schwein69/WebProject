@@ -283,6 +283,10 @@ div.chat-body > div.row > div.ms-auto{
   color: var(--colour-font);
 }
 
+.invisibleLabel{
+  display:none;
+}
+
 #cookiebar > button{
   width:fit-content;
   height:fit-content;

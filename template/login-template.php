@@ -2,7 +2,7 @@
     <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
         <div class="col-8 border border-secondary mx-auto" style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h2>Login</h2>
-            <form action="" method="POST">
+            <form action="#" method="POST">
                 <div class="form-floating my-3 col-6 mx-auto">
                     <input type="text" class="form-control" id="username" name="username" required/> <label
                         for="username" style="background-color:transparent; border:none;">Username:</label>
