@@ -95,12 +95,12 @@
             </div>
         </footer>
         <script src="../js/messages_notification.js"></script>
-        <script src="../js/base.js"></script>
         <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    
     <?php
     if (isset($templateParams["js"])):
         foreach ($templateParams["js"] as $script):
@@ -110,5 +110,15 @@
         endforeach;
     endif;
     ?>
+    <?php if(!isset($_COOKIE["Lynkzone_firstVisit"])): ?>
+        <div id="cookiebar" class="row col-12 col-md-8 mx-auto fixed-bottom py-1">
+            <p class="col-11">
+            To improve your experience on our site we use cookies to remember login details.
+            See <a href="privacy_policy.php">Privacy & Policy</a> page to learn more.
+            </p>
+            <button class="col-1 mt-auto">OK</button>
+        </div>
+        <?php endif;?>
+    <script src="../js/base.js"></script>
 </body>
 </html>

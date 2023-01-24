@@ -5,7 +5,6 @@ const tagButton = document.querySelector("fieldset div.row:last-child button");
 
 tagButton.addEventListener('click',event => {
     event.preventDefault();
-    console.log('click');
     if(numTag > 0) {
         const elem = document.createElement('input');
         elem.ariaLabel = "Tag "+ (10-numTag);

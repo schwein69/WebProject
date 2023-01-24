@@ -15,7 +15,6 @@ function addNotification(){
             const response = JSON.parse(this.responseText);
             if(response.status){
                 response.notifications.forEach(element => {
-                    console.log(element);
                     const notifElement = document.createElement('li');
                     notifElement.classList.add("list-group-item"); 
                     let content = '<div class="row">'
