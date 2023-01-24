@@ -16,7 +16,7 @@
   --colour-bck-nav: #03416e;
   --colour-bck-base:#011D31;/*Area di contenuto*/
   --colour-bck-button:#0863A3;
-  --colour-bck-form:#011f34;
+  --colour-bck-form:#011D31;
   --colour-bck-backside: rgb(39, 38, 38);
   --colour-bck-popup: rgb(39, 38, 38);/*Area pop up*/
   --colour-border: white;
@@ -29,6 +29,14 @@ html,body {
 }
 body{
   background-color: var(--colour-bck-backside);
+}
+
+.privacy strong{
+  color: #00ff11;
+}
+
+.privacy h2,.privacy h3{ 
+  color: #00ff11;
 }
 
 .list-group-item{
@@ -76,13 +84,31 @@ label, input {
   border-radius: 15px;
   border:  1px solid var(--colour-border);
 }
+.form-floating  label{
+  color: black;
+}
+.form-group label{
+  overflow-wrap: break-word;
+}
+.notLoggedLanguages{
+  color: var(--colour-font);
+}
+.bg-body{
+  background-color: var(--colour-bck-base) !important;
+  border:  1px solid var(--colour-border) !important;
+}
+
+.border{
+  border:  1px solid var(--colour-border) !important;
+}
+
 .btn {
   background-color: var(--colour-bck-button);
   box-shadow: none;
   border:  1px solid var(--colour-border) !important;
   color: var(--colour-font);
-
 }
+
 .btn:disabled{
   background: rgb(133, 136, 120);
 }

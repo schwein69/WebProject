@@ -1,6 +1,6 @@
-<div class="row">
-    <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body border border-dark" style="padding: 10% 0 10% 0; ">
-        <div class="col-8 border border-secondary mx-auto"
+<div class="row mt-5">
+    <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body" style="padding: 10% 0 10% 0; ">
+        <div class="col-10 border mx-auto"
             style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
             <h2><?php echo $lang["recovery_title"] ?></h2>
             <h4><?php echo $lang["recovery_text"] ?></h4>

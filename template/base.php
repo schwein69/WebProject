@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $_SESSION["lang"];?>">
+<html lang="<?php echo $_SESSION["lang"]; ?>">
 
 <head>
     <meta charset="utf-8" />
@@ -13,41 +13,62 @@
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 
-<body data-theme="<?php if(isset($_SESSION["theme"])) echo $_SESSION["theme"]; else echo "l"?>">
-    <div class="container-fluid p-0 overflow-hidden">
-        <header>
-            <div class="row">
-                <div class="col-12 col-md-8 mx-auto pt-3">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-6 col-md-7 my-auto text-start">
-                                <h1><a href="./index.php">Lynkzone</a></h1>
-                            </div>
-                            <div class="col-6 col-md-5">
+<body data-theme="<?php if (isset($_SESSION["theme"]))
+    echo $_SESSION["theme"];
+else
+    echo "l" ?>">
+        <div class="container-fluid p-0 overflow-hidden">
+            <header>
+                <div class="row">
+                    <div class="col-12 col-md-8 mx-auto pt-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 col-md-7 my-auto text-start">
+                                    <h1><a href="./index.php">Lynkzone</a></h1>
+                                </div>
+                                <div class="col-6 col-md-5">
                                 <?php if (!isset($templateParams["loginTopNav"])): ?>
-                                <nav class="navbar navbar-expand-md navbar-light">
-                                    <ul class="nav nav-pills ms-auto">
-                                        <?php if (isset($templateParams["profileTopNav"])): ?>
-                                        <li class="mx-1"> <button role="link" type="button" id="settingsButton" class="btn">
-                                                <img src="../imgs/icons/gear-fill.svg" alt="<?php echo $lang["settings"];?>" />
-                                            </button></li>
-                                        <?php else: ?>
-                                        <li class="mx-1">
-                                            <button role="link" type="button" id="newpostButton" class="btn">
-                                                <img src="../imgs/icons/plus-circle.svg" alt="<?php echo $lang["postCreation"];?>" />
-                                            </button>
-                                        </li>
-                                        <li class="mx-1">
-                                            <button role="link" type="button" id="notifButton" class="btn">                                                
-                                                <img src="../imgs/icons/bell.svg" alt="<?php echo $lang["notifications"];?>" />
-                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
-                                                <span></span>
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </nav>
+                                    <nav class="navbar navbar-expand-md navbar-light">
+                                        <ul class="nav nav-pills ms-auto">
+                                            <?php if (isset($templateParams["profileTopNav"])): ?>
+                                                <li class="mx-1"> <button role="link" type="button" id="settingsButton"
+                                                        class="btn">
+                                                        <img src="../imgs/icons/gear-fill.svg"
+                                                            alt="<?php echo $lang["settings"]; ?>" />
+                                                    </button></li>
+                                            <?php else: ?>
+                                                <li class="mx-1">
+                                                    <button role="link" type="button" id="newpostButton" class="btn">
+                                                        <img src="../imgs/icons/plus-circle.svg"
+                                                            alt="<?php echo $lang["postCreation"]; ?>" />
+                                                    </button>
+                                                </li>
+                                                <li class="mx-1">
+                                                    <button role="link" type="button" id="notifButton" class="btn">
+                                                        <img src="../imgs/icons/bell.svg"
+                                                            alt="<?php echo $lang["notifications"]; ?>" />
+                                                        <span
+                                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                                                            <span></span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </nav>
+                                <?php else: ?>
+                                    <div class="text-end">
+                                        <span class="bi bi-translate" for="notLoggedLanguages"></span>
+                                        <select name="notLoggedLanguages" id="notLoggedLanguages">
+                                            <?php if ($_SESSION["lang"] == "it"): ?>
+                                                <option value="it" selected="selected">Italiano</option>
+                                                <option value="en">English</option>
+                                            <?php else: ?>
+                                                <option value="it">Italiano</option>
+                                                <option value="en" selected="selected">English</option>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -104,9 +125,9 @@
     <?php
     if (isset($templateParams["js"])):
         foreach ($templateParams["js"] as $script):
-    ?>
-    <script src="<?php echo $script; ?>"></script>
-    <?php
+            ?>
+            <script src="<?php echo $script; ?>"></script>
+            <?php
         endforeach;
     endif;
     ?>
@@ -114,11 +135,12 @@
         <div id="cookiebar" class="row col-12 col-md-8 mx-auto fixed-bottom py-1">
             <p class="col-11">
             To improve your experience on our site we use cookies to remember login details.
-            See <a href="privacy_policy.php">Privacy & Policy</a> page to learn more.
+            See <a href="settings.php">Privacy & Policy</a> page to learn more.
             </p>
             <button class="col-1 mt-auto">OK</button>
         </div>
         <?php endif;?>
     <script src="../js/base.js"></script>
 </body>
+
 </html>
