@@ -137,8 +137,7 @@ Parameters used from postParams:
                 if (!$postParams["isFull"]):
                     ?>
 
-                    <a href="post.php?postid=<?php echo $postParams["idPost"]; ?>" value="<?php echo $postParams["idPost"] ?>"
-                        class="btn ms-auto" style="display:block ; width: fit-content;">
+                    <a href="post.php?postid=<?php echo $postParams["idPost"]; ?>" class="btn ms-auto" style="display:block ; width: fit-content;">
                         <?php echo $lang["post_readMore"]; ?>
                     </a>
                 <?php endif; ?>
