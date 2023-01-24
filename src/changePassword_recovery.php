@@ -7,25 +7,24 @@ if(isset($_GET["code"])){
         if(isset($_POST["pwd"]) && isset($_POST["pwdrepeat"])){
             $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
             $dbh->getUserFunctionHandler()->updatePassword($pwd,$data["idUtente"]);
-            $templateParams["errormsg"] = "Cambiamento password avvenuto con successo!";
+            $templateParams["errormsg"] = $lang["recoveryMsg_success"];
             header("Refresh: 3; url=login.php");
         }
     } else {
-        $templateParams["errormsg"] = "Codice scaduto!";
+        $templateParams["errormsg"] = $lang["recoveryMsg_expired"];
         header("Refresh: 3; url=login.php");
     }
    
 } else {
-    $templateParams["errormsg"] = "link invalido!";
+    $templateParams["errormsg"] = $lang["recoveryMsg_wrong"];
     header("Refresh: 3; url=login.php");
 }
 
 $templateParams["content"] = "recovery-password-template.php";
-$templateParams["title"] = 'Lynkzone - Recovery Password';
+$templateParams["title"] = 'Lynkzone - Change Password';
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;;
-$templateParams["js"] = array("../js/newPassword-checker.js");
-
+$templateParams["js"] = array("../js/newPassword-checker.js","../js/languageOnChange.js");
 require '../template/base.php';
 
 

@@ -16,7 +16,7 @@ $dbh = new DatabaseHelper('localhost', 'root', '', 'social_network');
 //include language
 if(isset($_SESSION["idUtente"])){
     $_SESSION["lang"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"])["lang"];
-} else {
+} elseif(!isset($_SESSION["lang"])) {
     $_SESSION["lang"] = 'en';
 }
 

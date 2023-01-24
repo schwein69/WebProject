@@ -46,7 +46,7 @@ if(isUserLoggedIn()){
     $templateParams["loginBottomNav"]=true;
    
 }
+$templateParams["js"] = array("../js/languageOnChange.js");
 $templateParams["title"] = 'Lynkzone - login'; 
 require '../template/base.php';
-
 ?>
