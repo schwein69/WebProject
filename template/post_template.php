@@ -149,7 +149,7 @@ Parameters used from postParams:
                     <h2 class="text-start">Tags</h2>
                     <ul class="list-group list-group-horizontal">
                         <?php foreach ($postParams["tags"] as $tag): ?>
-                            <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light"><?php echo $tag["nomeTag"]; ?>
+                            <li class="list-group-item badge rounded-pill mx-1 bg-primary text-light mt-1"><?php echo $tag["nomeTag"]; ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>

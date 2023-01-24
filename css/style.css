@@ -59,6 +59,22 @@ section,.card{
   background-color: var(--colour-bck-base);
   outline:  1px solid var(--colour-border) !important;
 }
+
+.card-footer span{
+  vertical-align: middle;
+}
+
+article.card > section > ul{
+  flex-wrap: wrap;
+}
+
+article.card > section > ul > li{
+  white-space:pre-wrap;
+  width:fit-content;
+  height: fit-content;
+  display: inline-block;
+}
+
 form,input{
   color: var(--colour-font);
 }
@@ -284,6 +300,21 @@ div.chat-body > div.row > div.ms-auto{
 
 .minForm fieldset:nth-of-type(2) > div > div:last-of-type{
   border: 0px;
+}
+
+#cookiebar{
+  background-color: var(--colour-bck-backside);
+  border: 1px solid var(--colour-border);
+  color: var(--colour-font);
+}
+
+#cookiebar > button{
+  width:fit-content;
+  height:fit-content;
+}
+
+#cookiebar a{
+  color: #0A96FA;
 }
 
 .errmsg{

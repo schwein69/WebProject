@@ -24,8 +24,6 @@ if(isset($_POST["chatid"]) && $dbh->getChatFunctionHandler()->isUserInChat($_POS
     }
 }
 
-//var_dump($result);
-
 header('Content-Type: application/json;charset=utf-8');
 echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 

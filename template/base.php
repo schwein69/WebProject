@@ -82,51 +82,46 @@ else
             ?>
         </main>
         <?php if (!isset($templateParams["loginBottomNav"])): ?>
-            <footer class="pb-5">
-                <div class="fixed-bottom row">
-                    <nav class="col-12 col-md-8 mx-auto p-0">
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="nav-item col-3">
-                                <a href="index.php" class="btn bottom-nav-button"><span class="bi bi-house-fill"></span>
-                                    <h2>Home</h2>
-                                </a>
-                            </li>
-                            <li class="nav-item col-3">
-                                <a href="search.php" class="btn bottom-nav-button"><span class="bi bi-search"></span>
-                                    <h2>
-                                        <?php echo $lang["Search"]; ?>
-                                    </h2>
-                                </a>
-                            </li>
-                            <li class="nav-item col-3" id='menuChatButton'>
-                                <a href="all_chats.php" class="btn bottom-nav-button"><span
-                                        class="bi bi-chat-dots-fill"></span>
-                                    <h2>Chat</h2>
-                                </a>
-                                <span style="display:none"
-                                    class="position-absolute translate-middle badge rounded-pill bg-danger">
-                                    <span aria-label="<?php echo $lang["unreadMessages"]; ?>"></span>
-                                </span>
-                            </li>
-                            <li class="nav-item col-3">
-                                <a href="../src/profile.php" class="btn bottom-nav-button"><span
-                                        class="bi bi-person-fill"></span>
-                                    <h2>
-                                        <?php echo $lang["Profile"]; ?>
-                                    </h2>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </footer>
-            <script src="../js/messages_notification.js"></script>
-            <script src="../js/base.js"></script>
+        <footer class="pb-5">
+            <div class="fixed-bottom row">
+                <nav class="col-12 col-md-8 mx-auto p-0">
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="nav-item col-3">
+                            <a href="index.php" class="btn bottom-nav-button"><span
+                                    class="bi bi-house-fill"></span>
+                                <h2>Home</h2>
+                            </a>
+                        </li>
+                        <li class="nav-item col-3">
+                            <a href="search.php" class="btn bottom-nav-button"><span class="bi bi-search"></span>
+                                <h2><?php echo $lang["Search"];?></h2>
+                            </a>
+                        </li>
+                        <li class="nav-item col-3" id='menuChatButton'>
+                            <a href="all_chats.php" class="btn bottom-nav-button"><span class="bi bi-chat-dots-fill"></span>
+                                <h2>Chat</h2>
+                            </a>
+                            <span style="display:none" class="position-absolute translate-middle badge rounded-pill bg-danger">                 
+                                <span aria-label="<?php echo $lang["unreadMessages"];?>"></span>
+                            </span>
+                        </li>
+                        <li class="nav-item col-3">
+                            <a href="../src/profile.php" class="btn bottom-nav-button"><span
+                                    class="bi bi-person-fill"></span>
+                                <h2><?php echo $lang["Profile"];?></h2>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <script src="../js/messages_notification.js"></script>
         <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    
     <?php
     if (isset($templateParams["js"])):
         foreach ($templateParams["js"] as $script):
@@ -136,6 +131,16 @@ else
         endforeach;
     endif;
     ?>
+    <?php if(!isset($_COOKIE["Lynkzone_firstVisit"])): ?>
+        <div id="cookiebar" class="row col-12 col-md-8 mx-auto fixed-bottom py-1">
+            <p class="col-11">
+            To improve your experience on our site we use cookies to remember login details.
+            See <a href="settings.php">Privacy & Policy</a> page to learn more.
+            </p>
+            <button class="col-1 mt-auto">OK</button>
+        </div>
+        <?php endif;?>
+    <script src="../js/base.js"></script>
 </body>
 
 </html>

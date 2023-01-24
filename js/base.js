@@ -13,3 +13,11 @@ if(notifBtn != null){
         notifBtn.addEventListener('click', event => window.location.href='../src/notifications.php');
 }
 
+const cookieBar = document.getElementById('cookiebar');
+if(cookieBar != null){
+        cookieBar.querySelector('button').addEventListener('click', event => {
+                cookieBar.setAttribute('style','display:none;');
+                document.cookie = "Lynkzone_firstVisit=firstVisit";
+        });
+}
+
