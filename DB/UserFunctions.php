@@ -8,11 +8,11 @@ class UserFunctions
         $this->db = $db;
     }
     
-    public function insertNewUser($name, $password, $email, $date, $img)
+    public function insertNewUser($name, $password, $email, $date, $img, $lang)
     {
-        $query = "INSERT INTO utenti (username, pwd, email, dataDiNascita, formatoFotoProfilo) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO utenti (username, pwd, email, dataDiNascita, formatoFotoProfilo, lang) VALUES (?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $name, $password, $email, date('Y-m-d', strtotime($date)), $img);
+        $stmt->bind_param('ssssss', $name, $password, $email, date('Y-m-d', strtotime($date)), $img, $lang);
         $stmt->execute();
         //return last id after insert
         return $this->db->insert_id;

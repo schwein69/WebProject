@@ -36,7 +36,8 @@ if(isset($_POST["email"])){
 $templateParams["content"] = "recovery-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;
-$templateParams["js"] = array("../js/email-checker.js");
+$templateParams["title"] = 'Lynkzone - recovery password'; 
+$templateParams["js"] = array("../js/email-checker.js","../js/languageOnChange.js");
 
 require '../template/base.php';
 

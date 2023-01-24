@@ -15,7 +15,7 @@ if(isset($_POST["submit"])){
         $date = $_POST["date"];
         $img = $_FILES["image"];
         $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-        $id = $dbh->getUserFunctionHandler()->insertNewUser($name, $pwd, $email, $date, strtolower(pathinfo($img["name"],PATHINFO_EXTENSION)));
+        $id = $dbh->getUserFunctionHandler()->insertNewUser($name, $pwd, $email, $date, strtolower(pathinfo($img["name"],PATHINFO_EXTENSION)),$_SESSION["lang"]);
         $userPath = UPLOAD_DIR . '/' . $id . '/';
         mkdir($userPath, 0777, true);
         list($result, $fileType, $msg) = uploadFile($userPath, $img, "profile");//TODO inserire file type nel db
@@ -35,7 +35,8 @@ if(isset($_POST["submit"])){
 $templateParams["content"] = "registration-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;;
-$templateParams["js"] = array("../js/registrationchecker.js","../js/functions.js");
+$templateParams["title"] = 'Lynkzone - registration'; 
+$templateParams["js"] = array("../js/registrationchecker.js","../js/functions.js","../js/languageOnChange.js");
 
 require '../template/base.php';
 

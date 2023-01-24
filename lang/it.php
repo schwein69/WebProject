@@ -114,4 +114,11 @@ $lang["recoveryPage_welcome"] = "Benvenuto/a ";
 $lang["recoveryPage_insertNewPass"] = "Imposta la nuova password";
 $lang["recoveryPage_confirmNewPass"] = "Conferma password";
 $lang["recoveryPage_confirmButton"] = "Conferma";
+
+/* --------------------------RECOVERY FEEDBACK MESSAGES ---------------------------------- */
+
+$lang["recoveryMsg_success"] = "Cambiamento password avvenuto con successo!";
+$lang["recoveryMsg_expired"] = "Codice scaduto!";
+$lang["recoveryMsg_wrong"] = "Link invalido!";
+
 ?>
