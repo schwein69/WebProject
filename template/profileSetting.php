@@ -31,7 +31,7 @@
                     <option value="it">Italiano</option>
                     <option value="en">English</option>
                 </select>
-                <input type="hidden" name="form" value="languageFormSubmission">
+                <input type="hidden" name="form" value="languageFormSubmission"/>
                 <input type="submit" name="submit" class="btn mx-auto my-3" value="<?php echo $lang["accountSetting_submitlabel"]; ?>"
                     style="display: block;" />
             </form>
@@ -47,7 +47,7 @@
                 <label for="textArea" class="p-1 my-2"><?php echo $lang["accountSetting_storyText"]; ?></label>
                 <textarea class="col-12" rows="6" maxlength="512" name="textArea" id="textArea"><?php echo $templateParams["user"]["descrizione"]; ?></textarea>
                 <span id="count" style="float:right; font-size: medium;"><?php echo strlen($templateParams["user"]["descrizione"])."/512" ?></span>
-                <input type="hidden" name="form" value="descriptionFormSubmission">
+                <input type="hidden" name="form" value="descriptionFormSubmission"/>
                 <input type="submit" name="submit" class="btn mx-auto my-3" value="<?php echo $lang["accountSetting_submitlabel"]; ?>"
                     style="display: block;" />
             </form>

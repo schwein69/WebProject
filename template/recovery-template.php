@@ -7,9 +7,9 @@
             <form  class="form-horizontal" name="myform" method="post" action="">
                 <div class="form-group my-2">
                     <label class="control-label col-2" for="email"><b>Email</b></label>
-                    <input class="col-6" type="text" placeholder="Email" name="email" id='email'>
+                    <input class="col-6" type="text" placeholder="Email" name="email" id='email'/>
                 </div>
-                <hr>
+                <hr/>
                 <?php if (isset($templateParams["errormsg"])): ?>
                 <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>

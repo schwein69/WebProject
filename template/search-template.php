@@ -1,15 +1,15 @@
 <div class="row" id="searchbar">
     <div class="col-12 col-md-8 my-2 mx-auto">
         <form action="" method="GET">
-            <input type="radio" id="user" name="searchOption" value="User" required>
+            <input type="radio" id="user" name="searchOption" value="User" required/>
             <label for="user">USERNAME</label>
-            <input type="radio" id="tag" name="searchOption" value="Tag">
+            <input type="radio" id="tag" name="searchOption" value="Tag"/>
             <label for="tag">TAG</label>
             <input class="col-6" type="text" list="search keyword" id="searchTextArea" name="searchValue"
                 placeholder="Search" required />
             <datalist id="search keyword" style="background-color: white;">
             </datalist>
-            <input class="col-2" type="submit"></input>
+            <input class="col-2" type="submit"/>
 
         </form>
     </div>
@@ -29,7 +29,7 @@ if($templateParams["selector"] == true):
             <div class="row g-0">
                 <div class="col-4 my-auto">
                     <img src="<?php echo UPLOAD_DIR.$user["idUtente"]."/profile.".$user["formatoFotoProfilo"] ?>"
-                        class="img-fluid avatar" alt="<?php echo getProfilePicAlt($user["username"]); ?>">
+                        class="img-fluid avatar" alt="<?php echo getProfilePicAlt($user["username"]); ?>"/>
                 </div>
                 <div class="col-8 my-auto">
                     <div class="card-body">

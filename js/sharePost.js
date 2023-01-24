@@ -23,7 +23,7 @@ function showMoreFriends() {
             singleElement.classList.add("mt-2");
             singleElement.classList.add("singleRowOfFriendListPopUp");
             singleElement.innerHTML = `<div class="col-3">
-            <img class="img-fluid avatar" src="../imgs/uploads/`+ element["idUtente"] + `/profile.` + element["formatoFotoProfilo"] + `" alt="` + element["profilePicAlt"] + `">
+            <img class="img-fluid avatar" src="../imgs/uploads/`+ element["idUtente"] + `/profile.` + element["formatoFotoProfilo"] + `" alt="` + element["profilePicAlt"] + `"/>
             </div>
             <div class="col-6 my-auto" style=" word-wrap: break-word;">
                <h2 style="font-size: medium;">`+ element["username"] + `</h2>

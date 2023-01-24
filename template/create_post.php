@@ -35,7 +35,7 @@
             <legend>Scegli quale immagine o video rimuovere</legend>
             <?php foreach($templateParams["post"]["media"] as $media):?>
                 <input type="checkbox" name="delMedia<?php echo $media["idContenuto"];?>" id="delMedia<?php echo $media["idContenuto"];?>" value="<?php echo $media["idContenuto"];?>"/>
-                <label for="delMedia<?php echo $media["idContenuto"];?>"><img src="<?php echo $media["percorsoImmagine"];?>" alt="<?php echo $media["descrizione"];?>" style="height:100px"></label>
+                <label for="delMedia<?php echo $media["idContenuto"];?>"><img src="<?php echo $media["percorsoImmagine"];?>" alt="<?php echo $media["descrizione"];?>" style="height:100px"/></label>
             <?php endforeach;?>
         </fieldset>
     <?php endif;?>

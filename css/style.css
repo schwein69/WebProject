@@ -120,6 +120,7 @@ button {
 .profileLink{
   text-decoration: none;
   color: var(--colour-font);
+  display: block;
 }
 a,p{
   text-decoration: none;

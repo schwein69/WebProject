@@ -9,27 +9,27 @@
                         src="<?php echo $templateParams["user"]["profilePic"]; ?>"
                         alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />
                     <input type="file" id="image" name="newImage" accept="image/png, image/jpeg, image/jpg"
-                        style="display: none;">
+                        style="display: none;"/>
                 </label>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="name"><?php echo $lang["accountSetting_namelabel"];?></label>
-                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required>
+                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required/>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="email">Email</label>
                 <input class="col-6" type="text" value="<?php echo $templateParams["user"]["email"]; ?>" name="email" id='email'
-                    required>
+                    required/>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="date"><?php echo $lang["accountSetting_bdaylabel"];?></label>
                 <input class="col-6" type="text" value="<?php echo $templateParams["user"]["dataDiNascita"]; ?>" name='date' id='date'
-                    required>
+                    required/>
             </div>
             <?php if (isset($templateParams["errormsg"])): ?>
             <p><?php echo $templateParams["errormsg"]; ?></p>
             <?php endif; ?>
-            <hr>
+            <hr/>
             <input type="hidden" name="form" value="dataForm" >
             <button id="updateDataButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia">
             <?php echo $lang["accountSetting_submitlabel"];?></button>
@@ -44,20 +44,20 @@
         <form class="form-horizontal" method="post" action="">
             <div class="form-group my-2">
                     <label class="control-label col-2" for="oldpwd"><b>Password originale</b></label>
-                    <input class="col-6" type="password" placeholder="Vecchia Password" name="oldpwd" id="oldpwd" required>
+                    <input class="col-6" type="password" placeholder="Vecchia Password" name="oldpwd" id="oldpwd" required/>
             </div>
             <?php if (isset($templateParams["errormsgPsw"])): ?>
             <p><?php echo $templateParams["errormsgPsw"]; ?></p>
             <?php endif; ?>
             <div class="form-group my-2">
                     <label class="control-label col-2" for="pwd"><b>Password</b></label>
-                    <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd">
+                    <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd"/>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-2" for="pwdrepeat"><b>Conferma Password</b></label>
-                <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
+                <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat"/>
             </div>    
-            <hr>
+            <hr/>
             <input type="hidden" name="form" value="passwordForm" >
             <button id="updatePswButton" type="submit" class="btn col-4 mb-3" name="submit" value="Invia">
             <?php echo $lang["accountSetting_submitlabel"]; ?></button>
