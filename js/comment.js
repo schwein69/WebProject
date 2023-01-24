@@ -1,4 +1,5 @@
 const commentBox = document.getElementById("userComment");
+const commentCounter = document.getElementsByClassName('commentBtn')[0].nextElementSibling;
 function comment(event){
     event.preventDefault();
     
@@ -14,6 +15,7 @@ function comment(event){
         + timeStamp.getDate();
         const response = JSON.parse(this.responseText);
         if(response.status){
+            //add user comment
             const newComment = document.createElement('div');
             newComment.classList.add('row');
             newComment.innerHTML =
@@ -29,7 +31,9 @@ function comment(event){
             commentBox.value = "";
             const commentInputDiv = document.querySelector('#comments > div.row:last-child');
             commentInputDiv.parentNode.insertBefore(newComment, commentInputDiv);
-    
+
+            //increment comments counter
+            commentCounter.innerHTML = (parseInt(commentCounter.innerText)+1);
         }
     };
 

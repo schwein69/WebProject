@@ -56,6 +56,17 @@ section,.card{
   vertical-align: middle;
 }
 
+article.card > section > ul{
+  flex-wrap: wrap;
+}
+
+article.card > section > ul > li{
+  white-space:pre-wrap;
+  width:fit-content;
+  height: fit-content;
+  display: inline-block;
+}
+
 form,input{
   color: var(--colour-font);
 }

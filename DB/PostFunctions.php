@@ -55,6 +55,7 @@ class PostFunctions
     
     public function addTagsToPost($postId, $tags)
     {
+        $tags = array_unique($tags);
         $stmt = $this->db->prepare("INSERT INTO posttags(idPost,idTag) VALUES (?,?)");
         foreach ($tags as $tag) {
             $tagId = $this->getTagId($tag);
