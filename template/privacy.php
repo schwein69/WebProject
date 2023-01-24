@@ -1,5 +1,5 @@
-<div class="row mt-5">
-    <div class="col-8 mx-auto privacy">
+<div class="row mt-5 privacy-body col-12 col-md-8 mx-auto ">
+    <div class="privacy">
         <h2>Privacy Policy</h2>
         <p>Last updated: January 23, 2023</p>
         <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your

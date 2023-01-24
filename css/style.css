@@ -269,6 +269,10 @@ form>fieldset button {
   width: fit-content !important;
 }
 
+.privacy-body{
+  background-color: var(--colour-bck-base);
+}
+
 /* CHAT */
 div.chat-body, #chat-bottom > form{
   border: 1px solid var(--colour-border);

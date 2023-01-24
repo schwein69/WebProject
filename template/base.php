@@ -135,7 +135,7 @@ else
         <div id="cookiebar" class="row col-12 col-md-8 mx-auto fixed-bottom py-1">
             <p class="col-11">
             To improve your experience on our site we use cookies to remember login details.
-            See <a href="settings.php">Privacy & Policy</a> page to learn more.
+            See <a href="privacy_policy.php">Privacy & Policy</a> page to learn more.
             </p>
             <button class="col-1 mt-auto">OK</button>
         </div>

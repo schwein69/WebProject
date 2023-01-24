@@ -13,13 +13,8 @@
                 </label>
             </div>
             <div class="form-group my-2">
-<<<<<<< HEAD
-                <label class="control-label col-2" for="name"><?php echo $lang["accountSetting_namelabel"];?></label>
-                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required/>
-=======
                 <label class="control-label col-3" for="name"><?php echo $lang["accountSetting_namelabel"];?></label>
-                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required>
->>>>>>> 0fb0dd5cac43910339cd3370494ad614e50d0c4e
+                <input class="col-6" type="text" value="<?php echo $templateParams["user"]["username"]; ?>" name="name" id="name" required/>
             </div>
             <div class="form-group my-2">
                 <label class="control-label col-3" for="email">Email</label>
@@ -55,21 +50,12 @@
             <p><?php echo $templateParams["errormsgPsw"]; ?></p>
             <?php endif; ?>
             <div class="form-group my-2">
-<<<<<<< HEAD
-                    <label class="control-label col-2" for="pwd" style="font-weight:bold;">Password</label>
+                    <label class="control-label col-3" for="pwd" style="font-weight:bold;">Password</label>
                     <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd"/>
             </div>
             <div class="form-group my-2">
-                <label class="control-label col-2" for="pwdrepeat" style="font-weight:bold;">Conferma Password</label>
+                <label class="control-label col-3" for="pwdrepeat" style="font-weight:bold;">Conferma Password</label>
                 <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat"/>
-=======
-                    <label class="control-label col-3" for="pwd"><b>Password</b></label>
-                    <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd">
-            </div>
-            <div class="form-group my-2">
-                <label class="control-label col-3" for="pwdrepeat"><b>Conferma Password</b></label>
-                <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat">
->>>>>>> 0fb0dd5cac43910339cd3370494ad614e50d0c4e
             </div>    
             <hr/>
             <input type="hidden" name="form" value="passwordForm" >
