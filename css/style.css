@@ -9,6 +9,7 @@
   --colour-border: black;
   --colour-hover:lightgreen;
   --search-resultbox-bck: white;
+  --privacy-important-words-color:#a80000;
 }
 
 
@@ -22,6 +23,7 @@
   --colour-border: white;
   --colour-hover:#88BAA9;
   --colour-font: white;
+  --privacy-important-words-color:#00ff11;
 }
 
 html,body {
@@ -30,13 +32,11 @@ html,body {
 body{
   background-color: var(--colour-bck-backside);
 }
-
-.privacy strong{
-  color: #00ff11;
+.privacy{
+  color:var(--colour-font);
 }
-
-.privacy h2,.privacy h3{ 
-  color: #00ff11;
+.privacy strong,.privacy h2,.privacy h3,.privacy a{
+  color: var(--privacy-important-words-color) !important;
 }
 
 .list-group-item{

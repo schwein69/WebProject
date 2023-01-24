@@ -25,25 +25,11 @@
                 </li>
             </ul>
     <div class="tab-content">
-        <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
-        <div class="tab-pane fade " id="posts" role="tabpanel" aria-labelledby="posts-tab"><?php if(isset($templateParams["savedposts"])) require($templateParams["savedposts"]) ?></div>
-        <div class="tab-pane fade " id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
-        <div class="tab-pane fade " id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><?php if(isset($templateParams["profileSetting"])) require($templateParams["profileSetting"])?></div>
+        <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab"><?php if(isset($templateParams["savedposts"])) require($templateParams["savedposts"]) ?></div>
+        <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab"><?php if(isset($templateParams["accountSetting"])) require($templateParams["accountSetting"]) ?></div>
+        <div class="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab"><?php if(isset($templateParams["privacy"])) require($templateParams["privacy"]) ?></div>
     </div>
         </section>
     </div>
 </div>
-<script>
-  window.addEventListener("DOMContentLoaded",function(){
-    document.querySelectorAll('Button[data-bs-toggle="tab"]').forEach(el => el.addEventListener("click", function(el) {
-       const source = el.target || event.srcElement;
-       const triggeredButton = source.nodeName.toLowerCase() == 'button' ? source : source.parentNode;
-       localStorage.setItem('activeTab',triggeredButton.getAttribute("data-bs-target"));
-    }));
-    let activeTab = localStorage.getItem('activeTab');
-    if(activeTab){
-        document.querySelector('#myTab Button[id="' + activeTab.substring(1) + '-tab"]').classList.add("active");
-        document.querySelector('.tab-content div[id="' + activeTab.substring(1) + '"]').classList.add("show","active");
-    }
-});
-</script>

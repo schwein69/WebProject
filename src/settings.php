@@ -106,10 +106,15 @@ $templateParams["content"] = "settings-template.php";
 $templateParams["profileSetting"] = "profileSetting.php";
 $templateParams["accountSetting"] = "accountSetting.php";
 $templateParams["savedposts"] = "post_template.php";
-$templateParams["privacy"] = "privacy.php";
+if($_SESSION["lang"] == "it"){
+    $templateParams["privacy"] = 'privacy_it.php';
+} else {
+    $templateParams["privacy"] = 'privacy_en.php';
+}
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';
-$templateParams["js"] = array("../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", "../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js","../js/follow-event.js","../js/sharePost.js");
+$templateParams["js"] = array("../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", 
+"../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js","../js/follow-event.js","../js/sharePost.js","../js/setting_tabs.js");
 require '../template/base.php';
 
 ?>
