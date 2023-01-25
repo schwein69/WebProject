@@ -29,9 +29,10 @@
                             <?php echo $templateParams["user"]["numFollower"]; ?>
                         </li>
                     </ul>
-                    <p class="card-text">
-                        <h5 style="white-space: pre-wrap;"><?php echo htmlspecialchars($templateParams["user"]["descrizione"]) ?></h5>
+                    <div class="row">
+                    <p class="h5 mt-4" style="white-space: pre-wrap;"><?php echo htmlspecialchars($templateParams["user"]["descrizione"]); ?>
                     </p>
+                    </div>
                     <?php if(isset($_GET["idUtente"]) && $_GET["idUtente"] != $_SESSION["idUtente"]) : ?>
                     <p class="card-text">
                         <button type="button" value="<?php echo $templateParams["user"]["idUtente"] ?>" class="btn followButton<?php echo $templateParams["user"]["idUtente"] ?>">

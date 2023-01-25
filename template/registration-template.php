@@ -1,6 +1,6 @@
 <div class="row mt-5">
     <div class="col-12 col-md-8 mx-auto text-center shadow-lg bg-body" style="padding: 10% 0 10% 0; ">
-        <div class="col-10 border mx-auto" style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+        <div class="col-10 border mx-auto graphicForm">
             <h2><?php echo $lang["login_signUp"];?></h2>
             <p></p>
             <form class="form-horizontal" enctype="multipart/form-data" name="myform" method="post" action="#">

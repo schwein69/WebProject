@@ -58,8 +58,9 @@ else
                                     </nav>
                                 <?php else: ?>
                                     <div class="text-end">
-                                        <span class="bi bi-translate" for="notLoggedLanguages"></span>
-                                        <select name="notLoggedLanguages" id="notLoggedLanguages">
+                                        <label for="notLoggedLanguages" class="invisibleLabel"><?php echo $lang["accountSetting_chooseLanguageText"];?></label>
+                                        <span class="bi bi-translate"></span>
+                                        <select aria-label="<?php echo $lang["accountSetting_chooseLanguageText"];?>" name="notLoggedLanguages" id="notLoggedLanguages">
                                             <?php if ($_SESSION["lang"] == "it"): ?>
                                                 <option value="it" selected="selected">Italiano</option>
                                                 <option value="en">English</option>

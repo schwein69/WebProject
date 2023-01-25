@@ -248,7 +248,8 @@ ALTER TABLE `contenutimultimediali`
 --
 ALTER TABLE `messaggi`
   ADD PRIMARY KEY (`idMessaggio`),
-  ADD KEY `idChat` (`idChat`);
+  ADD KEY `idChat` (`idChat`),
+  ADD KEY `idMittente` (`idMittente`);
 
 --
 -- Indexes for table `notifiche`
@@ -438,14 +439,16 @@ ALTER TABLE `contenutimultimediali`
 -- Constraints for table `messaggi`
 --
 ALTER TABLE `messaggi`
-  ADD CONSTRAINT `messaggi_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`);
+  ADD CONSTRAINT `messaggi_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messaggi_ibfk_2` FOREIGN KEY (`idMittente`) REFERENCES `utenti` (`idUtente`);
 
 --
 -- Constraints for table `notifiche`
 --
 ALTER TABLE `notifiche`
-  ADD CONSTRAINT `notifiche_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipi` (`idTipo`);
+  ADD CONSTRAINT `notifiche_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tipi` (`idTipo`),
+  ADD CONSTRAINT `notifiche_ibfk_3` FOREIGN KEY (`idUtenteNotificante`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `postpiaciuti`

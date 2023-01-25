@@ -1,6 +1,5 @@
 <div class="row my-5">
-    <section class="col-8 mx-auto"
-        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+    <section class="col-8 mx-auto graphicForm">
         <div class="col-10 mx-auto">
             <h2>
                 <?php echo $lang["accountSetting_changeThemeText"]; ?>
@@ -19,8 +18,7 @@
     </section>
 </div>
 <div class="row my-5">
-    <section class="col-8 mx-auto"
-        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+    <section class="col-8 mx-auto graphicForm">
         <div class="col-10 mx-auto">
             <form action="#" method="POST">
                 <h2>
@@ -39,8 +37,7 @@
     </section>
 </div>
 <div class="row my-5">
-    <section class="col-8 mx-auto"
-        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+    <section class="col-8 mx-auto graphicForm">
         <div class="col-10 mx-auto">
             <form action="#" method="POST">
                 <h2><?php echo $lang["accountSetting_modifyStoryText"]; ?></h2>

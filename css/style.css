@@ -294,6 +294,11 @@ div.chat-body > div.row > div.ms-auto{
   background-color: purple;
 }
 
+.graphicForm{
+  background-color: rgb(153, 201, 255,0.5) ;
+  backdrop-filter: blur(10px);
+}
+
 .minForm label{
   background-color: var(--colour-bck-backside);
   border: 0px;
