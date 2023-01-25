@@ -251,38 +251,6 @@
                     improve our Service, products, services, marketing and your experience.</p>
             </li>
         </ul>
-        <p>We may share Your personal information in the following situations:</p>
-        <ul>
-            <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers
-                to
-                monitor and analyze the use of our Service, to contact You.</li>
-            <li><strong>For business transfers:</strong> We may share or transfer Your personal information in
-                connection
-                with,
-                or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a
-                portion
-                of
-                Our business to another company.</li>
-            <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we
-                will
-                require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any
-                other
-                subsidiaries, joint venture partners or other companies that We control or that are under common control
-                with
-                Us.</li>
-            <li><strong>With business partners:</strong> We may share Your information with Our business partners to
-                offer
-                You
-                certain products, services or promotions.</li>
-            <li><strong>With other users:</strong> when You share personal information or otherwise interact in the
-                public
-                areas
-                with other users, such information may be viewed by all users and may be publicly distributed outside.
-            </li>
-            <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with
-                Your
-                consent.</li>
-        </ul>
         <h3>Retention of Your Personal Data</h3>
         <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this
             Privacy
@@ -335,26 +303,6 @@
             lawful
             basis
             to do so.</p>
-        <h3>Disclosure of Your Personal Data</h3>
-        <h3>Business Transactions</h3>
-        <p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We
-            will
-            provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.
-        </p>
-        <h3>Law enforcement</h3>
-        <p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so
-            by
-            law
-            or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
-        <h3>Other legal requirements</h3>
-        <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
-        <ul>
-            <li>Comply with a legal obligation</li>
-            <li>Protect and defend the rights or property of the Company</li>
-            <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
-            <li>Protect the personal safety of Users of the Service or the public</li>
-            <li>Protect against legal liability</li>
-        </ul>
         <h3>Security of Your Personal Data</h3>
         <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the
             Internet,
@@ -362,32 +310,6 @@
             protect
             Your
             Personal Data, We cannot guarantee its absolute security.</p>
-        <h2>Children's Privacy</h2>
-        <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable
-            information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your
-            child
-            has
-            provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data
-            from
-            anyone under the age of 13 without verification of parental consent, We take steps to remove that
-            information
-            from
-            Our servers.</p>
-        <p>If We need to rely on consent as a legal basis for processing Your information and Your country requires
-            consent
-            from
-            a parent, We may require Your parent's consent before We collect and use that information.</p>
-        <h2>Links to Other Websites</h2>
-        <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party
-            link,
-            You
-            will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every
-            site
-            You
-            visit.</p>
-        <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any
-            third
-            party sites or services.</p>
         <h2>Changes to this Privacy Policy</h2>
         <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new
             Privacy

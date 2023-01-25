@@ -204,26 +204,6 @@
                     servizi, il marketing e la tua esperienza.</p>
             </li>
         </ul>
-        <p>Potremmo condividere le tue informazioni personali nelle seguenti situazioni:</p>
-        <ul>
-            <li><strong>Con i fornitori di servizi:</strong> potremmo condividere le tue informazioni personali con i
-                fornitori di servizi per monitorare e analizzare l'utilizzo del nostro servizio, per contattarti.</li>
-            <li><strong>Per i trasferimenti aziendali: </strong> potremmo condividere o trasferire le tue informazioni
-                personali in relazione a, o durante le negoziazioni di, qualsiasi fusione, vendita di beni della
-                Società, finanziamento o acquisizione di tutta o parte della nostra attività a un'altra società.</li>
-            <li><strong>Con gli affiliati:</strong> potremmo condividere le tue informazioni con i nostri affiliati, nel
-                qual caso richiederemo a tali affiliati di onorare la presente Informativa sulla privacy. Le affiliate
-                includono la nostra società madre e qualsiasi altra sussidiaria, partner di joint venture o altre
-                società che controlliamo o che sono sotto controllo comune con noi.</li>
-            <li><strong>Con i partner commerciali:</strong> potremmo condividere le tue informazioni con i nostri
-                partner commerciali per offrirti determinati prodotti, servizi o promozioni.</li>
-            <li><strong>Con altri utenti:</strong> quando condividi informazioni personali o altrimenti interagisci
-                nelle aree pubbliche con altri utenti, tali informazioni possono essere visualizzate da tutti gli utenti
-                e possono essere distribuite pubblicamente all'esterno.
-            </li>
-            <li><strong>Con il tuo consenso</strong>: possiamo divulgare le tue informazioni personali per qualsiasi
-                altro scopo con il tuo consenso.</li>
-        </ul>
         <h3>Conservazione dei tuoi dati personali</h3>
         <p>La Società conserverà i tuoi dati personali solo per il tempo necessario agli scopi indicati nella presente
             Informativa sulla privacy. Conserveremo e utilizzeremo i tuoi dati personali nella misura necessaria per
@@ -258,46 +238,11 @@
             qualsiasi informazione personale che ci hai fornito.</p>
         <p>Si prega di notare, tuttavia, che potremmo aver bisogno di conservare determinate informazioni quando abbiamo
             un obbligo legale o una base legale per farlo.</p>
-        <h3>Divulgazione dei tuoi dati personali</h3>
-        <h3>Transazione d'affari</h3>
-        <p>Se la Società è coinvolta in una fusione, acquisizione o vendita di beni, i tuoi dati personali potrebbero
-            essere trasferiti. Forniremo un avviso prima che i tuoi dati personali vengano trasferiti e diventino
-            soggetti a una diversa Informativa sulla privacy.
-        </p>
-        <h3>Applicazione della legge</h3>
-        <p>In determinate circostanze, la Società potrebbe essere tenuta a divulgare i tuoi dati personali se richiesto
-            dalla legge o in risposta a richieste valide da parte delle autorità pubbliche (ad esempio un tribunale o
-            un'agenzia governativa).</p>
-        <h3>Altri requisiti legali</h3>
-        <p>La Società può divulgare i tuoi dati personali in buona fede, ritenendo che tale azione sia necessaria per:
-        </p>
-        <ul>
-            <li>Rispettare un obbligo legale</li>
-            <li>Proteggere e difendere i diritti o la proprietà della Società</li>
-            <li>Prevenire o indagare su possibili illeciti in relazione al Servizio</li>
-            <li>Proteggere la sicurezza personale degli Utenti del Servizio o del pubblico</li>
-            <li>Protezione contro la responsabilità legale</li>
-        </ul>
         <h3>Sicurezza dei tuoi dati personali</h3>
         <p>La sicurezza dei tuoi dati personali è importante per noi, ma ricorda che nessun metodo di trasmissione su
             Internet o metodo di archiviazione elettronica è sicuro al 100%. Sebbene ci sforziamo di utilizzare mezzi
             commercialmente accettabili per proteggere i tuoi dati personali, non possiamo garantirne l'assoluta
             sicurezza.</p>
-        <h2>Privacy dei bambini</h2>
-        <p>Il nostro servizio non si rivolge a persone di età inferiore ai 13 anni. Non raccogliamo consapevolmente
-            informazioni di identificazione personale da persone di età inferiore ai 13 anni. Se sei un genitore o
-            tutore e sei consapevole che tuo figlio ci ha fornito dati personali, ti preghiamo di Contattaci. Se veniamo
-            a conoscenza del fatto che abbiamo raccolto dati personali da persone di età inferiore ai 13 anni senza la
-            verifica del consenso dei genitori, adottiamo misure per rimuovere tali informazioni dai nostri server.</p>
-        <p>Se dobbiamo fare affidamento sul consenso come base legale per l'elaborazione delle tue informazioni e il tuo
-            paese richiede il consenso di un genitore, potremmo richiedere il consenso dei tuoi genitori prima di
-            raccogliere e utilizzare tali informazioni.</p>
-        <h2>Link ad altri siti web</h2>
-        <p>l nostro servizio può contenere collegamenti ad altri siti Web che non sono gestiti da noi. Se fai clic su un
-            collegamento di terze parti, verrai indirizzato al sito di tale terza parte. Ti consigliamo vivamente di
-            rivedere l'Informativa sulla privacy di ogni sito che visiti.</p>
-        <p>Non abbiamo alcun controllo e non ci assumiamo alcuna responsabilità per il contenuto, le politiche sulla
-            privacy o le pratiche di qualsiasi sito o servizio di terze parti.</p>
         <h2>Modifiche alla presente Informativa sulla privacy</h2>
         <p>Potremmo aggiornare la nostra Informativa sulla privacy di volta in volta. Ti informeremo di eventuali
             modifiche pubblicando la nuova Informativa sulla privacy in questa pagina.</p>
