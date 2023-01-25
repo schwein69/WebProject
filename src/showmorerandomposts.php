@@ -20,7 +20,6 @@ if(isset($_POST["stringList"])){
         $result["status"] = true;
         $result["imagealt"] = getProfilePicAlt($user["username"]);
         $result["isLoggedUserPost"] = $_SESSION["idUtente"] == $result["post"]["idUser"];
-        $result["status"] = true;
         $result["followbtntext"] = $result["followedByMe"] ? $lang["userFollowed"] : $lang["userNotFollowed"];
         $result["post"]["tags"] = $dbh->getPostFunctionHandler()->getPostTags($result["post"]["idPost"]);
         $result["post"]["username"] = $user["username"];
