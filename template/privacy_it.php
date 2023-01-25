@@ -171,202 +171,146 @@
                     che sono a tua disposizione come utente registrato.</p>
             </li>
             <li>
-                <p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of
-                    the
-                    purchase contract for the products, items or services You have purchased or of any other contract
-                    with
-                    Us
-                    through the Service.</p>
+                <p><strong>Per l'esecuzione di un contratto:</strong> lo sviluppo, la conformità e l'esecuzione del
+                    contratto di acquisto per i prodotti, articoli o servizi che hai acquistato o di qualsiasi altro
+                    contratto con Noi attraverso il Servizio.</p>
             </li>
             <li>
-                <p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent
-                    forms
-                    of
-                    electronic communication, such as a mobile application's push notifications regarding updates or
-                    informative
-                    communications related to the functionalities, products or contracted services, including the
-                    security
-                    updates, when necessary or reasonable for their implementation.</p>
+                <p><strong>Per contattarti:</strong> per contattarti tramite e-mail, telefonate, SMS o altre forme
+                    equivalenti di comunicazione elettronica, come notifiche push di un'applicazione mobile relative ad
+                    aggiornamenti o comunicazioni informative relative alle funzionalità, ai prodotti o ai servizi
+                    contrattati, inclusi gli aggiornamenti di sicurezza, quando necessario o ragionevole per la loro
+                    attuazione.</p>
             </li>
             <li>
-                <p><strong>To provide You</strong> with news, special offers and general information about other goods,
-                    services
-                    and events which we offer that are similar to those that you have already purchased or enquired
-                    about
-                    unless
-                    You have opted not to receive such information.</p>
+                <p><strong>Per fornirti</strong> notizie, offerte speciali e informazioni generali su altri beni,
+                    servizi ed eventi che offriamo simili a quelli che hai già acquistato o richiesto, a meno che tu non
+                    abbia scelto di non ricevere tali informazioni.</p>
             </li>
             <li>
-                <p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
+                <p><strong>Per gestire le tue richieste:</strong> per partecipare e gestire le tue richieste a noi.</p>
             </li>
             <li>
-                <p><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger,
-                    divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of
-                    Our
-                    assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in
-                    which
-                    Personal Data held by Us about our Service users is among the assets transferred.</p>
+                <p><strong>Per i trasferimenti aziendali: </strong> possiamo utilizzare le informazioni dell'utente per
+                    valutare o condurre una fusione, cessione, ristrutturazione, riorganizzazione, scioglimento o altra
+                    vendita o trasferimento di alcuni o tutti i nostri beni, sia come azienda in attività che come parte
+                    di fallimento, liquidazione, o procedimento simile, in cui i dati personali da noi detenuti sugli
+                    utenti del nostro servizio sono tra le risorse trasferite.</p>
             </li>
             <li>
-                <p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data
-                    analysis,
-                    identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate
-                    and
-                    improve our Service, products, services, marketing and your experience.</p>
+                <p><strong>Per altri scopi</strong>: potremmo utilizzare le tue informazioni per altri scopi, come
+                    l'analisi dei dati, l'identificazione delle tendenze di utilizzo, la determinazione dell'efficacia
+                    delle nostre campagne promozionali e per valutare e migliorare il nostro servizio, i prodotti, i
+                    servizi, il marketing e la tua esperienza.</p>
             </li>
         </ul>
-        <p>We may share Your personal information in the following situations:</p>
+        <p>Potremmo condividere le tue informazioni personali nelle seguenti situazioni:</p>
         <ul>
-            <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers
-                to
-                monitor and analyze the use of our Service, to contact You.</li>
-            <li><strong>For business transfers:</strong> We may share or transfer Your personal information in
-                connection
-                with,
-                or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a
-                portion
-                of
-                Our business to another company.</li>
-            <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we
-                will
-                require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any
-                other
-                subsidiaries, joint venture partners or other companies that We control or that are under common control
-                with
-                Us.</li>
-            <li><strong>With business partners:</strong> We may share Your information with Our business partners to
-                offer
-                You
-                certain products, services or promotions.</li>
-            <li><strong>With other users:</strong> when You share personal information or otherwise interact in the
-                public
-                areas
-                with other users, such information may be viewed by all users and may be publicly distributed outside.
+            <li><strong>Con i fornitori di servizi:</strong> potremmo condividere le tue informazioni personali con i
+                fornitori di servizi per monitorare e analizzare l'utilizzo del nostro servizio, per contattarti.</li>
+            <li><strong>Per i trasferimenti aziendali: </strong> potremmo condividere o trasferire le tue informazioni
+                personali in relazione a, o durante le negoziazioni di, qualsiasi fusione, vendita di beni della
+                Società, finanziamento o acquisizione di tutta o parte della nostra attività a un'altra società.</li>
+            <li><strong>Con gli affiliati:</strong> potremmo condividere le tue informazioni con i nostri affiliati, nel
+                qual caso richiederemo a tali affiliati di onorare la presente Informativa sulla privacy. Le affiliate
+                includono la nostra società madre e qualsiasi altra sussidiaria, partner di joint venture o altre
+                società che controlliamo o che sono sotto controllo comune con noi.</li>
+            <li><strong>Con i partner commerciali:</strong> potremmo condividere le tue informazioni con i nostri
+                partner commerciali per offrirti determinati prodotti, servizi o promozioni.</li>
+            <li><strong>Con altri utenti:</strong> quando condividi informazioni personali o altrimenti interagisci
+                nelle aree pubbliche con altri utenti, tali informazioni possono essere visualizzate da tutti gli utenti
+                e possono essere distribuite pubblicamente all'esterno.
             </li>
-            <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with
-                Your
-                consent.</li>
+            <li><strong>Con il tuo consenso</strong>: possiamo divulgare le tue informazioni personali per qualsiasi
+                altro scopo con il tuo consenso.</li>
         </ul>
-        <h3>Retention of Your Personal Data</h3>
-        <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this
-            Privacy
-            Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal
-            obligations
-            (for
-            example, if we are required to retain your data to comply with applicable laws), resolve disputes, and
-            enforce
-            our
-            legal agreements and policies.</p>
-        <p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for
-            a
-            shorter period of time, except when this data is used to strengthen the security or to improve the
-            functionality
-            of
-            Our Service, or We are legally obligated to retain this data for longer time periods.</p>
-        <h3>Transfer of Your Personal Data</h3>
-        <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other
-            places
-            where the parties involved in the processing are located. It means that this information may be transferred
-            to —
-            and
-            maintained on — computers located outside of Your state, province, country or other governmental
-            jurisdiction
-            where
-            the data protection laws may differ than those from Your jurisdiction.</p>
-        <p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement
-            to
-            that
-            transfer.</p>
-        <p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in
-            accordance
-            with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a
-            country
-            unless there are adequate controls in place including the security of Your data and other personal
-            information.
+        <h3>Conservazione dei tuoi dati personali</h3>
+        <p>La Società conserverà i tuoi dati personali solo per il tempo necessario agli scopi indicati nella presente
+            Informativa sulla privacy. Conserveremo e utilizzeremo i tuoi dati personali nella misura necessaria per
+            adempiere ai nostri obblighi legali (ad esempio, se ci viene richiesto di conservare i tuoi dati per
+            rispettare le leggi applicabili), risolvere controversie e far rispettare i nostri accordi e politiche
+            legali.</p>
+        <p>La Società conserverà inoltre i Dati di utilizzo a fini di analisi interna. I Dati di utilizzo vengono
+            generalmente conservati per un periodo di tempo più breve, tranne quando questi dati vengono utilizzati per
+            rafforzare la sicurezza o per migliorare la funzionalità del Nostro Servizio, o quando siamo legalmente
+            obbligati a conservare questi dati per periodi di tempo più lunghi.</p>
+        <h3>Trasferimento dei tuoi dati personali</h3>
+        <p>Le tue informazioni, inclusi i Dati Personali, sono trattate presso le sedi operative della Società ed in
+            ogni altro luogo in cui si trovino le parti coinvolte nel trattamento. Significa che queste informazioni
+            possono essere trasferite a - e mantenute su - computer situati al di fuori del tuo stato, provincia, paese
+            o altra giurisdizione governativa in cui le leggi sulla protezione dei dati possono differire da quelle
+            della tua giurisdizione.</p>
+        <p>Il tuo consenso alla presente Informativa sulla privacy seguito dall'invio di tali informazioni rappresenta
+            il tuo consenso a tale trasferimento.</p>
+        <p>La Società adotterà tutte le misure ragionevolmente necessarie per garantire che i tuoi dati siano trattati
+            in modo sicuro e in conformità con la presente Informativa sulla privacy e nessun trasferimento dei tuoi
+            dati personali avrà luogo a un'organizzazione o a un paese a meno che non siano in atto controlli adeguati,
+            inclusa la sicurezza di I tuoi dati e altre informazioni personali.
         </p>
-        <h3>Delete Your Personal Data</h3>
-        <p>You have the right to delete or request that We assist in deleting the Personal Data that We have collected
-            about
-            You.</p>
-        <p>Our Service may give You the ability to delete certain information about You from within the Service.</p>
-        <p>You may update, amend, or delete Your information at any time by signing in to Your Account, if you have one,
-            and
-            visiting the account settings section that allows you to manage Your personal information. You may also
-            contact
-            Us
-            to request access to, correct, or delete any personal information that You have provided to Us.</p>
-        <p>Please note, however, that We may need to retain certain information when we have a legal obligation or
-            lawful
-            basis
-            to do so.</p>
-        <h3>Disclosure of Your Personal Data</h3>
-        <h3>Business Transactions</h3>
-        <p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We
-            will
-            provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.
+        <h3>Elimina i tuoi dati personali</h3>
+        <p>Hai il diritto di eliminare o richiedere la nostra assistenza nell'eliminazione dei dati personali che
+            abbiamo raccolto su di te.</p>
+        <p>Il nostro Servizio può darti la possibilità di eliminare determinate informazioni su di te dall'interno del
+            Servizio.</p>
+        <p>Puoi aggiornare, modificare o eliminare le tue informazioni in qualsiasi momento accedendo al tuo account, se
+            ne hai uno, e visitando la sezione delle impostazioni dell'account che ti consente di gestire le tue
+            informazioni personali. Puoi anche contattarci per richiedere l'accesso, la correzione o l'eliminazione di
+            qualsiasi informazione personale che ci hai fornito.</p>
+        <p>Si prega di notare, tuttavia, che potremmo aver bisogno di conservare determinate informazioni quando abbiamo
+            un obbligo legale o una base legale per farlo.</p>
+        <h3>Divulgazione dei tuoi dati personali</h3>
+        <h3>Transazione d'affari</h3>
+        <p>Se la Società è coinvolta in una fusione, acquisizione o vendita di beni, i tuoi dati personali potrebbero
+            essere trasferiti. Forniremo un avviso prima che i tuoi dati personali vengano trasferiti e diventino
+            soggetti a una diversa Informativa sulla privacy.
         </p>
-        <h3>Law enforcement</h3>
-        <p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so
-            by
-            law
-            or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
-        <h3>Other legal requirements</h3>
-        <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+        <h3>Applicazione della legge</h3>
+        <p>In determinate circostanze, la Società potrebbe essere tenuta a divulgare i tuoi dati personali se richiesto
+            dalla legge o in risposta a richieste valide da parte delle autorità pubbliche (ad esempio un tribunale o
+            un'agenzia governativa).</p>
+        <h3>Altri requisiti legali</h3>
+        <p>La Società può divulgare i tuoi dati personali in buona fede, ritenendo che tale azione sia necessaria per:
+        </p>
         <ul>
-            <li>Comply with a legal obligation</li>
-            <li>Protect and defend the rights or property of the Company</li>
-            <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
-            <li>Protect the personal safety of Users of the Service or the public</li>
-            <li>Protect against legal liability</li>
+            <li>Rispettare un obbligo legale</li>
+            <li>Proteggere e difendere i diritti o la proprietà della Società</li>
+            <li>Prevenire o indagare su possibili illeciti in relazione al Servizio</li>
+            <li>Proteggere la sicurezza personale degli Utenti del Servizio o del pubblico</li>
+            <li>Protezione contro la responsabilità legale</li>
         </ul>
-        <h3>Security of Your Personal Data</h3>
-        <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the
-            Internet,
-            or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to
-            protect
-            Your
-            Personal Data, We cannot guarantee its absolute security.</p>
-        <h2>Children's Privacy</h2>
-        <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable
-            information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your
-            child
-            has
-            provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data
-            from
-            anyone under the age of 13 without verification of parental consent, We take steps to remove that
-            information
-            from
-            Our servers.</p>
-        <p>If We need to rely on consent as a legal basis for processing Your information and Your country requires
-            consent
-            from
-            a parent, We may require Your parent's consent before We collect and use that information.</p>
-        <h2>Links to Other Websites</h2>
-        <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party
-            link,
-            You
-            will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every
-            site
-            You
-            visit.</p>
-        <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any
-            third
-            party sites or services.</p>
-        <h2>Changes to this Privacy Policy</h2>
-        <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new
-            Privacy
-            Policy on this page.</p>
-        <p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming
-            effective
-            and
-            update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
-        <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy
-            are
-            effective when they are posted on this page.</p>
-        <h2>Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, You can contact us:</p>
+        <h3>Sicurezza dei tuoi dati personali</h3>
+        <p>La sicurezza dei tuoi dati personali è importante per noi, ma ricorda che nessun metodo di trasmissione su
+            Internet o metodo di archiviazione elettronica è sicuro al 100%. Sebbene ci sforziamo di utilizzare mezzi
+            commercialmente accettabili per proteggere i tuoi dati personali, non possiamo garantirne l'assoluta
+            sicurezza.</p>
+        <h2>Privacy dei bambini</h2>
+        <p>Il nostro servizio non si rivolge a persone di età inferiore ai 13 anni. Non raccogliamo consapevolmente
+            informazioni di identificazione personale da persone di età inferiore ai 13 anni. Se sei un genitore o
+            tutore e sei consapevole che tuo figlio ci ha fornito dati personali, ti preghiamo di Contattaci. Se veniamo
+            a conoscenza del fatto che abbiamo raccolto dati personali da persone di età inferiore ai 13 anni senza la
+            verifica del consenso dei genitori, adottiamo misure per rimuovere tali informazioni dai nostri server.</p>
+        <p>Se dobbiamo fare affidamento sul consenso come base legale per l'elaborazione delle tue informazioni e il tuo
+            paese richiede il consenso di un genitore, potremmo richiedere il consenso dei tuoi genitori prima di
+            raccogliere e utilizzare tali informazioni.</p>
+        <h2>Link ad altri siti web</h2>
+        <p>l nostro servizio può contenere collegamenti ad altri siti Web che non sono gestiti da noi. Se fai clic su un
+            collegamento di terze parti, verrai indirizzato al sito di tale terza parte. Ti consigliamo vivamente di
+            rivedere l'Informativa sulla privacy di ogni sito che visiti.</p>
+        <p>Non abbiamo alcun controllo e non ci assumiamo alcuna responsabilità per il contenuto, le politiche sulla
+            privacy o le pratiche di qualsiasi sito o servizio di terze parti.</p>
+        <h2>Modifiche alla presente Informativa sulla privacy</h2>
+        <p>Potremmo aggiornare la nostra Informativa sulla privacy di volta in volta. Ti informeremo di eventuali
+            modifiche pubblicando la nuova Informativa sulla privacy in questa pagina.</p>
+        <p>Ti informeremo via e-mail e/o un avviso ben visibile sul Nostro Servizio, prima che la modifica diventi
+            effettiva e aggiorneremo la data dell'"Ultimo aggiornamento" nella parte superiore della presente
+            Informativa sulla privacy.</p>
+        <p>Si consiglia di rivedere periodicamente la presente Informativa sulla privacy per eventuali modifiche. Le
+            modifiche alla presente Informativa sulla privacy entrano in vigore quando vengono pubblicate su questa
+            pagina.</p>
+        <h2>Contattaci</h2>
+        <p>In caso di domande sulla presente Informativa sulla privacy, è possibile contattarci:</p>
         <ul>
-            <li>By email: jiahao.guo@studio.unibo.it</li>
+            <li>via email: jiahao.guo@studio.unibo.it</li>
         </ul>
     </div>
 </div>
