@@ -22,20 +22,19 @@ if(isset($_POST["submit"])){
         header("Location: login.php");
     } else {
         if($checkUsername != 0){
-            $msg= "Username esistente!";
+            $msg = $lang["err_existUsername"];
         }else{
-            $msg = "Email esistente!";
+            $msg = $lang["err_existEmail"];
         }
         $templateParams["errormsg"] = $msg;
     }
 
    
 }
-$templateParams["title"] = "Lynkzone - Registration";
 $templateParams["content"] = "registration-template.php";
 $templateParams["loginTopNav"]=true;
-$templateParams["loginBottomNav"]=true;;
-$templateParams["title"] = 'Lynkzone - registration'; 
+$templateParams["loginBottomNav"]=true;
+$templateParams["title"] = 'Lynkzone - '.$lang["Registration"]; 
 $templateParams["js"] = array("../js/registrationchecker.js","../js/functions.js","../js/languageOnChange.js");
 
 require '../template/base.php';

@@ -13,6 +13,6 @@ for ($i=0; $i < $templateParams["numNotifications"]; $i++) {
 }
 $templateParams["js"] = array('../js/infinite_notificationsList.js');
 $templateParams["content"] = 'notification_list.php';
-$templateParams["title"] = 'Lynkzone - Notifiche'; 
+$templateParams["title"] = 'Lynkzone - '.$lang["notifications"]; 
 require '../template/base.php';
 ?>

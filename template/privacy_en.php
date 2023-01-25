@@ -207,14 +207,6 @@
                     as a registered user.</p>
             </li>
             <li>
-                <p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of
-                    the
-                    purchase contract for the products, items or services You have purchased or of any other contract
-                    with
-                    Us
-                    through the Service.</p>
-            </li>
-            <li>
                 <p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent
                     forms
                     of
@@ -223,14 +215,6 @@
                     communications related to the functionalities, products or contracted services, including the
                     security
                     updates, when necessary or reasonable for their implementation.</p>
-            </li>
-            <li>
-                <p><strong>To provide You</strong> with news, special offers and general information about other goods,
-                    services
-                    and events which we offer that are similar to those that you have already purchased or enquired
-                    about
-                    unless
-                    You have opted not to receive such information.</p>
             </li>
             <li>
                 <p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
@@ -242,13 +226,6 @@
                     assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in
                     which
                     Personal Data held by Us about our Service users is among the assets transferred.</p>
-            </li>
-            <li>
-                <p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data
-                    analysis,
-                    identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate
-                    and
-                    improve our Service, products, services, marketing and your experience.</p>
             </li>
         </ul>
         <h3>Retention of Your Personal Data</h3>
@@ -325,6 +302,7 @@
         <p>If you have any questions about this Privacy Policy, You can contact us:</p>
         <ul>
             <li>By email: jiahao.guo@studio.unibo.it</li>
+            <li>By email: samuele.carafassi@studio.unibo.it</li>
         </ul>
     </div>
 </div>

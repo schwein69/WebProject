@@ -10,7 +10,7 @@ for ($i=0; $i < $numPosts; $i++) {
     array_push($templateParams["oldPostIds"], $templateParams["posts"][$i]["idPost"]);
     $user = $dbh->getUserFunctionHandler()->getUserData($templateParams["posts"][$i]['idUser']);
     $templateParams["posts"][$i]["fotoProfilo"] = UPLOAD_DIR.$user['idUtente'].'/profile.'.$user['formatoFotoProfilo'];
-    $templateParams["posts"][$i]["fotoProfiloAlt"] = "foto profilo di ".$user['username'];
+    $templateParams["posts"][$i]["fotoProfiloAlt"] = getProfilePicAlt($user['username']);
     $templateParams["posts"][$i]["username"] = $user['username'];
     $templateParams["posts"][$i]["isLoggedUserPost"] = $user['idUtente'] == $_SESSION["idUtente"];
     $templateParams["posts"][$i]["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe($_SESSION["idUtente"],$user['idUtente']);

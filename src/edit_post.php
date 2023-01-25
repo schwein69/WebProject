@@ -26,7 +26,7 @@ if(isset($_GET["postid"])){
     $templateParams["submitButtonText"] = $lang["post_editPost"];
     $templateParams["formTarget"] = "edit_post.php";
     $templateParams["content"] = 'create_post.php'; 
-    $templateParams["title"] = 'Lynkzone - modifica post'; 
+    $templateParams["title"] = 'Lynkzone - '.$lang["editPost_title"]; 
     $templateParams["js"] = array("../js/post_creation_buttons.js", "../js/functions.js",'../js/notifications_receiver.js');
 } else if(isset($_POST["postid"])) {
     //EDITING COMPUTATION
@@ -69,7 +69,7 @@ if(isset($_GET["postid"])){
             if(!areThereDangerousChars($_POST["tag".$i])){
                 array_push($tags,$_POST["tag".$i]);
             } else{
-                $err = "Impossibile aggiungere tag: ".$_POST["tag".$i];
+                $err = $lang["err_unableAddTag"].$_POST["tag".$i];
                 array_push($errMsgs, $err);
             }
         }
@@ -91,11 +91,11 @@ if(isset($_GET["postid"])){
         }
     }
     if(count($errMsgs) == 0){
-        $templateParams["pageHeader"] = "Post aggiornato con successo";
-        $templateParams["title"]= "Lynkzone - post aggiornato";
+        $templateParams["pageHeader"] = $lang["editPost_success"];
+        $templateParams["title"]= "Lynkzone - ".$lang["editPost_success_title"];
     } else {
-        $templateParams["pageHeader"] = "Post aggiornato, ma sono stati riscontrati dei problemi";
-        $templateParams["title"]= "Lynkzone - problema aggiornamento post";
+        $templateParams["pageHeader"] = $lang["editPost_error"];
+        $templateParams["title"]= "Lynkzone - ".$lang["editPost_error_title"];
     }
     $templateParams["content"] = "post_creation_result.php"; 
 } 

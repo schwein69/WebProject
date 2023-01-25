@@ -4,7 +4,7 @@ Passwords are equal to usernames.
 If the password is too short (e.g. 4 character) add some '0' to reach minimum length (6);
 */
 INSERT INTO utenti(idUtente,username,pwd,email,dataDiNascita,formatoFotoProfilo,tema,lang)
-VALUES (1,'ginopino','$2y$10$q6BUrmxI9DlqSgcsYqEO2uJGZae4ZycWpTXWlpmCn8owtzxLI7t6W','ginopino@gmail.com','2001-01-01','png','d','it'),
+VALUES (1,'ginopino','$2y$10$q6BUrmxI9DlqSgcsYqEO2uJGZae4ZycWpTXWlpmCn8owtzxLI7t6W','ginopino@gmail.com','2001-01-01','jpg','d','it'),
 (2,'gigi','$2y$10$9D4CsnqviPIejjIBkwtzQeS07VgWKua1RmbDfIkAtfCxgizqukJAu','gigi@gmail.com','2001-01-01','jpg','l','it'),
 (3,'johndoe','$2y$10$jA5bhoXHixauOwTE/.jnMeyqyZfrwwtltA4JdST778bxVofHc0XvS','johndoe@gmail.com','1960-04-06','png','l','en'),
 (4,'mikebryan','$2y$10$4BSeN0cJtS9fl5rnt7r7HeXybsaTKZ/jbetZUqeSP.eNOPd/1d06a','mikebryan@gmail.com','1980-03-02','png','l','en'),
@@ -68,6 +68,10 @@ VALUES (1,'Like'),
 /*---- POST INSERTION ----*/
 INSERT INTO posts(idPost, dataPost, testo, idUser, numLike, numCommenti)
 VALUES (1,'2022-12-01', 'Questo è il mio gattino.',1,1,1);
+
+/*---- LIKE INSERTION ----*/
+INSERT INTO postpiaciuti(idPost, idUtente)
+VALUES (1,2);
 
 /*---- COMMENTI INSERTION ----*/
 INSERT INTO commenti(dataCommento, testo, idPost, idUtente)

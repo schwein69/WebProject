@@ -58,7 +58,7 @@ class UserFunctions
         $stmt->bind_param('i', $idUser);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC)[0];
+        return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC)[0] : null;
     }
 
     public function getUserDataByRecoveryCode($code)
@@ -281,6 +281,10 @@ class UserFunctions
     }
     public function removeUser($userId)
     {
+        $stmt = $this->db->prepare("DELETE FROM chat WHERE idChat IN (SELECT idChat FROM partecipazione WHERE idUtente=?)");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
         $stmt = $this->db->prepare("DELETE FROM utenti WHERE idUtente =?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();

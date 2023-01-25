@@ -81,7 +81,7 @@ function uploadFile($path, $image, $imgName = "")
     //Controllo estensione del file
     $fileType = strtolower(pathinfo($baseName, PATHINFO_EXTENSION));
     if (!isVideoExtension($fileType) && !isImageExtension($fileType)) {
-        $msg .= "Formato file non valido";
+        $msg .= "Invalid file extension";
     }
 
     $imageName = $imgName != "" ? $imgName . "." . $fileType : $baseName; // ... salva la vita
@@ -93,11 +93,11 @@ function uploadFile($path, $image, $imgName = "")
     //Controllo se immagine è veramente un'immagine
     $imageSize = getimagesize($image["tmp_name"]);
     if (isImageExtension($fileType) && $imageSize === false) {
-        $msg .= "File caricato non è un'immagine! ";
+        $msg .= "Uploaded file was not an image";
     }
     //Controllo dimensione dell'immagine < 500KB
     if ($image["size"] > $maxKB * 1024) {
-        $msg .= "File caricato pesa troppo! Dimensione massima è $maxKB KB. ";
+        $msg .= "File too large! Max size is $maxKB KB. ";
     }
 
     //Controllo se esiste file con stesso nome ed eventualmente lo rinomino
@@ -114,7 +114,7 @@ function uploadFile($path, $image, $imgName = "")
     //Se non ci sono errori, sposto il file dalla posizione temporanea alla cartella di destinazione
     if (strlen($msg) == 0) {
         if (!move_uploaded_file($image["tmp_name"], $fullPath)) {
-            $msg .= "Errore nel caricamento dell'immagine: " . $image["error"];
+            $msg .= "Image upload error: " . $image["error"];
         } else {
             $msg = $imageName;
             $result = 1;

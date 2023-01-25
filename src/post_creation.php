@@ -28,7 +28,7 @@ for($i=1;$i<10;$i++){
         if(!areThereDangerousChars($_POST["tag".$i])){
             array_push($tags,$_POST["tag".$i]);
         } else{
-            $err = "Impossibile aggiungere tag: ".$_POST["tag".$i];
+            $err = $lang["err_unableAddTag"].$_POST["tag".$i];
             array_push($errMsgs, $err);
         }
     }
@@ -38,7 +38,7 @@ $dbh->getPostFunctionHandler()->addTagsToPost($postId, $tags);
 
 $postPath=UPLOAD_DIR.'/'.$_SESSION["idUtente"].'/'.$postId.'/';
 if(!mkdir($postPath, 0777, true)){
-    array_push($errMsgs, "Errore nella creazione dello spazio per il post: ".error_get_last()['message']);
+    array_push($errMsgs, "Generic error: ".error_get_last()['message']);
 }
 foreach($files_to_upload as $file){
     list($result, $fileType, $msg) = uploadFile($postPath,$file["file"]);
@@ -50,11 +50,10 @@ foreach($files_to_upload as $file){
 }
 if(count($errMsgs) == 0){
     $templateParams["pageHeader"] = $lang["createPost_success"];
-    $templateParams["title"]= "Lynkzone - post creato";
-
+    $templateParams["title"]= "Lynkzone - ".$lang["createPost_success_title"];
 }else{
     $templateParams["pageHeader"] = $lang["createPost_error"];
-    $templateParams["title"]= "Lynkzone - problema creazione post";
+    $templateParams["title"]= "Lynkzone - ".$lang["createPost_error_title"];
 }
 $templateParams["js"] = ('../js/notifications_receiver.js');   
 $templateParams["content"] = "post_creation_result.php"; 

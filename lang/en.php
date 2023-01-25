@@ -15,6 +15,8 @@ $lang["Birthday"] = "Birthday";
 $lang["ProfilePicture"] = "Profile picture";
 $lang["Repeat"] = "Repeat";
 $lang["VisitPage"] = "Visit page";
+$lang["SearchType"] = "Select what you want to search:";
+$lang["Registration"] = "Registration";
 
 /* -------------------------- BASE ---------------------------------- */
 $lang["settings"] = "Settings";
@@ -77,13 +79,23 @@ $lang["post_share"] = "Share post";
 $lang["post_editPost"] = "Edit";
 
 /* Post creation */
+$lang["createPost_title"] = "new post";
+$lang["editPost_title"] = "edit post";
+$lang["editPost_removeFileLabel"] = "Select which image or video you want to remove";
+$lang["editPost_errImgOverload"] = "A post can't have more than 9 images and videos.";
 $lang["createPost_errNoMsgVidsTxt"] = "Insert text, images or videos.";
 $lang["createPost_Txt"] = "Post Text";
 $lang["createPost_addTag"] = "Add another tag";
 $lang["createPost_ImgsVids"] = "Images and Videos";
 $lang["createPost_addImgVid"] = "Add image/video";
 $lang["createPost_success"] = "Post created successfully!";
-$lang["createPost_error"] = "Post create but there were some errors in uploading it";
+$lang["createPost_error"] = "Post create but there were some errors while uploading it";
+$lang["createPost_success_title"] = "post created";
+$lang["createPost_error_title"] = "post creation error";
+$lang["editPost_success"] = "Post successfully updated";
+$lang["editPost_error"] = "Post updated but some errors occured";
+$lang["editPost_success_title"] = "post updated";
+$lang["editPost_error_title"] = "post updating error";
 
 /* -------------------------- LOGIN ---------------------------------- */
 
@@ -110,7 +122,7 @@ $lang["popup_confirmBoxNo"] = "Cancel";
 /* -------------------------- ERROR MSG IN REGISTRATION PAGE ---------------------------------- */
 
 $lang["denied_characters"] = "These characters are not permitted: > < ; , :  \  /";
-$lang["denied_whiteSpace"] = "White space is not permitted: > < ; , :  \  /";
+$lang["denied_whiteSpace"] = "White spaces are not permitted";
 $lang["denied_wrongEmail"] = "The format of inserted email is not valid!";
 $lang["denied_wrongDate"] = "The format of date must be dd-mm-yyyy";
 $lang["denied_wrongPassword"] = "The password must be greater than 6 characters";
@@ -130,5 +142,13 @@ $lang["recoveryPage_confirmButton"] = "Confirm";
 $lang["recoveryMsg_success"] = "Recovery password succeeded!";
 $lang["recoveryMsg_expired"] = "Code expired!";
 $lang["recoveryMsg_wrong"] = "Wrong link!";
+
+/* -------------------------- ERROR MESSAGES ---------------------------------- */
+
+$lang["err_unableAddTag"] = "Unable to add tag: ";
+$lang["err_wrongLogin"] = "Username or password not correct";
+$lang["err_wrongLoginUsername"] = "Invalid username";
+$lang["err_existUsername"] = "An account with this username already exists";
+$lang["err_existEmail"] = "An account with this email already exists";
 
 ?>

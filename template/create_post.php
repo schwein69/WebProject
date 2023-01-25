@@ -29,12 +29,12 @@
         <button type="button" class="m-1"><?php echo $lang["createPost_addTag"];?></button>
         </div> 
     </div>
-    <p class="errmsg">I tag non possono contenere caratteri come: > < ; , :  \  / </p>
+    <p class="errmsg"><?php echo $lang["denied_characters"];?></p>
     </fieldset>
 
     <?php if(isset($templateParams["post"]["media"]) && count($templateParams["post"]["media"]) > 0):?>
         <fieldset class="text-start">
-            <legend>Scegli quale immagine o video rimuovere</legend>
+        <legend><?php echo $lang["editPost_removeFileLabel"];?></legend>
             <?php foreach($templateParams["post"]["media"] as $media):?>
                 <input type="checkbox" name="delMedia<?php echo $media["idContenuto"];?>" id="delMedia<?php echo $media["idContenuto"];?>" value="<?php echo $media["idContenuto"];?>"/>
                 <label for="delMedia<?php echo $media["idContenuto"];?>"><img src="<?php echo $media["percorsoImmagine"];?>" alt="<?php echo $media["descrizione"];?>" style="height:100px"/></label>
@@ -56,8 +56,8 @@
         <button class="mt-2 d-flex mx-auto"><?php echo $lang["createPost_addImgVid"];?></button>
         </div>
     </div>
-    <p class="errmsg">I testi alternativi non possono contenere caratteri come: > < ; , :  \  / </p>
-    <p class="errmsg"><?php echo "Il post non può contenere più di 9 immagini o video.";?></p>
+    <p class="errmsg"><?php echo $lang["denied_characters"];?></p>
+    <p class="errmsg"><?php echo $lang["editPost_errImgOverload"];?></p>
     </fieldset>
     <?php if (isset($_GET["postid"])):?>
         <input type="hidden" name="postid" value="<?php echo $_GET["postid"];?>"/>

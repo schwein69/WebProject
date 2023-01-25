@@ -12,7 +12,7 @@
                 <?php if (isset($templateParams["errormsg"])): ?>
                 <p><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
-                <button type="submit" class="btn col-4" name="submit" value="Invia">Invia</button>
+                <button type="submit" class="btn col-4" name="submit" value="Invia"><?php echo $lang["Send"]; ?></button>
             </form>
         </div>
     </div>

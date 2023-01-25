@@ -1,6 +1,6 @@
 <div class="row col-12 col-md-8 mx-auto">
-<label for="searchBox" class="invisibleLabel">Search chat</label>
-<input id="searchBox" aria-label="search chat" type="search" placeholder="<?php echo $lang["Search"];?>..."/>
+<label for="searchBox" class="invisibleLabel"><?php echo $lang["Search"];?> chat</label>
+<input id="searchBox" aria-label="<?php echo $lang["Search"];?> chat" type="search" placeholder="<?php echo $lang["Search"];?>..."/>
 </div>
 
 <div class="row col-12 col-md-8 mx-auto">

@@ -15,7 +15,7 @@ for ($i=0; $i < count($templateParams["followed"]); $i++) {
     $templateParams["followed"][$i]["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe($userId,$templateParams["followed"][$i]["idUtente"]);
 }
 
-$templateParams["title"] = 'Lynkzone - followed'; 
+$templateParams["title"] = 'Lynkzone - '.$lang["Followed"]; 
 $templateParams["content"] = "followedListTMP.php";
 $templateParams["js"] = array("../js/functions.js","../js/follow-event.js",'../js/notifications_receiver.js');
 require '../template/base.php';

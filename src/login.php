@@ -14,7 +14,7 @@ if(isset($_COOKIE["Lynkzone_keepLogin"])){
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] !== "" && $_POST["password"] !== ""){
     $user = $dbh->getUserFunctionHandler()->getUserDataLogin($_POST["username"]);
     if(count($user) < 1){
-        $templateParams["errormsg"] = "Username inesistente!";
+        $templateParams["errormsg"] = $lang["err_wrongLoginUsername"];
     } else {
         if(password_verify($_POST["password"], $user[0]["pwd"])){
             registerLoggedUser($user[0]);
@@ -34,7 +34,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
                 $dbh->getUserFunctionHandler()->updateKeepLogin($user[0]['idUtente'],$code);
             }
         }else{
-            $templateParams["errormsg"] = "Credenziali errate!";
+            $templateParams["errormsg"] = $lang["err_wrongLogin"];
         }
     }
 }

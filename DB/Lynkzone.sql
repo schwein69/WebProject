@@ -420,7 +420,7 @@ ALTER TABLE `utenti`
 --
 ALTER TABLE `partecipazione`
   ADD CONSTRAINT `partecipazione_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `partecipazione_ibfk_2` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`);
+  ADD CONSTRAINT `partecipazione_ibfk_2` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `commenti`
@@ -454,7 +454,7 @@ ALTER TABLE `notifiche`
 -- Constraints for table `postpiaciuti`
 --
 ALTER TABLE `postpiaciuti`
-  ADD CONSTRAINT `postpiaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  ADD CONSTRAINT `postpiaciuti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `postpiaciuti_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -467,7 +467,7 @@ ALTER TABLE `posts`
 -- Constraints for table `postsalvati`
 --
 ALTER TABLE `postsalvati`
-  ADD CONSTRAINT `postsalvati_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`),
+  ADD CONSTRAINT `postsalvati_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `postsalvati_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPost`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -481,8 +481,8 @@ ALTER TABLE `posttags`
 -- Constraints for table `relazioniutenti`
 --
 ALTER TABLE `relazioniutenti`
-  ADD CONSTRAINT `relazioniutenti_ibfk_1` FOREIGN KEY (`idFollower`) REFERENCES `utenti` (`idUtente`),
-  ADD CONSTRAINT `relazioniutenti_ibfk_2` FOREIGN KEY (`idFollowed`) REFERENCES `utenti` (`idUtente`);
+  ADD CONSTRAINT `relazioniutenti_ibfk_1` FOREIGN KEY (`idFollower`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `relazioniutenti_ibfk_2` FOREIGN KEY (`idFollowed`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

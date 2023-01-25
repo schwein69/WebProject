@@ -15,6 +15,8 @@ $lang["Birthday"] = "Data di nascita";
 $lang["ProfilePicture"] = "Foto profilo";
 $lang["Repeat"] = "Ripeti";
 $lang["VisitPage"] = "Visita profilo";
+$lang["SearchType"] = "Seleziona cosa cerchi:";
+$lang["Registration"] = "Registrazione";
 
 /* -------------------------- BASE ---------------------------------- */
 $lang["settings"] = "Impostazioni";
@@ -77,6 +79,10 @@ $lang["post_share"] = "Condividi post";
 $lang["post_editPost"] = "Modifica";
 
 /* Post creation */
+$lang["createPost_title"] = "nuovo post";
+$lang["editPost_title"] = "modifica post";
+$lang["editPost_removeFileLabel"] = "Scegli quale immagine o video rimuovere";
+$lang["editPost_errImgOverload"] = "Il post non può contenere più di 9 immagini o video.";
 $lang["createPost_errNoMsgVidsTxt"] = "Inserire del testo, un'immagine o un video.";
 $lang["createPost_Txt"] = "Testo del post";
 $lang["createPost_addTag"] = "Aggiungi un altro tag";
@@ -84,6 +90,12 @@ $lang["createPost_ImgsVids"] = "Immagini e Video";
 $lang["createPost_addImgVid"] = "Aggiungi immagine/video";
 $lang["createPost_success"] = "Il post è stato caricato con successo!";
 $lang["createPost_error"] = "Il post è stato creato ma sono stati riscontrati alcuni problemi";
+$lang["createPost_success_title"] = "post creato";
+$lang["createPost_error_title"] = "errore creazione post";
+$lang["editPost_success"] = "Post aggiornato con successo";
+$lang["editPost_error"] = "Il post è stato creato ma sono stati riscontrati alcuni problemi";
+$lang["editPost_success_title"] = "post aggiornato";
+$lang["editPost_error_title"] = "errore aggiornamento post";
 
 /* -------------------------- LOGIN ---------------------------------- */
 
@@ -130,5 +142,13 @@ $lang["recoveryPage_confirmButton"] = "Conferma";
 $lang["recoveryMsg_success"] = "Cambiamento password avvenuto con successo!";
 $lang["recoveryMsg_expired"] = "Codice scaduto!";
 $lang["recoveryMsg_wrong"] = "Link invalido!";
+
+/* -------------------------- ERROR MESSAGES ---------------------------------- */
+
+$lang["err_unableAddTag"]= "Impossibile aggiungere tag: ";
+$lang["err_wrongLogin"] = "Credenziali errate!";
+$lang["err_wrongLoginUsername"] = "Username non valido";
+$lang["err_existUsername"] = "Username già esistente";
+$lang["err_existEmail"] = "Email già esistente";
 
 ?>

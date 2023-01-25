@@ -1,17 +1,19 @@
 <div class="row" id="searchbar">
     <div class="col-12 col-md-8 my-2 mx-auto">
         <form action="#" method="GET">
-            <input type="radio" id="user" name="searchOption" value="User" required/>
-            <label for="user">USERNAME</label>
-            <input type="radio" id="tag" name="searchOption" value="Tag"/>
-            <label for="tag">TAG</label>
             <label for="searchTextArea" class="invisibleLabel"><?php echo $lang["Search"];?></label>
             <input class="col-6" aria-label="<?php echo $lang["Search"];?>" type="text" list="searchkeyword" id="searchTextArea" name="searchValue"
                 placeholder="<?php echo $lang["Search"];?>" required />
             <datalist id="searchkeyword" style="background-color: white;">
             </datalist>
             <input class="col-2" type="submit" value="<?php echo $lang["Send"];?>"/>
-
+            <fieldset>
+            <legend><?php echo $lang["SearchType"];?></legend>
+            <input type="radio" id="user" name="searchOption" value="User" required/>
+            <label for="user">USERNAME</label>
+            <input type="radio" id="tag" name="searchOption" value="Tag"/>
+            <label for="tag">TAG</label>
+            </fieldset>
         </form>
     </div>
 </div>

@@ -11,6 +11,6 @@ if (isset($_GET["idPost"]) && $dbh->getPostFunctionHandler()->getPostData($_GET[
 
 
 $templateParams["content"] = 'like_list.php';
-$templateParams["title"] = 'Lynkzone - all the people who liked this post';
+$templateParams["title"] = 'Lynkzone - Likes';
 require '../template/base.php';
 ?>

@@ -7,8 +7,8 @@ function showResult() {
     const textValue = document.getElementById("searchTextArea");
     const radioValue = document.querySelector('input[type="radio"][name="searchOption"]:checked');
     if (textValue.value.length == 0 || radioValue == null) {
-        document.getElementById("search keyword").innerHTML = "";
-        document.getElementById("search keyword").style.border = "0px";
+        document.getElementById("searchkeyword").innerHTML = "";
+        document.getElementById("searchkeyword").style.border = "0px";
         return;
     } else if (textValue.value.length > 0 && radioValue != null) {
         let xhttp = new XMLHttpRequest();
@@ -18,8 +18,8 @@ function showResult() {
             response.forEach(element => {
                 concat += '<option value="' + element + '" />';
             });
-            document.getElementById("search keyword").innerHTML = concat;
-            document.getElementById("search keyword").style.border = "1px solid #A5ACB2";
+            document.getElementById("searchkeyword").innerHTML = concat;
+            document.getElementById("searchkeyword").style.border = "1px solid #A5ACB2";
 
         }
         xhttp.open("POST", "liveSearch.php");

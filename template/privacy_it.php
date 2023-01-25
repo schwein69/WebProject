@@ -171,21 +171,11 @@
                     che sono a tua disposizione come utente registrato.</p>
             </li>
             <li>
-                <p><strong>Per l'esecuzione di un contratto:</strong> lo sviluppo, la conformità e l'esecuzione del
-                    contratto di acquisto per i prodotti, articoli o servizi che hai acquistato o di qualsiasi altro
-                    contratto con Noi attraverso il Servizio.</p>
-            </li>
-            <li>
                 <p><strong>Per contattarti:</strong> per contattarti tramite e-mail, telefonate, SMS o altre forme
                     equivalenti di comunicazione elettronica, come notifiche push di un'applicazione mobile relative ad
                     aggiornamenti o comunicazioni informative relative alle funzionalità, ai prodotti o ai servizi
                     contrattati, inclusi gli aggiornamenti di sicurezza, quando necessario o ragionevole per la loro
                     attuazione.</p>
-            </li>
-            <li>
-                <p><strong>Per fornirti</strong> notizie, offerte speciali e informazioni generali su altri beni,
-                    servizi ed eventi che offriamo simili a quelli che hai già acquistato o richiesto, a meno che tu non
-                    abbia scelto di non ricevere tali informazioni.</p>
             </li>
             <li>
                 <p><strong>Per gestire le tue richieste:</strong> per partecipare e gestire le tue richieste a noi.</p>
@@ -196,12 +186,6 @@
                     vendita o trasferimento di alcuni o tutti i nostri beni, sia come azienda in attività che come parte
                     di fallimento, liquidazione, o procedimento simile, in cui i dati personali da noi detenuti sugli
                     utenti del nostro servizio sono tra le risorse trasferite.</p>
-            </li>
-            <li>
-                <p><strong>Per altri scopi</strong>: potremmo utilizzare le tue informazioni per altri scopi, come
-                    l'analisi dei dati, l'identificazione delle tendenze di utilizzo, la determinazione dell'efficacia
-                    delle nostre campagne promozionali e per valutare e migliorare il nostro servizio, i prodotti, i
-                    servizi, il marketing e la tua esperienza.</p>
             </li>
         </ul>
         <h3>Conservazione dei tuoi dati personali</h3>
@@ -256,6 +240,7 @@
         <p>In caso di domande sulla presente Informativa sulla privacy, è possibile contattarci:</p>
         <ul>
             <li>via email: jiahao.guo@studio.unibo.it</li>
+            <li>via email: samuele.carafassi@studio.unibo.it</li>
         </ul>
     </div>
 </div>

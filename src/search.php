@@ -73,7 +73,7 @@ if (isset($_GET["searchOption"]) && $_GET["searchOption"] != "" && isset($_GET["
 
 $templateParams["isTag"] = $isTag;
 $templateParams["selector"] = $isPost;
-$templateParams["title"] = 'Lynkzone - search';
+$templateParams["title"] = 'Lynkzone - '.$lang["Search"];
 $templateParams["content"] = "search-template.php";
 $templateParams["js"] = array("../js/functions.js", "../js/like.js", "../js/follow-event.js", "../js/scrolldown-search.js", "../js/livesearch.js", "../js/savePost.js", '../js/notifications_receiver.js', "../js/sharePost.js",'../js/video_handler.js');
 require '../template/base.php';
