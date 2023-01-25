@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="center-container2" style="display:none;">
-    <div role="dialog" class="confirmShareBox center" style="max-height:40%;max-width:50%;overflow-y:auto; overflow-x:hidden">
+    <div role="dialog" class="confirmShareBox center" style="max-height:40%;max-width:80%;overflow-y:auto; overflow-x:hidden; width:60%;">
         <h2><?php echo $lang["popup_shareText"];?></h2>
         <div class="insertHereFriendList">
         </div>

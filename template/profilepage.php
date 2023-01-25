@@ -4,7 +4,7 @@
             <div class="card col-10 col-md-8 mx-auto">
                 <div class="card-body">
                     <ul class="nav nav-pills nav-justified">
-                        <li class="nav-item mx-2">               
+                        <li class="nav-item mx-2 mt-2">               
                                 <img class="img-fluid avatar"
                                     src="<?php if(isset($templateParams["user"]["profilePic"])) echo $templateParams["user"]["profilePic"] ?>"
                                     alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />

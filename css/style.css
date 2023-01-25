@@ -23,7 +23,7 @@
   --colour-bck-backside: rgb(39, 38, 38);
   --colour-bck-popup: rgb(39, 38, 38);/*Area pop up*/
   --colour-border: white;
-  --colour-hover:#88BAA9;
+  --colour-hover:#6150b4;
   --colour-font: white;
   --privacy-important-words-color:#00ff11;
   --colour-chat-host:#2b2e88;
@@ -337,4 +337,11 @@ div.chat-body > div.row > div.ms-auto{
 .errmsg{
   display: none;
   color: red;
+}
+
+@media screen and (max-width: 720px) {
+  .avatar{
+    width: 60px;
+    height: 60px;
+  }
 }
