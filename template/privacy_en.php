@@ -325,6 +325,7 @@
         <p>If you have any questions about this Privacy Policy, You can contact us:</p>
         <ul>
             <li>By email: jiahao.guo@studio.unibo.it</li>
+            <li>By email: samuele.carafassi@studio.unibo.it</li>
         </ul>
     </div>
 </div>

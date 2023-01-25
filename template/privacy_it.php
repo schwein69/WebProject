@@ -256,6 +256,7 @@
         <p>In caso di domande sulla presente Informativa sulla privacy, è possibile contattarci:</p>
         <ul>
             <li>via email: jiahao.guo@studio.unibo.it</li>
+            <li>via email: samuele.carafassi@studio.unibo.it</li>
         </ul>
     </div>
 </div>
