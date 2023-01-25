@@ -33,6 +33,7 @@ $lang["Profile"] = "Profile";
 $lang["chat_textPlaceholder"] = "Write here to chat...";
 $lang["chat_startNewConversation"] = "Start a new conversation";
 $lang["chat_noFriends"] = "Find and follow your friends to chat";
+$lang["chat_noResult"] = "No chat found.";
 
 
 /* -------------------------- SETTINGS ---------------------------------- */
@@ -148,7 +149,5 @@ $lang["recoveryMsg_wrong"] = "Wrong link!";
 $lang["err_unableAddTag"] = "Unable to add tag: ";
 $lang["err_wrongLogin"] = "Username or password not correct";
 $lang["err_wrongLoginUsername"] = "Invalid username";
-$lang["err_existUsername"] = "An account with this username already exists";
-$lang["err_existEmail"] = "An account with this email already exists";
 
 ?>

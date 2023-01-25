@@ -15,7 +15,7 @@ function updateNewMessagesNumber(){
             response.chats.forEach(element => {
                 totMsgs += element.numMsgs;
             });
-            chatBadge.innerHTML = totMsgs + '<span aria-label="unread messages"></span>';
+            chatBadge.innerHTML = totMsgs;
             chatBadge.setAttribute('style','');
         } else{
             chatBadge.setAttribute('style','display:none;');

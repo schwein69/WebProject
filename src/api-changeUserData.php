@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$dbh->getUserFunctionHandler()->checkUsername($_POST["name"])) { //se è settato(di default è quello vecchio) ed è diverso da quello originale, lo aggiorno
             $dbh->getUserFunctionHandler()->updateUsername($_POST["name"], $_SESSION["idUtente"]);
         } else {
-            $msg = "Username esistente!";
+            $msg = $lang["accountSetting_wrongUsernameMsg"];
             $result["errormsg"] = $msg;
         }
     }
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$dbh->getUserFunctionHandler()->checkEmail($_POST["email"])) {
             $dbh->getUserFunctionHandler()->updateUserEmail($_POST["email"], $_SESSION["idUtente"]);
         } else {
-            $msg = "Email esistente!";
+            $msg = $lang["accountSetting_wrongEmailMsg"];
             $result["errormsg"] = $msg;
         }
     }

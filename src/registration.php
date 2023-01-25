@@ -22,9 +22,9 @@ if(isset($_POST["submit"])){
         header("Location: login.php");
     } else {
         if($checkUsername != 0){
-            $msg = $lang["err_existUsername"];
+            $msg = $lang["accountSetting_wrongUsernameMsg"];
         }else{
-            $msg = $lang["err_existEmail"];
+            $msg = $lang["accountSetting_wrongEmailMsg"];
         }
         $templateParams["errormsg"] = $msg;
     }

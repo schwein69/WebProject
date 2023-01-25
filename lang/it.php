@@ -32,7 +32,8 @@ $lang["Profile"] = "Profilo";
 
 $lang["chat_textPlaceholder"] = "Scrivi qui per messaggiare...";
 $lang["chat_startNewConversation"] = "Inizia una nuova conversazione";
-$lang["chat_noFriends"] = "Cerca e segui i tuoi amici per iniziare una conversazione";
+$lang["chat_noFriends"] = "Cerca e segui i tuoi amici per iniziare una conversazione.";
+$lang["chat_noResult"] = "Nessuna chat trovata.";
 
 
 /* -------------------------- SETTINGS ---------------------------------- */
@@ -148,7 +149,5 @@ $lang["recoveryMsg_wrong"] = "Link invalido!";
 $lang["err_unableAddTag"]= "Impossibile aggiungere tag: ";
 $lang["err_wrongLogin"] = "Credenziali errate!";
 $lang["err_wrongLoginUsername"] = "Username non valido";
-$lang["err_existUsername"] = "Username già esistente";
-$lang["err_existEmail"] = "Email già esistente";
 
 ?>

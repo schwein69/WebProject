@@ -16,7 +16,7 @@ searchBox.addEventListener('input', event => {
         if(response.status){
             currentEnd = chatOffset;
             if(response.chats.length == 0){
-                resultSpace.innerHTML = "<p>Nessuna chat trovata</p>";
+                resultSpace.innerHTML = "<p>" + response.nochat +  "</p>";
             } else {
                 let content = '<ul class="list-group chatbg p-0">';
                 response.chats.forEach(element => {

@@ -8,7 +8,7 @@ function updateNotificationsCounter(){
             if(notifBadge.classList.contains('d-none')){
                 notifBadge.classList.remove('d-none');
             }
-            notifBadge.innerHTML = response.counter + '<span aria-label="new notifications"></span>';
+            notifBadge.innerHTML = response.counter;
         } else {
             if(!notifBadge.classList.contains('d-none')){
                 notifBadge.classList.add('d-none');
