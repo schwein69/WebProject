@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
         list($result, $fileType, $msg) = uploadFile($userPath, $img, "profile");//TODO inserire file type nel db
         header("Location: login.php");
     } else {
-        if(!$checkUsername != 0){
+        if($checkUsername != 0){
             $msg= "Username esistente!";
         }else{
             $msg = "Email esistente!";

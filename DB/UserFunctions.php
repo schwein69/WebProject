@@ -7,7 +7,7 @@ class UserFunctions
     {
         $this->db = $db;
     }
-    
+
     public function insertNewUser($name, $password, $email, $date, $img, $lang)
     {
         $query = "INSERT INTO utenti (username, pwd, email, dataDiNascita, formatoFotoProfilo, lang) VALUES (?,?,?,?,?,?)";
@@ -28,7 +28,7 @@ class UserFunctions
         $stmt->bind_param('s', $name);
         $stmt->execute();
         $result = $stmt->get_result();
-        return count($result->fetch_all(MYSQLI_ASSOC))>0;
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
     public function checkEmail($email)
@@ -38,7 +38,7 @@ class UserFunctions
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        return count($result->fetch_all(MYSQLI_ASSOC))>0;
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
     public function checkRecoveryCode($code)
@@ -60,7 +60,7 @@ class UserFunctions
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
-   
+
     public function getUserDataByRecoveryCode($code)
     {
         $query = "SELECT * FROM utenti WHERE codiceRecupero = ?";
@@ -74,7 +74,7 @@ class UserFunctions
     public function getUserDataLogin($username)
     {
         $query = "SELECT * FROM utenti WHERE username = ?";
-        
+
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -89,7 +89,7 @@ class UserFunctions
         $stmt->bind_param('s', $code);
         $stmt->execute();
         $queyResult = $stmt->get_result();
-        $result= $queyResult->fetch_all(MYSQLI_ASSOC);
+        $result = $queyResult->fetch_all(MYSQLI_ASSOC);
         return count($result) > 0 ? $result[0] : null;
     }
 
@@ -101,6 +101,15 @@ class UserFunctions
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function checkUserExist($idUser)
+    {
+        $query = "SELECT * FROM utenti WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
     //---------- USER RELATIONSHIPS ----------
@@ -172,7 +181,7 @@ class UserFunctions
         return $result->fetch_all(MYSQLI_NUM)[0][0];
     }
 
-    public function isFollowedByMe($userId,$adminId)
+    public function isFollowedByMe($userId, $adminId)
     {
         $stmt = $this->db->prepare("SELECT * FROM relazioniutenti WHERE idFollower=? AND idFollowed=?");
         $stmt->bind_param("ii", $userId, $adminId);
@@ -183,7 +192,7 @@ class UserFunctions
 
     //---------- UPDATE DATA ----------
 
-    public function updateKeepLogin($userId,$code)
+    public function updateKeepLogin($userId, $code)
     {
         $stmt = $this->db->prepare("UPDATE utenti SET keepCon=? WHERE idUtente=?");
         $stmt->bind_param("si", $code, $userId);
@@ -196,7 +205,7 @@ class UserFunctions
         $stmt->bind_param("ss", $code, $email);
         $stmt->execute();
     }
-    
+
     public function followUser($userId, $adminId)
     {
         $stmt = $this->db->prepare("INSERT INTO relazioniutenti(idFollower,idFollowed) VALUES (?,?)");
@@ -255,7 +264,7 @@ class UserFunctions
         $stmt->bind_param("si", $avatar, $userId);
         $stmt->execute();
     }
-    
+
     public function updateUserBirthday($date, $userId)
     {
         $query = "UPDATE utenti SET dataDiNascita=? WHERE idUtente = ?";
@@ -263,11 +272,17 @@ class UserFunctions
         $stmt->bind_param('si', $date, $userId);
         $stmt->execute();
     }
-    public function updateUserDescription($userId,$description)
+    public function updateUserDescription($userId, $description)
     {
         $query = "UPDATE utenti SET descrizione=? WHERE idUtente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $description, $userId);
+        $stmt->execute();
+    }
+    public function removeUser($userId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM utenti WHERE idUtente =?");
+        $stmt->bind_param("i", $userId);
         $stmt->execute();
     }
 }
