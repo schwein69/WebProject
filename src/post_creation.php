@@ -55,7 +55,7 @@ if(count($errMsgs) == 0){
     $templateParams["pageHeader"] = $lang["createPost_error"];
     $templateParams["title"]= "Lynkzone - ".$lang["createPost_error_title"];
 }
-$templateParams["js"] = ('../js/notifications_receiver.js');   
+$templateParams["js"] = array('../js/notifications_receiver.js');   
 $templateParams["content"] = "post_creation_result.php"; 
 require '../template/base.php';
 ?>

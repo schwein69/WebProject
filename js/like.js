@@ -31,7 +31,12 @@ function like(event) {
             numLike = parseInt(numLikePlace.innerText) == 1 ? '' : '' + (numLikePlace.innerText - 1);
         }
         likeButton.children[0].src = likeImg;
-        numLikePlace.innerText = numLike;
+        if(numLike != ''){
+            numLikePlace.innerHTML = `<a href="all_likes.php?idPost=${postId}">${numLike}</a>`;
+        }else{
+            numLikePlace.innerText = numLike;
+        }
+      
     };
     xhttp.open("POST", "event_like.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

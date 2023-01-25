@@ -164,7 +164,7 @@ Parameters used from postParams:
                         </button>
                         <span>
                             <?php if ($postParams['numLike'] > 0 && isset($postParams["allLikesClickable"])) : ?>
-                                <a href="all_likes.php?idPost=<?php echo $postParams['idPost'];?>" alt=""><?php echo $postParams['numLike'];?></a>
+                                <a href="all_likes.php?idPost=<?php echo $postParams['idPost'];?>"><?php echo $postParams['numLike'];?></a>
                             <?php elseif($postParams['numLike'] > 0) : {
                                 echo $postParams['numLike'];
                             }?>
