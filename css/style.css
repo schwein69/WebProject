@@ -10,6 +10,8 @@
   --colour-hover:lightgreen;
   --search-resultbox-bck: white;
   --privacy-important-words-color:#a80000;
+  --colour-chat-host:#18c2ec;
+  --colour-chat-guest:#02c529;
 }
 
 
@@ -24,6 +26,8 @@
   --colour-hover:#88BAA9;
   --colour-font: white;
   --privacy-important-words-color:#00ff11;
+  --colour-chat-host:#2b2e88;
+  --colour-chat-guest:#1c4524;
 }
 
 html,body {
@@ -281,14 +285,16 @@ main > div.chat-body:nth-child(2){
 }
 
 div.chat-body > div.row > div{
-  background-color: orange;
+  background-color: var(--colour-chat-guest);
   width: fit-content;
   height: fit-content;
   max-width:50%;
+  border-radius: 15px;
 }
 
 div.chat-body > div.row > div.ms-auto{
-  background-color: purple;
+  border-radius: 15px;
+  background-color: var(--colour-chat-host);
 }
 
 .graphicForm{
