@@ -10,12 +10,12 @@ if(isset($_POST["email"])){
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 
         $mail->SMTPAuth = true;  // enable smtp authentication                             
         $mail->Username = 'guojiahao707@gmail.com';  // sender gmail host              
-        $mail->Password = 'hypjncamzcglrikv'; // sender gmail host password                          
+        $mail->Password = 'hypjncamzcglrikv'; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
         $mail->SMTPSecure = 'tls';  // for encrypted connection                           
         $mail->Port = 587;   // port for SMTP     
     
         $mail->setFrom('guojiahao707@gmail.com', "Sender"); // sender's email and name
-        $mail->addAddress('guojiahao707@gmail.com', "Receiver");  // receiver's email and name
+        $mail->addAddress('guojiahao707@gmail.com', "Receiver");  // receiver's email and name (TODO: DA METTERE QUELLA INSERITA, invece è stata usata quella personale per scopo di prova)
         $uniqueCode = uniqid();
         $dbh->getUserFunctionHandler()->addRecoveryCode($_POST["email"],$uniqueCode);
         $mail->Subject = 'Recovery password for LinkZone';
@@ -37,7 +37,6 @@ $templateParams["title"]="Lynkzone - Password recovery";
 $templateParams["content"] = "recovery-template.php";
 $templateParams["loginTopNav"]=true;
 $templateParams["loginBottomNav"]=true;
-$templateParams["title"] = 'Lynkzone - recovery password'; 
 $templateParams["js"] = array("../js/email-checker.js","../js/languageOnChange.js");
 
 require '../template/base.php';
