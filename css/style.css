@@ -140,9 +140,6 @@ body  header > div > div{/*top nav*/
   color: var(--colour-font);
 }
 
-button {
-  box-shadow: 0 0 5px 2px black;
-}
 .profileLink{
   text-decoration: none;
   color: var(--colour-font);
