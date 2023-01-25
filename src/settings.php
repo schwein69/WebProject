@@ -10,16 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 if (!$dbh->getUserFunctionHandler()->checkUsername($_POST["name"])) { //se è settato(di default è quello vecchio) ed è diverso da quello originale, lo aggiorno
                     $dbh->getUserFunctionHandler()->updateUsername($_POST["name"], $_SESSION["idUtente"]);
                 } else {
-                    $msg = "Username esistente!";
-                    $templateParams["errormsg"] = $msg;
+                    $templateParams["errormsg"] = $lang["accountSetting_wrongUsernameMsg"];
                 }
             }
             if (isset($_POST["email"]) && $templateParams["user"]["email"] != $_POST["email"]) {
                 if (!$dbh->getUserFunctionHandler()->checkEmail($_POST["email"])) {
                     $dbh->getUserFunctionHandler()->updateUserEmail($_POST["email"], $_SESSION["idUtente"]);
                 } else {
-                    $msg = "Email esistente!";
-                    $templateParams["errormsg"] = $msg;
+                    $templateParams["errormsg"] = $lang["accountSetting_wrongEmailMsg"];
                 }
             }
             if (isset($_POST["date"]) && $templateParams["user"]["dataDiNascita"] != $_POST["date"]) {
@@ -37,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                 list($result, $fileType, $msg) = uploadFile($userPath, $img, "profile");
             }
             $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
-        break;
+            break;
 
         case "passwordForm": //password form
             if (isset($_POST["oldpwd"]) && isset($_POST["pwd"]) && isset($_POST["pwdrepeat"]) && $_POST["pwd"] !== "" && $_POST["pwdrepeat"] !== "") {
@@ -46,28 +44,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                         $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
                         $dbh->getUserFunctionHandler()->updatePassword($pwd, $templateParams["user"]["idUtente"]);
                     }
-                } else {
-                    $msg = "Password originale errata!";
-                    $templateParams["errormsgPsw"] = $msg;
+                } else {  
+                    $templateParams["errormsgPsw"] = $lang["accountSetting_wrongPasswordMsg"];
                 }
             }
             $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
-        break;
+            break;
 
         case "languageFormSubmission": //language form
             if (isset($_POST["languages"]) && $_POST["languages"] != $_SESSION["lang"]) { //se è diverso da quello già settato  
-                $dbh->getUserFunctionHandler()->changeLanguage($templateParams["user"]["idUtente"],$_POST["languages"]);
+                $dbh->getUserFunctionHandler()->changeLanguage($templateParams["user"]["idUtente"], $_POST["languages"]);
                 $_SESSION["lang"] = $_POST["languages"];
                 header("Refresh: 1");
             }
-        break;
+            break;
 
         case "descriptionFormSubmission": //description form
             if (isset($_POST["textArea"]) && $_POST["textArea"] != $templateParams["user"]["descrizione"]) {
-                $dbh->getUserFunctionHandler()->updateUserDescription($templateParams["user"]["idUtente"],$_POST["textArea"]);
+                $dbh->getUserFunctionHandler()->updateUserDescription($templateParams["user"]["idUtente"], $_POST["textArea"]);
                 $templateParams["user"] = $dbh->getUserFunctionHandler()->getUserData($_SESSION["idUtente"]);
             }
-        break;
+            break;
+
+        case "deleteForm": //delete account form
+            if (isset($_POST["oldPswForDelete"]) && $_POST["oldPswForDelete"] !== "") {
+                if (password_verify($_POST["oldPswForDelete"], $templateParams["user"]["pwd"])) {//password corretta
+                    $dbh->getUserFunctionHandler()->removeUser($templateParams["user"]["idUtente"]);
+                    rrmdir(UPLOAD_DIR.$_SESSION["idUtente"]); //rimuovo dir
+                    header("location:logout-event.php");
+                } else {   
+                    $templateParams["errormsgDelete"] = $lang["accountSetting_wrongPasswordMsg"];
+                }
+            }
+            break;
     }
 }
 
@@ -106,15 +115,27 @@ $templateParams["content"] = "settings-template.php";
 $templateParams["profileSetting"] = "profileSetting.php";
 $templateParams["accountSetting"] = "accountSetting.php";
 $templateParams["savedposts"] = "post_template.php";
-if($_SESSION["lang"] == "it"){
+if ($_SESSION["lang"] == "it") {
     $templateParams["privacy"] = 'privacy_it.php';
 } else {
     $templateParams["privacy"] = 'privacy_en.php';
 }
 $templateParams["profileTopNav"] = true;
 $templateParams["title"] = 'Lynkzone - Settings';
-$templateParams["js"] = array("../js/functions.js", "../js/theme.js", "../js/email-checker.js", "../js/updateUserData.js", 
-"../js/scrolldown-savedPost.js", "../js/like.js", "../js/savePost.js", "../js/newPassword-checker.js","../js/removePost.js","../js/follow-event.js","../js/sharePost.js","../js/setting_tabs.js");
+$templateParams["js"] = array(
+    "../js/functions.js",
+    "../js/theme.js",
+    "../js/email-checker.js",
+    "../js/updateUserData.js",
+    "../js/scrolldown-savedPost.js",
+    "../js/like.js",
+    "../js/savePost.js",
+    "../js/newPassword-checker.js",
+    "../js/removePost.js",
+    "../js/follow-event.js",
+    "../js/sharePost.js",
+    "../js/setting_tabs.js"
+);
 require '../template/base.php';
 
 ?>

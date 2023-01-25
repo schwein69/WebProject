@@ -6,7 +6,7 @@
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item mx-2">               
                                 <img class="img-fluid avatar"
-                                    src="<?php echo $templateParams["user"]["profilePic"]; ?>"
+                                    src="<?php if(isset($templateParams["user"]["profilePic"])) echo $templateParams["user"]["profilePic"] ?>"
                                     alt="<?php echo getProfilePicAlt($templateParams["user"]["username"]); ?>" />
                                 <h2 style="font-size: large;"> 
                                     <?php echo $templateParams["user"]["username"] ?>

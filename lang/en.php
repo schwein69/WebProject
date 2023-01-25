@@ -47,6 +47,16 @@ $lang["accountSetting_chooseThemeText"] = "Choose a theme";
 $lang["accountSetting_chooseLanguageText"] = "Choose a language";
 $lang["accountSetting_modifyStoryText"] = "Modify description";
 $lang["accountSetting_storyText"] = "Description";
+$lang["accountSetting_updatePassword"] = "Update Password";
+$lang["accountSetting_removeAccount"] = "Remove Account";
+$lang["accountSetting_originalPasswordText"] = "Original password";
+$lang["accountSetting_newPasswordText"] = "New Password";
+$lang["accountSetting_rptPasswordText"] = "Repeat Password";
+$lang["accountSetting_confirmPasswordText"] = "Confirm Password";
+$lang["accountSetting_wrongPasswordMsg"] = "Wrong Password!";
+$lang["accountSetting_wrongEmailMsg"] = "Email is already used!";
+$lang["accountSetting_wrongUsernameMsg"] = "Username is already used!";
+$lang["accountSetting_accountRemovedText"] = "Account removed!";
 
 /*Setting's tab texts */
 $lang["accountSetting_profileSettingsTab"] = "General Settings";
