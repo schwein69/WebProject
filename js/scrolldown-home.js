@@ -1,7 +1,8 @@
 
 
 document.addEventListener('scroll', event => {
-    if ((document.body.offsetHeight + window.scrollY) == document.body.scrollHeight) {
+    const tolerance = 20; 
+    if ((document.body.offsetHeight + window.scrollY) >= (document.body.scrollHeight-tolerance)) {
         let xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             const response = JSON.parse(this.responseText);
