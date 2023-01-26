@@ -281,7 +281,7 @@ div.chat-body, #chat-bottom > form{
 }
 
 main > div.chat-body:nth-child(2){
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 div.chat-body > div.row > div{

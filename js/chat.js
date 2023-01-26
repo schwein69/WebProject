@@ -152,7 +152,11 @@ function getNewMessages(){
                 divChatEl.classList.add('m-0');
                 divChatEl.appendChild(chatElement);
                 const lastMessage = document.querySelector('div.chat-body > div.row:last-child');
-                lastMessage.parentNode.insertBefore(divChatEl, lastMessage.nextSibling);
+                if(lastMessage!=null){
+                    lastMessage.parentNode.insertBefore(divChatEl, lastMessage.nextSibling);
+                } else {
+                    document.querySelector('main > div.chat-body:nth-child(2)').appendChild(divChatEl);
+                }
                 resizeChatBody();
             });
         }

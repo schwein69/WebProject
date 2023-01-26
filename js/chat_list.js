@@ -20,7 +20,7 @@ searchBox.addEventListener('input', event => {
             } else {
                 let content = '<ul class="list-group chatbg p-0">';
                 response.chats.forEach(element => {
-                    content += '<li id="chat' + element["idChat"] + '" class="list-group-item chatbg">' 
+                    content += '<li id="chat' + element["idChat"] + '" class="list-group-item chatbg py-3">' 
                             + '<a href="chat.php?chatId=' + element["idChat"] + '">'
                             + '<div class="row">'
                             + '<div class="col-4">'
@@ -59,7 +59,7 @@ document.addEventListener('scroll', event => {
                 response.chats.forEach(element => {
                     const chatElement = document.createElement('li');
                     chatElement.id = "chat" + element["idChat"]; 
-                    chatElement.classList.add("list-group-item","chatbg");
+                    chatElement.classList.add("list-group-item","chatbg","py-3");
                     chatElement.innerHTML = '<a href="chat.php?chatId=' + element["idChat"] + '">'
                             + '<div class="row">'
                             + '<div class="col-4">'

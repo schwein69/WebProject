@@ -7,7 +7,7 @@
     <?php if(count($templateParams["chats"]) > 0): ?>
         <ul class="list-group chatbg p-0">
         <?php foreach($templateParams["chats"] as $chat):?>
-        <li id="chat<?php echo $chat["idChat"];?>" class="list-group-item chatbg"> 
+        <li id="chat<?php echo $chat["idChat"];?>" class="list-group-item chatbg py-3"> 
         <a href="chat.php?chatId=<?php echo $chat["idChat"];?>">
         <div class="row">
             <div class="col-4">
