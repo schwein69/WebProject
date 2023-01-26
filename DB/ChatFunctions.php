@@ -52,7 +52,7 @@ class ChatFunctions
         return $queryRes->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function getRecentChats($user,$user2="",$initialChat=0,$numChats=5)
+    public function getRecentChats($user,$user2="",$initialChat=0,$numChats=8)
     {
         //retrieving chats
         $query = "SELECT C.idChat, P.idUtente, username, formatoFotoProfilo, anteprimaChat, "

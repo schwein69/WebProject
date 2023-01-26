@@ -3,7 +3,7 @@
 require_once 'bootstrap.php';
 
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);      
-if(isset($_POST["email"])){
+if(isset($_POST["email"]) && $_POST["email"] != ""){
     if($dbh->getUserFunctionHandler()->checkEmail($_POST["email"])){ 
     try {
         $mail->isSMTP(); // using SMTP protocol                                     
@@ -28,8 +28,7 @@ if(isset($_POST["email"])){
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     }
     } else {
-        $msg = "Email inesistente!";
-        $templateParams["errormsg"] = $msg;
+        $templateParams["errormsg"] = $lang["recoveryPage_emailNotExist"];
     }
 }
 

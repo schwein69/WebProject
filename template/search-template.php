@@ -40,9 +40,6 @@ if($templateParams["selector"] == true):
                             <?php echo $user["username"] ?>
                         </h2>
                         <p class="card-text">
-                            <?php echo $user["descrizione"] ?>
-                        </p>
-                        <p class="card-text">
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"]?>"
                                 class="btn"><?php echo $lang["VisitPage"];?></a>
                             <?php $user["followedByMe"] = $dbh->getUserFunctionHandler()->isFollowedByMe($_SESSION["idUtente"],$user["idUtente"]); ?>

@@ -3,30 +3,20 @@ document.querySelector("button[id*=PswButton]").addEventListener("click",functio
     const pwdrep =document.querySelector('input[name="pwdrepeat"]');
     if (pwd.value.length < 6) {
         pwd.value = "";
-        let errormsg = "<p>La password deve essere almeno di 6 caratteri</p>";
+        let errormsg = document.documentElement.lang == "it" ? "<p class='errmsg' style='display:block'>La password deve essere almeno di 6 caratteri</p>" : "<p class='errmsg' style='display:block'>Password must have 6 or more characters</p>";
         if(pwd.nextElementSibling == null){
             pwd.insertAdjacentHTML("afterend", errormsg)
         }
         e.preventDefault();
-    }else{
-        if(pwd.nextElementSibling){
-            pwd.nextElementSibling.remove();
-        }
     }
     if (pwd.value !== pwdrep.value) {
         pwdrep.value = "";
-        let errormsg = "<p>Password diverse</p>";
+        let errormsg = document.documentElement.lang == "it" ? "<p class='errmsg' style='display:block'>Password diverse</p>" : "<p class='errmsg' style='display:block'>Different passwords</p>";
         if(pwdrep.nextElementSibling == null){
             pwdrep.insertAdjacentHTML("afterend", errormsg)
         }
         e.preventDefault();
-    }else{
-        if(pwdrep.nextElementSibling){
-            pwdrep.nextElementSibling.remove();
-        }
     }
-    return true;
-
 });
 
 

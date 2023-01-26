@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 redirectNotLoggedUser();
 //check parameter and if post exist
 if (isset($_GET["idPost"]) && $dbh->getPostFunctionHandler()->getPostData($_GET["idPost"]) != null) {
-    $templateParams["likes"] = $dbh->getAllLikes($_GET["idPost"]);
+    $templateParams["likes"] = $dbh->getPostFunctionHandler()->getAllLikes($_GET["idPost"]);
 } else {
     header("Location: index.php");
 }

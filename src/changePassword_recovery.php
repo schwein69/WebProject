@@ -8,16 +8,16 @@ if(isset($_GET["code"])){
             $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
             $dbh->getUserFunctionHandler()->updatePassword($pwd,$data["idUtente"]);
             $templateParams["errormsg"] = $lang["recoveryMsg_success"];
-            header("Refresh: 3; url=login.php");
+            header("Refresh: 2; url=login.php");
         }
     } else {
         $templateParams["errormsg"] = $lang["recoveryMsg_expired"];
-        header("Refresh: 3; url=login.php");
+        header("Refresh: 2; url=login.php");
     }
    
 } else {
     $templateParams["errormsg"] = $lang["recoveryMsg_wrong"];
-    header("Refresh: 3; url=login.php");
+    header("Refresh: 2; url=login.php");
 }
 
 $templateParams["content"] = "recovery-password-template.php";

@@ -137,6 +137,7 @@ $lang["recoveryPage_welcome"] = "Benvenuto/a ";
 $lang["recoveryPage_insertNewPass"] = "Imposta la nuova password";
 $lang["recoveryPage_confirmNewPass"] = "Conferma password";
 $lang["recoveryPage_confirmButton"] = "Conferma";
+$lang["recoveryPage_emailNotExist"] = "Email inesistente!";
 
 /* --------------------------RECOVERY FEEDBACK MESSAGES ---------------------------------- */
 
@@ -149,5 +150,10 @@ $lang["recoveryMsg_wrong"] = "Link invalido!";
 $lang["err_unableAddTag"]= "Impossibile aggiungere tag: ";
 $lang["err_wrongLogin"] = "Credenziali errate!";
 $lang["err_wrongLoginUsername"] = "Username non valido";
+
+/* ------------------------COOKIE BAR--------------------------- */
+
+$lang["cookie_1"] = "Per migliorare l'esperienza sul nostro sito, utilizziamo i cookie per ricordare i dettagli di accesso. Visita";
+$lang["cookie_2"] = "per maggiori informazioni.";
 
 ?>

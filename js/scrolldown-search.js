@@ -1,7 +1,6 @@
 document.addEventListener('scroll', event => {
     if(isTag!=2){
-        const tolerance = 20; 
-        if ((document.body.offsetHeight + window.scrollY) >= (document.body.scrollHeight-tolerance)) {
+        if ((document.body.offsetHeight + window.scrollY) >= (document.body.scrollHeight)) {
             let xhttp = new XMLHttpRequest();
             xhttp.onload = function () {
                 const response = JSON.parse(this.responseText);

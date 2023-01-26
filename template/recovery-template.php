@@ -10,7 +10,7 @@
                 </div>
                 <hr/>
                 <?php if (isset($templateParams["errormsg"])): ?>
-                <p><?php echo $templateParams["errormsg"]; ?></p>
+                <p class="errmsg" style="display: block;">  <?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
                 <button type="submit" class="btn col-4" name="submit" value="Invia"><?php echo $lang["Send"]; ?></button>
             </form>

@@ -11,10 +11,7 @@
                     <div class="card-body">
                         <h2 class="card-title">
                             <?php echo $user["username"] ?>
-                        </h2>
-                        <p class="card-text">
-                            <?php echo $user["descrizione"] ?>
-                        </p>
+                        </h2>  
                         <p class="card-text">
                             <?php if($user["idUtente"] != $_SESSION["idUtente"]):?>
                             <a href="../src/profile.php?idUtente=<?php echo $user["idUtente"] ?>"

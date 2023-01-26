@@ -35,7 +35,7 @@
                     <p class="errmsg"><?php echo $lang["denied_wrongReapeatedPassword"]?></p>
                 </div>
                 <?php if(isset($templateParams["errormsg"])): ?>
-                  <p><?php echo $templateParams["errormsg"]; ?></p>
+                  <p class="errmsg" style="display: block;"><?php echo $templateParams["errormsg"]; ?></p>
                 <?php endif; ?>
                 <hr/>
                 <button type="submit" class="btn col-4" name="submit" value="Invia"><?php echo $lang["login_signUp"];?></button>

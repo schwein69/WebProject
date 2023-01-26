@@ -3,7 +3,7 @@ const searchBox = document.getElementById('searchBox');
 const resultSpace = document.querySelector('main > div:nth-child(2)');
 
 //endless scroll variables
-const chatOffset= 5;
+const chatOffset= 8;
 const tolerance = 10;
 let currentEnd = chatOffset;
 

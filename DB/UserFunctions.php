@@ -269,7 +269,8 @@ class UserFunctions
     {
         $query = "UPDATE utenti SET dataDiNascita=? WHERE idUtente = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $date, $userId);
+        $bday = date('Y-m-d', strtotime($date));
+        $stmt->bind_param('si', $bday, $userId);
         $stmt->execute();
     }
     public function updateUserDescription($userId, $description)

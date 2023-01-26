@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
                     $templateParams["errormsg"] = $lang["accountSetting_wrongEmailMsg"];
                 }
             }
-            if (isset($_POST["date"]) && $templateParams["user"]["dataDiNascita"] != $_POST["date"]) {
+            if (isset($_POST["date"]) && date("d-m-Y", strtotime($templateParams["user"]["dataDiNascita"])) != $_POST["date"]) {
                 $dbh->getUserFunctionHandler()->updateUserBirthday($_POST["date"], $_SESSION["idUtente"]);
             }
 
@@ -111,6 +111,8 @@ for ($i = 0; $i < $numPosts; $i++) {
 
 
 $templateParams["user"]["profilePic"] = UPLOAD_DIR . $templateParams["user"]["idUtente"] . '/profile.' . $templateParams["user"]["formatoFotoProfilo"];
+$time = date("d-m-Y", strtotime($templateParams["user"]["dataDiNascita"]));
+$templateParams["user"]["dataDiNascita"] = $time;
 $templateParams["content"] = "settings-template.php";
 $templateParams["profileSetting"] = "profileSetting.php";
 $templateParams["accountSetting"] = "accountSetting.php";

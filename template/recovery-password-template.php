@@ -9,11 +9,11 @@
             <form class="form-horizontal" name="myform" method="post" action="#">
                 <div class="form-group my-2">
                     <label class="control-label col-2 fw-bold" for="pwd">Password</label>
-                    <input class="col-6" type="password" placeholder="Nuova Password" name="pwd" id="pwd"/>
+                    <input class="col-6" type="password" placeholder="<?php echo $lang["accountSetting_newPasswordText"];?>" name="pwd" id="pwd"/>
                 </div>
                 <div class="form-group my-2">
                     <label class="control-label col-2 fw-bold" for="pwdrepeat"><?php echo $lang["recoveryPage_confirmNewPass"];?></label>
-                    <input class="col-6" type="password" placeholder="Ripeti Password" name="pwdrepeat" id="pwdrepeat"/>
+                    <input class="col-6" type="password" placeholder="<?php echo $lang["accountSetting_rptPasswordText"];?>" name="pwdrepeat" id="pwdrepeat"/>
                 </div>
                 <?php if (isset($templateParams["errormsg"])): ?>
                 <p><?php echo $templateParams["errormsg"]; ?></p>

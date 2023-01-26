@@ -26,7 +26,7 @@
                     required/>
             </div>
             <?php if (isset($templateParams["errormsg"])): ?>
-            <p><?php echo $templateParams["errormsg"]; ?></p>
+            <p class="errmsg" style="display: block;"><?php echo $templateParams["errormsg"]; ?></p>
             <?php endif; ?>
             <hr/>
             <input type="hidden" name="form" value="dataForm" >
@@ -45,7 +45,7 @@
                     <input class="col-6" type="password" placeholder="<?php echo $lang["accountSetting_originalPasswordText"];?>" name="oldpwd" id="oldpwd" required/>
             </div>
             <?php if (isset($templateParams["errormsgPsw"])): ?>
-            <p><?php echo $templateParams["errormsgPsw"]; ?></p>
+            <p class="errmsg" style="display: block;"><?php echo $templateParams["errormsgPsw"]; ?></p>
             <?php endif; ?>
             <div class="form-group my-2">
                     <label class="control-label col-3 fw-bold" for="pwd">Password</label>
@@ -64,8 +64,7 @@
 </div>
 
 <div class="row my-5">
-    <div class="col-10 border mx-auto"
-        style="background-color: rgb(153, 201, 255,0.5) ; backdrop-filter: blur(10px);">
+    <div class="col-10 border mx-auto graphicForm">
         <h2><?php echo $lang["accountSetting_removeAccount"];?></h2>
         <form class="form-horizontal" method="post" action="#">
             <div class="form-group my-2">
@@ -73,7 +72,7 @@
                     <input class="col-6" type="password" placeholder="<?php echo $lang["accountSetting_originalPasswordText"];?>" name="oldPswForDelete" id="oldPswForDelete" required/>
             </div>
             <?php if (isset($templateParams["errormsgDelete"])): ?>
-            <p><?php echo $templateParams["errormsgDelete"]; ?></p>
+            <p class="errmsg" style="display: block;"><?php echo $templateParams["errormsgDelete"]; ?></p>
             <?php endif; ?>
             <hr/>
             <input type="hidden" name="form" value="deleteForm" >
