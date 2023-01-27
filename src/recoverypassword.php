@@ -1,7 +1,7 @@
 <?php
 
 require_once 'bootstrap.php';
-
+$from = "guojiahao707@gmail.com";
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);      
 if(isset($_POST["email"]) && $_POST["email"] != ""){
     if($dbh->getUserFunctionHandler()->checkEmail($_POST["email"])){ 
@@ -10,11 +10,10 @@ if(isset($_POST["email"]) && $_POST["email"] != ""){
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 
         $mail->SMTPAuth = true;  // enable smtp authentication                             
         $mail->Username = 'guojiahao707@gmail.com';  // sender gmail host              
-        $mail->Password = 'hypjncamzcglrikv'; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
+        $mail->Password = 'nwpiedlkuxmbqfay'; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
         $mail->SMTPSecure = 'tls';  // for encrypted connection                           
         $mail->Port = 587;   // port for SMTP     
-    
-        $mail->setFrom('guojiahao707@gmail.com', "Sender"); // sender's email and name
+        $mail->setFrom($from, "Sender"); // sender's email and name
         $mail->addAddress('guojiahao707@gmail.com', "Receiver");  // receiver's email and name (TODO: DA METTERE QUELLA INSERITA, invece è stata usata quella personale per scopo di prova)
         $uniqueCode = uniqid();
         $dbh->getUserFunctionHandler()->addRecoveryCode($_POST["email"],$uniqueCode);
@@ -23,6 +22,7 @@ if(isset($_POST["email"]) && $_POST["email"] != ""){
                           http://localhost/WebProject/src/changePassword_recovery.php?code=".$uniqueCode;
     
         $mail->send();
+        $mail->smtpClose();
         header("Location: login.php");
     } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
