@@ -10,7 +10,7 @@ if(isset($_POST["email"]) && $_POST["email"] != ""){
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 
         $mail->SMTPAuth = true;  // enable smtp authentication                             
         $mail->Username = 'guojiahao707@gmail.com';  // sender gmail host              
-        $mail->Password = 'nwpiedlkuxmbqfay'; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
+        $mail->Password = ''; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
         $mail->SMTPSecure = 'tls';  // for encrypted connection                           
         $mail->Port = 587;   // port for SMTP     
         $mail->setFrom($from, "Sender"); // sender's email and name
