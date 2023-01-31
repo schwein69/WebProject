@@ -33,7 +33,7 @@ function comment(event){
             commentInputDiv.parentNode.insertBefore(newComment, commentInputDiv);
 
             //increment comments counter
-            commentCounter.innerHTML = (parseInt(commentCounter.innerText)+1);
+            commentCounter.innerHTML= commentCounter.innerText.length == 0 ? '1' : '' + (parseInt(commentCounter.innerText) + 1);
         }
     };
 

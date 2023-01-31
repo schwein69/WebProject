@@ -13,16 +13,21 @@ function delegate_event(eventType, ancestorElem, childSelector, eventHandler) {
 function showBoxAndDeactivateScroll(container) {
     document.body.style.pointerEvents = "none";
     document.body.style.overflow = "hidden";
-    document.querySelector("div." + container).setAttribute('style', 'display:block;');
+    //document.querySelector("div." + container).setAttribute('style', 'display:block;');
+    document.querySelector("div." + container).classList.add("d-flex");
+    document.querySelector("div." + container).classList.add("justify-content-center");
     document.querySelector("div." + container).style.pointerEvents = "auto";
     document.querySelector("div." + container).style.top = window.scrollY + "px";
+    document.querySelector("div." + container).style.left = window.screenX + "px";//center in base al body e non al parent secondario(settingstemplate.php)
 
 }
 
 function hideBoxAndReactivateScroll(container) {
     document.body.style.pointerEvents = "auto";//attiva eventi
     document.body.style.overflow = "";//rimostra scrollbar
-    document.querySelector("div." + container).setAttribute('style', 'display:none;');//nascondi box
+    //document.querySelector("div." + container).setAttribute('style', 'display:none;');//nascondi box
+    document.querySelector("div." + container).classList.remove("d-flex");
+    document.querySelector("div." + container).classList.remove("justify-content-center");
     document.querySelector("div." + container).style.pointerEvents = "none";//disattiva eventi per sicurezza
 }
 function generaArticoli(articoli) {

@@ -1,12 +1,12 @@
 <div class="center-container" style="display:none;">
-    <div role="dialog" class="confirmBox center">
+    <div role="dialog" class="confirmBox">
         <h2><?php echo $lang["popup_deleteText"];?></h2>
         <button class="btn confirmButton" value="yes"><?php echo $lang["popup_confirmBoxYes"];?></button>
         <button class="btn confirmButton" value="no"><?php echo $lang["popup_confirmBoxNo"];?></button>
     </div>
 </div>
 <div class="center-container2" style="display:none;">
-    <div role="dialog" class="confirmShareBox center" style="max-height:40%;max-width:80%;overflow-y:auto; overflow-x:hidden; width:60%;">
+    <div role="dialog" class="confirmShareBox" style="max-height:40%;max-width:80%;overflow-y:auto; overflow-x:hidden; width:60%;">
         <h2><?php echo $lang["popup_shareText"];?></h2>
         <div class="insertHereFriendList">
         </div>

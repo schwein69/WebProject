@@ -1,7 +1,7 @@
 <?php
 
 require_once 'bootstrap.php';
-$from = "guojiahao707@gmail.com";
+$from = "";//SENDER GMAIL
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);      
 if(isset($_POST["email"]) && $_POST["email"] != ""){
     if($dbh->getUserFunctionHandler()->checkEmail($_POST["email"])){ 
@@ -9,8 +9,8 @@ if(isset($_POST["email"]) && $_POST["email"] != ""){
         $mail->isSMTP(); // using SMTP protocol                                     
         $mail->Host = 'smtp.gmail.com'; // SMTP host as gmail 
         $mail->SMTPAuth = true;  // enable smtp authentication                             
-        $mail->Username = 'guojiahao707@gmail.com';  // sender gmail host              
-        $mail->Password = 'nwpiedlkuxmbqfay'; // sender gmail host password (TODO: CONFIGURARE PER IL DISPOSITIVO CHE PRESENTERA' IL PROGETTO)                         
+        $mail->Username = '';  // sender gmail host SENDER GMAIL         
+        $mail->Password = ''; // sender gmail host password (TODO: FOR WHO USE GMAIL SEND IN ACCOUNT APP PASSWORD)                         
         $mail->SMTPSecure = 'tls';  // for encrypted connection                           
         $mail->Port = 587;   // port for SMTP     
         $mail->setFrom($from, "Sender"); // sender's email and name

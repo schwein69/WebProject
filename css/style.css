@@ -247,13 +247,6 @@ h1 a {
   position: absolute;
   z-index: 100;
 }
-.center {
-  top: 50%;
-  left: 50%;
-  background-color: var(--colour-bck-popup);
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
 
 section#comments div{
   border: 1px solid var(--colour-border) !important;
