@@ -12,10 +12,15 @@ In doc you find mockups.
 ## How to use?
 It's a social network and it should be quite user-friendly so there's no much to explain.
 For running in local you need to:
+
 1)Download this project
+
 1)Put the project under \xampp\htdocs\
+
 2)Import database from db folder
+
 3)Text http://localhost/WebProject-master/src/
+
 There are some test account that can be used, here a list(username,password):
 - ginopino,ginopino
 - gigi,gigi00
